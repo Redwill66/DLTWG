@@ -65,11 +65,10 @@ namespace GameofLifedanielT
             if (Gene == false)
             {
                 Gene = true;
-            
-            Life = 3;
-            Armor = 0;
-            Bombs = 0;
-            Keys = 0;
+                Life = 3;
+                Armor = 0;
+                Bombs = 0;
+                Keys = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString()+" / "+MaxLife.ToString();
                 sword = 0;
@@ -79,9 +78,9 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lbllifeCount.Text = Life.ToString();
-            lblArmorCount.Text = Armor.ToString();
-            lblBombCount.Text = Bombs.ToString();
-            lblkeycount.Text = Keys.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
                 lblMenge.Text = Gold.ToString();
                 lblsword.Text = sword.ToString();
                 panMain.Size = new Size(CellSize * 40, CellSize * 40);
@@ -108,8 +107,10 @@ namespace GameofLifedanielT
                 Armor = 0;
                 Bombs = 0;
                 Keys = 0;
-                Rowsd = 0;
-                Columnsd = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                sword = 0;
+                Gold = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 foreach (PictureBox panel in panMain.Controls)
@@ -173,7 +174,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys);
+                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield2(panMain, panel, _row, _column, Armor);
                         Bombs = lab.Bomm2(panMain, panel, _row, _column, Bombs);
@@ -265,7 +266,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys);
+                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
                         Life = lab.Heals2(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -354,7 +355,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys);
+                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
                         Life = lab.Heals2(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                        txttip.Text= lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -448,7 +449,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys);
+                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
