@@ -176,23 +176,24 @@ namespace GameofLifedanielT
                         }
                         lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
-                        Armor = lab.Schield2(panMain, panel, _row, _column, Armor);
-                        Bombs = lab.Bomm2(panMain, panel, _row, _column, Bombs);
+                        Armor = lab.Schield(panMain, panel, _row, _column, Armor);
+                        Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
-                        Keys = lab.Keyss2(panMain, panel, _row, _column, Keys);
+                        Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
+                        sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
 
                         if (Armor==0)
                         {
-                            Life = lab.Poison2(panMain, panel, _row, _column, Life);
+                            Life = lab.Poison(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                         }
                         else if (Armor > 0)
                         {
-                            Armor = lab.PoisonSchie2(panMain, panel, _row, _column, Armor);
+                            Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                       
                         }
                     
@@ -267,11 +268,12 @@ namespace GameofLifedanielT
 
                         }
                         lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
-                        Life = lab.Heals2(panMain, panel, _row, _column, Life, MaxLife);
+                        Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
+                        sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
@@ -356,12 +358,13 @@ namespace GameofLifedanielT
 
                         }
                         lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
-                        Life = lab.Heals2(panMain, panel, _row, _column, Life, MaxLife);
+                        Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                        txttip.Text= lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
+                        sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                       
@@ -455,20 +458,21 @@ namespace GameofLifedanielT
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
-                        Armor = lab.Schield3(panMain, panel, _row, _column, Armor);
-                        Bombs = lab.Bomm3(panMain, panel, _row, _column, Bombs);
-                        Keys = lab.Keyss3(panMain, panel, _row, _column, Keys);
+                        Armor = lab.Schield(panMain, panel, _row, _column, Armor);
+                        sword = lab.Schliefff(panMain, panel, _row, _column, sword);
+                        Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
+                        Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                        
                         if (Armor == 0)
                     {
-                        Life = lab.Poison3(panMain, panel, _row, _column, Life);
+                        Life = lab.Poison(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
 
                         }
                         else if (Armor > 0)
                         {
-                            Armor = lab.PoisonSchie3(panMain, panel, _row, _column, Armor);
+                            Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                         
                     }
                     }
