@@ -196,10 +196,13 @@ namespace GameofLifedanielT
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
+                        txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
+                        txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
+                        picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
                         if (Armor==0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -300,12 +303,15 @@ namespace GameofLifedanielT
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
+                        txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
+                        txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
+                        picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
                         if (Armor == 0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -406,10 +412,13 @@ namespace GameofLifedanielT
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
+                        txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
+                        txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
+                        picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
                         if (Armor == 0)
                         {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -514,11 +523,13 @@ namespace GameofLifedanielT
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
+                        txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
+                        txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
-
+                        picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
                         if (Armor == 0)
                     {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
