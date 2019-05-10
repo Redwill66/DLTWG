@@ -64,7 +64,11 @@ namespace GameofLifedanielT
             Lvl = 1;
             if (Gene == false)
             {
-                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                    Gene = true;
                 Life = 3;
                 Armor = 0;
                 Bombs = 0;
@@ -103,6 +107,10 @@ namespace GameofLifedanielT
             }
             else
             {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
                 Life = 3;
                 Armor = 0;
                 Bombs = 0;
@@ -181,7 +189,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
+                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
@@ -191,11 +199,12 @@ namespace GameofLifedanielT
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
-
+                        Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         if (Armor==0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                          
@@ -204,6 +213,7 @@ namespace GameofLifedanielT
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
 
@@ -285,7 +295,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
+                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -295,12 +305,13 @@ namespace GameofLifedanielT
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
-                      
+                        Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         if (Armor == 0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
 
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                            
@@ -309,6 +320,7 @@ namespace GameofLifedanielT
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                         }
@@ -387,7 +399,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword);
+                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                        txttip.Text= lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -397,12 +409,13 @@ namespace GameofLifedanielT
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
-                      
+                        Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         if (Armor == 0)
                         {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
                           
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
 
@@ -411,6 +424,7 @@ namespace GameofLifedanielT
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
 
@@ -493,7 +507,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword);
+                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword,Lvl);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
@@ -503,18 +517,21 @@ namespace GameofLifedanielT
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
-                       
+                        Gold = lab.Money2(panMain, panel, _row, _column, Gold);
+
                         if (Armor == 0)
                     {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
                           
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                         }
                         else if (Armor > 0)
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
+                            Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
@@ -595,9 +612,13 @@ namespace GameofLifedanielT
             if (Gene == false)
             {
                 Gene = true;
-
-                Life = 3;
-                Armor = 0;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor =1;
+                MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
                 sword = 0;
@@ -632,8 +653,13 @@ namespace GameofLifedanielT
             }
             else
             {
-                Life = 3;
-                Armor = 0;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 1;
+                MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
                 Rowsd = 0;
