@@ -162,6 +162,7 @@ namespace GameofLifedanielT
                     {
                         _row = panel.Location.Y / CellSize; //Position der Zelle in der Y achse
                         _column = panel.Location.X / CellSize;
+                      
                         if (Bombs > 0)
                         {
                             Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
@@ -170,7 +171,13 @@ namespace GameofLifedanielT
                         }
                         if (Keys > 0)
                         {
-                            Keys = lab.BomU(panMain, panel, _row, _column, Keys);
+                            Keys = lab.KeyU(panMain, panel, _row, _column, Keys);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            sword = lab.SworU(panMain, panel, _row, _column, sword);
 
 
                         }
@@ -188,13 +195,18 @@ namespace GameofLifedanielT
                         if (Armor==0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                         
                         }
                         else if (Armor > 0)
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
-                      
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            txtboxLife.Width = (30 * Life);
+                            txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+
                         }
                     
                     }
@@ -263,7 +275,13 @@ namespace GameofLifedanielT
                         }
                         if (Keys > 0)
                         {
-                            Keys = lab.BomU2(panMain, panel, _row, _column, Keys);
+                            Keys = lab.KeyU2(panMain, panel, _row, _column, Keys);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            sword = lab.SworU2(panMain, panel, _row, _column, sword);
 
 
                         }
@@ -281,12 +299,18 @@ namespace GameofLifedanielT
                         if (Armor == 0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
+
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                           
                         }
                         else if (Armor > 0)
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            txtboxLife.Width = (30 * Life);
+                            txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                         }
                     }
                     Rowsd--;
@@ -353,7 +377,13 @@ namespace GameofLifedanielT
                         }
                         if (Keys > 0)
                         {
-                            Keys = lab.BomU3(panMain, panel, _row, _column, Keys);
+                            Keys = lab.KeyU3(panMain, panel, _row, _column, Keys);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            sword = lab.SworU3(panMain, panel, _row, _column, sword);
 
 
                         }
@@ -371,6 +401,8 @@ namespace GameofLifedanielT
                         if (Armor == 0)
                         {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
+                          
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
 
@@ -378,8 +410,11 @@ namespace GameofLifedanielT
                         else if (Armor > 0)
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
-                      
-                    }
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            txtboxLife.Width = (30 * Life);
+                            txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+
+                        }
                     }
                     Columnsd--;
 
@@ -448,7 +483,13 @@ namespace GameofLifedanielT
                         }
                         if (Keys > 0)
                         {
-                            Keys = lab.BomU4(panMain, panel, _row, _column, Keys);
+                            Keys = lab.KeyU4(panMain, panel, _row, _column, Keys);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            sword = lab.SworU4(panMain, panel, _row, _column, sword);
 
 
                         }
@@ -466,15 +507,18 @@ namespace GameofLifedanielT
                         if (Armor == 0)
                     {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
+                          
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
-
                         }
                         else if (Armor > 0)
                         {
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
-                        
-                    }
+                            Life = lab.Dorne(panMain, panel, _row, _column, Life);
+                            txtboxLife.Width = (30 * Life);
+                            txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                        }
                     }
                     Columnsd++;
                     lstinve.Items.Clear();
