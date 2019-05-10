@@ -20,6 +20,8 @@ namespace GameofLifedanielT
         Bitmap Watery = Properties.Resources.Water;
         Bitmap Dornen = Properties.Resources.DornenBush;
         Bitmap Dwalls = Properties.Resources.Dornenwall;
+        Bitmap Fischer = Properties.Resources.Fischer;
+        Bitmap Soldat = Properties.Resources.Soldat;
         public const int size = 8;
 
 
@@ -311,16 +313,19 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Pers && _rows < 16 && _columns < 12)
                 {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
                     // panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.LightGray;
                 }
                 else if (_grid[_columns, _rows, 0] == Pers && _rows == 14 && _columns == 22)
                 {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.SandyBrown;
                 }
 
                 else if (_grid[_columns, _rows, 0] == Pers && _rows >= 16 && _columns >= 12)
                 {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.LightGreen;
                 }
             if (_grid[_columns, _rows, 0] == Swor)
@@ -331,7 +336,8 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Kome)
                 {
-                     panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.LightGreen;
                    // panel.BackColor = Color.LightGray;
                 }
                 if (_grid[_columns, _rows, 0] == Dorn)
@@ -524,8 +530,23 @@ namespace GameofLifedanielT
             }
             if (_grid[_columns, _rows, 0] == Pers)
             {
+                if (lvl == 2 && _columns == 13 && _rows == 21 )
+                {
+                    panel.BackgroundImage = Fischer;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 10 && _rows == 5 || lvl == 2 && _columns == 10 && _rows == 8 || lvl == 2 && _columns == 7 && _rows == 14)
+                   
+                {
+                    panel.BackgroundImage = Soldat;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else
+                {
+                    panel.BackColor = Color.LightGray;
+                }
                 // panel.BackColor = Color.LightGreen;
-                panel.BackColor = Color.LightGray;
+               
             }
           
             if (_grid[_columns, _rows, 0] == Swor && panel.BackColor != Color.Orchid)
@@ -1010,6 +1031,20 @@ namespace GameofLifedanielT
             }
             return Life;
         }
+        public Image Npc(Panel panMain, PictureBox panel, int _row, int _column ,PictureBox npc)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Pers && panel.Image == Secret)
+            {
+                npc.BackgroundImage = panel.BackgroundImage;
+
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] != Pers && panel.Image == Secret)
+         
+            {
+                npc.BackgroundImage = null;
+            }
+            return npc.BackgroundImage;
+        }
         public int Lavama(Panel panMain, PictureBox panel, int _row, int _column, int Life)
         {
             if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Lava && panel.Image == Secret)
@@ -1216,9 +1251,100 @@ namespace GameofLifedanielT
 
 
             }
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Hinw && Level == 2)
+            {
+                if (_row == 34 && _column == 2 && count == 1)
+                {
+                    MessageBox.Show("Erinnerung Dornen Büsche kannst du zwar sehen, bei durchqueren greiffen sie Leben direkt an");
+                    tip = "Erinnerung Dornen Büsche kannst du zwar sehen, bei durchqueren greiffen sie Leben direkt an";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 29 && _column == 14 && count == 1)
+                {
+                    MessageBox.Show("Mit Schleifsteine kannst du deine Waffe genug Schärfen um Pflanzliche Blockaden zu zerstören");
+                    tip = "Mit Schleifsteine kannst du deine Waffe genug Schärfen um Pflanzliche Blockaden zu zerstören";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 31 && _column == 32 && count == 1|| _row == 32 && _column == 32 && count == 1)
+                {
+                    MessageBox.Show("Lava dieses Vulkanes verursacht den Zweifachen schaden am Leben, Also verlierst du 2 Leben pro Feld das du überquerst ");
+                    tip = "Lava dieses Vulkanes verursacht den Zweifachen schaden am Leben, Also verlierst du 2 Leben pro Feld das du überquerst";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 21 && _column == 35 && count == 1 )
+                {
+                    MessageBox.Show("Vetraue nicht darauf das sich ein Weg Lohnt auch wenn es Beute gibt. Suche am besten Alternativen ");
+                    tip = "Vetraue nicht darauf das sich ein Weg Lohnt auch wenn es Beute gibt. Suche am besten Alternativen ";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 23 && _column == 3 && count == 1)
+                {
+                    MessageBox.Show("Erkunden lohnt sich ");
+                    tip = "Erkunden lohnt sich";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+
+
+            }
             return tip;
 
-           // return Key;
+            // return Key;
+        }
+        string Dialog;
+        public string Person(Panel panMain, PictureBox panel, int _row, int _column, int Level)
+        {
+
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Pers && Level == 2)
+            {
+                if (_row == 21 && _column == 13 && count == 1)
+                {
+                    
+                    Dialog = "Was du suchst den Weg zu der Leopold, dann must du den Wald durchqueren und danach einen Weg durch den Vulkan finden.";
+                   
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+
+
+                Kommen = Dialog;
+            }
+            else
+            {
+                 Dialog= Kommen;
+            }
+            return Dialog;
+
+            // return Key;
+        }
+        string Kommen;
+        public string Kommentar(Panel panMain, PictureBox panel, int _row, int _column, int Level, string Dialog)
+        {
+           
+
+               var count = Convert.ToInt32(_grid[_column, _row, 2]);
+
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Kome && Level == 2)
+            {
+                if (_row == 6 && _column == 13 && count == 1|| _row == 7 && _column == 13 && count == 1)
+                {
+                    Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Will ich wirklich wieder in diese Richtung gehen";
+                   
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+
+
+
+                Dialog = Kommen;
+            }
+            else
+            {
+                Kommen = Dialog;
+            }
+            return Kommen;
+
+            // return Key;
         }
         bool ende;
         public bool Endes(Panel panMain, PictureBox panel, int _row, int _column)
