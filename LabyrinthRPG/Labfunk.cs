@@ -22,6 +22,10 @@ namespace GameofLifedanielT
         Bitmap Dwalls = Properties.Resources.Dornenwall;
         Bitmap Fischer = Properties.Resources.Fischer;
         Bitmap Soldat = Properties.Resources.Soldat;
+        Bitmap Schmied = Properties.Resources.Schmied;
+        Bitmap Holzer = Properties.Resources.Holzer;
+        Bitmap Farmer = Properties.Resources.Farmer;
+        Bitmap Priester = Properties.Resources.Priester;
         public const int size = 8;
 
 
@@ -539,6 +543,30 @@ namespace GameofLifedanielT
                    
                 {
                     panel.BackgroundImage = Soldat;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 3 && _rows == 10)
+
+                {
+                    panel.BackgroundImage = Schmied;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 6 && _rows == 7)
+
+                {
+                    panel.BackgroundImage = Priester;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 5 && _rows == 4)
+
+                {
+                    panel.BackgroundImage = Holzer;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 8 && _rows == 8)
+
+                {
+                    panel.BackgroundImage = Farmer;
                     panel.BackColor = Color.DarkGray;
                 }
                 else
@@ -1300,9 +1328,56 @@ namespace GameofLifedanielT
             {
                 if (_row == 21 && _column == 13 && count == 1)
                 {
-                    
-                    Dialog = "Was du suchst den Weg zu der Leopold, dann must du den Wald durchqueren und danach einen Weg durch den Vulkan finden.";
-                   
+
+                    Dialog = "Was!? Du suchst den Weg zur Leopold, dann musst du den Wald durchqueren und danach einen Weg durch den Vulkan finden.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 14 && _column == 7 && count == 1 || _row == 8 && _column == 10 && count == 1 || _row == 5 && _column == 10 && count == 1)
+                {
+                    Dialog = "Mache bloss keine Probleme, Verstanden!!";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 8 && _column == 8 && count == 1)
+                {
+
+                    Dialog = "Nein wir haben keinen öffentlichen Hafen, der einzige Weg für dich, von hier weg zu kommen ist mit dem Schmugglerschiff, die Leopold.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 7 && _column == 6 && count == 1)
+                {
+
+                    Dialog = "Gepriesen sei die Heilige Castrosa";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 10 && _column == 3 && count == 1)
+                {
+
+                    Dialog = "Hey!!! Ich schenk dir einer von meinen Schleifsteine für auf den Weg. Er sollte irgendwo in der Umgebung sein.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 4 && _column == 5 && count == 1)
+                {
+
+                    Dialog = "Nicht jeder kommt aus dem Nordwald wieder heraus, es gibt sehr viele giftige Sumpfgewässer die man kaum sieht.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 20 && _column == 27 && count == 1)
+                {
+
+                    Dialog = "Wow!! Nicht jeder kommt durch denn Vulkan, weiss du was ich bin heute Grosszügig, deine überfahrt kostet heute nichts.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 14 && _column == 22 && count == 1)
+                {
+
+                    Dialog = "Der Chef spediert dir also die Reise? Dass heisst aber noch lang nicht das zu faulenzen kannst, du hilft bei der Fahrt bis zu deinem Ziel";
+
                     _grid[_column, _row, 2] = empty.ToString();
                 }
 
