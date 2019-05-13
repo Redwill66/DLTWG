@@ -1403,9 +1403,51 @@ namespace GameofLifedanielT
             {
                 if (_row == 6 && _column == 13 && count == 1|| _row == 7 && _column == 13 && count == 1)
                 {
-                    Dialog = "Will ich wirklich wieder in diese Richtung gehen";
-                    Kommen = "Will ich wirklich wieder in diese Richtung gehen";
+                 //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                   Kommen = "Will ich wirklich wieder in diese Richtung gehen";
                    
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 1 && _column == 37 && count == 1 || _row == 2 && _column == 37 && count == 1)
+                {
+                 //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Was will ich hier, Baden gehn??";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if ( _row == 26 && _column == 21 && count == 1 || _row == 29 && _column == 21 && count == 1)
+                {
+                    //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Wow!! Hier ist es aber Dunkel";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 22 && count == 1 )
+                {
+                    //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Mal schauen ob sich dieser Weg lohnt?";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 17 && _column == 22 && count == 1)
+                {
+                    //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Verdammt ich seh das Schiff, wieso muss es Haie geben";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 33 && count == 1)
+                {
+                    //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Diese Tür sieht alt aus es muss irgend wo einen Schlüssel geben.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 35 && count == 1)
+                {
+                    //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "................. Holy.... Jackpot!!!!";
+
                     _grid[_column, _row, 2] = empty.ToString();
                 }
 
