@@ -19,7 +19,7 @@ namespace GameofLifedanielT
         private int _column;
        
        
-        private const int CellSize = 25;
+        private const int CellSize = 23;
         private const int MaxRows = 40;
         private const int MaxColumns = 40;
 
@@ -242,7 +242,7 @@ namespace GameofLifedanielT
                         {
                             _row = panel.Location.Y / CellSize;
                             _column = panel.Location.X / CellSize;
-                            lab.CreateWorld(panel, _row, _column, Lvl);
+                          
                             if (Lvl == 2&&leverover == false && _row == 6 && _column == 8)
                             {
                                 _row = 6;
@@ -252,6 +252,16 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
+                            lab.CreateWorld(panel, _row, _column, Lvl);
                         }
                        
                    
@@ -350,7 +360,7 @@ namespace GameofLifedanielT
                         {
                             _row = panel.Location.Y / CellSize;
                             _column = panel.Location.X / CellSize;
-                            lab.CreateWorld(panel, _row, _column, Lvl);
+                          
                             if (Lvl == 2&& leverover == false && _row == 6 && _column == 8)
                             {
                                 _row = 6;
@@ -360,6 +370,16 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
+                            lab.CreateWorld(panel, _row, _column, Lvl);
                         }
                        
                      
@@ -470,6 +490,15 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
                    
@@ -574,7 +603,16 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
-                              
+
+                            }
+                            else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
                             }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
@@ -691,6 +729,73 @@ namespace GameofLifedanielT
 
         }
 
-       
+        private void btnlvl3_Click(object sender, EventArgs e)
+        {
+            Lvl = 3;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 1;
+                MaxLife = 4;
+                Bombs = 0;
+                Keys = 0;
+                sword = 0;
+                Gold = 0;
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 1;
+                MaxLife = 4;
+                Bombs = 0;
+                Keys = 0;
+                Rowsd = 0;
+                Columnsd = 0;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+        }
     }
 }

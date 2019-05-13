@@ -11,7 +11,7 @@ namespace GameofLifedanielT
     class Labfunk
     {
        
-        private const int CellSize = 25;
+        private const int CellSize = 23;
         private const int MaxRows = 40;
         private const int MaxColumns = 40;
         Bitmap Secret = Properties.Resources.PlayerFig;
@@ -26,6 +26,8 @@ namespace GameofLifedanielT
         Bitmap Holzer = Properties.Resources.Holzer;
         Bitmap Farmer = Properties.Resources.Farmer;
         Bitmap Priester = Properties.Resources.Priester;
+        Bitmap Captain = Properties.Resources.Captain;
+        Bitmap Zpirat = Properties.Resources.Zollpirat;
         public const int size = 8;
 
 
@@ -64,6 +66,34 @@ namespace GameofLifedanielT
         private const string Bode = "Bode";
         private const string Lava = "Lava";
         private const string Steg = "Steg";
+        private const string Bush = "Bush";
+        private const string Stra = "Stra";
+        private const string Stha = "Stha";
+        private const string Tgat = "Tgat";
+        private const string Guar = "Guar";
+        private const string Ofen = "Ofen";
+        private const string Gass = "Gass";
+        private const string ITur = "ITur";
+        private const string TrAK = "TrAK";
+        private const string TrSK = "TrSK";
+        private const string TrKK = "TrKK";
+        private const string TrSS = "TrSS";
+        private const string TrSA = "TrSA";
+        private const string TrSB = "TrSB";
+        private const string Coin = "Coin";
+        private const string Cwal = "Cwal";
+        private const string Bto1 = "Bto1";
+        private const string Vill = "Vill";
+        private const string Bto2 = "Bto2";
+        private const string Bank = "Bank";
+        private const string Plas = "Plas";
+        private const string Blck = "Blck";
+        private const string Alta = "Alta";
+        private const string PHea = "PHea";
+        private const string Chea = "Chea";
+        private const string GuaK = "GuaK";
+        private const string Dach = "Dach";
+        private const string Stmk = "Stmk";
         public PictureBox GenerateGrid(int _row, int _column)
         {
             Panel panMain = new Panel();
@@ -393,6 +423,296 @@ namespace GameofLifedanielT
                 p = 0;
                 c = 0;
             }
+            if (Level == 3)
+            {
+                Lvlfunk map = new Lvlfunk();
+                string[,] Mapone = map.Maps3();
+                _grid[_columns, _rows, 0] = Mapone[_rows, _columns];
+                _grid[_columns, _rows, 1] = null;
+              /*  if (_rows == 16 && _columns == 30 || _rows == 27 && _columns == 27 || _rows == 37 && _columns == 15 || _rows == 28 && _columns == 4 || _rows == 14 && _columns == 8 || _rows == 1 && _columns == 13)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 3] = Money;
+                }
+                if (_rows == 37 && _columns == 38 || _rows == 36 && _columns == 38)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 3] = BigMoney;
+                }*/
+                panel.BackgroundImage = null;
+                panel.Image = null;
+                if (_grid[_columns, _rows, 0] == Wall)
+                {
+                    panel.BackColor = Color.Brown;
+                }
+                if (_grid[_columns, _rows, 0] == Heal && _rows == 29 && _columns == 5)
+                {
+                    panel.BackColor = Color.SandyBrown;
+                    // panel.BackColor = Color.LightGreen;
+                    //  panel.BackColor = Color.Red;
+                }
+             
+                if (_grid[_columns, _rows, 0] == Keys)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                //    panel.BackColor = Color.LightGreen;
+                    //   panel.BackColor = Color.DarkGoldenrod;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+                if (_grid[_columns, _rows, 0] == Schi )
+                {
+                  //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.SaddleBrown;
+                    //   panel.BackColor = Color.Orange;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+              
+
+                if (_grid[_columns, _rows, 0] == Bush )
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkGreen;
+                }
+               
+                if (_grid[_columns, _rows, 0] == Wass)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Turquoise;
+                }
+               
+                if (_grid[_columns, _rows, 0] == Hinw && _rows == 31&& _columns==4)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.SandyBrown;
+                    //   panel.BackColor = Color.LightGray;
+                }
+                else if (_grid[_columns, _rows, 0] == Hinw)
+                {
+                    panel.BackColor = Color.LightGray;
+                }
+              
+                if (_grid[_columns, _rows, 0] == Star)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Yellow;
+                }
+                if (_grid[_columns, _rows, 0] == Ende)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DeepPink;
+                }
+       
+         
+                if (_grid[_columns, _rows, 0] == Haus )
+                {
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.SaddleBrown;
+                }
+               
+                if (_grid[_columns, _rows, 0] == Bomb)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                 //   panel.BackColor = Color.LightGreen;
+                    //    panel.BackColor = Color.OrangeRed;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+                if (_grid[_columns, _rows, 0] == OTur)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.LightSkyBlue;
+                }
+                if (_grid[_columns, _rows, 0] == VTur)
+                {
+                    panel.BackColor = Color.DarkBlue;
+                    //   panel.BackColor = Color.DarkBlue;
+                }
+                if (_grid[_columns, _rows, 0] == Pers  && _rows == 6 && _columns == 24)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                     panel.BackColor = Color.SaddleBrown;
+                  
+                    //  panel.BackColor = Color.LightGray;
+                }
+                if (_grid[_columns, _rows, 0] == Pers && _rows == 29 && _columns == 2 )
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+              
+                    panel.BackColor = Color.SandyBrown;
+                    //  panel.BackColor = Color.LightGray;
+                }
+                else if (_grid[_columns, _rows, 0] == Pers && _rows == 2 && _columns == 33)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.DarkRed;
+                    //  panel.BackColor = Color.LightGray;
+                }
+                else if (_grid[_columns, _rows, 0] == Pers && _rows == 21 && _columns == 26)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.FloralWhite;
+                    //  panel.BackColor = Color.LightGray;
+                }
+                else if (_grid[_columns, _rows, 0] == Pers && _rows != 29 && _columns != 3 && _rows != 2 && _columns != 33)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.LightGray;
+                }
+                
+
+
+                if (_grid[_columns, _rows, 0] == Swor)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    //panel.BackColor = Color.Orchid;
+                }
+                        
+                if (_grid[_columns, _rows, 0] == Ship)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Brown;
+                }              
+                if (_grid[_columns, _rows, 0] == Lmax)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    //  panel.BackColor = Color.PaleVioletRed;
+                }
+                if (_grid[_columns, _rows, 0] == Bode)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                    //panel.BackColor = Color.DarkGray;
+                }
+                if (_grid[_columns, _rows, 0] == Gras)
+                {
+                    panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Steg)
+                {
+                    panel.BackColor = Color.SandyBrown;
+
+                }
+                if (_grid[_columns, _rows, 0] == Stra)
+                {
+                    panel.BackColor = Color.LightGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Gass)
+                {
+                    panel.BackColor = Color.DimGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Stha)
+                {
+                    panel.BackColor = Color.SlateGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Tgat)
+                {
+                    panel.BackColor = Color.DarkSlateBlue;
+
+                }
+                if (_grid[_columns, _rows, 0] == Guar)
+                {
+                    panel.BackColor = Color.LightGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Ofen)
+                {
+                    panel.BackColor = Color.SlateGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == ITur)
+                {
+                    panel.BackColor = Color.CadetBlue;
+
+                }
+                if (_grid[_columns, _rows, 0] == TrAK ||_grid[_columns, _rows, 0] == TrSK|| _grid[_columns, _rows, 0] == TrSB||_grid[_columns, _rows, 0] == TrSS||_grid[_columns, _rows, 0] == TrSA)
+                {
+                    panel.BackColor = Color.LightGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == TrKK)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                  
+                   // panel.BackColor = Color.LightGray;
+                }
+                if (_grid[_columns, _rows, 0] == Coin)
+                {
+                    panel.BackColor = Color.SaddleBrown;
+                  //  panel.BackColor = Color.Gold;
+
+                }
+                if (_grid[_columns, _rows, 0] == Cwal)
+                {
+                    panel.BackColor = Color.DarkSlateGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Vill)
+                {
+                    panel.BackColor = Color.DarkRed;
+
+                }
+                if (_grid[_columns, _rows, 0] == Bto1|| _grid[_columns, _rows, 0] == Bto2)
+                {
+                    panel.BackColor = Color.DarkBlue;
+
+                }
+                if (_grid[_columns, _rows, 0] == Bank)
+                {
+                    panel.BackColor = Color.DarkRed;
+                   // panel.BackColor = Color.SaddleBrown;
+
+                }
+                if (_grid[_columns, _rows, 0] == Stmk)
+                {
+                    panel.BackColor = Color.SlateGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Alta)
+                {
+                    panel.BackColor = Color.DarkRed;
+                   // panel.BackColor = Color.Silver;
+
+                }
+                if (_grid[_columns, _rows, 0] == PHea)
+                {
+                    panel.BackColor = Color.DarkRed;
+                   // panel.BackColor = Color.Red;
+
+                }
+                if (_grid[_columns, _rows, 0] == Plas)
+                {
+                    panel.BackColor = Color.FloralWhite;
+
+                }
+                if (_grid[_columns, _rows, 0] == Chea)
+                {
+                    panel.BackColor = Color.LightGray;
+                    //panel.BackColor = Color.OliveDrab;
+
+                }
+                if (_grid[_columns, _rows, 0] == GuaK)
+                {
+                    panel.BackColor = Color.LightGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Dach)
+                {
+                    panel.BackColor = Color.DarkRed;
+
+                }
+                if (_grid[_columns, _rows, 0] == Blck)
+                {
+                    panel.BackColor = Color.LightGray;
+
+                }
+
+                p = 0;
+                c = 0;
+            }
 
 
 
@@ -567,6 +887,18 @@ namespace GameofLifedanielT
 
                 {
                     panel.BackgroundImage = Farmer;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 22 && _rows == 14)
+
+                {
+                    panel.BackgroundImage = Captain;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 27 && _rows == 20)
+
+                {
+                    panel.BackgroundImage = Zpirat;
                     panel.BackColor = Color.DarkGray;
                 }
                 else
