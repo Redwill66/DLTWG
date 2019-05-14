@@ -32,6 +32,15 @@ namespace GameofLifedanielT
         Bitmap Giftig = Properties.Resources.Poison;
         Bitmap Boden = Properties.Resources.Cavebode;
         Bitmap Cavewall = Properties.Resources.Cave;
+        Bitmap Stegs = Properties.Resources.Step;
+        Bitmap Schiffs = Properties.Resources.Schiff;
+        Bitmap Dachs = Properties.Resources.Dach;
+        Bitmap Street = Properties.Resources.Strasse;
+        Bitmap Port = Properties.Resources.Hafen;
+        Bitmap Gasses = Properties.Resources.Gasse;
+        Bitmap Burg = Properties.Resources.Burgmauer;
+        Bitmap Krich = Properties.Resources.Kirchenmauer;
+        Bitmap Oven = Properties.Resources.Oven;
         public const int size = 8;
 
 
@@ -134,6 +143,8 @@ namespace GameofLifedanielT
                 string[,] Mapone = map.Maps();
                    _grid[_columns, _rows, 0] = Mapone[_rows, _columns];
                 _grid[_columns, _rows, 1] = null;
+                _grid[_columns, _rows, 2] = null;
+                _grid[_columns, _rows, 3] = null;
                 if (_rows == 9 && _columns == 31 || _rows == 12 && _columns == 29 || _rows == 24 && _columns == 21 || _rows == 16 && _columns == 20 || _rows == 28 && _columns == 12 || _rows == 35 && _columns == 5 || _rows ==14 && _columns == 7 )
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
@@ -234,6 +245,8 @@ namespace GameofLifedanielT
                 string[,] Mapone = map.Maps2();
                 _grid[_columns, _rows, 0] = Mapone[_rows, _columns];
                 _grid[_columns, _rows, 1] = null;
+                _grid[_columns, _rows, 2] = null;
+                _grid[_columns, _rows, 3] = null;
                 if (_rows == 16 && _columns == 30 || _rows == 27 && _columns == 27 || _rows == 37 && _columns == 15 || _rows == 28 && _columns == 4 || _rows == 14 && _columns == 8 || _rows == 1 && _columns == 13)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
@@ -434,16 +447,18 @@ namespace GameofLifedanielT
                 string[,] Mapone = map.Maps3();
                 _grid[_columns, _rows, 0] = Mapone[_rows, _columns];
                 _grid[_columns, _rows, 1] = null;
-              /*  if (_rows == 16 && _columns == 30 || _rows == 27 && _columns == 27 || _rows == 37 && _columns == 15 || _rows == 28 && _columns == 4 || _rows == 14 && _columns == 8 || _rows == 1 && _columns == 13)
-                {
-                    _grid[_columns, _rows, 2] = Loot.ToString();
-                    _grid[_columns, _rows, 3] = Money;
-                }
-                if (_rows == 37 && _columns == 38 || _rows == 36 && _columns == 38)
-                {
-                    _grid[_columns, _rows, 2] = Loot.ToString();
-                    _grid[_columns, _rows, 3] = BigMoney;
-                }*/
+                _grid[_columns, _rows, 2] = null;
+                _grid[_columns, _rows, 3] = null;
+                /*  if (_rows == 16 && _columns == 30 || _rows == 27 && _columns == 27 || _rows == 37 && _columns == 15 || _rows == 28 && _columns == 4 || _rows == 14 && _columns == 8 || _rows == 1 && _columns == 13)
+                  {
+                      _grid[_columns, _rows, 2] = Loot.ToString();
+                      _grid[_columns, _rows, 3] = Money;
+                  }
+                  if (_rows == 37 && _columns == 38 || _rows == 36 && _columns == 38)
+                  {
+                      _grid[_columns, _rows, 2] = Loot.ToString();
+                      _grid[_columns, _rows, 3] = BigMoney;
+                  }*/
                 panel.BackgroundImage = null;
                 panel.Image = null;
                 if (_grid[_columns, _rows, 0] == Wall)
@@ -538,7 +553,7 @@ namespace GameofLifedanielT
                   
                     //  panel.BackColor = Color.LightGray;
                 }
-                if (_grid[_columns, _rows, 0] == Pers && _rows == 29 && _columns == 2 )
+               else if (_grid[_columns, _rows, 0] == Pers && _rows == 29 && _columns == 2 )
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
               
@@ -549,12 +564,19 @@ namespace GameofLifedanielT
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.DarkRed;
+                    panel.BackgroundImage = Dachs;
                     //  panel.BackColor = Color.LightGray;
                 }
                 else if (_grid[_columns, _rows, 0] == Pers && _rows == 21 && _columns == 26)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.FloralWhite;
+                    //  panel.BackColor = Color.LightGray;
+                }
+                else if (_grid[_columns, _rows, 0] == Pers && _rows == 33 && _columns == 4)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.SlateGray;
                     //  panel.BackColor = Color.LightGray;
                 }
                 else if (_grid[_columns, _rows, 0] == Pers && _rows != 29 && _columns != 3 && _rows != 2 && _columns != 33)
@@ -574,6 +596,7 @@ namespace GameofLifedanielT
                         
                 if (_grid[_columns, _rows, 0] == Ship)
                 {
+                   // panel.BackgroundImage = Schiffs;
                     // panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.Brown;
                 }              
@@ -595,21 +618,25 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Steg)
                 {
+                   // panel.BackgroundImage = Stegs;
                     panel.BackColor = Color.SandyBrown;
 
                 }
                 if (_grid[_columns, _rows, 0] == Stra)
                 {
+                 //   panel.BackgroundImage = Street;
                     panel.BackColor = Color.LightGray;
 
                 }
                 if (_grid[_columns, _rows, 0] == Gass)
                 {
+                    //panel.BackgroundImage = Gasses;
                     panel.BackColor = Color.DimGray;
 
                 }
                 if (_grid[_columns, _rows, 0] == Stha)
                 {
+                  //  panel.BackgroundImage = Port;
                     panel.BackColor = Color.SlateGray;
 
                 }
@@ -657,6 +684,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Cwal)
                 {
+                    //panel.BackgroundImage = Burg;
                     panel.BackColor = Color.DarkSlateGray;
 
                 }
@@ -672,23 +700,27 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Bank)
                 {
+                    panel.BackgroundImage = Dachs;
                     panel.BackColor = Color.DarkRed;
                    // panel.BackColor = Color.SaddleBrown;
 
                 }
                 if (_grid[_columns, _rows, 0] == Stmk)
                 {
+                    panel.BackgroundImage = Krich;
                     panel.BackColor = Color.SlateGray;
 
                 }
                 if (_grid[_columns, _rows, 0] == Alta)
                 {
+                    panel.BackgroundImage = Dachs;
                     panel.BackColor = Color.DarkRed;
                    // panel.BackColor = Color.Silver;
 
                 }
                 if (_grid[_columns, _rows, 0] == PHea)
                 {
+                    panel.BackgroundImage = Dachs;
                     panel.BackColor = Color.DarkRed;
                    // panel.BackColor = Color.Red;
 
@@ -711,6 +743,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Dach)
                 {
+                    panel.BackgroundImage = Dachs;
                     panel.BackColor = Color.DarkRed;
 
                 }
@@ -752,6 +785,7 @@ namespace GameofLifedanielT
                 }
                 else if (lvl == 2 && _columns == 25 && _rows == 14)
                 {
+                    panel.BackgroundImage = Stegs;
                     panel.BackColor = Color.SandyBrown;
                 }
                 else
@@ -768,10 +802,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 2 && _columns == 25 && _rows == 13)
-                {
-                    panel.BackColor = Color.SandyBrown;
-                }
+               
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -786,6 +817,11 @@ namespace GameofLifedanielT
                 {
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 2 && _columns == 25 && _rows == 13)
+                {
+                    panel.BackgroundImage = Stegs;
+                    panel.BackColor = Color.SandyBrown;
                 }
                 else
                 {
@@ -958,7 +994,7 @@ namespace GameofLifedanielT
             }
             if (_grid[_columns, _rows, 0] == Ship)
             {
-               
+                panel.BackgroundImage = Schiffs;
                 panel.BackColor = Color.Brown;
             }
             if (_grid[_columns, _rows, 0] == Cave)
@@ -997,6 +1033,7 @@ namespace GameofLifedanielT
         
             if (_grid[_columns, _rows, 0] == Steg)
             {
+                panel.BackgroundImage = Stegs;
                 panel.BackColor = Color.SandyBrown;
 
             }
@@ -1005,8 +1042,35 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.LightGreen;
                 panel.BackgroundImage = grassy;
             }
+            if (_grid[_columns, _rows, 0] == Stra)
+            {
+                panel.BackColor = Color.LightGray;
+                panel.BackgroundImage = Street;
+            }
+            if (_grid[_columns, _rows, 0] == Stha)
+            {
+                panel.BackColor = Color.SlateGray;
+                panel.BackgroundImage = Port;
+            }
+            if (_grid[_columns, _rows, 0] == Gass)
+            {
+                panel.BackColor = Color.DimGray;
+                panel.BackgroundImage = Gasses;
+            }
+            if (_grid[_columns, _rows, 0] == Cwal)
+            {
+                panel.BackgroundImage = Burg;
+                panel.BackColor = Color.DarkSlateGray;
 
-          
+            }
+            if (_grid[_columns, _rows, 0] == Ofen)
+            {
+                panel.BackgroundImage = Oven;
+                panel.BackColor = Color.DarkSlateGray;
+
+            }
+
+
 
 
 
@@ -1026,9 +1090,9 @@ namespace GameofLifedanielT
         }
       
         int empty = 0;
-        public PictureBox Down(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss,int schleif,int lvl,int gold)
+        public PictureBox Down(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss,int schleif,int lvl,int gold,int Tokens)
         {
-           if (_grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == VTur && Keysss == 0 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Haus || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Rock && Bombs == 0 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Wall || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Wass || _grid[_column, _row , 1] == Player && _grid[_column, _row+1, 0] == Wald)
+           if ( _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == VTur && Keysss == 0 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Haus || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Rock && Bombs == 0 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Wall || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Wass || _grid[_column, _row , 1] == Player && _grid[_column, _row+1, 0] == Wald)
              {
                 if (_grid[_column, _row+1, 0] == VTur)
                 {
@@ -1048,12 +1112,25 @@ namespace GameofLifedanielT
                 }
                 p++;
             }
-            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Tga2 && gold < 2000 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Tga1 && gold < 100)
+            else if ( _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Alta || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Stmk || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Blck || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Bank || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Bto2 && Tokens < 5 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Bto1 && Tokens < 2 ||_grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Bush || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Vill || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Cwal || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == ITur || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Tga2 && gold < 2000 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Tga1 && gold < 100)
             {
                 if (_grid[_column, _row + 1, 0] == Tga2|| _grid[_column, _row + 1, 0] == Tga1)
                 {
                     MessageBox.Show("Du hast nicht genug Geld um Tribut zu zahlen");
                 }
+                if (_grid[_column, _row + 1, 0] == Bto1 )
+                {
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                }
+                if (_grid[_column, _row + 1, 0] == Bto2)
+                {
+                    MessageBox.Show("Ha du denkst du kannst es mit uns aufnehmen kom wieder mit 5 unserer Zeichen");
+                }
+                if (_grid[_column, _row + 1, 0] == Blck)
+                {
+                    MessageBox.Show("Hier geht es nicht weiter");
+                }
+               
                 p++;
             }
             if (_row > 0 && _column > 0&& _row < 39 && _column < 39)
@@ -1100,17 +1177,20 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
-                else if (_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100 || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null )
+                //Chapter 3 part 1
+                else if (_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == TrSB && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == TrSA && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == TrSS && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == TrKK && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == TrSK && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == TrAK && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Gass && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100 || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null )
                 {
                     _grid[_column, _row - 1, 1] = null;
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
-                //  if (ers == true && _grid[_column, _row + 1, 0] == Gras)
-                //  {
-                //    p++;
-                //  ers = false;
-                // }
+                //Chapter 3 part 2
+                else if (_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Dach && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == GuaK && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Chea && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == PHea && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Plas && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && Tokens >= 5 || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && Tokens >= 2||_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Coin && panel.Image == null)   {
+                    _grid[_column, _row - 1, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
+              
 
 
 
@@ -1124,8 +1204,11 @@ namespace GameofLifedanielT
             {
                 panel.Image = null;
             }
-            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Guar || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Tga2 || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Tga1 || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Stha || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Stra)
+            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrSB || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrSA || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrSS || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrKK || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrSK || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrAK || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Gass || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Guar || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Tga2 || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Tga1 || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Stha || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Stra)
             {
+                panel.Image = null;
+            }
+            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Dach || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == GuaK || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Chea || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == PHea || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Plas || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Bto2||_row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Bto1 || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Coin)  {
                 panel.Image = null;
             }
             //if (_grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] != Wald)
@@ -1142,7 +1225,7 @@ namespace GameofLifedanielT
 
             return panel;
         }
-        public PictureBox Up(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold)
+        public PictureBox Up(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens)
         {
            
             if (_row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == VTur && Keysss == 0 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Rock && Bombs == 0 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Wall || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Haus || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Wass || _row < 39 && _grid[_column, _row+1, 1] == Player && _grid[_column, _row , 0] == Wald)
@@ -1165,11 +1248,23 @@ namespace GameofLifedanielT
                 }
                 p--;
             }
-            else if (_row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && gold < 2000 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && gold < 100)
+            else if (_row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Alta || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Stmk || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Blck || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Bank || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Bto2 && Tokens < 5 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Bto1 && Tokens < 2 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Bush || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Vill || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Cwal || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == ITur || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && gold < 2000 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && gold < 100)
             {
                 if (_grid[_column, _row, 0] == Tga1|| _grid[_column, _row, 0] == Tga2)
                 {
                     MessageBox.Show("Du hast nicht genug Geld um Tribut zu zahlen");
+                }
+                if (_grid[_column, _row , 0] == Bto1)
+                {
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                }
+                if (_grid[_column, _row, 0] == Bto2)
+                {
+                    MessageBox.Show("Ha du denkst du kannst es mit uns aufnehmen kom wieder mit 5 unserer Zeichen");
+                }
+                if (_grid[_column, _row, 0] == Blck)
+                {
+                    MessageBox.Show("Hier geht es nicht weiter");
                 }
                 p--;
             }
@@ -1215,8 +1310,13 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
-                else if    (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100 || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null)
+                else if    (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == TrSB && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == TrSA && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == TrSS && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == TrKK && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == TrSK && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == TrAK && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Gass && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100 || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null)
                 {
+                    _grid[_column, _row + 1, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
+                else if (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Dach && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == GuaK && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Chea && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == PHea && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Plas && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Bto2 && panel.Image == null && Tokens >= 5 || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Bto1 && panel.Image == null && Tokens >= 2 ||_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Coin && panel.Image == null)  {
                     _grid[_column, _row + 1, 1] = null;
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
@@ -1233,8 +1333,11 @@ namespace GameofLifedanielT
             {
                 panel.Image = null;
             }
-            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Guar || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Tga2 || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Tga1 || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Stha || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Stra)
+            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrSB || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrSA || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrSS || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrKK || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrSK || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrAK || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Gass || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Guar || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Tga2 || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Tga1 || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Stha || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Stra)
             {
+                panel.Image = null;
+            }
+            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Dach || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == GuaK || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Chea || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == PHea || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Plas || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Bto2||_row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Bto1 || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Coin)   {
                 panel.Image = null;
             }
 
@@ -1245,7 +1348,7 @@ namespace GameofLifedanielT
 
             return panel;
         }
-        public PictureBox Left(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold)
+        public PictureBox Left(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens)
         {
             if (_column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == VTur && Keysss == 0 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Rock && Bombs == 0 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Haus || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Wall || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Wass || _column < 39&& _grid[_column+1, _row, 1] == Player && _grid[_column, _row, 0] == Wald)
             {
@@ -1267,11 +1370,23 @@ namespace GameofLifedanielT
                 }
                 c--;
             }
-            else if (_column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && gold > 2000 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && gold > 100)
+            else if (_column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Alta || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Stmk || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Blck || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Bank || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Bto2 && Tokens < 5 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Bto1 && Tokens < 2 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Bush || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Vill || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Cwal || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == ITur ||_column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga2 && gold < 2000 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && gold < 100)
             {
                 if (_grid[_column, _row, 0] == Tga2 || _grid[_column, _row, 0] == Tga1)
                 {
                     MessageBox.Show("Du hast nicht genug Geld um Tribut zu zahlen");
+                }
+                if (_grid[_column, _row, 0] == Bto1)
+                {
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                }
+                if (_grid[_column, _row, 0] == Bto2)
+                {
+                    MessageBox.Show("Ha du denkst du kannst es mit uns aufnehmen kom wieder mit 5 unserer Zeichen");
+                }
+                if (_grid[_column, _row, 0] == Blck)
+                {
+                    MessageBox.Show("Hier geht es nicht weiter");
                 }
                 c--;
             }
@@ -1317,7 +1432,13 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
-                else if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100||_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null)
+                else if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSB && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSA && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSS && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == TrKK && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSK && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == TrAK && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Gass && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100||_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null)
+                {
+                    _grid[_column + 1, _row, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
+                else if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Dach && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == GuaK && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Chea && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == PHea && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Plas && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Bto2 && panel.Image == null && Tokens >= 5||_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Bto1 && panel.Image == null && Tokens >= 2 || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Coin && panel.Image == null)
                 {
                     _grid[_column + 1, _row, 1] = null;
                     _grid[_column, _row, 1] = Player;
@@ -1335,7 +1456,11 @@ namespace GameofLifedanielT
             {
                 panel.Image = null;
             }
-            else if (_column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Guar || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Tga2 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Tga1 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Stha || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Stra)
+            else if (_column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrSB || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrSA || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrSS || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrKK || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrSK || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrAK || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Gass || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Guar || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Tga2 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Tga1 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Stha || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Stra)
+            {
+                panel.Image = null;
+            }
+            else if (_column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Dach || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == GuaK || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Chea || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == PHea || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Plas || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Bto2 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Bto1 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Coin)
             {
                 panel.Image = null;
             }
@@ -1348,7 +1473,7 @@ namespace GameofLifedanielT
 
             return panel;
         }
-        public PictureBox Right(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold)
+        public PictureBox Right(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens)
         {
         
             if (_grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == VTur && Keysss == 0 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Rock && Bombs == 0 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Haus || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Wall || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Wass||_grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Wald)
@@ -1371,10 +1496,23 @@ namespace GameofLifedanielT
                 }
                 c++;
             }
-            else if (_grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Tga2 && gold > 2000 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Tga1 && gold > 100)  {
+            else if (_grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Alta || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Stmk || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Blck || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Bank || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Bto2 && Tokens < 5 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Bto1 && Tokens < 2 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Bush || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Vill || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Cwal || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == ITur || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Tga2 && gold < 2000 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Tga1 && gold < 100)  {
+
                 if (_grid[_column + 1, _row, 0] == Tga2 || _grid[_column + 1, _row, 0] == Tga1)
                 {
                     MessageBox.Show("Du hast nicht genug Geld um Tribut zu zahlen");
+                }
+                if (_grid[_column + 1, _row, 0] == Bto1)
+                {
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                }
+                if (_grid[_column + 1, _row, 0] == Bto2)
+                {
+                    MessageBox.Show("Ha du denkst du kannst es mit uns aufnehmen kom wieder mit 5 unserer Zeichen");
+                }
+                if (_grid[_column + 1, _row, 0] == Blck)
+                {
+                    MessageBox.Show("Hier geht es nicht weiter");
                 }
                 c++;
             }
@@ -1421,7 +1559,13 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
-                else if (_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100||_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null)
+                else if (_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSB && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSA && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSS && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == TrKK && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == TrSK && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == TrAK && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Gass && panel.Image == null ||_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Guar && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga2 && panel.Image == null && gold > 2000 || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Tga1 && panel.Image == null && gold > 100||_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Stha && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Stra && panel.Image == null)
+                {
+                    _grid[_column - 1, _row, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
+                else if (_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Dach && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == GuaK && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Chea && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == PHea && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Plas && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Bto2 && panel.Image == null && Tokens >= 5 || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Bto1 && panel.Image == null && Tokens >= 2 || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Coin && panel.Image == null)
                 {
                     _grid[_column - 1, _row, 1] = null;
                     _grid[_column, _row, 1] = Player;
@@ -1439,7 +1583,11 @@ namespace GameofLifedanielT
             {
                 panel.Image = null;
             }
-            else if (_column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Guar || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Tga2 || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Tga1 || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Stha || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Stra)
+            else if (_column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrSB || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrSA || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrSS || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrKK || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrSK || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrAK || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Gass || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Guar || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Tga2 || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Tga1 || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Stha || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Stra)
+            {
+                panel.Image = null;
+            }
+            else if (_column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Dach || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == GuaK || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Chea || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == PHea || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Plas || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Bto2||_column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Bto1 || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Coin)
             {
                 panel.Image = null;
             }

@@ -57,6 +57,7 @@ namespace GameofLifedanielT
         int sword = 0;
         int Keys = 0;
         int Gold = 0;
+        int Tokens = 0;
         bool Gene = false;
         int Lvl = 1;
         private void btnlvlone_Click(object sender, EventArgs e)
@@ -73,14 +74,18 @@ namespace GameofLifedanielT
                 Armor = 0;
                 Bombs = 0;
                 Keys = 0;
+                Tokens = 0;
+                MaxLife = 3;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString()+" / "+MaxLife.ToString();
                 sword = 0;
                 Gold = 0;
+                lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke "+ Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                 lbllifeCount.Text = Life.ToString();
                 lblArmorCount.Text = Armor.ToString();
                 lblBombCount.Text = Bombs.ToString();
@@ -115,12 +120,20 @@ namespace GameofLifedanielT
                 Armor = 0;
                 Bombs = 0;
                 Keys = 0;
+                Tokens = 0;
+                MaxLife = 3;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 sword = 0;
                 Gold = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                 foreach (PictureBox panel in panMain.Controls)
                 {
                     _row = panel.Location.Y / CellSize;
@@ -189,7 +202,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl,Gold);
+                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl,Gold,Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
@@ -229,6 +242,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Bomben " + Bombs.ToString());
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                    lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -308,7 +322,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold);
+                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -347,6 +361,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Bomben " + Bombs.ToString());
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                    lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -425,7 +440,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold);
+                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                        txttip.Text= lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -468,6 +483,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Bomben " + Bombs.ToString());
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                    lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -545,7 +561,7 @@ namespace GameofLifedanielT
 
 
                         }
-                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword,Lvl, Gold);
+                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword,Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
@@ -583,6 +599,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Bomben " + Bombs.ToString());
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                    lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lblArmorCount.Text = Armor.ToString();
                     lblBombCount.Text = Bombs.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -672,16 +689,21 @@ namespace GameofLifedanielT
                 Keys = 0;
                 sword = 0;
                 Gold = 0;
+                Tokens = 0;
+                lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                 lbllifeCount.Text = Life.ToString();
                 lblArmorCount.Text = Armor.ToString();
                 lblBombCount.Text = Bombs.ToString();
                 lblkeycount.Text = Keys.ToString();
                 lblMenge.Text = Gold.ToString();
                 lblsword.Text = sword.ToString();
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 panMain.Size = new Size(CellSize * 40, CellSize * 40);
                 for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
                 {
@@ -709,10 +731,21 @@ namespace GameofLifedanielT
                 Life = 4;
                 Armor = 1;
                 MaxLife = 4;
+                Tokens = 0;
                 Bombs = 0;
+                sword = 0;
+                Gold = 0;
                 Keys = 0;
                 Rowsd = 0;
                 Columnsd = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                 foreach (PictureBox panel in panMain.Controls)
                 {
                     _row = panel.Location.Y / CellSize;
@@ -745,11 +778,15 @@ namespace GameofLifedanielT
                 Bombs = 0;
                 Keys = 0;
                 sword = 0;
-                Gold = 0;
+                Gold = 500;
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                 lbllifeCount.Text = Life.ToString();
                 lblArmorCount.Text = Armor.ToString();
                 lblBombCount.Text = Bombs.ToString();
@@ -784,9 +821,20 @@ namespace GameofLifedanielT
                 Armor = 1;
                 MaxLife = 4;
                 Bombs = 0;
+                Gold = 500;
+                sword = 0;
                 Keys = 0;
                 Rowsd = 0;
                 Columnsd = 0;
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 foreach (PictureBox panel in panMain.Controls)
                 {
                     _row = panel.Location.Y / CellSize;
