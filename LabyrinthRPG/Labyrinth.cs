@@ -169,9 +169,13 @@ namespace GameofLifedanielT
             }
         }
         bool leverover = true;
-       
+        bool trade = false;
+        int item = 0;
+        int Bitem = 0;
+        bool Btrade = true;
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
         {
+            Btrade = true;
             if (Alive== true)
             {
 
@@ -186,6 +190,14 @@ namespace GameofLifedanielT
                       
                         if (Bombs > 0)
                         {
+                            item = 3;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
                             Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
 
 
@@ -198,10 +210,19 @@ namespace GameofLifedanielT
                         }
                         if (sword > 0)
                         {
+                            item = 2;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
                             sword = lab.SworU(panMain, panel, _row, _column, sword);
 
 
                         }
+                      
                         lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl,Gold,Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
@@ -216,6 +237,59 @@ namespace GameofLifedanielT
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (Gold >= 100&& Btrade == true)
+                        {
+
+                            Bitem = lab.Buying(panMain, panel, _row, _column, trade);
+                            if (Bitem ==1)
+                            {
+                                sword++;
+                                Gold = Gold - 200;
+                                Btrade = false;
+                                Bitem = 0;
+                            }
+                            else if (Bitem == 2)
+                            {
+                                Armor++;
+                                Gold = Gold - 250;
+
+                                Btrade = false;
+                                Bitem = 0;
+                            }
+                            
+
+                            Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            item = 2;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
+                          //  sword = lab.SworU(panMain, panel, _row, _column, sword);
+
+
+                        }
+                        if (Bombs > 0)
+                        {
+                            item = 3;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
+                          //  Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
+
+
+                        }
                         if (Armor==0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -227,6 +301,14 @@ namespace GameofLifedanielT
                         }
                         else if (Armor > 0)
                         {
+                            item = 1;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Armor--;
+                                Gold = Gold + 150;
+                                trade = false;
+                            } 
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
@@ -306,6 +388,14 @@ namespace GameofLifedanielT
                         _column = panel.Location.X / CellSize;
                         if (Bombs > 0)
                         {
+                            item = 3;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
                             Bombs = lab.BomU2(panMain, panel, _row, _column, Bombs);
 
 
@@ -318,10 +408,19 @@ namespace GameofLifedanielT
                         }
                         if (sword > 0)
                         {
+                            item = 2;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
                             sword = lab.SworU2(panMain, panel, _row, _column, sword);
 
 
                         }
+                       
                         lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
@@ -336,6 +435,55 @@ namespace GameofLifedanielT
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (Gold >= 100 && Btrade == true)
+                        {
+                            Bitem = lab.Buying(panMain, panel, _row, _column, trade);
+                            if (Bitem == 1)
+                            {
+                                sword++;
+                                Gold = Gold - 200;
+                                 Btrade = false;
+                                Bitem = 0;
+                            }
+                            else if (Bitem == 2)
+                            {
+                                Armor++;
+                                Gold = Gold - 250;
+                                 Btrade = false;
+                                Bitem = 0;
+                            }
+                            Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            item = 2;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
+                            //sword = lab.SworU2(panMain, panel, _row, _column, sword);
+
+
+                        }
+                        if (Bombs > 0)
+                        {
+                            item = 3;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
+                          //  Bombs = lab.BomU2(panMain, panel, _row, _column, Bombs);
+
+
+                        }
                         if (Armor == 0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -348,6 +496,14 @@ namespace GameofLifedanielT
                         }
                         else if (Armor > 0)
                         {
+                            item = 1;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            if (trade == true)
+                            {
+                                Armor--;
+                                Gold = Gold + 150;
+                                trade = false;
+                            }
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
@@ -424,6 +580,14 @@ namespace GameofLifedanielT
                         _column = panel.Location.X / CellSize;
                         if (Bombs > 0)
                         {
+                            item = 3;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
                             Bombs = lab.BomU3(panMain, panel, _row, _column, Bombs);
 
 
@@ -436,10 +600,19 @@ namespace GameofLifedanielT
                         }
                         if (sword > 0)
                         {
+                            item = 2;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
                             sword = lab.SworU3(panMain, panel, _row, _column, sword);
 
 
                         }
+                       
                         lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
@@ -454,6 +627,55 @@ namespace GameofLifedanielT
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (Gold >= 100 && Btrade == true)
+                        {
+                            Bitem = lab.Buying(panMain, panel, _row, _column, trade);
+                            if (Bitem == 1)
+                            {
+                                sword++;
+                                Gold = Gold - 200;
+                                 Btrade = false;
+                                Bitem = 0;
+                            }
+                            else if (Bitem == 2)
+                            {
+                                Armor++;
+                                Gold = Gold - 250;
+                                Btrade = false;
+                                Bitem = 0;
+                            }
+                            Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            item = 2;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
+                            // sword = lab.SworU3(panMain, panel, _row, _column, sword);
+
+
+                        }
+                        if (Bombs > 0)
+                        {
+                            item = 3;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
+                          //  Bombs = lab.BomU3(panMain, panel, _row, _column, Bombs);
+
+
+                        }
                         if (Armor == 0)
                         {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -466,6 +688,14 @@ namespace GameofLifedanielT
                         }
                         else if (Armor > 0)
                         {
+                            item = 1;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            if (trade == true)
+                            {
+                                Armor--;
+                                Gold = Gold + 150;
+                                trade = false;
+                            }
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
@@ -545,6 +775,14 @@ namespace GameofLifedanielT
                         _column = panel.Location.X / CellSize;
                         if (Bombs > 0)
                         {
+                            item = 3;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
                             Bombs = lab.BomU4(panMain, panel, _row, _column, Bombs);
 
 
@@ -557,10 +795,19 @@ namespace GameofLifedanielT
                         }
                         if (sword > 0)
                         {
+                            item = 2;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
                             sword = lab.SworU4(panMain, panel, _row, _column, sword);
-
+                           
 
                         }
+                      
                         lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword,Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -575,6 +822,56 @@ namespace GameofLifedanielT
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (Gold >= 100 && Btrade == true)
+                        {
+                            Bitem = lab.Buying(panMain, panel, _row, _column, trade);
+                            if (Bitem == 1)
+                            {
+                                sword++;
+                                Gold = Gold - 200;
+                                Btrade = false;
+                                Bitem = 0;
+                            }
+                            else if (Bitem == 2)
+                            {
+                                Armor++;
+                                Gold = Gold - 250;
+                                Btrade = false;
+                                Bitem = 0;
+                            }
+
+                            Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
+
+
+                        }
+                        if (sword > 0)
+                        {
+                            item = 2;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                sword--;
+                                Gold = Gold + 100;
+                                trade = false;
+                            }
+                           // sword = lab.SworU4(panMain, panel, _row, _column, sword);
+
+
+                        }
+                        if (Bombs > 0)
+                        {
+                            item = 3;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Bombs--;
+                                Gold = Gold + 200;
+                                trade = false;
+                            }
+                          //  Bombs = lab.BomU4(panMain, panel, _row, _column, Bombs);
+
+
+                        }
                         if (Armor == 0)
                     {
                         Life = lab.Poison(panMain, panel, _row, _column, Life);
@@ -586,6 +883,14 @@ namespace GameofLifedanielT
                         }
                         else if (Armor > 0)
                         {
+                            item = 1;
+                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            if (trade == true)
+                            {
+                                Armor--;
+                                Gold = Gold + 150;
+                                trade = false;
+                            }
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
@@ -775,10 +1080,10 @@ namespace GameofLifedanielT
                 Life = 4;
                 Armor = 1;
                 MaxLife = 4;
-                Bombs = 0;
+                Bombs = 1;
                 Keys = 0;
-                sword = 0;
-                Gold = 500;
+                sword = 1;
+                Gold = 3000;
                 Tokens = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
