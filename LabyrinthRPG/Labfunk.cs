@@ -56,6 +56,8 @@ namespace GameofLifedanielT
         Bitmap Hmoney = Properties.Resources.Handelmoney;
         Bitmap BanCa = Properties.Resources.BanditChef;
         Bitmap DiebH = Properties.Resources.Diebheandler;
+        Bitmap Mann = Properties.Resources.Buerger;
+        Bitmap Frau = Properties.Resources.Buegerin;
         public const int size = 8;
 
 
@@ -988,7 +990,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Fischer;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 3 && _columns == 28 && _rows == 36 || lvl == 3 && _columns == 26 && _rows == 36 || lvl == 3 && _columns == 14 && _rows == 24 || lvl == 3 && _columns == 14 && _rows == 21 || lvl == 3 && _columns == 34 && _rows == 19 || lvl == 3 && _columns == 32 && _rows == 19 || lvl == 3 && _columns == 17 && _rows == 5 || lvl == 3 && _columns == 17 && _rows == 3 || lvl == 3 && _columns == 11 && _rows == 5 || lvl == 3 && _columns == 11 && _rows == 3 || lvl == 2 && _columns == 10 && _rows == 5 || lvl == 2 && _columns == 10 && _rows == 8 || lvl == 2 && _columns == 7 && _rows == 14)
+                else if (lvl == 3 && _columns == 28 && _rows == 36 || lvl == 3 && _columns == 26 && _rows == 36 || lvl == 3 && _columns == 14 && _rows == 24 || lvl == 3 && _columns == 14 && _rows == 22 || lvl == 3 && _columns == 34 && _rows == 19 || lvl == 3 && _columns == 32 && _rows == 19 || lvl == 3 && _columns == 17 && _rows == 5 || lvl == 3 && _columns == 17 && _rows == 3 || lvl == 3 && _columns == 11 && _rows == 5 || lvl == 3 && _columns == 11 && _rows == 3 || lvl == 2 && _columns == 10 && _rows == 5 || lvl == 2 && _columns == 10 && _rows == 8 || lvl == 2 && _columns == 7 && _rows == 14)
                    
                 {
                     panel.BackgroundImage = Soldat;
@@ -1006,7 +1008,19 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Schmied2;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 3 && _columns == 24 && _rows == 6)
+                else if (lvl == 3 && _columns == 28 && _rows == 4 || lvl == 3 && _columns == 21 && _rows == 9 || lvl == 3 && _columns == 36 && _rows == 16 || lvl == 3 && _columns == 28 && _rows == 11)
+
+                {
+                    panel.BackgroundImage = Mann;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 3 && _columns == 26 && _rows == 21 || lvl == 3 && _columns == 36 && _rows == 17)
+
+                {
+                    panel.BackgroundImage = Frau;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 3 && _columns == 24 && _rows == 6||lvl == 3 && _columns == 16 && _rows == 24)
 
                 {
                     panel.BackgroundImage = DiebH;
@@ -1027,7 +1041,7 @@ namespace GameofLifedanielT
                     
                   
                 }
-                else if (lvl == 2 && _columns == 5 && _rows == 4)
+                else if (lvl == 2 && _columns == 5 && _rows == 4 || lvl == 3 && _columns == 30 && _rows == 16)
 
                 {
                     panel.BackgroundImage = Holzer;
@@ -1051,7 +1065,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Bomka;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 2 && _columns == 8 && _rows == 8)
+                else if (lvl == 2 && _columns == 8 && _rows == 8|| lvl == 3 && _columns == 27 && _rows == 27)
 
                 {
                     panel.BackgroundImage = Farmer;
@@ -1347,7 +1361,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_column, _row + 1, 0] == Bto1 )
                 {
-                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn, wir haben für dich ein einmaliges Angebot");
                 }
                 if (_grid[_column, _row + 1, 0] == Bto2)
                 {
@@ -1487,7 +1501,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_column, _row , 0] == Bto1)
                 {
-                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn, wir haben für dich ein einmaliges Angebot");
                 }
                 if (_grid[_column, _row, 0] == Bto2)
                 {
@@ -1613,7 +1627,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_column, _row, 0] == Bto1)
                 {
-                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn, wir haben für dich ein einmaliges Angebot");
                 }
                 if (_grid[_column, _row, 0] == Bto2)
                 {
@@ -1745,7 +1759,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_column + 1, _row, 0] == Bto1)
                 {
-                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn");
+                    MessageBox.Show("Wir lassen dich durch wenn du Blutzahns Männer verprügelst, bring mindestens 2 Zeichen von Blutzahn, wir haben für dich ein einmaliges Angebot");
                 }
                 if (_grid[_column + 1, _row, 0] == Bto2)
                 {
@@ -2218,6 +2232,41 @@ namespace GameofLifedanielT
 
 
             }
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Hinw && Level == 3)
+            {
+                if (_row == 31 && _column == 4 && count == 1)
+                {
+                    MessageBox.Show("Willkomen in der Stadt, einzige gefahr sind Banditen, die Wehrt man mit einen Schleifstein und Rüstungsdicke ab, dafür gibts Gold und Banditen Abzeichen");
+                    tip = "Willkomen in der Stadt, einzige gefahr sind Banditen, die Wehrt man mit einen Schleifstein und Rüstungsdicke ab,dafür gibts Gold und Banditen Abzeichen";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 23 && _column == 14 && count == 1)
+                {
+                    MessageBox.Show("Das Stadttor verlangt beim durchgehen jedes mal 100 Gold als Tribut");
+                    tip = "Das Stadttor verlangt beim durchgehen jedes mal 100 Gold als Tribut";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 4 && _column == 17 && count == 1 )
+                {
+                    MessageBox.Show("Dieses Tor verlangt einen Tribut von 2000 Gold, du kannst falls du das Level mit 2100 Gold betritts es in prinzip überspringen, ich empfehle es nicht. Geh erst durch Wenn du absolut bereit bist");
+                    tip = "Dieses Tor verlangt einen Tribut von 2000 Gold, du kannst falls du das Level mit 2100 Gold betritts es in prinzip überspringen, ich empfehle es nicht. Geh erst durch Wenn du absolut bereit bist";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 21 && _column == 35 && count == 1)
+                {
+                    MessageBox.Show("Hoffentlich bist du bereit, es gibt keine Händler für ne Weile");
+                    tip = "Hoffentlich bist du bereit, es gibt keine Händler für ne Weile ";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                if (_row == 5 && _column == 38 && count == 1||_row == 5 && _column == 38 && count == 1)
+                {
+                    MessageBox.Show("Du verlierst sehr viel wenn du hier weiter gehst ");
+                    tip = "Du verlierst sehr viel wenn du hier weiter gehst";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+
+
+            }
             return tip;
 
             // return Key;
@@ -2281,6 +2330,185 @@ namespace GameofLifedanielT
                 {
 
                     Dialog = "Der Chef spediert dir also die Reise? Dass heisst aber noch lang nicht das zu faulenzen kannst, du hilft bei der Fahrt bis zu deinem Ziel";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+
+
+                Kommen = Dialog;
+            }
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Pers && Level == 3)
+            {
+                if (_row == 29 && _column == 2 && count == 1)
+                {
+
+                    Dialog = "So da währen wir, Longcester, viel glück auf deine Weitere Reise";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 33 && _column == 3 && count == 1)
+                {
+                    Dialog = "Hey du da!! Ja du. Ich hab nen Auftrag bekommen dir zu Melden das der Baron dich sehen will.";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 30 && _column == 11 && count == 1)
+                {
+
+                    Dialog = "Man bin ich erschöft, die Ladung die wir mit dem Letzten Handelsschiff bekommen haben war Riesig.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 2 && _column == 33 && count == 1)
+                {
+
+                    Dialog = "Gepriesen sei die Heilige Castrosa";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 14 && _column == 9 && count == 1)
+                {
+
+                    Dialog = "ugh wasss mach iccch hiic... hier. Hic Ich war doch gerade noch in der Bar hic....zzzzzzzzzzzz";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 18 && _column == 12 && count == 1)
+                {
+
+                    Dialog = "Dass isch doch d Leopold, wart maul is ds ni es Schmuggelschiff. Weiss was eigntlich is mir egal";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 24 && _column == 16 && count == 1)
+                {
+
+                    Dialog = "Hey du da!! Ich kenn deine Sorte, wenn du keinen ärger sucht dann geh nicht in die Gassen, aber du wirst mich wahrscheinlich ignorieren oder?";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 24 && _column == 14 && count == 1 || _row == 22 && _column == 14 && count == 1)
+                {
+
+                    Dialog = "Willkomen in Longchester, Eintritt beträgt 100 Gold Stücke.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 20 && _column == 18 && count == 1)
+                {
+
+                    Dialog = "Willkomen. Willkomen intressiert an Material um deine Rüstung zu verstärken, nur 250 Gold per Stück";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 20 && _column == 24 && count == 1)
+                {
+
+                    Dialog = "Ist dein Waffe Stumpf, dann Kauf dir bei Scharpstone Industries für nur 200 Gold per Stück, Schleifsteine";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 17 && count == 1)
+                {
+
+                    Dialog = "Brauchst du Gold, trägst du zuviel Material für deine Rüstung herum dann komm zu mir ich Kauf dir sie ab für 150 per Stück";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 20 && count == 1)
+                {
+
+                    Dialog = "Wer braucht schon Schleifsteine, die Antwort überrascht euch wahrscheinlich, ich brauche sie!!! Ich kaufe sie euch ab für 100 Gold per Stück";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 23 && count == 1)
+                {
+
+                    Dialog = "Hast du Angst Bomben zu transportiern, dann gib sie mir, Minen brauchen sie, Ich geb sie ihnen!! Euch gebe ich 200 Gold per Bombe";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 28 && count == 1 || _row == 36 && _column == 26 && count == 1)
+                {
+
+                    Dialog = "Tut uns leid, die Zugbrück in die Unterstadt ist Beschädigt, komm Später wieder";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 27 && _column == 27 && count == 1)
+                {
+
+                    Dialog = "Herrjemine wie soll ich denn nach Hause kommen, wenn die Brücke beschädigt ist.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 21 && _column == 26 && count == 1)
+                {
+
+                    Dialog = "Hmm ich sollt woll langsam nach Hause gehen, es wird langsam Spät.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 9 && _column == 21 && count == 1)
+                {
+
+                    Dialog = "Hey wo ist mein Geld Beutel, dass kann nicht sein ich hab 1400 Gold verloren. Mein ganzes Vermögen!!  :(";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 11 && _column == 28 && count == 1)
+                {
+
+                    Dialog = "Jemand sollte endlich mal die Blutzahn Banditen aus der Oberstadt vertreiben, wieso erlauben die Wachen, dass die hier herum wüten";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 4 && _column == 28 && count == 1)
+                {
+
+                    Dialog = "Jeder weiss wo die Blutzahn Banditen leben. Weshalb wird nichts gemacht?";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 7 && _column == 24 && count == 1)
+                {
+
+                    Dialog = "Ah da bist du ja, hör zu ich habe einen Schlüssel für das Lagerhaus im Hafen, ich gib ihn dir wenn du 1000Gold gibts.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 19 && _column == 34 && count == 1 || _row == 19 && _column == 32 && count == 1)
+                {
+
+                    Dialog = "Stell bloss keinen Ärger an auf dem Heiligen Boden von Castrosa";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 16 && _column == 30 && count == 1)
+                {
+
+                    Dialog = "Oh heilige Castrosa, vergib mir für all die Bäume die ich gefällt habe.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 17 && _column == 36 && count == 1 || _row == 16 && _column == 36 && count == 1)
+                {
+
+                    Dialog = "Es ist so ein schöner Abend nicht wahr Schatz";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 3 && _column == 17 && count == 1 || _row == 5 && _column == 17 && count == 1)
+                {
+
+                    Dialog = "Stell bloss keinen Ärger an!! Verstanden!!";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 3 && _column == 11 && count == 1 || _row == 5 && _column == 11 && count == 1)
+                {
+
+                    Dialog = "Sie werden erwartet, treten sie ein.";
 
                     _grid[_column, _row, 2] = empty.ToString();
                 }
@@ -2927,10 +3155,22 @@ namespace GameofLifedanielT
 
                     encount = 1;
 
-             //   _grid[_column, _row, 2] = empty.ToString();
+                //   _grid[_column, _row, 2] = empty.ToString();
 
 
 
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BanC && panel.Image == Secret && count == 1)
+            {
+               
+
+
+                    encount = 2;
+
+                  
+
+
+                
             }
                       
             else
@@ -2942,7 +3182,7 @@ namespace GameofLifedanielT
             return encount;
         }
         
-        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif,int encoun)
+        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif,int encoun, int Bombe)
         {
 
             var count = Convert.ToInt32(_grid[_column, _row, 2]);
@@ -2981,8 +3221,43 @@ namespace GameofLifedanielT
 
 
                 }
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BanC && panel.Image == Secret && count == 1 && encoun == 2)
+            {
+                DialogResult dialogResult = MessageBox.Show("BanditChef Angriff willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (Armor >= 1 && Schleif >= 2||Bombe>= 1)
+                    {
+                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-1 zu Schleifstein und -1 zu Armor oder falls du ne Bombe hattest dann nur Bombe-1))");
+                        fight = true;
 
-           
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Du hast gewonnen, aber bist Schwer Verletzt(-3 zu Leben))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+
+
+
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("du erleidest auf der Flucht  Schwere Wunden(-3 zu Leben))");
+                    fight = false;
+                }
+
+
+            }
+
+
 
 
             return fight;

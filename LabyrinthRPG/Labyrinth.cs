@@ -15,6 +15,7 @@ namespace GameofLifedanielT
     {
         Bitmap Secret = Properties.Resources.Secret;
         Bitmap Bandit = Properties.Resources.Dieb;
+        Bitmap BanditC = Properties.Resources.BanditChef;
         private int _row;
         private int _column;
        
@@ -273,7 +274,7 @@ namespace GameofLifedanielT
                             if (encounte==1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column,Fight, sword, Armor,encounte);
+                                Fight = lab.Fight(panMain, panel, _row, _column,Fight, sword, Armor,encounte,Bombs);
                                 if (Fight == true)
                                 {
                                     if (sword>0 &&Armor>0)
@@ -299,6 +300,46 @@ namespace GameofLifedanielT
                                 else
                                 {
                                     Life--;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 2)
+                            {
+                                picnpc.BackgroundImage = BanditC;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs>1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 2000;
+                                        Tokens= Tokens+2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (sword > 1 && Armor > 0)
+                                    {
+                                        sword= sword-2;
+                                        Armor--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
                                     encounte = 0;
                                 }
                             }
@@ -547,7 +588,7 @@ namespace GameofLifedanielT
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight,sword,Armor, encounte);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight,sword,Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -573,6 +614,46 @@ namespace GameofLifedanielT
                                 else
                                 {
                                     Life--;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 2)
+                            {
+                                picnpc.BackgroundImage = BanditC;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (sword > 1 && Armor > 0)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
                                     encounte = 0;
                                 }
                             }
@@ -817,7 +898,7 @@ namespace GameofLifedanielT
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -843,6 +924,46 @@ namespace GameofLifedanielT
                                 else
                                 {
                                     Life--;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 2)
+                            {
+                                picnpc.BackgroundImage = BanditC;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (sword > 1 && Armor > 0)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
                                     encounte = 0;
                                 }
                             }
@@ -1091,7 +1212,7 @@ namespace GameofLifedanielT
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -1117,6 +1238,46 @@ namespace GameofLifedanielT
                                 else
                                 {
                                     Life--;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 2)
+                            {
+                                picnpc.BackgroundImage = BanditC;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (sword > 1 && Armor > 0)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 2000;
+                                        Tokens = Tokens + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
                                     encounte = 0;
                                 }
                             }
