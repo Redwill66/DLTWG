@@ -53,14 +53,17 @@ namespace GameofLifedanielT
         Bitmap ArmKa = Properties.Resources.Armorkaeufer;
         Bitmap Bomka = Properties.Resources.Bombenkaeufer;
         Bitmap Guardk = Properties.Resources.Guard_Captain;
+        Bitmap Hmoney = Properties.Resources.Handelmoney;
+        Bitmap BanCa = Properties.Resources.BanditChef;
         public const int size = 8;
 
 
         //   private const int CellSize = 10;
-        private static int depth = 4;
+        private static int depth = 5;
         // public static List<Figure> Figures = new List<Figure>();
 
         private readonly string[,,] _grid = new string[MaxColumns, MaxRows, depth];
+        // Grid 0
         private const string Gras = "Gras";
         private const string Wald = "Wald";
         private const string Wall = "Wand";
@@ -76,10 +79,7 @@ namespace GameofLifedanielT
         private const string Rock = "Rock";
         private const string Hinw = "Hinw";
         private const string Star = "Star";
-        private const string Ende = "Ende";
-        private const string Player = "Player";
-        private const string Money = "Money";
-        private const string BigMoney = "BigMoney";
+        private const string Ende = "Ende";    
         private const string Pers = "Pers";
         private const string Swor = "Swor";
         private const string Kome = "Kome";
@@ -120,6 +120,16 @@ namespace GameofLifedanielT
         private const string GuaK = "GuaK";
         private const string Dach = "Dach";
         private const string Stmk = "Stmk";
+
+        // Grid 1
+        private const string Player = "Player";
+        // Grid 2 = Loot
+        // Grid 3
+        private const string Money = "Money";
+        private const string BigMoney = "BigMoney";
+        // Grid 4
+        private const string Band = "Band";
+        private const string BanC = "BanC";// in 0 und Vier
         public PictureBox GenerateGrid(int _row, int _column)
         {
             Panel panMain = new Panel();
@@ -466,6 +476,10 @@ namespace GameofLifedanielT
                   {
                       _grid[_columns, _rows, 2] = Loot.ToString();
                       _grid[_columns, _rows, 3] = Money;
+                }
+                if (_rows == 2 && _columns == 21 || _rows == 29 && _columns == 34 || _rows == 15 && _columns == 20 || _rows == 32 && _columns == 16 || _rows == 11 && _columns == 16 || _rows == 37 && _columns == 8 || _rows == 21 && _columns == 3)  {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Band;
                 }                /*  
                   if (_rows == 37 && _columns == 38 || _rows == 36 && _columns == 38)
                   {
@@ -793,6 +807,11 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == TrAK)
                 {
                     panel.BackColor = Color.LightGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == BanC)
+                {
+                    panel.BackColor = Color.SaddleBrown;
 
                 }
 
@@ -1191,30 +1210,41 @@ namespace GameofLifedanielT
             }
             if (_grid[_columns, _rows, 0] == TrSA)
             {
-                //panel.BackgroundImage = Guardk;
+                panel.BackgroundImage = Hmoney;
                 panel.BackColor = Color.DarkGray;
 
             }
             if (_grid[_columns, _rows, 0] == TrSB)
             {
+                panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
             if (_grid[_columns, _rows, 0] == TrSS)
             {
+                panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
             if (_grid[_columns, _rows, 0] == TrAK)
             {
+                panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
             if (_grid[_columns, _rows, 0] == TrSK)
             {
+                panel.BackgroundImage = Hmoney;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.DarkGray;
+
+            }
+            if (_grid[_columns, _rows, 0] == BanC)
+            {
+                panel.BackgroundImage = BanCa;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
@@ -2722,6 +2752,77 @@ namespace GameofLifedanielT
           
 
             return buyin;
+        }
+        int encount=0;
+        public int Encounter(Panel panMain, PictureBox panel, int _row, int _column)
+        {
+
+           var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Band && panel.Image == Secret && count == 1)
+            {
+               
+
+                    encount = 1;
+
+             //   _grid[_column, _row, 2] = empty.ToString();
+
+
+
+            }
+                      
+            else
+            {
+                encount = 0;
+            }
+
+
+            return encount;
+        }
+        
+        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif)
+        {
+
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Band && panel.Image == Secret&& count==1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Bandit Angriff willst du dich verteidigen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (Armor>=1 && Schleif>=1)
+                    {
+                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-1 zu Schleifstein und -1 zu Armor))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Du hast gewonnen, aber bist Verletzt(-2 zu Leben))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                  
+
+
+
+                  
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("du erleidest auf der Flucht eine kleine Wunde(-1 zu Leben))");
+                    fight = false;
+                }
+
+
+                }
+
+           
+
+
+            return fight;
         }
 
 

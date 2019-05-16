@@ -14,7 +14,7 @@ namespace GameofLifedanielT
     public partial class Labyrinth : Form
     {
         Bitmap Secret = Properties.Resources.Secret;
-      
+        Bitmap Bandit = Properties.Resources.Dieb;
         private int _row;
         private int _column;
        
@@ -173,6 +173,8 @@ namespace GameofLifedanielT
         int item = 0;
         int Bitem = 0;
         bool Btrade = true;
+        int encounte = 0;
+        bool Fight = false;
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
         {
             Btrade = true;
@@ -229,6 +231,7 @@ namespace GameofLifedanielT
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
+                        encounte = lab.Encounter(panMain, panel, _row, _column);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
@@ -237,6 +240,42 @@ namespace GameofLifedanielT
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (encounte>0)
+                        {
+                            if (encounte==1)
+                            {
+                                picnpc.BackgroundImage = Bandit;
+                                Fight = lab.Fight(panMain, panel, _row, _column,Fight, sword, Armor);
+                                if (Fight == true)
+                                {
+                                    if (sword>0 &&Armor>0)
+                                    {
+                                        sword--;
+                                        Armor--;
+                                        Gold = Gold + 200;
+                                        Tokens++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 200;
+                                        Tokens++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life--;
+                                    encounte = 0;
+                                }
+                            }
+
+                        }
                         if (Gold >= 100&& Btrade == true)
                         {
 
@@ -430,11 +469,46 @@ namespace GameofLifedanielT
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
+                        encounte = lab.Encounter(panMain, panel, _row, _column);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (encounte > 0)
+                        {
+                            if (encounte == 1)
+                            {
+                                picnpc.BackgroundImage = Bandit;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight,sword,Armor);
+                                if (Fight == true)
+                                {
+                                    if (sword > 0 && Armor > 0)
+                                    {
+                                        sword--;
+                                        Armor--;
+                                        Gold = Gold + 200;
+                                        Tokens++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life--;
+                                    encounte = 0;
+                                }
+                            }
+
+                        }
                         if (Gold >= 100 && Btrade == true)
                         {
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
@@ -623,10 +697,45 @@ namespace GameofLifedanielT
                         txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
+                        encounte = lab.Encounter(panMain, panel, _row, _column);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (encounte > 0)
+                        {
+                            if (encounte == 1)
+                            {
+                                picnpc.BackgroundImage = Bandit;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor);
+                                if (Fight == true)
+                                {
+                                    if (sword > 0 && Armor > 0)
+                                    {
+                                        sword--;
+                                        Armor--;
+                                        Gold = Gold + 200;
+                                        Tokens++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life--;
+                                    encounte = 0;
+                                }
+                            }
+
+                        }
                         if (Gold >= 100 && Btrade == true)
                         {
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
@@ -816,12 +925,47 @@ namespace GameofLifedanielT
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         txtdialog.Text = lab.Person(panMain, panel, _row, _column, Lvl);
+                        encounte = lab.Encounter(panMain, panel, _row, _column);
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
+                        if (encounte > 0)
+                        {
+                            if (encounte == 1)
+                            {
+                                picnpc.BackgroundImage = Bandit;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor);
+                                if (Fight == true)
+                                {
+                                    if (sword > 0 && Armor > 0)
+                                    {
+                                        sword--;
+                                        Armor--;
+                                        Gold = Gold + 200;
+                                        Tokens++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life--;
+                                    encounte = 0;
+                                }
+                            }
+
+                        }
                         if (Gold >= 100 && Btrade == true)
                         {
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
