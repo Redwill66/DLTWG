@@ -55,6 +55,7 @@ namespace GameofLifedanielT
         Bitmap Guardk = Properties.Resources.Guard_Captain;
         Bitmap Hmoney = Properties.Resources.Handelmoney;
         Bitmap BanCa = Properties.Resources.BanditChef;
+        Bitmap DiebH = Properties.Resources.Diebheandler;
         public const int size = 8;
 
 
@@ -700,11 +701,12 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == TrKK)
                 {
                     panel.BackColor = Color.SaddleBrown;
-                  
-                   // panel.BackColor = Color.LightGray;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    // panel.BackColor = Color.LightGray;
                 }
                 if (_grid[_columns, _rows, 0] == Coin)
                 {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.SaddleBrown;
                   //  panel.BackColor = Color.Gold;
 
@@ -747,6 +749,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == PHea)
                 {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackgroundImage = Dachs;
                     panel.BackColor = Color.DarkRed;
                    // panel.BackColor = Color.Red;
@@ -759,6 +762,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Chea)
                 {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.LightGray;
                     //panel.BackColor = Color.OliveDrab;
 
@@ -885,7 +889,12 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Stegs;
                     panel.BackColor = Color.SandyBrown;
                 }
-               
+                else if (lvl == 3 && _columns == 10 && _rows == 33|| lvl == 3 && _columns == 10 && _rows == 34)
+                {
+                    panel.BackgroundImage = Boden;
+                    panel.BackColor = Color.DarkGray;
+                }
+
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -950,6 +959,11 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
                 }
+                else if (lvl == 3 && _columns == 14 && _rows == 33 || lvl == 3 && _columns == 14 && _rows == 34)
+                {
+                    panel.BackgroundImage = Boden;
+                    panel.BackColor = Color.DarkGray;
+                }
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -990,6 +1004,12 @@ namespace GameofLifedanielT
 
                 {
                     panel.BackgroundImage = Schmied2;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 3 && _columns == 24 && _rows == 6)
+
+                {
+                    panel.BackgroundImage = DiebH;
                     panel.BackColor = Color.DarkGray;
                 }
                 else if (lvl == 3 && _columns == 12 && _rows == 18||lvl == 3 && _columns == 11 && _rows == 30||lvl == 3 && _columns == 9 && _rows == 14 || lvl == 3 && _columns == 4 && _rows == 33 )
@@ -1064,6 +1084,11 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
                 }
+                else if (lvl == 3 && _columns == 10 && _rows == 36 || lvl == 3 && _columns == 10 && _rows == 37)
+                {
+                    panel.BackgroundImage = Boden;
+                    panel.BackColor = Color.DarkGray;
+                }
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -1113,6 +1138,12 @@ namespace GameofLifedanielT
                 {
                     panel.BackColor = Color.DarkGray;
                 }
+                else if (lvl == 3 && _columns == 14 && _rows == 36)
+                {
+                    panel.BackgroundImage = Boden;
+                    panel.BackColor = Color.DarkGray;
+                }
+
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -1249,6 +1280,22 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.DarkGray;
 
             }
+            if (_grid[_columns, _rows, 0] == TrKK)
+            {
+                panel.BackgroundImage = Hmoney;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.DarkGray;
+
+            }
+            if (_grid[_columns, _rows, 0] == Coin)
+            {
+                panel.BackgroundImage = Hmoney;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.Gold;
+
+            }
+
+
 
 
 
@@ -1901,7 +1948,69 @@ namespace GameofLifedanielT
             }
            
             return Life;
-        }       
+        }
+        public bool Paheal(Panel panMain, PictureBox panel, int _row, int _column, bool Heal)
+        {
+
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == PHea && panel.Image == Secret && count == 1 )
+            {
+                DialogResult dialogResult = MessageBox.Show("Der Priester bietet dir dich für 100 Gold zu heilen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    
+                        MessageBox.Show("Du fühlst dich voller Leben(-100 zu Gold aber Leben auf Max))");
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    Heal = true;
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    Heal = false;
+                }
+
+
+            }
+
+
+
+
+            return Heal;
+        }
+        public bool Cheats(Panel panMain, PictureBox panel, int _row, int _column, bool cheats)
+        {
+
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Chea && panel.Image == Secret && count == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Letzte Warnung du wirst viel Verlieren falls du cheatest", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    MessageBox.Show("Cheater!!!!!!!!(+500 Gold, Max Leben = 3, Armor =0, Schleifsteine =0, Bomben= 0))");
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    cheats = true;
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    cheats = false;
+                }
+
+
+            }
+
+
+
+
+            return cheats;
+        }
 
         public int Schield(Panel panMain, PictureBox panel, int _row, int _column, int Armor)
         {
@@ -2557,19 +2666,38 @@ namespace GameofLifedanielT
                 {
                     MessageBox.Show("Du bekommst Gold(+200 zu Gold))");
 
-                   // panel.BackColor = Color.Orange;
+                    // panel.BackColor = Color.Orange;
 
                     Moneys = Moneys + 200;
                     _grid[_column, _row, 2] = empty.ToString();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                  //  panel.BackColor = Color.Orange;
+                    //  panel.BackColor = Color.Orange;
+
                 }
 
 
+
             }
-            return Moneys;
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Coin && count == 1 && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine Berg Gold gefunden, willst du ihn Mitnehmen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du bekommst Gold(+2000 zu Gold))");
+
+               
+                  //  panel.BackgroundImage = Boden;
+                    Moneys = Moneys + 2000;
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    //  panel.BackColor = Color.Orange;
+                }
+            }
+                return Moneys;
         }
         public int Money2(Panel panMain, PictureBox panel, int _row, int _column, int Moneys)
         {
@@ -2701,6 +2829,24 @@ namespace GameofLifedanielT
 
 
             }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == GuaK && panel.Image == Secret && item == 4)
+            {
+                DialogResult dialogResult = MessageBox.Show("Der Wachhauptman gibt dir pro Banditen Abzeichen 150 Gold, Verkaufen?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du erhälst Gold(+pro Abzeichen 150 zu Gold))");
+
+                    trade = true;
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    trade = false;
+                }
+
+
+            }
 
             return trade;
         }
@@ -2708,10 +2854,10 @@ namespace GameofLifedanielT
         public int Buying(Panel panMain, PictureBox panel, int _row, int _column, bool trade)
         {
             
-            // var count = Convert.ToInt32(_grid[_column, _row, 2]);
+             var count = Convert.ToInt32(_grid[_column, _row, 2]);
             if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == TrSK && panel.Image == Secret)
             {
-                DialogResult dialogResult = MessageBox.Show("Der Kaufpreis liegt bei 200 pro Schleifstein, Verkaufen?", "Some Title", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Der Kaufpreis liegt bei 200 pro Schleifstein, Haufen?", "Some Title", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     MessageBox.Show("Du erhälst einen Schleifstein(+1 zu Schleifstein))");
@@ -2730,13 +2876,30 @@ namespace GameofLifedanielT
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == TrAK && panel.Image == Secret)
             {
-                DialogResult dialogResult = MessageBox.Show("Der Kaufpreis liegt bei 250 pro Rüstungsmaterial, Verkaufen?", "Some Title", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show("Der Kaufpreis liegt bei 250 pro Rüstungsmaterial, Kaufen?", "Some Title", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     MessageBox.Show("Du erhälst Rüstungsmaterial(+1 zu Rüstungsmaterial))");
                     buyin = 2;
 
 
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    buyin = 0;
+                }
+
+
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == TrKK && panel.Image == Secret&& count== 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Der Kaufpreis liegt bei 1000 für den Schlüssel zum Lagerhaus am Hafen, Kaufen?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du erhälst den Schlüssel(+1 zu Keys))");
+                    buyin = 3;
+
+                    _grid[_column, _row, 2] = empty.ToString();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -2779,11 +2942,11 @@ namespace GameofLifedanielT
             return encount;
         }
         
-        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif)
+        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif,int encoun)
         {
 
             var count = Convert.ToInt32(_grid[_column, _row, 2]);
-            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Band && panel.Image == Secret&& count==1)
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Band && panel.Image == Secret&& count==1&& encoun==1)
             {
                 DialogResult dialogResult = MessageBox.Show("Bandit Angriff willst du dich verteidigen", "Some Title", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
