@@ -2236,7 +2236,7 @@ namespace GameofLifedanielT
             {
                 if (_row == 31 && _column == 4 && count == 1)
                 {
-                    MessageBox.Show("Willkomen in der Stadt, einzige gefahr sind Banditen, die Wehrt man mit einen Schleifstein und Rüstungsdicke ab, dafür gibts Gold und Banditen Abzeichen");
+                    MessageBox.Show("Willkomen in der Stadt, einzige gefahr sind Banditen, diese wehrt man mit einen  Schleifstein und Rüstungsdicke ab, dafür gibts Gold und Banditen Abzeichen");
                     tip = "Willkomen in der Stadt, einzige gefahr sind Banditen, die Wehrt man mit einen Schleifstein und Rüstungsdicke ab,dafür gibts Gold und Banditen Abzeichen";
                     _grid[_column, _row, 2] = empty.ToString();
                 }

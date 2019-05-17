@@ -16,6 +16,7 @@ namespace GameofLifedanielT
         Bitmap Secret = Properties.Resources.Secret;
         Bitmap Bandit = Properties.Resources.Dieb;
         Bitmap BanditC = Properties.Resources.BanditChef;
+     
         private int _row;
         private int _column;
        
@@ -36,6 +37,7 @@ namespace GameofLifedanielT
         private const string Button = "Button";
         private const string Play = "Play";
         Labfunk lab = new Labfunk();
+        LabAvatarFunk labAv = new LabAvatarFunk();
         bool Alive = true;
         public Labyrinth()
         {
@@ -81,6 +83,7 @@ namespace GameofLifedanielT
                 txtboxLife.Text = Life.ToString()+" / "+MaxLife.ToString();
                 sword = 0;
                 Gold = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke "+ Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
@@ -127,6 +130,7 @@ namespace GameofLifedanielT
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 sword = 0;
                 Gold = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 lstinve.Items.Clear();
@@ -452,6 +456,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
                         Lvl++;
@@ -763,6 +768,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
                         Lvl++;
@@ -1077,6 +1083,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
                         Lvl++;
@@ -1387,6 +1394,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover== false)
                     {
                         Lvl++;
@@ -1469,8 +1477,9 @@ namespace GameofLifedanielT
                 Bombs = 0;
                 Keys = 0;
                 sword = 0;
-                Gold = 0;
+                Gold = 500;
                 Tokens = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
@@ -1515,10 +1524,11 @@ namespace GameofLifedanielT
                 Tokens = 0;
                 Bombs = 0;
                 sword = 0;
-                Gold = 0;
+                Gold = 500;
                 Keys = 0;
                 Rowsd = 0;
                 Columnsd = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 lstinve.Items.Clear();
@@ -1554,12 +1564,13 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.LightGreen;
                 }
                 Life = 4;
-                Armor = 1;
+                Armor = 2;
                 MaxLife = 4;
                 Bombs = 1;
                 Keys = 0;
                 sword = 1;
-                Gold = 3000;
+                Gold = 2500;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
@@ -1599,14 +1610,15 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.LightGreen;
                 }
                 Life = 4;
-                Armor = 1;
+                Armor = 2;
                 MaxLife = 4;
-                Bombs = 0;
-                Gold = 500;
-                sword = 0;
+                Bombs = 1;
+                Gold = 2500;
+                sword = 1;
                 Keys = 0;
                 Rowsd = 0;
                 Columnsd = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
                 lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
