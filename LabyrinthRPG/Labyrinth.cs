@@ -21,7 +21,7 @@ namespace GameofLifedanielT
         private int _column;
        
        
-        private const int CellSize = 23;
+        private const int CellSize = 22;
         private const int MaxRows = 40;
         private const int MaxColumns = 40;
 
@@ -42,6 +42,9 @@ namespace GameofLifedanielT
         public Labyrinth()
         {
             InitializeComponent();
+        
+
+
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -61,10 +64,13 @@ namespace GameofLifedanielT
         int Keys = 0;
         int Gold = 0;
         int Tokens = 0;
+        int Potions = 0;
         bool Gene = false;
         int Lvl = 1;
         private void btnlvlone_Click(object sender, EventArgs e)
         {
+            btnlvlone.Enabled = false;
+            btnlvlone.Enabled = true;
             Lvl = 1;
             if (Gene == false)
             {
@@ -77,6 +83,7 @@ namespace GameofLifedanielT
                 Armor = 0;
                 Bombs = 0;
                 Keys = 0;
+                Potions = 1;
                 Tokens = 0;
                 MaxLife = 3;
                 txtboxLife.Width = (30 * Life);
@@ -90,6 +97,7 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
                 lbllifeCount.Text = Life.ToString();
                 lblArmorCount.Text = Armor.ToString();
                 lblBombCount.Text = Bombs.ToString();
@@ -124,6 +132,7 @@ namespace GameofLifedanielT
                 Armor = 0;
                 Bombs = 0;
                 Keys = 0;
+                Potions = 1;
                 Tokens = 0;
                 MaxLife = 3;
                 txtboxLife.Width = (30 * Life);
@@ -139,6 +148,7 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
                 foreach (PictureBox panel in panMain.Controls)
                 {
                     _row = panel.Location.Y / CellSize;
@@ -182,21 +192,22 @@ namespace GameofLifedanielT
         bool Fight = false;
         bool Payheal = false;
         bool cheat = false;
+      
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
         {
             Btrade = true;
             if (Alive== true)
             {
 
-           
-            if (e.KeyChar == 's')
-            {
-                
+
+                if (e.KeyChar == 's')
+                {
+
                     foreach (PictureBox panel in panMain.Controls)
                     {
                         _row = panel.Location.Y / CellSize; //Position der Zelle in der Y achse
                         _column = panel.Location.X / CellSize;
-                      
+
                         if (Bombs > 0)
                         {
                             item = 3;
@@ -237,17 +248,17 @@ namespace GameofLifedanielT
                             trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
-                                Gold = Gold + Tokens* 150;
-                                Tokens =0;
-                             
+                                Gold = Gold + Tokens * 150;
+                                Tokens = 0;
+
                                 trade = false;
                             }
-                           // sword = lab.SworU(panMain, panel, _row, _column, sword);
+                            // sword = lab.SworU(panMain, panel, _row, _column, sword);
 
 
                         }
 
-                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl,Gold,Tokens);
+                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
@@ -260,10 +271,11 @@ namespace GameofLifedanielT
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
+                        Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc);
-                        if (cheat== true)
+                        if (cheat == true)
                         {
                             MaxLife = 3;
                             Life = 3;
@@ -273,15 +285,15 @@ namespace GameofLifedanielT
                             Gold = Gold + 500;
                             cheat = false;
                         }
-                        if (encounte>0)
+                        if (encounte > 0)
                         {
-                            if (encounte==1)
+                            if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column,Fight, sword, Armor,encounte,Bombs);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
-                                    if (sword>0 &&Armor>0)
+                                    if (sword > 0 && Armor > 0)
                                     {
                                         sword--;
                                         Armor--;
@@ -313,17 +325,17 @@ namespace GameofLifedanielT
                                 Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
-                                    if (Bombs>1)
+                                    if (Bombs > 1)
                                     {
                                         Bombs--;
                                         Gold = Gold + 2000;
-                                        Tokens= Tokens+2;
+                                        Tokens = Tokens + 2;
                                         Fight = false;
                                         encounte = 0;
                                     }
                                     else if (sword > 1 && Armor > 0)
                                     {
-                                        sword= sword-2;
+                                        sword = sword - 2;
                                         Armor--;
                                         Gold = Gold + 2000;
                                         Tokens = Tokens + 2;
@@ -349,11 +361,11 @@ namespace GameofLifedanielT
                             }
 
                         }
-                        if (Gold >= 100&& Btrade == true)
+                        if (Gold >= 100 && Btrade == true)
                         {
 
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
-                            if (Bitem ==1)
+                            if (Bitem == 1)
                             {
                                 sword++;
                                 Gold = Gold - 200;
@@ -379,7 +391,7 @@ namespace GameofLifedanielT
                             Payheal = lab.Paheal(panMain, panel, _row, _column, Payheal);
                             if (Payheal == true)
                             {
-                                Life= MaxLife;
+                                Life = MaxLife;
                                 Gold = Gold - 100;
                                 Payheal = false;
                             }
@@ -397,7 +409,7 @@ namespace GameofLifedanielT
                                 Gold = Gold + 100;
                                 trade = false;
                             }
-                          //  sword = lab.SworU(panMain, panel, _row, _column, sword);
+                            //  sword = lab.SworU(panMain, panel, _row, _column, sword);
 
 
                         }
@@ -411,29 +423,29 @@ namespace GameofLifedanielT
                                 Gold = Gold + 200;
                                 trade = false;
                             }
-                          //  Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
+                            //  Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
 
 
                         }
-                        if (Armor==0)
+                        if (Armor == 0)
                         {
                             Life = lab.Poison(panMain, panel, _row, _column, Life);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
-                         
+
                         }
                         else if (Armor > 0)
                         {
                             item = 1;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Armor--;
                                 Gold = Gold + 150;
                                 trade = false;
-                            } 
+                            }
                             Armor = lab.PoisonSchie(panMain, panel, _row, _column, Armor);
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
@@ -441,7 +453,7 @@ namespace GameofLifedanielT
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
 
                         }
-                    
+
                     }
                     Rowsd++;
                     lstinve.Items.Clear();
@@ -450,6 +462,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                    lstinve.Items.Add("Heiltränke " + Potions.ToString());
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -464,8 +477,8 @@ namespace GameofLifedanielT
                         {
                             _row = panel.Location.Y / CellSize;
                             _column = panel.Location.X / CellSize;
-                          
-                            if (Lvl == 2&&leverover == false && _row == 6 && _column == 8)
+
+                            if (Lvl == 2 && leverover == false && _row == 6 && _column == 8)
                             {
                                 _row = 6;
                                 _column = 8;
@@ -483,13 +496,22 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
-                       
-                   
-                      
+
+
+
                     }
-                    if (Life== 0)
+                    if (Life == 0)
                     {
                         Alive = false;
                         lblLife.Text = "Du bist Tod";
@@ -503,11 +525,17 @@ namespace GameofLifedanielT
                         lblMenge.Text = "";
                         lblsword.Text = "";
                     }
-                
-            }
-            else if (e.KeyChar == 'w')
-            {
-                
+
+                }
+              
+                else if (e.KeyChar == ' ')
+                {
+                    MessageBox.Show("space pressed");
+
+                }
+                else if (e.KeyChar == 'w')
+                {
+
                     foreach (PictureBox panel in panMain.Controls)
                     {
                         _row = panel.Location.Y / CellSize; //Position der Zelle in der Y achse
@@ -515,7 +543,7 @@ namespace GameofLifedanielT
                         if (Bombs > 0)
                         {
                             item = 3;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Bombs--;
@@ -535,7 +563,7 @@ namespace GameofLifedanielT
                         if (sword > 0)
                         {
                             item = 2;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 sword--;
@@ -573,6 +601,7 @@ namespace GameofLifedanielT
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         encounte = lab.Encounter(panMain, panel, _row, _column);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
+                        Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
@@ -593,7 +622,7 @@ namespace GameofLifedanielT
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight,sword,Armor, encounte, Bombs);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -671,14 +700,14 @@ namespace GameofLifedanielT
                             {
                                 sword++;
                                 Gold = Gold - 200;
-                                 Btrade = false;
+                                Btrade = false;
                                 Bitem = 0;
                             }
                             else if (Bitem == 2)
                             {
                                 Armor++;
                                 Gold = Gold - 250;
-                                 Btrade = false;
+                                Btrade = false;
                                 Bitem = 0;
                             }
                             else if (Bitem == 3)
@@ -724,7 +753,7 @@ namespace GameofLifedanielT
                                 Gold = Gold + 200;
                                 trade = false;
                             }
-                          //  Bombs = lab.BomU2(panMain, panel, _row, _column, Bombs);
+                            //  Bombs = lab.BomU2(panMain, panel, _row, _column, Bombs);
 
 
                         }
@@ -736,12 +765,12 @@ namespace GameofLifedanielT
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
                             txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
-                           
+
                         }
                         else if (Armor > 0)
                         {
                             item = 1;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Armor--;
@@ -762,6 +791,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                    lstinve.Items.Add("Heiltränke " + Potions.ToString());
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -776,8 +806,8 @@ namespace GameofLifedanielT
                         {
                             _row = panel.Location.Y / CellSize;
                             _column = panel.Location.X / CellSize;
-                          
-                            if (Lvl == 2&& leverover == false && _row == 6 && _column == 8)
+
+                            if (Lvl == 2 && leverover == false && _row == 6 && _column == 8)
                             {
                                 _row = 6;
                                 _column = 8;
@@ -795,11 +825,20 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
-                       
-                     
-                        
+
+
+
                     }
                     if (Life == 0)
                     {
@@ -816,9 +855,9 @@ namespace GameofLifedanielT
                         lblsword.Text = "";
                     }
                 }
-            else if (e.KeyChar == 'a')
-            {
-                
+                else if (e.KeyChar == 'a')
+                {
+
                     foreach (PictureBox panel in panMain.Controls)
                     {
                         _row = panel.Location.Y / CellSize; //Position der Zelle in der Y achse
@@ -826,7 +865,7 @@ namespace GameofLifedanielT
                         if (Bombs > 0)
                         {
                             item = 3;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Bombs--;
@@ -846,7 +885,7 @@ namespace GameofLifedanielT
                         if (sword > 0)
                         {
                             item = 2;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 sword--;
@@ -876,7 +915,7 @@ namespace GameofLifedanielT
                         lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
-                       txttip.Text= lab.hinww(panMain, panel, _row, _column, Lvl);
+                        txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
@@ -885,6 +924,7 @@ namespace GameofLifedanielT
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         encounte = lab.Encounter(panMain, panel, _row, _column);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
+                        Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
@@ -982,7 +1022,7 @@ namespace GameofLifedanielT
                             {
                                 sword++;
                                 Gold = Gold - 200;
-                                 Btrade = false;
+                                Btrade = false;
                                 Bitem = 0;
                             }
                             else if (Bitem == 2)
@@ -1035,14 +1075,14 @@ namespace GameofLifedanielT
                                 Gold = Gold + 200;
                                 trade = false;
                             }
-                          //  Bombs = lab.BomU3(panMain, panel, _row, _column, Bombs);
+                            //  Bombs = lab.BomU3(panMain, panel, _row, _column, Bombs);
 
 
                         }
                         if (Armor == 0)
                         {
-                        Life = lab.Poison(panMain, panel, _row, _column, Life);
-                          
+                            Life = lab.Poison(panMain, panel, _row, _column, Life);
+
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
@@ -1052,7 +1092,7 @@ namespace GameofLifedanielT
                         else if (Armor > 0)
                         {
                             item = 1;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Armor--;
@@ -1077,6 +1117,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                    lstinve.Items.Add("Heiltränke " + Potions.ToString());
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -1109,11 +1150,19 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
-                           
+                            else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
-                   
-                       
+
+
 
                     }
                     if (Life == 0)
@@ -1131,9 +1180,9 @@ namespace GameofLifedanielT
                         lblsword.Text = "";
                     }
                 }
-             else if (e.KeyChar == 'd')
-            {
-               
+                else if (e.KeyChar == 'd')
+                {
+
                     foreach (PictureBox panel in panMain.Controls)
                     {
                         _row = panel.Location.Y / CellSize; //Position der Zelle in der Y achse
@@ -1141,7 +1190,7 @@ namespace GameofLifedanielT
                         if (Bombs > 0)
                         {
                             item = 3;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Bombs--;
@@ -1161,7 +1210,7 @@ namespace GameofLifedanielT
                         if (sword > 0)
                         {
                             item = 2;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 sword--;
@@ -1188,7 +1237,7 @@ namespace GameofLifedanielT
 
                         }
 
-                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs,Keys, sword,Lvl, Gold, Tokens);
+                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
@@ -1200,6 +1249,7 @@ namespace GameofLifedanielT
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
+                        Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
@@ -1337,7 +1387,7 @@ namespace GameofLifedanielT
                                 Gold = Gold + 100;
                                 trade = false;
                             }
-                           // sword = lab.SworU4(panMain, panel, _row, _column, sword);
+                            // sword = lab.SworU4(panMain, panel, _row, _column, sword);
 
 
                         }
@@ -1351,14 +1401,14 @@ namespace GameofLifedanielT
                                 Gold = Gold + 200;
                                 trade = false;
                             }
-                          //  Bombs = lab.BomU4(panMain, panel, _row, _column, Bombs);
+                            //  Bombs = lab.BomU4(panMain, panel, _row, _column, Bombs);
 
 
                         }
                         if (Armor == 0)
-                    {
-                        Life = lab.Poison(panMain, panel, _row, _column, Life);
-                          
+                        {
+                            Life = lab.Poison(panMain, panel, _row, _column, Life);
+
                             Life = lab.Dorne(panMain, panel, _row, _column, Life);
                             Life = lab.Lavama(panMain, panel, _row, _column, Life);
                             txtboxLife.Width = (30 * Life);
@@ -1367,7 +1417,7 @@ namespace GameofLifedanielT
                         else if (Armor > 0)
                         {
                             item = 1;
-                               trade = lab.Trading(panMain, panel, _row, _column, trade,item);
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
                             if (trade == true)
                             {
                                 Armor--;
@@ -1388,6 +1438,7 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schlüssel " + Keys.ToString());
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                    lstinve.Items.Add("Heiltränke " + Potions.ToString());
                     lblArmorCount.Text = Armor.ToString();
                     lblBombCount.Text = Bombs.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -1395,14 +1446,14 @@ namespace GameofLifedanielT
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
                     picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
-                    if (leverover== false)
+                    if (leverover == false)
                     {
                         Lvl++;
                         foreach (PictureBox panel in panMain.Controls)
                         {
                             _row = panel.Location.Y / CellSize;
                             _column = panel.Location.X / CellSize;
-                            if (Lvl == 2 && leverover == false&& _row == 6 &&_column == 8)
+                            if (Lvl == 2 && leverover == false && _row == 6 && _column == 8)
                             {
 
                                 Rowsd = _row;
@@ -1420,11 +1471,20 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
+                            {
+                                _row = 28;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
-                     
-                       
-             
+
+
+
                     }
                     if (Life == 0)
                     {
@@ -1463,6 +1523,8 @@ namespace GameofLifedanielT
 
         private void btnlv2_Click(object sender, EventArgs e)
         {
+            btnlv2.Enabled = false;
+            btnlv2.Enabled = true;
             Lvl = 2;
             if (Gene == false)
             {
@@ -1476,6 +1538,7 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
+                Potions = 0;
                 sword = 0;
                 Gold = 500;
                 Tokens = 0;
@@ -1486,6 +1549,7 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
                 lbllifeCount.Text = Life.ToString();
                 lblArmorCount.Text = Armor.ToString();
                 lblBombCount.Text = Bombs.ToString();
@@ -1524,6 +1588,7 @@ namespace GameofLifedanielT
                 Tokens = 0;
                 Bombs = 0;
                 sword = 0;
+                Potions = 0;
                 Gold = 500;
                 Keys = 0;
                 Rowsd = 0;
@@ -1537,6 +1602,7 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
                 foreach (PictureBox panel in panMain.Controls)
                 {
                     _row = panel.Location.Y / CellSize;
@@ -1555,6 +1621,8 @@ namespace GameofLifedanielT
 
         private void btnlvl3_Click(object sender, EventArgs e)
         {
+            btnlvl3.Enabled = false;
+            btnlvl3.Enabled = true;
             Lvl = 3;
             if (Gene == false)
             {
@@ -1568,6 +1636,7 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 1;
                 Keys = 0;
+                Potions = 0;
                 sword = 1;
                 Gold = 2500;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
@@ -1579,6 +1648,7 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
                 lbllifeCount.Text = Life.ToString();
                 lblArmorCount.Text = Armor.ToString();
                 lblBombCount.Text = Bombs.ToString();
@@ -1616,6 +1686,7 @@ namespace GameofLifedanielT
                 Gold = 2500;
                 sword = 1;
                 Keys = 0;
+                Potions = 0;
                 Rowsd = 0;
                 Columnsd = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
@@ -1626,6 +1697,7 @@ namespace GameofLifedanielT
                 lstinve.Items.Add("Schlüssel " + Keys.ToString());
                 lstinve.Items.Add("Schleifsteine " + sword.ToString());
                 lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 foreach (PictureBox panel in panMain.Controls)
@@ -1638,5 +1710,131 @@ namespace GameofLifedanielT
                 first = true;
             }
         }
+
+        private void btnheal_Click(object sender, EventArgs e)
+        {
+            if (Potions >0)
+            {
+                Life = Life + 3;
+                Potions--;
+                if (Life> MaxLife)
+                {
+                    Life = MaxLife;
+                }
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lblArmorCount.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lbllifeCount.Text = Life.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+            }
+            else
+            {
+
+            }
+        }
+
+        private void btnlvl4_Click(object sender, EventArgs e)
+        {
+            btnlvl4.Enabled = false;
+            btnlvl4.Enabled = true;
+            Lvl = 4;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 2;
+                MaxLife = 4;
+                Bombs = 1;
+                Keys = 0;
+                Potions = 0;
+                sword = 1;
+                Gold = 2500;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 2;
+                MaxLife = 4;
+                Bombs = 1;
+                Gold = 2500;
+                sword = 1;
+                Keys = 0;
+                Potions = 0;
+                Rowsd = 0;
+                Columnsd = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+        }
+    
     }
 }
