@@ -29,7 +29,7 @@ namespace GameofLifedanielT
         Bitmap Captain = Properties.Resources.Captain;
         Bitmap Zpirat = Properties.Resources.Zollpirat;
         Bitmap Lavas= Properties.Resources.LavaFinal;
-        Bitmap Giftig = Properties.Resources.Poison;
+        Bitmap Giftig = Properties.Resources.Gift_neu;
         Bitmap Boden = Properties.Resources.Cavebode;
         Bitmap Cavewall = Properties.Resources.Cave;
         Bitmap Stegs = Properties.Resources.Step;
@@ -58,6 +58,11 @@ namespace GameofLifedanielT
         Bitmap DiebH = Properties.Resources.Diebheandler;
         Bitmap Mann = Properties.Resources.Buerger;
         Bitmap Frau = Properties.Resources.Buegerin;
+        Bitmap Teppic = Properties.Resources.Teppich;
+        Bitmap Wand2 = Properties.Resources.Hauswand2;
+        Bitmap Stairs = Properties.Resources.Treppe;
+        Bitmap Gov = Properties.Resources.Governor;
+        Bitmap Stuhl = Properties.Resources.Stuhl;
         public const int size = 8;
 
 
@@ -99,7 +104,7 @@ namespace GameofLifedanielT
         private const string Stha = "Stha";
         private const string Tga1 = "Tga1";
         private const string Tga2 = "Tga2";
-        private const string Guar = "Guar";
+      
         private const string Ofen = "Ofen";
         private const string Gass = "Gass";
         private const string ITur = "ITur";
@@ -136,6 +141,7 @@ namespace GameofLifedanielT
         // Grid 1
         private const string Player = "Player";
         // Grid 2 = Loot
+
         // Grid 3
         private const string Money = "Money";
         private const string BigMoney = "BigMoney";
@@ -143,6 +149,7 @@ namespace GameofLifedanielT
         // Grid 4
         private const string Band = "Band";
         private const string BanC = "BanC";// in 0 und Vier
+        private const string Guar = "Guar";
         public PictureBox GenerateGrid(int _row, int _column)
         {
             Panel panMain = new Panel();
@@ -840,6 +847,7 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.SaddleBrown;
 
                 }
+            
 
                 p = 0;
                 c = 0;
@@ -852,38 +860,49 @@ namespace GameofLifedanielT
                 _grid[_columns, _rows, 1] = null;
                 _grid[_columns, _rows, 2] = null;
                 _grid[_columns, _rows, 3] = null;
-/*
-                if (_rows == 36 && _columns == 38 || _rows == 13 && _columns == 36 || _rows == 35 && _columns == 3 || _rows == 9 && _columns == 8 || _rows == 7 && _columns == 17 || _rows == 15 && _columns == 22 || _rows == 19 && _columns == 16 || _rows == 29 && _columns == 23)
+
+                if (_rows == 19 && _columns == 24)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                    _grid[_columns, _rows, 3] = Money;
+                   
                 }
-                if (_rows == 2 && _columns == 21 || _rows == 29 && _columns == 34 || _rows == 15 && _columns == 20 || _rows == 32 && _columns == 16 || _rows == 11 && _columns == 16 || _rows == 37 && _columns == 8 || _rows == 21 && _columns == 3)
+                
+                                if (_rows == 36 && _columns == 30 || _rows == 25 && _columns == 15 || _rows == 24 && _columns == 15 || _rows == 25 && _columns == 12 || _rows == 24 && _columns == 12 || _rows == 12 && _columns == 16 || _rows == 33 && _columns == 7 || _rows == 27 && _columns == 7 || _rows == 18 && _columns == 7 || _rows == 15 && _columns == 7 || _rows == 21 && _columns == 2)
+                {
+                                    _grid[_columns, _rows, 2] = Loot.ToString();
+                                    _grid[_columns, _rows, 3] = Money;
+                                }
+                               if (_rows == 15 && _columns == 4 || _rows == 24 && _columns == 17 || _rows == 4 && _columns == 37 || _rows == 3 && _columns == 12 || _rows == 22 && _columns == 19 || _rows == 36 && _columns == 10 || _rows == 12 && _columns == 8 || _rows == 7 && _columns == 2 || _rows == 22 && _columns == 31 || _rows == 7 && _columns == 30 || _rows == 14 && _columns == 16 || _rows == 18 && _columns == 38 || _rows == 33 && _columns == 30 || _rows == 33 && _columns == 26 || _rows == 4 && _columns == 21 || _rows == 25 && _columns == 31 || _rows == 15 && _columns == 29||_rows == 16 && _columns == 34 || _rows == 15 && _columns == 25) {
+                                    _grid[_columns, _rows, 2] = Loot.ToString();
+                                    _grid[_columns, _rows, 4] = Guar;
+                }
+                if (_rows == 8 && _columns == 18)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                    _grid[_columns, _rows, 4] = Band;
-                }                /*  
-                  if (_rows == 37 && _columns == 38 || _rows == 36 && _columns == 38)
-                  {
-                      _grid[_columns, _rows, 2] = Loot.ToString();
-                      _grid[_columns, _rows, 3] = BigMoney;
-                  }*/
+                    _grid[_columns, _rows, 4] = GuaK;
+                }               /*  
+                                  if (_rows == 37 && _columns == 38 || _rows == 36 && _columns == 38)
+                                  {
+                                      _grid[_columns, _rows, 2] = Loot.ToString();
+                                      _grid[_columns, _rows, 3] = BigMoney;
+                                  }*/
                 panel.BackgroundImage = null;
                 panel.Image = null;
                 if (_grid[_columns, _rows, 0] == Wall)
                 {
                     panel.BackColor = Color.Brown;
                 }
-                if (_grid[_columns, _rows, 0] == Heal && _rows == 29 && _columns == 5)
+                if (_grid[_columns, _rows, 0] == Heal )
                 {
-                    panel.BackColor = Color.SandyBrown;
+                    panel.BackColor = Color.Beige;
                     // panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.Red;
                 }
+            
 
                 if (_grid[_columns, _rows, 0] == Keys)
                 {
-                    panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
                     //    panel.BackColor = Color.LightGreen;
                     //   panel.BackColor = Color.DarkGoldenrod;
                     _grid[_columns, _rows, 2] = Loot.ToString();
@@ -891,7 +910,7 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Schi)
                 {
                     //  panel.BackColor = Color.LightGreen;
-                    panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
                     //   panel.BackColor = Color.Orange;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
@@ -900,25 +919,44 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Bush)
                 {
                     // panel.BackColor = Color.LightGreen;
-                    panel.BackColor = Color.DarkGreen;
+                    panel.BackColor = Color.Beige;
+                    //  panel.BackColor = Color.DarkGreen;
                 }
-
-                if (_grid[_columns, _rows, 0] == Wass)
+                if (_grid[_columns, _rows, 0] == Wass && _columns < 7)
                 {
-                    // panel.BackColor = Color.LightGreen;
+                    //panel.BackgroundImage = Burg;
                     panel.BackColor = Color.Turquoise;
+
                 }
+                else if (_grid[_columns, _rows, 0] == Wass && _columns >= 7)
+
+                {
+                    panel.BackColor = Color.Beige;
+                }
+                
+                    // panel.BackColor = Color.LightGreen;
+                   
+                
 
                 if (_grid[_columns, _rows, 0] == Hinw && _rows == 31 && _columns == 4)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                    panel.BackColor = Color.SandyBrown;
+                    panel.BackColor = Color.Beige;
+                  //  panel.BackColor = Color.SandyBrown;
                     //   panel.BackColor = Color.LightGray;
                 }
+             
                 else if (_grid[_columns, _rows, 0] == Hinw)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                    panel.BackColor = Color.LightGray;
+                    panel.BackColor = Color.Beige;
+                   // panel.BackColor = Color.LightGray;
+                }
+                else if (_grid[_columns, _rows, 0] == Kome)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.Beige;
+                 //   panel.BackColor = Color.LightGray;
                 }
 
                 if (_grid[_columns, _rows, 0] == Star)
@@ -936,7 +974,7 @@ namespace GameofLifedanielT
 
                 if (_grid[_columns, _rows, 0] == Bomb)
                 {
-                    panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
                     //   panel.BackColor = Color.LightGreen;
                     //    panel.BackColor = Color.OrangeRed;
                     _grid[_columns, _rows, 2] = Loot.ToString();
@@ -944,20 +982,23 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == OTur)
                 {
                     // panel.BackColor = Color.LightGreen;
-                    panel.BackColor = Color.LightSkyBlue;
+                    panel.BackColor = Color.Beige;
+                 //   panel.BackColor = Color.LightSkyBlue;
                 }
                 if (_grid[_columns, _rows, 0] == VTur)
                 {
-                    panel.BackColor = Color.DarkBlue;
+                    panel.BackColor = Color.Beige;
+                   // panel.BackColor = Color.DarkBlue;
                     //   panel.BackColor = Color.DarkBlue;
                 }
-                if (_grid[_columns, _rows, 0] == Pers && _rows == 6 && _columns == 24)
+                if (_grid[_columns, _rows, 0] == Pers )
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                    panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
 
                     //  panel.BackColor = Color.LightGray;
                 }
+                /*
                 else if (_grid[_columns, _rows, 0] == Pers && _rows == 29 && _columns == 2)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
@@ -988,13 +1029,13 @@ namespace GameofLifedanielT
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.LightGray;
-                }
+                }*/
 
 
 
                 if (_grid[_columns, _rows, 0] == Swor)
                 {
-                    panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     //panel.BackColor = Color.Orchid;
                 }
@@ -1033,15 +1074,21 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Coin)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                    panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
+                    //   panel.BackColor = Color.SaddleBrown;
                     //  panel.BackColor = Color.Gold;
 
                 }
-                if (_grid[_columns, _rows, 0] == Cwal)
+                if (_grid[_columns, _rows, 0] == Cwal&& _columns < 7|| _grid[_columns, _rows, 0] == Cwal && _columns == 38 || _grid[_columns, _rows, 0] == Cwal && _rows == 1 || _grid[_columns, _rows, 0] == Cwal && _rows == 38)
                 {
                     //panel.BackgroundImage = Burg;
                     panel.BackColor = Color.DarkSlateGray;
 
+                }
+                else if (_grid[_columns, _rows, 0] == Cwal && _columns >= 7)
+
+                {
+                    panel.BackColor = Color.Beige;
                 }
                
               
@@ -1049,8 +1096,8 @@ namespace GameofLifedanielT
                
                 if (_grid[_columns, _rows, 0] == Plas)
                 {
-                    panel.BackColor = Color.FloralWhite;
-
+                    //  panel.BackColor = Color.FloralWhite;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Chea)
                 {
@@ -1061,43 +1108,53 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == GuaK)
                 {
-                    panel.BackColor = Color.LightGray;
-
+                  //  panel.BackColor = Color.LightGray;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Mobl)
                 {
-                    panel.BackColor = Color.SaddleBrown;
-
+                   // panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Bedh)
                 {
-                    panel.BackColor = Color.WhiteSmoke;
-
+                  //  panel.BackColor = Color.WhiteSmoke;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Bedb)
                 {
-                    panel.BackColor = Color.CornflowerBlue;
-
+                    //panel.BackColor = Color.CornflowerBlue;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Fire)
                 {
-                    panel.BackColor = Color.DarkOrange;
-
+                 //   panel.BackColor = Color.DarkOrange;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Etra)
                 {
-                    panel.BackColor = Color.YellowGreen;
-
+                 //   panel.BackColor = Color.YellowGreen;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Trep)
                 {
-                    panel.BackColor = Color.RosyBrown;
-
+                   // panel.BackColor = Color.RosyBrown;
+                    panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Tepp)
                 {
-                    panel.BackColor = Color.MistyRose;
-
+                   // panel.BackColor = Color.MistyRose;
+                    panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == Mayo)
+                {
+                   // panel.BackColor = Color.SlateGray;
+                    panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == ETur)
+                {
+                   // panel.BackColor = Color.SteelBlue;
+                    panel.BackColor = Color.Beige;
                 }
 
 
@@ -1133,10 +1190,15 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 2 && _columns == 25 && _rows == 14 || lvl == 3 && _columns == 5 && _rows == 29)
+                else if (lvl == 4 && _columns == 15 && _rows == 21 || lvl == 4 && _columns == 9 && _rows == 2 || lvl == 4 && _columns == 24 && _rows == 3 || lvl == 2 && _columns == 25 && _rows == 14 || lvl == 3 && _columns == 5 && _rows == 29)
                 {
                     panel.BackgroundImage = Stegs;
                     panel.BackColor = Color.SandyBrown;
+                }
+                else if (lvl == 4 && _columns == 30 && _rows == 25 )
+                {
+                    panel.BackgroundImage = Plaza;
+                    panel.BackColor = Color.FloralWhite;
                 }
                 else
                 {
@@ -1152,7 +1214,12 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
                 }
-               
+                else if (lvl == 4 && _columns == 28 && _rows == 2)
+                {
+                    panel.BackgroundImage = Stegs;
+                    panel.BackColor = Color.SandyBrown;
+                }
+
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -1177,6 +1244,11 @@ namespace GameofLifedanielT
                 {
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 4)
+                {
+                    panel.BackgroundImage = Stegs;
+                    panel.BackColor = Color.SandyBrown;
                 }
 
                 else
@@ -1248,6 +1320,11 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
                 }
+                else if (lvl == 4)
+                {
+                    panel.BackgroundImage = Stegs;
+                    panel.BackColor = Color.SandyBrown;
+                }
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -1272,22 +1349,29 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Fischer;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 3 && _columns == 28 && _rows == 36 || lvl == 3 && _columns == 26 && _rows == 36 || lvl == 3 && _columns == 14 && _rows == 24 || lvl == 3 && _columns == 14 && _rows == 22 || lvl == 3 && _columns == 34 && _rows == 19 || lvl == 3 && _columns == 32 && _rows == 19 || lvl == 3 && _columns == 17 && _rows == 5 || lvl == 3 && _columns == 17 && _rows == 3 || lvl == 3 && _columns == 11 && _rows == 5 || lvl == 3 && _columns == 11 && _rows == 3 || lvl == 2 && _columns == 10 && _rows == 5 || lvl == 2 && _columns == 10 && _rows == 8 || lvl == 2 && _columns == 7 && _rows == 14)
+                else if (lvl == 4 && _columns+ _rows != 39   || lvl == 4 && _columns != 35 && _rows != 4 || lvl == 3 && _columns == 28 && _rows == 36 || lvl == 3 && _columns == 26 && _rows == 36 || lvl == 3 && _columns == 14 && _rows == 24 || lvl == 3 && _columns == 14 && _rows == 22 || lvl == 3 && _columns == 34 && _rows == 19 || lvl == 3 && _columns == 32 && _rows == 19 || lvl == 3 && _columns == 17 && _rows == 5 || lvl == 3 && _columns == 17 && _rows == 3 || lvl == 3 && _columns == 11 && _rows == 5 || lvl == 3 && _columns == 11 && _rows == 3 || lvl == 2 && _columns == 10 && _rows == 5 || lvl == 2 && _columns == 10 && _rows == 8 || lvl == 2 && _columns == 7 && _rows == 14)
                    
                 {
                     panel.BackgroundImage = Soldat;
                     panel.BackColor = Color.DarkGray;
                 }
+              
                 else if (lvl == 3 && _columns == 24 && _rows == 20 || lvl == 2 && _columns == 3 && _rows == 10)
 
                 {
                     panel.BackgroundImage = Schmied;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 3 && _columns == 18 && _rows == 20 )
+                else if (lvl == 4 && _columns == 18 && _rows == 20)
 
                 {
                     panel.BackgroundImage = Schmied2;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 4 && _columns == 35 && _rows == 4 )
+
+                {
+                    panel.BackgroundImage = Guardk;
                     panel.BackColor = Color.DarkGray;
                 }
                 else if (lvl == 3 && _columns == 28 && _rows == 4 || lvl == 3 && _columns == 21 && _rows == 9 || lvl == 3 && _columns == 36 && _rows == 16 || lvl == 3 && _columns == 28 && _rows == 11)
@@ -1448,11 +1532,18 @@ namespace GameofLifedanielT
              
                 // panel.BackColor = Color.PaleVioletRed;
             }
-            if (_grid[_columns, _rows, 0] == Bode)
+            if (_grid[_columns, _rows, 0] == Bode && lvl !=4)
             {
                 panel.BackgroundImage = Boden;
                 //  panel.BackColor = Color.LightGreen;
                 panel.BackColor = Color.DarkGray;
+            }
+            else if (_grid[_columns, _rows, 0] == Bode && lvl == 4)
+         
+            {
+                panel.BackgroundImage = Stegs;
+                //  panel.BackColor = Color.LightGreen;
+                panel.BackColor = Color.Bisque;
             }
         
             if (_grid[_columns, _rows, 0] == Steg)
@@ -1481,10 +1572,25 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.DimGray;
                 panel.BackgroundImage = Gasses;
             }
-            if (_grid[_columns, _rows, 0] == Cwal)
+            if (_grid[_columns, _rows, 0] == Cwal&& lvl!=4)
             {
                 panel.BackgroundImage = Burg;
                 panel.BackColor = Color.DarkSlateGray;
+
+            }
+            else if (_grid[_columns, _rows, 0] == Cwal&&lvl==4)
+            {
+                if (_rows<= 25 && _rows >= 15&& _columns>=21&& _columns<=28 || _rows<15&& _columns>=21)
+                {
+                    panel.BackgroundImage = Wand2 ;
+                    panel.BackColor = Color.RosyBrown;
+                }
+                else
+                {
+                    panel.BackgroundImage = Burg;
+                    panel.BackColor = Color.DarkSlateGray;
+                }
+             
 
             }
             if (_grid[_columns, _rows, 0] == Ofen)
@@ -1590,9 +1696,69 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.Gold;
 
             }
+            if (_grid[_columns, _rows, 0] == Tepp)
+            {
+                panel.BackgroundImage = Teppic;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.Beige;
+
+            }
+            if (_grid[_columns, _rows, 0] == Trep)
+            {
+                panel.BackgroundImage = Stairs;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.RosyBrown;
+
+            }
+            if (_grid[_columns, _rows, 0] == Mayo)
+            {
+                panel.BackgroundImage = Gov;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.SlateGray;
+
+            }
+            if (_grid[_columns, _rows, 0] == ETur)
+            {
+                panel.BackgroundImage = Iture;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.SlateGray;
+
+            }
 
 
+            if (_grid[_columns, _rows, 0] == Mobl&& _rows == 19 && _columns == 25)
+            {
+                panel.BackgroundImage = Stuhl;
+                panel.BackColor = Color.PeachPuff;
 
+                // panel.BackColor = Color.Beige;
+            }
+           else if (_grid[_columns, _rows, 0] == Mobl)
+            {
+                panel.BackColor = Color.SaddleBrown;
+                // panel.BackColor = Color.Beige;
+            }
+            if (_grid[_columns, _rows, 0] == Bedh)
+            {
+                 panel.BackColor = Color.WhiteSmoke;
+               // panel.BackColor = Color.Beige;
+            }
+            if (_grid[_columns, _rows, 0] == Bedb)
+            {
+                panel.BackColor = Color.CornflowerBlue;
+                //panel.BackColor = Color.Beige;
+            }
+            if (_grid[_columns, _rows, 0] == Fire)
+            {
+                  panel.BackColor = Color.OrangeRed;
+              //  panel.BackColor = Color.Beige;
+            }
+            if (_grid[_columns, _rows, 0] == Etra)
+            {
+                  panel.BackColor = Color.Yellow;
+               // panel.BackColor = Color.Beige;
+            }
+           
 
 
 
@@ -2200,10 +2366,42 @@ namespace GameofLifedanielT
 
             return panel;
         }
-      //  int poi = 1;//!!!!
+        //  int poi = 1;//!!!!
         //int poi2 = 1;
-       // int poi3 = 1;
-       // int poi4 = 1;
+        // int poi3 = 1;
+        // int poi4 = 1;
+        public void Event(Panel panMain, PictureBox panel, int _row, int _column, int lvl)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[24, 19, 1] == Player && panel.Image == Secret&& lvl==4 && count == 1)
+            {
+                //  poi++;
+                // poi2++;
+                // poi3++;
+                _grid[28, 14, 0] = OTur;
+                _grid[28, 23, 0] = OTur;
+                MessageBox.Show("Du füllst dich voller Leben(Leben auf Max)");
+                panel.BackColor = Color.Purple;
+                _grid[_column, _row, 2] = empty.ToString();
+                //  panel.BackgroundImage = Giftig;
+                //    Life--;
+            }
+
+        }
+        public Image EventPicture(Panel panMain, PictureBox panel, int _row, int _column, int lvl, PictureBox npc)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[24, 19, 1] == Player && panel.Image == Secret && lvl == 4 && count == 1 )   {
+                npc.BackgroundImage = Gov;
+
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] != Pers && _grid[_column, _row, 0] != GuaK && panel.Image == Secret)
+
+            {
+                npc.BackgroundImage = null;
+            }
+            return npc.BackgroundImage;
+        }
         public int  Poison(Panel panMain, PictureBox panel, int _row, int _column, int Life)
         {
             if (_grid[_column, _row, 1] == Player&& _grid[_column, _row, 0] == Gift  && panel.Image == Secret)
@@ -2231,12 +2429,27 @@ namespace GameofLifedanielT
             }
             return Life;
         }
-        public Image Npc(Panel panMain, PictureBox panel, int _row, int _column ,PictureBox npc)
+        public Image Npc(Panel panMain, PictureBox panel, int _row, int _column ,PictureBox npc, int lvl)
         {
+          //  var count = Convert.ToInt32(_grid[_column, _row, 2]);
             if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Pers && panel.Image == Secret||_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == GuaK && panel.Image == Secret)
             {
                 npc.BackgroundImage = panel.BackgroundImage;
 
+            }
+            else if (_grid[24, 19, 1] == Player && panel.Image == Secret && lvl == 4)
+            {
+                npc.BackgroundImage = Gov;
+
+              
+            }
+            else if (_grid[_column, _row, 1] == Player && panel.Image == Secret && lvl == 3&& _column==33&& _row>2 && _row < 11)
+            {
+                npc.BackgroundImage = Altar;
+            }
+            else if (_grid[17, 21, 1] == Player && panel.Image == Secret && lvl == 3)
+            {
+                npc.BackgroundImage = Oven;
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] != Pers &&  _grid[_column, _row, 0] != GuaK && panel.Image == Secret)
          
@@ -2258,6 +2471,56 @@ namespace GameofLifedanielT
                 Life=Life-2;
             }
             return Life;
+        }
+        public int Electro(Panel panMain, PictureBox panel, int _row, int _column, int Life, int Armor)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Etra && panel.Image == Secret)
+            {
+                if (Armor >0)
+                {
+                    Life = Life - 2;
+                }
+                else
+                {
+                   
+                }
+                //  poi++;
+                // poi2++;
+                // poi3++;
+               // panel.BackColor = Color.IndianRed;
+              //  panel.BackgroundImage = Lavas;
+                //  panel.BackgroundImage = null;
+             
+            }
+            return Life;
+        }
+        public int FireL(Panel panMain, PictureBox panel, int _row, int _column, int Life)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Fire && panel.Image == Secret)
+            {
+                //  poi++;
+                // poi2++;
+                // poi3++;
+               // panel.BackColor = Color.OrangeRed;
+               // panel.BackgroundImage = Lavas;
+                //  panel.BackgroundImage = null;
+                Life = Life - 1;
+            }
+            return Life;
+        }
+        public int FireA(Panel panMain, PictureBox panel, int _row, int _column, int Armor)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Fire && panel.Image == Secret)
+            {
+                //  poi++;
+                // poi2++;
+                // poi3++;
+            //    panel.BackColor = Color.IndianRed;
+              //  panel.BackgroundImage = Lavas;
+                //  panel.BackgroundImage = null;
+                Armor = Armor - 1;
+            }
+            return Armor;
         }
 
 
@@ -2607,6 +2870,41 @@ namespace GameofLifedanielT
 
 
             }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Hinw && Level == 4)
+            {
+                if (_row == 2 && _column == 4 && count == 1)
+                {
+                    MessageBox.Show("Wenn du zufrieden bist mit was du gelootetst hat dann geh weiter zum Ende");
+                    tip = "Wenn du zufrieden bist mit was du gelootetst hat dann geh weiter zum Ende";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 10 && _column == 9 && count == 1)
+                {
+                    MessageBox.Show("Das ist das Wache Schlafzimmer, hier giebt es Wachen und Loot");
+                    tip = "Das ist das Wache Schlafzimmer, hier giebt es Wachen und Loot";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 12 && _column == 13 && count == 1)
+                {
+                    MessageBox.Show("S.2, Ps Feuer veruhrsacht 1 Leben Schaden, mit Rüstung 1 Leben und 1 Rüstung");
+                    tip = "S.2, Ps Feuer veruhrsacht 1 Leben Schaden, mit Rüstung 1 Leben und 1 Rüstung";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 36 && _column == 15 && count == 1)
+                {
+                    MessageBox.Show("Electro Fallen sind ungefährlich solange du keine Rüstung Trägst, sonst Leben-2 jedes mal");
+                    tip = "Electro Fallen sind ungefährlich solange du keine Rüstung Trägst, sonst Leben-2 jedes mal ";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 15 && _column == 28 && count == 1 || _row == 22 && _column == 28 && count == 1)
+                {
+                    MessageBox.Show("Du musst den Baron zuerst besuchen");
+                    tip = "Du musst den Baron zuerst besuchen";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+
+
+            }
             return tip;
 
             // return Key;
@@ -2860,6 +3158,75 @@ namespace GameofLifedanielT
             {
                  Dialog= Kommen;
             }
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Pers && Level == 4)
+            {
+                if (_row > 14 && count == 1)
+                {
+
+                    Dialog = "Gehen sie in das Büro des Baron, er erwartet sie";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row > 4 && _row < 14 && count == 1)
+                {
+                    Dialog = "Hey du hast hier nichts zu suchen";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (_row == 4 && _column == 35 && count == 1)
+                {
+
+                    Dialog = "Werter Herr sie haben nichts in der Garrison zu suchen, gehen sie endlich zum Baron.";
+
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+               
+
+
+
+                Kommen = Dialog;
+            }
+            else if (_grid[24, 19, 1] == Player && panel.Image == Secret && Level == 4)
+            {
+              
+                Dialog = "So sehen wir uns also wieder, [Spieler] ich dachte ich hätte dich eliminiert, du wirst nie der Erbe des Thrones werden. Versuch nicht mal zu fliehen ich habe schon die ganze StadtWache benachrichtig. Und gerade in diesen moment geht einer meiner Boten zu Granitos, selbst wenn du enkommst so wird er dich Jagen, so es ist Zeit für dich zum Sterben! Wachen!!!!";
+                _grid[32, 17, 0] = Tepp;
+                _grid[32, 20, 0] = Tepp;
+
+                _grid[33, 22, 0] = Bode;
+                _grid[35, 22, 0] = Bode;
+
+                _grid[33, 15, 0] = Bode;
+                _grid[35, 15, 0] = Bode;
+
+                _grid[37, 17, 0] = Bode;
+                _grid[37, 20, 0] = Bode;
+
+                _grid[34, 5, 0] = Bode;
+                _grid[34, 6, 0] = Bode;
+                _grid[34, 7, 0] = Bode;
+                _grid[34, 8, 0] = Bode;
+                _grid[34, 9, 0] = Bode;
+                _grid[34, 10, 0] = Bode;
+
+                _grid[36, 5, 0] = Bode;
+                _grid[36, 6, 0] = Bode;
+                _grid[36, 7, 0] = Bode;
+                _grid[36, 8, 0] = Bode;
+                _grid[36, 9, 0] = Bode;
+                _grid[36, 10, 0] = Bode;
+
+                _grid[35, 4, 0] = Bode;
+
+                _grid[_column, _row, 2] = empty.ToString();
+
+            }
+
+
+            else
+            {
+                Dialog = Kommen;
+            }
+            
             return Dialog;
 
             // return Key;
@@ -2925,6 +3292,19 @@ namespace GameofLifedanielT
 
 
 
+                Dialog = Kommen;
+            }
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Kome && Level == 2)
+            {
+                if (_row == 18 && _column == 26 && count == 1 || _row == 19 && _column == 26 && count == 1)
+                {
+                    //   Dialog = "Will ich wirklich wieder in diese Richtung gehen";
+                    Kommen = "Hm das Arbeits Zimmer des Barones ist ziehmlich schick.  Ah da sind sie ja ich habe sie erwartet, setzen sie sich.";
+
+                    _grid[26, 18, 2] = empty.ToString();
+                    _grid[26, 19, 2] = empty.ToString();
+                }
+                
                 Dialog = Kommen;
             }
             else
@@ -3531,12 +3911,36 @@ namespace GameofLifedanielT
 
                     encount = 2;
 
-                  
 
 
-                
+
+
             }
-                      
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Guar && panel.Image == Secret && count == 1)
+            {
+
+
+
+                encount = 3;
+
+
+
+
+
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == GuaK && panel.Image == Secret && count == 1)
+            {
+
+
+
+                encount = 4;
+
+
+
+
+
+            }
+
             else
             {
                 encount = 0;
@@ -3585,14 +3989,14 @@ namespace GameofLifedanielT
 
 
                 }
-            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BanC && panel.Image == Secret && count == 1 && encoun == 2)
+          else  if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BanC && panel.Image == Secret && count == 1 && encoun == 2)
             {
                 DialogResult dialogResult = MessageBox.Show("BanditChef Angriff willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     if (Armor >= 1 && Schleif >= 2||Bombe>= 1)
                     {
-                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-1 zu Schleifstein und -1 zu Armor oder falls du ne Bombe hattest dann nur Bombe-1))");
+                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-1 zu Schleifstein und -2 zu Armor oder falls du ne Bombe hattest dann nur Bombe-1))");
                         fight = true;
 
 
@@ -3615,6 +4019,76 @@ namespace GameofLifedanielT
                 else if (dialogResult == DialogResult.No)
                 {
                     MessageBox.Show("du erleidest auf der Flucht  Schwere Wunden(-3 zu Leben))");
+                    fight = false;
+                }
+
+
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Guar && panel.Image == Secret && count == 1 && encoun == 3)
+            {
+                DialogResult dialogResult = MessageBox.Show("Eine Wache greift dich willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (Armor >= 1 && Schleif >= 1 )
+                    {
+                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-1 zu Schleifstein und -1 zu Armor ))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Du hast gewonnen, aber bist Schwer Verletzt(-2 zu Leben))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+
+
+
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("du erleidest auf der Flucht  Schwere Wunden(-1 zu Leben))");
+                    fight = false;
+                }
+
+
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == GuaK && panel.Image == Secret && count == 1 && encoun == 4)
+            {
+                DialogResult dialogResult = MessageBox.Show("Eine Wachehauptmann greift dich willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (Armor >= 2 && Schleif >= 2 || Bombe >= 1)
+                    {
+                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-2 zu Schleifstein und -2 zu Armor oder falls du ne Bombe hattest dann nur Bombe-1))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Du hast gewonnen, aber bist Schwer Verletzt(-3 zu Leben))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+
+
+
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("du erleidest auf der Flucht  Schwere Wunden(-2 zu Leben))");
                     fight = false;
                 }
 
