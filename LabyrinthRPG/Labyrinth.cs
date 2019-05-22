@@ -66,6 +66,8 @@ namespace GameofLifedanielT
         int Gold = 0;
         int Tokens = 0;
         int Potions = 0;
+        int Mana = 0;
+        int Spellpower = 0;
         bool Gene = false;
         int Lvl = 1;
         private void btnlvlone_Click(object sender, EventArgs e)
@@ -582,8 +584,17 @@ namespace GameofLifedanielT
                             }
                             else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
                             {
-                                _row = 28;
-                                _column = 2;
+                                _row = 19;
+                                _column = 38;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
+                            else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
+                            {
+                                _row = 3;
+                                _column = 4;
                                 Rowsd = _row;
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
@@ -996,6 +1007,15 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
+                            {
+                                _row = 3;
+                                _column = 4;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
 
@@ -1394,6 +1414,15 @@ namespace GameofLifedanielT
                             {
                                 _row = 28;
                                 _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
+                            else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
+                            {
+                                _row = 3;
+                                _column = 4;
                                 Rowsd = _row;
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
@@ -1798,6 +1827,15 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
+                            {
+                                _row = 3;
+                                _column = 4;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
 
@@ -2072,13 +2110,13 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.LightGreen;
                 }
                 Life = 4;
-                Armor = 2;
+                Armor = 4;
                 MaxLife = 4;
-                Bombs = 1;
+                Bombs = 0;
                 Keys = 0;
-                Potions = 0;
-                sword = 1;
-                Gold = 2500;
+                Potions = 2;
+                sword = 3;
+                Gold = 4000;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
                 txtboxLife.Width = (30 * Life);
@@ -2120,13 +2158,13 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.LightGreen;
                 }
                 Life = 4;
-                Armor = 2;
+                Armor = 4;
                 MaxLife = 4;
-                Bombs = 1;
-                Gold = 2500;
-                sword = 1;
+                Bombs = 0;
+                Gold = 4000;
+                sword = 3;
                 Keys = 0;
-                Potions = 0;
+                Potions = 2;
                 Rowsd = 0;
                 Columnsd = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
@@ -2150,6 +2188,97 @@ namespace GameofLifedanielT
                 first = true;
             }
         }
-    
+
+        private void btnlvl5_Click(object sender, EventArgs e)
+        {
+            btnlvl5.Enabled = false;
+            btnlvl5.Enabled = true;
+            Lvl = 5;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 3;
+                MaxLife = 4;
+                Bombs = 0;
+                Keys = 0;
+                Potions = 1;
+                sword = 2;
+                Gold = 4500;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 4;
+                Armor = 3;
+                MaxLife = 4;
+                Bombs = 0;
+                Gold = 4500;
+                sword = 2;
+                Keys = 0;
+                Potions = 1;
+                Rowsd = 0;
+                Columnsd = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+        }
     }
 }
