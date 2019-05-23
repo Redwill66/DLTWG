@@ -17,7 +17,10 @@ namespace GameofLifedanielT
         Bitmap Bandit = Properties.Resources.Dieb;
         Bitmap BanditC = Properties.Resources.BanditChef;
         Bitmap Soldat = Properties.Resources.Soldat;
+        Bitmap EGua = Properties.Resources.Elite_Guard;
         Bitmap Gua = Properties.Resources.Guard_Captain;
+        Bitmap Gob = Properties.Resources.Goblin;
+        Bitmap Gok = Properties.Resources.Goblin_King;
         private int _row;
         private int _column;
        
@@ -90,8 +93,11 @@ namespace GameofLifedanielT
                 Potions = 1;
                 Tokens = 0;
                 MaxLife = 3;
+                Mana = 0;
+                Spellpower = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString()+" / "+MaxLife.ToString();
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 sword = 0;
                 Gold = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
@@ -139,10 +145,13 @@ namespace GameofLifedanielT
                 Potions = 1;
                 Tokens = 0;
                 MaxLife = 3;
+                Mana = 0;
+                Spellpower = 0;
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 sword = 0;
                 Gold = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
@@ -277,6 +286,7 @@ namespace GameofLifedanielT
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         Gold = lab.Money1(panMain, panel, _row, _column, Gold);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
+                        Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         lab.Event(panMain, panel, _row, _column, Lvl);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
@@ -441,6 +451,115 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 5)
+                            {
+                                picnpc.BackgroundImage = EGua;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0 && Armor > 1)
+                                    {
+                                        sword = sword - 1;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 6)
+                            {
+                                picnpc.BackgroundImage = Gob;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0)
+                                    {
+                                        sword = sword - 1;
+
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 7)
+                            {
+                                picnpc.BackgroundImage = Gok;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword > 2 && Armor > 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 4;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
 
                         }
                         if (Gold >= 100 && Btrade == true)
@@ -555,6 +674,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                     picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
@@ -699,6 +819,7 @@ namespace GameofLifedanielT
                         lab.Event(panMain, panel, _row, _column, Lvl);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
+                        Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
@@ -861,6 +982,115 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 5)
+                            {
+                                picnpc.BackgroundImage = EGua;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                   
+
+                                    if (sword > 0 && Armor > 1)
+                                    {
+                                        sword = sword - 1;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 6)
+                            {
+                                picnpc.BackgroundImage = Gob;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0 )
+                                    {
+                                        sword = sword - 1;
+                                       
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                  
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 7)
+                            {
+                                picnpc.BackgroundImage = Gok;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword > 2 && Armor > 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 4;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
                         }
                         if (Gold >= 100 && Btrade == true)
                         {
@@ -971,6 +1201,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                     picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
@@ -1105,6 +1336,7 @@ namespace GameofLifedanielT
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         encounte = lab.Encounter(panMain, panel, _row, _column);
+                        Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         lab.Event(panMain, panel, _row, _column, Lvl);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
@@ -1270,6 +1502,116 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 5)
+                            {
+                                picnpc.BackgroundImage = EGua;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0 && Armor > 1)
+                                    {
+                                        sword = sword - 1;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 6)
+                            {
+                                picnpc.BackgroundImage = Gob;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0)
+                                    {
+                                        sword = sword - 1;
+
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 7)
+                            {
+                                picnpc.BackgroundImage = Gok;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword > 2 && Armor > 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 4;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
+
                         }
                         if (Gold >= 100 && Btrade == true)
                         {
@@ -1384,6 +1726,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                     picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
@@ -1518,6 +1861,7 @@ namespace GameofLifedanielT
                         txtdialog.Text = lab.Kommentar(panMain, panel, _row, _column, Lvl, txtdialog.Text);
                         sword = lab.Schliefff(panMain, panel, _row, _column, sword);
                         lab.Event(panMain, panel, _row, _column, Lvl);
+                        Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
@@ -1682,6 +2026,115 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 5)
+                            {
+                                picnpc.BackgroundImage = EGua;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0 && Armor > 1)
+                                    {
+                                        sword = sword - 1;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 400;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 6)
+                            {
+                                picnpc.BackgroundImage = Gob;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword > 0)
+                                    {
+                                        sword = sword - 1;
+
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 100;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 7)
+                            {
+                                picnpc.BackgroundImage = Gok;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs > 1)
+                                    {
+                                        Bombs--;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword > 2 && Armor > 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 4;
+                                        Gold = Gold + 3000;
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
 
                         }
                         if (Gold >= 100 && Btrade == true)
@@ -1792,6 +2245,7 @@ namespace GameofLifedanielT
                     lblkeycount.Text = Keys.ToString();
                     lblMenge.Text = Gold.ToString();
                     lblsword.Text = sword.ToString();
+                    txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                     picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                     if (leverover == false)
                     {
@@ -1898,6 +2352,9 @@ namespace GameofLifedanielT
                 sword = 0;
                 Gold = 500;
                 Tokens = 0;
+                Mana = 0;
+                Spellpower = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
@@ -1949,6 +2406,9 @@ namespace GameofLifedanielT
                 Keys = 0;
                 Rowsd = 0;
                 Columnsd = 0;
+                Mana = 0;
+                Spellpower = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
@@ -1992,8 +2452,11 @@ namespace GameofLifedanielT
                 Potions = 0;
                 sword = 1;
                 Gold = 2500;
+                Mana = 0;
+                Spellpower = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
@@ -2042,8 +2505,11 @@ namespace GameofLifedanielT
                 Potions = 0;
                 Rowsd = 0;
                 Columnsd = 0;
+                Mana = 0;
+                Spellpower = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
@@ -2117,8 +2583,11 @@ namespace GameofLifedanielT
                 Potions = 2;
                 sword = 3;
                 Gold = 4000;
+                Mana = 0;
+                Spellpower = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
@@ -2167,8 +2636,12 @@ namespace GameofLifedanielT
                 Potions = 2;
                 Rowsd = 0;
                 Columnsd = 0;
+                Mana = 0;
+                Spellpower = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
                 lstinve.Items.Clear();
                 lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
                 lstinve.Items.Add("Bomben " + Bombs.ToString());
@@ -2209,6 +2682,9 @@ namespace GameofLifedanielT
                 Potions = 1;
                 sword = 2;
                 Gold = 4500;
+                Mana = 0;
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
+                Spellpower = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
                 txtboxLife.Width = (30 * Life);
@@ -2259,6 +2735,8 @@ namespace GameofLifedanielT
                 Potions = 1;
                 Rowsd = 0;
                 Columnsd = 0;
+                Mana = 0;
+                Spellpower = 0;
                 picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
                 Tokens = 0;
                 lstinve.Items.Clear();
