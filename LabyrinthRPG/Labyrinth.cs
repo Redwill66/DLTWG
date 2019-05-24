@@ -2723,5 +2723,44 @@ namespace GameofLifedanielT
 
             fnp.ShowDialog();
         }
+        bool Toxic = false;
+        private void btntroll_Click(object sender, EventArgs e)
+        {
+           
+            while (Toxic== false)
+            {
+                MessageBox.Show("Reingelegt du Cheater");
+
+                DialogResult dialogResult = MessageBox.Show("Gift soll so bleiben wie es ist einverstanden", "Du Liebst Gift oder?", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                    Toxic = true;
+                    MessageBox.Show("Danke, dass du Zustimmst, dass das Gift Feature Gut ist :)");
+                    Potions++;
+                    Gold = Gold + 500;
+                    lstinve.Items.Clear();
+                    lstinve.Items.Add("Rüstungsdicke " + Armor.ToString());
+                    lstinve.Items.Add("Bomben " + Bombs.ToString());
+                    lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                    lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                    lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                    lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                    lblArmorCount.Text = Armor.ToString();
+                    lblBombCount.Text = Bombs.ToString();
+                    lbllifeCount.Text = Life.ToString();
+                    lblkeycount.Text = Keys.ToString();
+                    lblMenge.Text = Gold.ToString();
+                    lblsword.Text = sword.ToString();
+                    txtboxLife.Width = (30 * Life);
+                    txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                    picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                }
+            else if (dialogResult == DialogResult.No)
+            {
+
+                 
+                }
+            }
+        }
     }
 }
