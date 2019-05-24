@@ -112,5 +112,13 @@ namespace GameofLifedanielT
             fnp.ShowDialog();
             Close();
         }
+
+        private void btnhelp_Click(object sender, EventArgs e)
+        {
+            frmHelp_Page fnp = new frmHelp_Page();
+          
+            fnp.ShowDialog();
+        
+        }
     }
 }
