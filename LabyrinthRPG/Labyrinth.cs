@@ -12,7 +12,9 @@ namespace GameofLifedanielT
 {
   
     public partial class Labyrinth : Form
+
     {
+        //Die Bilder für die Encounter werden hier geladen
         Bitmap Secret = Properties.Resources.Secret;
         Bitmap Bandit = Properties.Resources.Dieb;
         Bitmap BanditC = Properties.Resources.BanditChef;
@@ -21,34 +23,29 @@ namespace GameofLifedanielT
         Bitmap Gua = Properties.Resources.Guard_Captain;
         Bitmap Gob = Properties.Resources.Goblin;
         Bitmap Gok = Properties.Resources.Goblin_King;
+        // Dies sind die Daten von Grid 
         private int _row;
-        private int _column;
-       
-       
+        private int _column;            
         private const int CellSize = 22;
         private const int MaxRows = 40;
         private const int MaxColumns = 40;
-
-        public const int size = 8;
-
-
-        //   private const int CellSize = 10;
         private static int depth = 6;
-        // public static List<Figure> Figures = new List<Figure>();
-
+        public const int size = 8;
         private readonly string[,,] _grid = new string[MaxColumns, MaxRows, depth];
-        private const string Free = "Free";
-        private const string Button = "Button";
-        private const string Play = "Play";
+        //Dieses Static dient dazu das der Spiel ein wenig backstory bekommt, es speichert Level das ausgewählt ist
+        public static int Levelstory;
+            
+        //Die Meisten Funktion sind in LabFunk
         Labfunk lab = new Labfunk();
+        //Dient dazu welches Bild für den Avatar benutzt wird
         LabAvatarFunk labAv = new LabAvatarFunk();
+        // Nur wenn der Spieler Alive ist kann er etwas machen.
         bool Alive = true;
+
         public Labyrinth()
         {
             InitializeComponent();
         
-
-
         }
 
         private void btnback_Click(object sender, EventArgs e)
@@ -59,7 +56,9 @@ namespace GameofLifedanielT
             fnp.ShowDialog();
             Close();
         }
+
         PictureBox panel = new PictureBox();
+        //Die meisten Stats des Charakters
         int MaxLife = 3;
         int Life = 3;
         int Armor = 0;
@@ -75,9 +74,22 @@ namespace GameofLifedanielT
         int Lvl = 1;
         private void btnlvlone_Click(object sender, EventArgs e)
         {
-            btnlvlone.Enabled = false;
-            btnlvlone.Enabled = true;
             Lvl = 1;
+            Levelstory = Lvl;
+            DialogResult dialogResult = MessageBox.Show("Willst du ein Wenig Story zu Vorgeschichte hören", "Some Title", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                frmLabStory fnp = new frmLabStory();
+                fnp.ShowDialog();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+              
+            }
+      
+        btnlvlone.Enabled = false;
+            btnlvlone.Enabled = true;
+            //Lvl = 1;
             if (Gene == false)
             {
                 foreach (PictureBox panel in panMain.Controls)
@@ -86,6 +98,7 @@ namespace GameofLifedanielT
                 }
                     Gene = true;
                 txtdialog.Text = "Du machst langsam auf, du hörst dass zwitschern von Vögel, du steht langsam auf, du fragst dich.'Wo bin ich?' Natürlich antwortet dir niemand. Danach fragst du dich 'Wer bin ich?', da natürlich auch keiner auf diese frage Antwortet entscheidest du dich nach einer Zivilisation zu suchen";
+                // Die Stats die du am anfang vom Level bekommst
                 Life = 3;
                 Armor = 0;
                 Bombs = 0;
@@ -137,7 +150,8 @@ namespace GameofLifedanielT
                 foreach (PictureBox panel in panMain.Controls)
                 {
                     panel.BackColor = Color.LightGreen;
-                }
+                } 
+                // Die Stats die du beim neustart vom Level bekommst
                 Life = 3;
                 Armor = 0;
                 Bombs = 0;
@@ -178,9 +192,7 @@ namespace GameofLifedanielT
         private void panel_Click(object sender, EventArgs e)
         {
             if (first==true)
-            {
-
-          
+            {          
             MouseEventArgs me = (MouseEventArgs)e;
 
             PictureBox panel = ((PictureBox)sender);
@@ -205,15 +217,11 @@ namespace GameofLifedanielT
         bool Fight = false;
         bool Payheal = false;
         bool cheat = false;
-       // bool Event = false;
-
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
         {
             Btrade = true;
             if (Alive== true)
             {
-
-
                 if (e.KeyChar == 's')
                 {
 
@@ -233,14 +241,10 @@ namespace GameofLifedanielT
                                 trade = false;
                             }
                             Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
-
-
                         }
                         if (Keys > 0)
                         {
                             Keys = lab.KeyU(panMain, panel, _row, _column, Keys);
-
-
                         }
                         if (sword > 0)
                         {
@@ -253,8 +257,6 @@ namespace GameofLifedanielT
                                 trade = false;
                             }
                             sword = lab.SworU(panMain, panel, _row, _column, sword);
-
-
                         }
                         if (Tokens > 0)
                         {
@@ -264,14 +266,9 @@ namespace GameofLifedanielT
                             {
                                 Gold = Gold + Tokens * 150;
                                 Tokens = 0;
-
                                 trade = false;
-                            }
-                            // sword = lab.SworU(panMain, panel, _row, _column, sword);
-
-
+                            }     
                         }
-
                         lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armor = lab.Schield(panMain, panel, _row, _column, Armor);
@@ -290,9 +287,7 @@ namespace GameofLifedanielT
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         lab.Event(panMain, panel, _row, _column, Lvl);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
-                        picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc, Lvl);
-                     
-                       
+                        picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc, Lvl);                                        
                         if (cheat == true)
                         {
                             MaxLife = 3;
@@ -328,8 +323,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -368,8 +361,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -388,8 +379,7 @@ namespace GameofLifedanielT
                                     {
                                         sword--;
                                         Armor--;
-                                        Gold = Gold + 200;
-                                     
+                                        Gold = Gold + 200;                                    
                                         Fight = false;
                                         encounte = 0;
                                     }
@@ -401,8 +391,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -424,7 +412,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
                                     if (sword > 1 && Armor > 1)
                                     {
                                         sword = sword - 2;
@@ -442,8 +429,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -457,8 +442,6 @@ namespace GameofLifedanielT
                                 Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
-
-
                                     if (sword > 0 && Armor > 1)
                                     {
                                         sword = sword - 1;
@@ -476,8 +459,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -491,8 +472,6 @@ namespace GameofLifedanielT
                                 Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
                                 if (Fight == true)
                                 {
-
-
                                     if (sword > 0)
                                     {
                                         sword = sword - 1;
@@ -510,8 +489,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -551,8 +528,6 @@ namespace GameofLifedanielT
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -597,8 +572,6 @@ namespace GameofLifedanielT
                                 Payheal = false;
                             }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
-
-
                         }
                         if (sword > 0)
                         {
@@ -609,10 +582,7 @@ namespace GameofLifedanielT
                                 sword--;
                                 Gold = Gold + 100;
                                 trade = false;
-                            }
-                            //  sword = lab.SworU(panMain, panel, _row, _column, sword);
-
-
+                            }                       
                         }
                         if (Bombs > 0)
                         {
@@ -624,9 +594,6 @@ namespace GameofLifedanielT
                                 Gold = Gold + 200;
                                 trade = false;
                             }
-                            //  Bombs = lab.BomU(panMain, panel, _row, _column, Bombs);
-
-
                         }
                         if (Armor == 0)
                         {
@@ -799,10 +766,7 @@ namespace GameofLifedanielT
                                 Tokens = 0;
 
                                 trade = false;
-                            }
-                            // sword = lab.SworU(panMain, panel, _row, _column, sword);
-
-
+                            }             
                         }
 
                         lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
@@ -2292,9 +2256,6 @@ namespace GameofLifedanielT
                             }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
-
-
-
                     }
                     if (Life == 0)
                     {
@@ -2326,10 +2287,7 @@ namespace GameofLifedanielT
             
         }
 
-        private void lblArmor_Click(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnlv2_Click(object sender, EventArgs e)
         {
@@ -2348,7 +2306,7 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
-                Potions = 0;
+                Potions = 1;
                 sword = 0;
                 Gold = 500;
                 Tokens = 0;
@@ -2401,7 +2359,7 @@ namespace GameofLifedanielT
                 Tokens = 0;
                 Bombs = 0;
                 sword = 0;
-                Potions = 0;
+                Potions = 1;
                 Gold = 500;
                 Keys = 0;
                 Rowsd = 0;
@@ -2449,7 +2407,7 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 1;
                 Keys = 0;
-                Potions = 0;
+                Potions = 1;
                 sword = 1;
                 Gold = 2500;
                 Mana = 0;
@@ -2502,7 +2460,7 @@ namespace GameofLifedanielT
                 Gold = 2500;
                 sword = 1;
                 Keys = 0;
-                Potions = 0;
+                Potions = 1;
                 Rowsd = 0;
                 Columnsd = 0;
                 Mana = 0;
@@ -2757,6 +2715,13 @@ namespace GameofLifedanielT
                 Alive = true;
                 first = true;
             }
+        }
+
+        private void btnLore_Click(object sender, EventArgs e)
+        {
+            frmHelp_Page fnp = new frmHelp_Page();
+
+            fnp.ShowDialog();
         }
     }
 }
