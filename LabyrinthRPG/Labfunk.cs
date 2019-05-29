@@ -76,6 +76,8 @@ namespace GameofLifedanielT
         Bitmap Bettler2 = Properties.Resources.Bettler2;
         Bitmap Bettlerin = Properties.Resources.Bettlerin;
         Bitmap Bandit = Properties.Resources.Dieb;
+        Bitmap Bombe = Properties.Resources.Bomb;
+        Bitmap Healspot = Properties.Resources.Healspot;
         public const int size = 8;
 
 
@@ -182,7 +184,7 @@ namespace GameofLifedanielT
                 Height = CellSize,
                 Width = CellSize,
 
-                BorderStyle = BorderStyle.FixedSingle
+               // BorderStyle = BorderStyle.FixedSingle
 
             };
           
@@ -375,7 +377,7 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Wass && _rows < 17 )
                 {
                    // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.Turquoise;
+                      panel.BackColor = Color.SteelBlue;
                 }
                 else if (_grid[_columns, _rows, 0] == Wass && _rows >= 17 )
 
@@ -580,7 +582,7 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Wass)
                 {
                     // panel.BackColor = Color.LightGreen;
-                    panel.BackColor = Color.Turquoise;
+                    panel.BackColor = Color.SteelBlue;
                 }
                
                 if (_grid[_columns, _rows, 0] == Hinw && _rows == 31&& _columns==4)
@@ -953,7 +955,7 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Wass && _columns < 7)
                 {
                     //panel.BackgroundImage = Burg;
-                    panel.BackColor = Color.Turquoise;
+                    panel.BackColor = Color.SteelBlue;
 
                 }
                 else if (_grid[_columns, _rows, 0] == Wass && _columns >= 7)
@@ -1278,7 +1280,7 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Wass && _columns < 7)
                 {
                     //panel.BackgroundImage = Burg;
-                    panel.BackColor = Color.Turquoise;
+                    panel.BackColor = Color.SteelBlue;
 
                 }
                 else if (_grid[_columns, _rows, 0] == Wass && _columns >= 7)
@@ -1624,7 +1626,7 @@ namespace GameofLifedanielT
 
             return panel;
         }
-        public void Colors(PictureBox panel, int _rows, int _columns,int lvl)
+        public void Colors(PictureBox panel, int _rows, int _columns,int lvl, bool wait)
         {
 
             
@@ -1634,7 +1636,7 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.Brown;
                
             }
-            if (_grid[_columns, _rows, 0] == Heal && panel.BackColor != Color.Red)
+            if (_grid[_columns, _rows, 0] == Heal && panel.BackColor != Color.LightPink)
             {
                 if (lvl ==2 && _columns==38&& _rows==35|| lvl == 2 && _columns == 36 && _rows == 25 || lvl == 2 && _columns == 21 && _rows == 17)
                 {
@@ -1734,7 +1736,7 @@ namespace GameofLifedanielT
             if (_grid[_columns, _rows, 0] == Wass)
             {
                 panel.Image = Watery;
-                panel.BackColor = Color.Turquoise;
+                panel.BackColor = Color.SteelBlue;
             }
             if (_grid[_columns, _rows, 0] == Hinw)
             {
@@ -1751,7 +1753,12 @@ namespace GameofLifedanielT
             }
             if (_grid[_columns, _rows, 0] == Gift && panel.BackColor != Color.Purple)
             {
-                if (lvl == 2 && _columns > 21 && _rows > 16 )
+                if (wait== true)
+                {
+                    panel.BackgroundImage = Giftig;
+                    panel.BackColor = Color.Purple;
+                }
+              else  if (lvl == 2 && _columns > 21 && _rows > 16 )
                 {
                     panel.BackgroundImage = Boden;
                     panel.BackColor = Color.DarkGray;
@@ -2310,7 +2317,8 @@ namespace GameofLifedanielT
             if (_grid[_columns, _rows, 0] == Star || panel.BackColor == Color.Yellow )
             {
                 panel.Image = Secret;
-             //   panel.BackgroundImage = Secret;
+                //   panel.BackgroundImage = Secret;
+                panel.BorderStyle = BorderStyle.FixedSingle;
                 _grid[_columns, _rows, 1] = Player;
             }
 
@@ -2322,6 +2330,7 @@ namespace GameofLifedanielT
         int empty = 0;
         public PictureBox Down(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss,int schleif,int lvl,int gold,int Tokens)
         {
+            bool wait = false;
            if ( _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == VTur && Keysss == 0 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Haus || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Rock && Bombs == 0 || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Wall || _grid[_column, _row, 1] == Player && _grid[_column, _row + 1, 0] == Wass || _grid[_column, _row , 1] == Player && _grid[_column, _row+1, 0] == Wald)
              {
                 if (_grid[_column, _row+1, 0] == VTur)
@@ -2383,7 +2392,7 @@ namespace GameofLifedanielT
             if (_grid[_column+1, _row + 1, 1] == Player || _grid[_column-1, _row + 1, 1] == Player || _grid[_column+1, _row - 1, 1] == Player || _grid[_column-1, _row - 1, 1] == Player || _grid[_column, _row-1, 1] == Player || _grid[_column, _row+1, 1] == Player || _grid[_column-1, _row, 1] == Player || _grid[_column, _row, 1] == Player|| _grid[_column+1, _row, 1] == Player)
             {
 
-                Colors(panel, _row,  _column, lvl);
+                Colors(panel, _row,  _column, lvl,wait);
             }
             }
 
@@ -2486,9 +2495,25 @@ namespace GameofLifedanielT
 
             return panel;
         }
+        public PictureBox Wait(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens,bool wait)
+        {
+            if (_row > 0 && _column > 0 && _row < 39 && _column < 39)
+            {
+
+                if (_grid[_column + 1, _row + 1, 1] == Player || _grid[_column - 1, _row + 1, 1] == Player || _grid[_column + 1, _row - 1, 1] == Player || _grid[_column - 1, _row - 1, 1] == Player || _grid[_column, _row - 1, 1] == Player || _grid[_column, _row + 1, 1] == Player || _grid[_column - 1, _row, 1] == Player || _grid[_column, _row, 1] == Player || _grid[_column + 1, _row, 1] == Player)
+                {
+
+                    Colors(panel, _row, _column, lvl,wait);
+                }
+            }
+
+            return panel;
+        }
+    
         public PictureBox Up(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens)
         {
-           
+            bool wait = false;
+
             if (_row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == VTur && Keysss == 0 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Rock && Bombs == 0 || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Wall || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Haus || _row < 39 && _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Wass || _row < 39 && _grid[_column, _row+1, 1] == Player && _grid[_column, _row , 0] == Wald)
             {
                 if (_grid[_column, _row, 0] == VTur)
@@ -2548,7 +2573,7 @@ namespace GameofLifedanielT
                 if (_grid[_column + 1, _row + 1, 1] == Player || _grid[_column - 1, _row + 1, 1] == Player || _grid[_column + 1, _row - 1, 1] == Player || _grid[_column - 1, _row - 1, 1] == Player || _grid[_column, _row - 1, 1] == Player || _grid[_column, _row + 1, 1] == Player || _grid[_column - 1, _row, 1] == Player || _grid[_column, _row, 1] == Player || _grid[_column + 1, _row, 1] == Player)
                 {
 
-                    Colors(panel, _row, _column,lvl);
+                    Colors(panel, _row, _column,lvl,wait);
                 }
             }
 
@@ -2641,6 +2666,7 @@ namespace GameofLifedanielT
         }
         public PictureBox Left(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens)
         {
+            bool wait = false;
             if (_column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == VTur && Keysss == 0 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Rock && Bombs == 0 || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Haus || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Wall || _column < 39 && _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Wass || _column < 39&& _grid[_column+1, _row, 1] == Player && _grid[_column, _row, 0] == Wald)
             {
                 if (_grid[_column, _row, 0] == VTur)
@@ -2703,7 +2729,7 @@ namespace GameofLifedanielT
                 if (_grid[_column + 1, _row + 1, 1] == Player || _grid[_column - 1, _row + 1, 1] == Player || _grid[_column + 1, _row - 1, 1] == Player || _grid[_column - 1, _row - 1, 1] == Player || _grid[_column, _row - 1, 1] == Player || _grid[_column, _row + 1, 1] == Player || _grid[_column - 1, _row, 1] == Player || _grid[_column, _row, 1] == Player || _grid[_column + 1, _row, 1] == Player)
                 {
 
-                    Colors(panel, _row, _column,lvl);
+                    Colors(panel, _row, _column,lvl,wait);
                 }
             }
 
@@ -2801,7 +2827,8 @@ namespace GameofLifedanielT
         }
         public PictureBox Right(Panel panMain, PictureBox panel, int _row, int _column, int Rowsd, int Columnsd, int Bombs, int Keysss, int schleif, int lvl, int gold, int Tokens)
         {
-        
+            bool wait = false;
+
             if (_grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == VTur && Keysss == 0 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Rock && Bombs == 0 || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Haus || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Wall || _grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Wass||_grid[_column, _row, 1] == Player && _grid[_column + 1, _row, 0] == Wald)
             {
                 if (_grid[_column+1, _row, 0] == VTur)
@@ -2860,7 +2887,7 @@ namespace GameofLifedanielT
                 if (_grid[_column + 1, _row + 1, 1] == Player || _grid[_column - 1, _row + 1, 1] == Player || _grid[_column + 1, _row - 1, 1] == Player || _grid[_column - 1, _row - 1, 1] == Player || _grid[_column, _row - 1, 1] == Player || _grid[_column, _row + 1, 1] == Player || _grid[_column - 1, _row, 1] == Player || _grid[_column, _row, 1] == Player || _grid[_column + 1, _row, 1] == Player)
                 {
 
-                    Colors(panel, _row, _column,lvl);
+                    Colors(panel, _row, _column,lvl,wait);
                 }
             }
 
@@ -3174,14 +3201,14 @@ namespace GameofLifedanielT
                 if (dialogResult == DialogResult.Yes)
                 {
                     MessageBox.Show("Du füllst dich voller Leben(Leben auf Max)");
-                    panel.BackColor = Color.Red;
-                    panel.BackgroundImage = null;
+                    panel.BackColor = Color.LightPink;
+                    panel.BackgroundImage = Healspot;
                     Life = MaxLife;
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    panel.BackColor = Color.Red;
-                    panel.BackgroundImage = null;
+                    panel.BackColor = Color.LightPink;
+                    panel.BackgroundImage = Healspot;
                 }
               
             }
@@ -3326,7 +3353,7 @@ namespace GameofLifedanielT
                 else if (dialogResult == DialogResult.No)
                 {
                     panel.BackColor = Color.OrangeRed;
-                    panel.BackgroundImage = null;
+                    panel.BackgroundImage = Bombe;
                 }
 
 
@@ -3893,10 +3920,10 @@ namespace GameofLifedanielT
 
                 Kommen = Dialog;
             }
-            else if (_grid[24, 19, 1] == Player && panel.Image == Secret && Level == 4 && count == 1)
+             if (_grid[24, 19, 1] == Player && panel.Image == Secret && Level == 4 && count == 1)
             {
 
-                Dialog = "So sehen wir uns also wieder, [Spieler] ich dachte ich hätte dich eliminiert, du wirst nie der Erbe des Thrones werden. Versuch nicht mal zu fliehen ich habe schon die ganze StadtWache benachrichtig. Und gerade in diesen moment geht einer meiner Boten zu Granitos, selbst wenn du enkommst so wird er dich Jagen, so es ist Zeit für dich zum Sterben! Wachen!!!!";
+                Dialog = "So sehen wir uns also wieder, [Spieler] ich dachte ich hätte dich eliminiert, du wirst nie der Erbe des Thrones werden. Versuch nicht mal zu fliehen ich habe schon die ganze Stadtwache benachrichtig. Und gerade in diesen moment geht einer meiner Boten zu Granitos, selbst wenn du enkommst so wird er dich Jagen, so es ist Zeit für dich zum Sterben! Wachen!!!!";
                 _grid[32, 17, 0] = Tepp;
                 _grid[32, 20, 0] = Tepp;
 
@@ -3952,7 +3979,7 @@ namespace GameofLifedanielT
                     _grid[25, 15, 2] = Loot.ToString(); _grid[25, 15, 4] = Guar;               
                     _grid[18, 8, 2] = Loot.ToString(); _grid[18, 8, 4] = GuaK;
 
-
+                Kommen = Dialog;
             }
             if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Pers && Level == 5)
             {
@@ -4222,21 +4249,33 @@ namespace GameofLifedanielT
             }
             return ende;
         }
-        public int BomU(Panel panMain, PictureBox panel, int _row, int _column, int Bombs)
+        public int BomU(Panel panMain, PictureBox panel, int _row, int _column, int Bombs,int lvel)
         {
             if (_row>0)
             {
 
-          
-            if (_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Rock)
-            {
-                _grid[_column, _row, 0] = Gras;
-                panel.BackColor = Color.LightGreen;
+
+                if (_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Rock && lvel == 5)
+                {
+                    _grid[_column, _row, 0] = Stha;
+                    panel.BackColor = Color.LightGreen;
                     panel.BackgroundImage = null;
                     Bombs--;
-            }
-               
-              
+                }
+
+                else if(_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Rock)
+           
+                        {
+
+                    _grid[_column, _row, 0] = Gras;
+
+                    panel.BackColor = Color.LightGreen;
+
+                    panel.BackgroundImage = null;
+                    Bombs--;
+                }
+
+
             }
             return Bombs;
 
@@ -4279,19 +4318,26 @@ namespace GameofLifedanielT
             return Bombs;
 
         }
-        public int BomU2(Panel panMain, PictureBox panel, int _row, int _column, int Bombs)
+        public int BomU2(Panel panMain, PictureBox panel, int _row, int _column, int Bombs,int lvel)
         {
             if (_row < 39)
             {
-                if (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Rock)
+                if (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Rock && lvel == 5)
+                {
+                    _grid[_column, _row, 0] = Stha;
+                    panel.BackgroundImage = null;
+                    panel.BackColor = Color.LightGreen;
+                    Bombs--;
+                }
+                else if (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Rock)
                 {
                     _grid[_column, _row, 0] = Gras;
                     panel.BackgroundImage = null;
                     panel.BackColor = Color.LightGreen;
                     Bombs--;
                 }
-             
-              
+
+
             }
             return Bombs;
         }
@@ -4344,19 +4390,26 @@ namespace GameofLifedanielT
             }
             return Bombs;
         }
-        public int BomU3(Panel panMain, PictureBox panel, int _row, int _column, int Bombs)
+        public int BomU3(Panel panMain, PictureBox panel, int _row, int _column, int Bombs, int lvel)
         {
             if (_column < 39)
             {
-                if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Rock)
+                if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Rock && lvel == 5)
+                {
+                    _grid[_column, _row, 0] = Stha;
+                    panel.BackgroundImage = null;
+                    panel.BackColor = Color.LightGreen;
+                    Bombs--;
+                }
+            else    if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Rock)
                 {
                     _grid[_column, _row, 0] = Gras;
                     panel.BackgroundImage = null;
                     panel.BackColor = Color.LightGreen;
                     Bombs--;
                 }
-              
-              
+
+
             }
             return Bombs;
         }
@@ -4409,20 +4462,27 @@ namespace GameofLifedanielT
             }
             return Bombs;
         }
-        public int BomU4(Panel panMain, PictureBox panel, int _row, int _column, int Bombs)
+        public int BomU4(Panel panMain, PictureBox panel, int _row, int _column, int Bombs, int lvel)
         {
             if (_column > 0)
             {
 
-                if (_grid[_column-1, _row, 1] == Player && _grid[_column, _row, 0] == Rock)
+                if (_grid[_column-1, _row, 1] == Player && _grid[_column, _row, 0] == Rock && lvel == 5)
+                {
+                    _grid[_column, _row, 0] = Stha;
+                    panel.BackgroundImage = null;
+                    panel.BackColor = Color.LightGreen;
+                    Bombs--;
+                }
+            else    if (_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Rock)
                 {
                     _grid[_column, _row, 0] = Gras;
                     panel.BackgroundImage = null;
                     panel.BackColor = Color.LightGreen;
                     Bombs--;
                 }
-             
-               
+
+
             }
             return Bombs;
         }
@@ -5067,8 +5127,34 @@ namespace GameofLifedanielT
 
             return fight;
         }
+        public PictureBox Death(Panel panMain, PictureBox panel, int _row, int _column, int lvl)
+        {
+            if (panel.Image == Secret)
+            {
+                _grid[_column, _row, 1] = null;
+                panel.Image = null;
+
+                p = 0;
+                c = 0;
+            }
 
 
+            return panel;
+        }
 
+        public PictureBox Respawn(Panel panMain, PictureBox panel, int _row, int _column, int lvl)
+        {
+            if (lvl==2 && _grid[_column, _row, 1] == Player)
+            {
+                _grid[_column, _row, 1] = null;
+                panel.Image = null;
+                _grid[8, 6, 1] = Player;
+                p = 0;
+                c = 0;
+
+            }
+   
+            return panel;
+        }
     }
 }
