@@ -257,6 +257,10 @@ namespace GameofLifedanielT
                         {
                             Keys = lab.KeyU(panMain, panel, _row, _column, Keys);
                         }
+                        if (Mana > 0)
+                        {
+                            Mana = lab.ManU(panMain, panel, _row, _column, Mana, Lvl);
+                        }
                         if (sword > 0)
                         {
                             item = 2;
@@ -280,7 +284,7 @@ namespace GameofLifedanielT
                                 trade = false;
                             }
                         }
-                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
+                        lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat  = lab.Schield(panMain, panel, _row, _column, Armormat);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
@@ -741,6 +745,17 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 1;
+                                _column = 4;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
 
@@ -831,6 +846,16 @@ namespace GameofLifedanielT
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
                         }
+                        else if (Lvl == 6)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 1;
+                            _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
 
 
                     }
@@ -911,6 +936,10 @@ namespace GameofLifedanielT
 
 
                         }
+                        if (Mana > 0)
+                        {
+                            Mana = lab.ManU2(panMain, panel, _row, _column, Mana, Lvl);
+                        }
                         if (sword > 0)
                         {
                             item = 2;
@@ -938,7 +967,7 @@ namespace GameofLifedanielT
                             }
                         }
 
-                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
+                        lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat = lab.Schield(panMain, panel, _row, _column, Armormat);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -1421,6 +1450,17 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 1;
+                                _column = 4;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
 
@@ -1511,6 +1551,16 @@ namespace GameofLifedanielT
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
                         }
+                        else if (Lvl == 6)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 1;
+                            _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
 
 
                     }
@@ -1542,6 +1592,10 @@ namespace GameofLifedanielT
 
 
                         }
+                        if (Mana > 0)
+                        {
+                            Mana = lab.ManU3(panMain, panel, _row, _column, Mana, Lvl);
+                        }
                         if (sword > 0)
                         {
                             item = 2;
@@ -1572,7 +1626,7 @@ namespace GameofLifedanielT
 
                         }
 
-                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
+                        lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat = lab.Schield(panMain, panel, _row, _column, Armormat);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -2060,6 +2114,18 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 1;
+                                _column = 4;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
+
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
 
@@ -2150,6 +2216,16 @@ namespace GameofLifedanielT
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
                         }
+                        else if (Lvl == 6)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 1;
+                            _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
 
 
                     }
@@ -2181,6 +2257,10 @@ namespace GameofLifedanielT
 
 
                         }
+                        if (Mana > 0)
+                        {
+                            Mana = lab.ManU4(panMain, panel, _row, _column, Mana, Lvl);
+                        }
                         if (sword > 0)
                         {
                             item = 2;
@@ -2211,7 +2291,7 @@ namespace GameofLifedanielT
 
                         }
 
-                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens);
+                        lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
                         leverover = lab.Endes(panMain, panel, _row, _column);
@@ -2693,6 +2773,17 @@ namespace GameofLifedanielT
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
                             }
+                            else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 1;
+                                _column = 4;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                         }
                     }
@@ -2775,6 +2866,16 @@ namespace GameofLifedanielT
                             Respawn--;
                             lblrespawn.Text = Respawn.ToString();
                             _row = 3;
+                            _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 6)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 1;
                             _column = 4;
                             Rowsd = _row;
                             Columnsd = _column;
@@ -3327,6 +3428,113 @@ namespace GameofLifedanielT
             {
 
             }
+        }
+
+        private void btnlvl6_Click(object sender, EventArgs e)
+        {
+            btnlvl6.Enabled = false;
+            btnlvl6.Enabled = true;
+            Lvl = 6;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Respawn = 3;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                lblArmor.Text = Armor.ToString();
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
+                Spellpower = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblArmor.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Respawn = 3;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                Rowsd = 0;
+                Columnsd = 0;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                Spellpower = 0;
+                lblArmor.Text = Armor.ToString();
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+
         }
     }
 }

@@ -45,6 +45,11 @@ namespace GameofLifedanielT
         Bitmap Saveyn = Properties.Resources.Saveyn;
         Bitmap Head_Festor = Properties.Resources.Head_Festor;
         Bitmap Castrosadorf = Properties.Resources.Castrosadorf;
+        Bitmap EstorKing = Properties.Resources.EstorKing;
+        Bitmap WappenEstor = Properties.Resources.WappenEstor;
+        Bitmap Armorkaeufer = Properties.Resources.Armorkaeufer;
+        Bitmap Schmied = Properties.Resources.Schmied;
+        Bitmap Zollpirat = Properties.Resources.Zollpirat;
         private void btnback_Click(object sender, EventArgs e)
         {
             Hide();
@@ -104,6 +109,15 @@ namespace GameofLifedanielT
                 lblName.Text = "Saveyn Ohmras";
                 lblwappen.Text = "Sohn des Wüstenteufels(Berühmter General von Sahawreed)";
                 txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Estor")
+            {
+                picnpc.BackgroundImage = EstorKing;
+                picwappen.BackgroundImage = WappenEstor;
+                lblName.Text = "König von Estor";
+                lblwappen.Text = "Land der Fürsten und des Geldes";
+                txtHelp.Text = "Estor das Land das vom Geld gelenkt wird. Bei dessen König handelt es sich eher um die reichste Person von Estor, Handel liegt allen Bewohner im Blut, es gab nichts, dass sie mehr Interessierte ausser etwas. Castrosa, ihr auftreten bewegt die sonst nur Geld gierigen Bewohner von Estor und verhinderte den beinahe beitritt, von Estor auf die Seite von dem Empire. Nach dem Krieg galt sie in Estor als Göttliche. Daher interessiert die Bevölkerung heutzutage nicht nur Geld, jedoch ist Geld immer noch ein grosser Fokus. Gesetzlich ist das Land ziemlich frei, man muss bedenken, der Reichere hat immer mehr zu sagen als alle andere. Erstaunlicherweise aber führen sie Selten bis gar keinen Krieg, sie sehen diesen als eine Verschwendung von Geld.";
 
             }
             //Hilfe
@@ -245,6 +259,22 @@ namespace GameofLifedanielT
                 lblwappen.Text = "Du bist in einem Vulkan du Idiot";
                 txtHelp.Text = "Lava, ähnlich wie Dornenbüsche, veruhrsachen direkten Schaden; im Fall von Lava sind das zwei Punkte auf Leben. Und nein du gehts nicht in Lava swimmen(hmm gegrillter Spieler)ehm ich meine du würde direkt sterben. Du läufst im Prinzip auf bruch stück die nicht Lava sind. Der Schaden sind die Giftigen dämpfe der Lave(Schwefel usw.).";
             }
+            else if (lstHelpLore.Text == "Handel")
+            {
+                picnpc.BackgroundImage = Schmied;
+                picwappen.BackgroundImage = Armorkaeufer;
+                lblName.Text = "Ich will dein Geld";
+                lblwappen.Text = "Oder deine Austrüstung";
+                txtHelp.Text = "Händler, Schmied, Diebe Usw. Viele Personen bieten dir für Geld Materialien an, die dananch an anderen Orten verwenden kannst. Auch das Gegenteilige ist vorhanden, Händler die dir Ausrüstung anbieten für Geld, bedenke einfach Geld ist nicht unendlich, auch wenn ich dir Viel gebe.";
+            }
+            else if (lstHelpLore.Text == "Tribut")
+            {
+                picnpc.BackgroundImage = Zollpirat;
+                picwappen.BackgroundImage = Money;
+                lblName.Text = "Für Geld lasse ich dich durch";
+                lblwappen.Text = "Geht doch";
+                txtHelp.Text = "An manchen Stellen wird man Geld verlangen, damit du durchgehen kannst und zwar jedes mal. Sei also sicher das du nicht nochmal durchgehen musst, manchmal ist nur eine Abkürzung. Ist es aber Pflicht durchzugehen, so gibt es auch andere Lösungen aus diesen Maps, diese könnten aber ein Wenig Kostspielig sein.";
+            }
         }
 
         private void btnhelp_Click(object sender, EventArgs e)
@@ -266,8 +296,8 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Dornenbüsche");//
             lstHelpLore.Items.Add("Dornenwand");//
             lstHelpLore.Items.Add("Lava");//
-            lstHelpLore.Items.Add("Handel");
-            lstHelpLore.Items.Add("Tribut");
+            lstHelpLore.Items.Add("Handel");//
+            lstHelpLore.Items.Add("Tribut");//
             lstHelpLore.Items.Add("Encounters");
             lstHelpLore.Items.Add("Bosse");
             lstHelpLore.Items.Add("Tokens");
@@ -286,7 +316,7 @@ namespace GameofLifedanielT
         {
             lstHelpLore.Items.Clear();
             lstHelpLore.Items.Add("Ressos");
-            lstHelpLore.Items.Add("Estor");
+            lstHelpLore.Items.Add("Estor");//
             lstHelpLore.Items.Add("Castrosa");         //
             lstHelpLore.Items.Add("Langchester");
             lstHelpLore.Items.Add("Baron Denoixis");//
