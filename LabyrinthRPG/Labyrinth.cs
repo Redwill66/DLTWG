@@ -169,6 +169,8 @@ namespace GameofLifedanielT
                 Respawn = 3;
                 Mana = 0;
                 Spellpower = 0;
+                txtdialog.Text = "Du machst langsam auf, du hörst dass zwitschern von Vögel, du steht langsam auf, du fragst dich.'Wo bin ich?' Natürlich antwortet dir niemand. Danach fragst du dich 'Wer bin ich?', da natürlich auch keiner auf diese frage Antwortet entscheidest du dich nach einer Zivilisation zu suchen";
+
                 txtboxLife.Width = (30 * Life);
                 txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
                 sword = 0;

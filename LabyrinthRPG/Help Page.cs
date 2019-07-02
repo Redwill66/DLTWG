@@ -317,10 +317,11 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Clear();
             lstHelpLore.Items.Add("Ressos");
             lstHelpLore.Items.Add("Estor");//
-            lstHelpLore.Items.Add("Castrosa");         //
+            lstHelpLore.Items.Add("Castrosa");       //
             lstHelpLore.Items.Add("Langchester");
             lstHelpLore.Items.Add("Baron Denoixis");//
-            lstHelpLore.Items.Add("Ulsster");
+            lstHelpLore.Items.Add("Nangasto");
+            lstHelpLore.Items.Add("Ulsster");          
             lstHelpLore.Items.Add("Vorlondin");
             lstHelpLore.Items.Add("Wencyra");
             lstHelpLore.Items.Add("Dravon");
