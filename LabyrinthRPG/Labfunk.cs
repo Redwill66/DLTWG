@@ -252,7 +252,7 @@ namespace GameofLifedanielT
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     _grid[_columns, _rows, 3] = Money;
                 }
-                if (_rows == 26 && _columns == 19 || _rows == 12 && _columns == 31 || _rows == 16 && _columns == 11 || _rows == 19 && _columns == 3)
+             else   if (_rows == 26 && _columns == 19 || _rows == 12 && _columns == 31 || _rows == 16 && _columns == 11 || _rows == 19 && _columns == 3)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     _grid[_columns, _rows, 3] = Potion;
@@ -263,81 +263,81 @@ namespace GameofLifedanielT
                 {
                     panel.BackColor = Color.Brown;
                 }
-                if (_grid[_columns, _rows, 0] == Heal)
+                else if (_grid[_columns, _rows, 0] == Heal)
                 {
                     panel.BackColor = Color.LightGreen;
                     // panel.BackColor = Color.Red;
                 }
-                if (_grid[_columns, _rows, 0] == Keys)
+                else if (_grid[_columns, _rows, 0] == Keys)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.DarkGoldenrod;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
-                if (_grid[_columns, _rows, 0] == Schi)
+                else if (_grid[_columns, _rows, 0] == Schi)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.Orange;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
-                if (_grid[_columns, _rows, 0] == Wald)
+                else if (_grid[_columns, _rows, 0] == Wald)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.DarkGreen;
                 }
-                if (_grid[_columns, _rows, 0] == Wass)
+                else if (_grid[_columns, _rows, 0] == Wass)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.Turquoise;
                 }
-                if (_grid[_columns, _rows, 0] == Hinw)
+                else if (_grid[_columns, _rows, 0] == Hinw)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.LightGray;
                 }
-                if (_grid[_columns, _rows, 0] == Star)
+                else if (_grid[_columns, _rows, 0] == Star)
                 {
                     panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.Yellow;
                 }
-                if (_grid[_columns, _rows, 0] == Ende)
+                else if (_grid[_columns, _rows, 0] == Ende)
                 {
                     panel.BackColor = Color.LightGreen;
                     // panel.BackColor = Color.DeepPink;
                 }
-                if (_grid[_columns, _rows, 0] == Gift)
+                else if (_grid[_columns, _rows, 0] == Gift)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.Purple;
                 }
-                if (_grid[_columns, _rows, 0] == Rock)
+                else if (_grid[_columns, _rows, 0] == Rock)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.DarkSlateGray;
                 }
-                if (_grid[_columns, _rows, 0] == Haus)
+                else if (_grid[_columns, _rows, 0] == Haus)
                 {
                     panel.BackColor = Color.LightGreen;
                     //   panel.BackColor = Color.SaddleBrown;
                 }
-                if (_grid[_columns, _rows, 0] == Bomb)
+                else if (_grid[_columns, _rows, 0] == Bomb)
                 {
                     panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.OrangeRed;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
-                if (_grid[_columns, _rows, 0] == OTur)
+                else if (_grid[_columns, _rows, 0] == OTur)
                 {
                     panel.BackColor = Color.LightGreen;
                     // panel.BackColor = Color.LightSkyBlue;
                 }
-                if (_grid[_columns, _rows, 0] == VTur)
+                else if (_grid[_columns, _rows, 0] == VTur)
                 {
                     panel.BackColor = Color.LightGreen;
                     //   panel.BackColor = Color.DarkBlue;
                 }
-                if (_grid[_columns, _rows, 0] == Lmax)
+                else if (_grid[_columns, _rows, 0] == Lmax)
                 {
                     panel.BackColor = Color.LightGreen;
                     _grid[_columns, _rows, 2] = Loot.ToString();
@@ -1719,9 +1719,427 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Heal)
                 {
                     //  panel.BackColor = Color.Beige;
+                     panel.BackColor = Color.LightGreen;
+                    //  panel.BackColor = Color.Red;           
+                }
+      
+                if (_grid[_columns, _rows, 0] == Schi)
+                {
+                  
+                    //  panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.Beige;
+                      panel.BackColor = Color.Orange;
+                    panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+
+
+                if (_grid[_columns, _rows, 0] == Bush)
+                {
+                    if (_rows< 12&& _columns<16)
+                    {
+                        panel.BackColor = Color.DarkGreen;
+
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.LightGreen;
+                    }
+                 
+                }
+                if (_grid[_columns, _rows, 0] == Wass && _columns < 3)
+                {
+                    //panel.BackgroundImage = Burg;
+                    panel.BackColor = Color.SteelBlue;
+
+                }
+                else if (_grid[_columns, _rows, 0] == Wass && _columns >= 7)
+
+                {
+                  //  panel.BackColor = Color.SteelBlue;
+                    panel.BackColor = Color.LightGreen;
+                }
+
+                // panel.BackColor = Color.LightGreen;
+
+
+
+                if (_grid[_columns, _rows, 0] == Hinw )
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        panel.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        panel.BackColor = Color.LightGreen;
+                    }
+                  
+                   
+
+                }
+
+          
+                else if (_grid[_columns, _rows, 0] == Kome)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        if (_rows == 6 && _columns == 3)
+                        {
+                            _grid[_columns, _rows, 2] = Loot.ToString();
+                            //panel.BackColor = Color.Beige;
+                            // panel.BackColor = Color.LightGreen;
+                            panel.BackColor = Color.SlateGray;
+                        }
+                        else
+                        {
+                            _grid[_columns, _rows, 2] = Loot.ToString();
+                            //panel.BackColor = Color.Beige;
+                            // panel.BackColor = Color.LightGreen;
+                            panel.BackColor = Color.LightGray;
+                        }
+                      
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        panel.BackColor = Color.LightGreen;
+                    }
+                }
+
+                if (_grid[_columns, _rows, 0] == Star)
+                {
                     // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.Red;
+                    panel.BackColor = Color.Yellow;
+                }
+                if (_grid[_columns, _rows, 0] == Ende)
+                {
+                     panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.DeepPink;
+                   // panel.BackColor = Color.DimGray;
+                }
+
+
+
+                if (_grid[_columns, _rows, 0] == Bomb)
+                {
+                    // panel.BackColor = Color.Beige;
+                    //   panel.BackColor = Color.LightGreen;
+                  //  panel.BackColor = Color.OrangeRed;
+                    panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+                if (_grid[_columns, _rows, 0] == OTur)
+                {
+      
+                    //panel.BackColor = Color.Beige;
+                   //  panel.BackColor = Color.LightSkyBlue;
+                    panel.BackColor = Color.LightGreen;
+                }
+
+                if (_grid[_columns, _rows, 0] == Pers)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        panel.BackColor = Color.LightGray;
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        panel.BackColor = Color.LightGreen;
+                    }
+                 
+                
+                    // panel.BackColor = Color.Beige;
+
+                 
+               
+                }              
+                if (_grid[_columns, _rows, 0] == Swor)
+                {
+                    //  panel.BackColor = Color.Beige;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    // panel.BackColor = Color.Orchid;
+                    panel.BackColor = Color.LightGreen;
+                }
+
+
+                if (_grid[_columns, _rows, 0] == Lmax)
+                {
+                    // panel.BackColor = Color.SaddleBrown;
+                    panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                  //   panel.BackColor = Color.PaleVioletRed;
+                }
+              
+
+
+
+
+                if (_grid[_columns, _rows, 0] == Stha )
+                {
+                    //  panel.BackgroundImage = Port;
+                    panel.BackColor = Color.SlateGray;
+                    //  panel.BackColor = Color.DimGray;
+
+                }
+  
+                if (_grid[_columns, _rows, 0] == Cwal&& _rows < 11 && _columns < 17)
+                {
+                    //panel.BackgroundImage = Burg;
+                    panel.BackColor = Color.DarkSlateGray;
+
+                }
+                else if (_grid[_columns, _rows, 0] == Cwal && _rows >= 12 && _columns >= 17)
+
+                {
+                    //     panel.BackColor = Color.DarkSlateGray;
+                    panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == LTur)
+                {
                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.SteelBlue;
+                    //  panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == Gift)
+                {
+                    //  panel.BackColor = Color.LightGreen;
+                   panel.BackColor = Color.LightGreen;
+                     // panel.BackColor = Color.Purple;
+                }
+               
+             
+                else if (_grid[_columns, _rows, 0] == Sewe)
+                {
+                    // panel.BackgroundImage = Stegs;
+                    panel.BackColor = Color.LightGreen;
+                      //panel.BackColor = Color.Lime;
+
+                }
+                if (_grid[_columns, _rows, 0] == Rock)
+                {
+                      panel.BackColor = Color.LightGreen;
+                     //panel.BackColor = Color.DarkSlateGray;
+                   // panel.BackColor = Color.LightGreen;
+                }
+
+              
+                
+                if (_grid[_columns, _rows, 0] == Tga1)
+                {
+                    //panel.BackColor = Color.LightGreen;
+                      panel.BackColor = Color.DarkSlateBlue;
+
+                }
+              
+                if (_grid[_columns, _rows, 0] == PHea)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    { _grid[_columns, _rows, 2] = Loot.ToString();
+                        //panel.BackgroundImage = Dachs;
+                        panel.BackColor = Color.DarkRed;
+                        //panel.BackColor = Color.LightGreen;
+                        // panel.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        //panel.BackgroundImage = Dachs;
+                        //panel.BackColor = Color.DarkRed;
+                        panel.BackColor = Color.LightGreen;
+                        // panel.BackColor = Color.Red;
+
+                    }
+
+
+                }
+              
+                if (_grid[_columns, _rows, 0] == Mboo)
+                {
+                    //  panel.BackColor = Color.Teal;
+                    panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Feld)
+                {
+                    // panel.BackColor = Color.Wheat;
+                   panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Fweg)
+                {
+                    // panel.BackColor = Color.Tan;
+                    panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Hous)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    { panel.BackColor = Color.Brown;
+                        //panel.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        //panel.BackColor = Color.Brown;
+                        panel.BackColor = Color.LightGreen;
+                    }
+
+
+
+                }
+
+                if (_grid[_columns, _rows, 0] == Muhl)
+                {
+                   //   panel.BackColor = Color.Brown;
+                   panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Masd)
+                {
+                    // panel.BackColor = Color.DarkViolet;
+                    panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Pali)
+                {
+                     // panel.BackColor = Color.Peru;
+                      panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Gras)
+                {
+                    panel.BackColor = Color.LightGreen;
+
+                }
+               
+                if (_grid[_columns, _rows, 0] == Stra)
+                {
+                    if (_rows < 11 && _columns < 17)
+                    {
+                        panel.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.LightGreen;
+                    }
+                        //   panel.BackgroundImage = Street;
+                     
+
+                }
+                if (_grid[_columns, _rows, 0] == Gass)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        panel.BackColor = Color.DimGray;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.LightGreen;
+                    }
+                 
+
+                }
+                if (_grid[_columns, _rows, 0] == Haus)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        panel.BackColor = Color.SaddleBrown;
+                        //panel.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        //panel.BackColor = Color.Brown;
+                        panel.BackColor = Color.LightGreen;
+                    }
+                  
+                }
+                if (_grid[_columns, _rows, 0] == Dorn)
+                {
+                    panel.BackColor = Color.LightGreen;
+                   //  panel.BackColor = Color.ForestGreen;
+                }
+                if (_grid[_columns, _rows, 0] == Dwal)
+                {
+                    panel.BackColor = Color.LightGreen;
+                   // panel.BackColor = Color.DarkOliveGreen;
+                }
+                if (_grid[_columns, _rows, 0] == Wald)
+                {
+                    panel.BackColor = Color.LightGreen;
+                  //    panel.BackColor = Color.DarkGreen;
+                }
+               
+                if (_grid[_columns, _rows, 0] == Ship)
+                {
+                   // panel.BackgroundImage = Schiffs;
+                    panel.BackColor = Color.Brown;
+                }
+
+
+
+                p = 0;
+                c = 0;
+            }
+            #endregion
+            #region Testlvl
+
+
+            else if (Level == 0)
+            {
+                Lvlfunk map = new Lvlfunk();
+                string[,] Mapone = map.Testmap();
+                _grid[_columns, _rows, 0] = Mapone[_rows, _columns];
+                _grid[_columns, _rows, 1] = null;
+                _grid[_columns, _rows, 2] = null;
+                _grid[_columns, _rows, 3] = null;
+                _grid[_columns, _rows, 4] = null;
+
+/*
+                if (_rows == 36 && _columns == 35 || _rows == 30 && _columns == 31 || _rows == 30 && _columns == 27 || _rows == 7 && _columns == 34 || _rows == 19 && _columns == 23 || _rows == 9 && _columns == 15)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 3] = Money;
+                }
+                if (_rows == 15 && _columns == 25 || _rows == 22 && _columns == 31)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 3] = BigMoney;
+                }
+
+                if (_rows == 27 && _columns == 20 || _rows == 16 && _columns == 10 || _rows == 14 && _columns == 10 || _rows == 15 && _columns == 4 || _rows == 6 && _columns == 30 || _rows == 6 && _columns == 28 || _rows == 4 && _columns == 30 || _rows == 4 && _columns == 28 || _rows == 5 && _columns == 30 || _rows == 5 && _columns == 28 || _rows == 5 && _columns == 25 || _rows == 5 && _columns == 23 || _rows == 3 && _columns == 30 || _rows == 3 && _columns == 28 || _rows == 3 && _columns == 25 || _rows == 3 && _columns == 23)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Guar;
+                }
+                if (_rows == 13 && _columns == 7 || _rows == 16 && _columns == 5)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = GuaE;
+                }
+
+                if (_rows == 13 && _columns == 5)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = GuaK;
+                }*/
+
+                panel.BackgroundImage = null;
+                panel.Image = null;
+                if (_grid[_columns, _rows, 0] == Wall)
+                {
+                    panel.BackColor = Color.Brown;
+                }
+                if (_grid[_columns, _rows, 0] == Heal)
+                {
+                    //  panel.BackColor = Color.Beige;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Red;
+                    // panel.BackColor = Color.LightGreen;
                 }
 
 
@@ -1729,16 +2147,16 @@ namespace GameofLifedanielT
                 {
                     //   panel.BackColor = Color.Beige;
                     //    panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.DarkGoldenrod;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkGoldenrod;
+                    // panel.BackColor = Color.LightGreen;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
                 if (_grid[_columns, _rows, 0] == Schi)
                 {
                     //  panel.BackColor = Color.LightGreen;
                     // panel.BackColor = Color.Beige;
-                      panel.BackColor = Color.Orange;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Orange;
+                    // panel.BackColor = Color.LightGreen;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
 
@@ -1746,8 +2164,8 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Bush)
                 {
                     // panel.BackColor = Color.LightGreen;
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.DarkGreen;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkGreen;
                 }
                 if (_grid[_columns, _rows, 0] == Wass && _columns < 7)
                 {
@@ -1771,8 +2189,8 @@ namespace GameofLifedanielT
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     // panel.BackColor = Color.Beige;
                     //  panel.BackColor = Color.SandyBrown;
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.LightGray;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.LightGray;
 
                 }
 
@@ -1780,15 +2198,15 @@ namespace GameofLifedanielT
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     // panel.BackColor = Color.Beige;
-                   // panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.LightGray;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.LightGray;
                 }
                 else if (_grid[_columns, _rows, 0] == Kome)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     //panel.BackColor = Color.Beige;
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.LightGray;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.LightGray;
                 }
 
                 if (_grid[_columns, _rows, 0] == Star)
@@ -1799,8 +2217,8 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Ende)
                 {
                     // panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.DeepPink;
-                   // panel.BackColor = Color.DimGray;
+                    panel.BackColor = Color.DeepPink;
+                    // panel.BackColor = Color.DimGray;
                 }
 
 
@@ -1810,36 +2228,36 @@ namespace GameofLifedanielT
                     // panel.BackColor = Color.Beige;
                     //   panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.OrangeRed;
-                   // panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.LightGreen;
                     _grid[_columns, _rows, 2] = Loot.ToString();
                 }
                 if (_grid[_columns, _rows, 0] == OTur)
                 {
                     // panel.BackColor = Color.LightGreen;
                     //panel.BackColor = Color.Beige;
-                     panel.BackColor = Color.LightSkyBlue;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.LightSkyBlue;
+                    // panel.BackColor = Color.LightGreen;
                 }
                 if (_grid[_columns, _rows, 0] == VTur)
                 {
                     //  panel.BackColor = Color.Beige;
                     //panel.BackColor = Color.DarkBlue;
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.DarkBlue;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkBlue;
                 }
                 if (_grid[_columns, _rows, 0] == Pers)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     // panel.BackColor = Color.Beige;
 
-                       panel.BackColor = Color.LightGray;
-                   // panel.BackColor = Color.LightGreen;
-                }              
+                    panel.BackColor = Color.LightGray;
+                    // panel.BackColor = Color.LightGreen;
+                }
                 if (_grid[_columns, _rows, 0] == Swor)
                 {
                     //  panel.BackColor = Color.Beige;
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                     panel.BackColor = Color.Orchid;
+                    panel.BackColor = Color.Orchid;
                     //panel.BackColor = Color.LightGreen;
                 }
 
@@ -1849,12 +2267,12 @@ namespace GameofLifedanielT
                     // panel.BackColor = Color.SaddleBrown;
                     //panel.BackColor = Color.LightGreen;
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                     panel.BackColor = Color.PaleVioletRed;
+                    panel.BackColor = Color.PaleVioletRed;
                 }
                 if (_grid[_columns, _rows, 0] == Bode)
                 {
                     //   panel.BackColor = Color.Beige;
-                 //   panel.BackColor = Color.LightGreen;
+                    //   panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.DarkGray;
                 }
 
@@ -1872,7 +2290,7 @@ namespace GameofLifedanielT
                 {
                     //  panel.BackgroundImage = Port;
                     panel.BackColor = Color.SlateGray;
-                   // panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.LightGreen;
 
                 }
 
@@ -1887,9 +2305,9 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Coin)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                  //  panel.BackColor = Color.Beige;
+                    //  panel.BackColor = Color.Beige;
                     //   panel.BackColor = Color.SaddleBrown;
-                     panel.BackColor = Color.Gold;
+                    panel.BackColor = Color.Gold;
 
                 }
                 if (_grid[_columns, _rows, 0] == Cwal && _columns < 5)
@@ -1901,8 +2319,8 @@ namespace GameofLifedanielT
                 else if (_grid[_columns, _rows, 0] == Cwal && _columns >= 5)
 
                 {
-                         panel.BackColor = Color.DarkSlateGray;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkSlateGray;
+                    // panel.BackColor = Color.LightGreen;
                     // panel.BackColor = Color.Beige;
                 }
 
@@ -1911,7 +2329,7 @@ namespace GameofLifedanielT
 
                 if (_grid[_columns, _rows, 0] == Plas)
                 {
-                     panel.BackColor = Color.FloralWhite;
+                    panel.BackColor = Color.FloralWhite;
                     //panel.BackColor = Color.LightGreen;
                 }
                 if (_grid[_columns, _rows, 0] == Chea)
@@ -1924,64 +2342,64 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == GuaK)
                 {
                     panel.BackColor = Color.LightGray;
-                   // panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.LightGreen;
                 }
                 if (_grid[_columns, _rows, 0] == Mobl)
                 {
-                  //  panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.SaddleBrown;
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.SaddleBrown;
                     //  panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Bedh)
                 {
-                      panel.BackColor = Color.WhiteSmoke;
+                    panel.BackColor = Color.WhiteSmoke;
                     //panel.BackColor = Color.LightGreen;
                     //  panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Bedb)
                 {
-                  //  panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.CornflowerBlue;
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.CornflowerBlue;
                     // panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Fire)
                 {
-                   // panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.Firebrick;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Firebrick;
                     //panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Etra)
                 {
-                   // panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.Khaki;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Khaki;
                     // panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Trep)
                 {
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.RosyBrown;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.RosyBrown;
                     //   panel.BackColor = Color.Beige;
                 }
 
 
                 if (_grid[_columns, _rows, 0] == LTur)
                 {
-                   // panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.SteelBlue;
                     //  panel.BackColor = Color.Beige;
                 }
                 if (_grid[_columns, _rows, 0] == Gift)
                 {
                     //  panel.BackColor = Color.LightGreen;
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.Purple;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Purple;
                 }
                 if (_grid[_columns, _rows, 0] == Steg)
                 {
                     // panel.BackgroundImage = Stegs;
-//                    panel.BackColor = Color.LightGreen;
+                    //                    panel.BackColor = Color.LightGreen;
 
-                      panel.BackColor = Color.SandyBrown;
+                    panel.BackColor = Color.SandyBrown;
 
                 }
                 if (_grid[_columns, _rows, 0] == Sewe && _columns < 5)
@@ -1994,46 +2412,46 @@ namespace GameofLifedanielT
                 else if (_grid[_columns, _rows, 0] == Sewe && _columns >= 5)
                 {
                     // panel.BackgroundImage = Stegs;
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.Lime;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Lime;
 
                 }
                 if (_grid[_columns, _rows, 0] == Rock)
                 {
                     //  panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.DarkSlateGray;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkSlateGray;
+                    // panel.BackColor = Color.LightGreen;
                 }
 
                 if (_grid[_columns, _rows, 0] == TrSK)
                 {
-                   // panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.LightGray;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.LightGray;
 
                 }
                 if (_grid[_columns, _rows, 0] == TrAK)
                 {
                     //panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.LightGray;
+                    panel.BackColor = Color.LightGray;
 
                 }
                 if (_grid[_columns, _rows, 0] == Tga1)
                 {
                     //panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.DarkSlateBlue;
+                    panel.BackColor = Color.DarkSlateBlue;
 
                 }
                 if (_grid[_columns, _rows, 0] == Gitt)
                 {
-                   // panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.Silver;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Silver;
 
                 }
                 if (_grid[_columns, _rows, 0] == PHea)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
                     //panel.BackgroundImage = Dachs;
-                     panel.BackColor = Color.DarkRed;
+                    panel.BackColor = Color.DarkRed;
                     //panel.BackColor = Color.LightGreen;
                     // panel.BackColor = Color.Red;
 
@@ -2041,49 +2459,49 @@ namespace GameofLifedanielT
                 if (_grid[_columns, _rows, 0] == Leve)
                 {
                     _grid[_columns, _rows, 2] = Loot.ToString();
-                       panel.BackColor = Color.Snow;
+                    panel.BackColor = Color.Snow;
                     //panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Mboo)
                 {
-                      panel.BackColor = Color.Teal;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Teal;
+                    // panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Feld)
                 {
-                     panel.BackColor = Color.Wheat;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Wheat;
+                    // panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Fweg)
                 {
-                     panel.BackColor = Color.Tan;
+                    panel.BackColor = Color.Tan;
                     //panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Hous)
                 {
-                      panel.BackColor = Color.Brown;
+                    panel.BackColor = Color.Brown;
                     //panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Muhl)
                 {
-                      panel.BackColor = Color.Brown;
-                  //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Brown;
+                    //  panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Masd)
                 {
-                     panel.BackColor = Color.DarkViolet;
-                   // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkViolet;
+                    // panel.BackColor = Color.LightGreen;
 
                 }
                 if (_grid[_columns, _rows, 0] == Pali)
                 {
-                      panel.BackColor = Color.Peru;
+                    panel.BackColor = Color.Peru;
                     //   panel.BackColor = Color.LightGreen;
 
                 }
@@ -2092,7 +2510,7 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.LightGreen;
 
                 }
-               
+
                 if (_grid[_columns, _rows, 0] == Stra)
                 {
                     //   panel.BackgroundImage = Street;
@@ -2112,18 +2530,18 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Dorn)
                 {
-                   // panel.BackColor = Color.LightGreen;
-                     panel.BackColor = Color.ForestGreen;
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.ForestGreen;
                 }
                 if (_grid[_columns, _rows, 0] == Dwal)
                 {
-                   // panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.LightGreen;
                     panel.BackColor = Color.DarkOliveGreen;
                 }
                 if (_grid[_columns, _rows, 0] == Wald)
                 {
-                  //  panel.BackColor = Color.LightGreen;
-                      panel.BackColor = Color.DarkGreen;
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkGreen;
                 }
                 if (_grid[_columns, _rows, 0] == Dach)
                 {
@@ -2133,7 +2551,7 @@ namespace GameofLifedanielT
                 }
                 if (_grid[_columns, _rows, 0] == Ship)
                 {
-                   // panel.BackgroundImage = Schiffs;
+                    // panel.BackgroundImage = Schiffs;
                     panel.BackColor = Color.Brown;
                 }
 
@@ -2142,8 +2560,8 @@ namespace GameofLifedanielT
                 p = 0;
                 c = 0;
             }
-
             #endregion
+           
             return panel;
         }
         public void Colors(PictureBox panel, int _rows, int _columns,int lvl, bool wait)
@@ -2156,7 +2574,7 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.Brown;
                
             }
-            if (_grid[_columns, _rows, 0] == Heal && panel.BackColor != Color.LightPink)
+           else if (_grid[_columns, _rows, 0] == Heal && panel.BackColor != Color.LightPink)
             {
                 if (lvl ==2 && _columns==38&& _rows==35|| lvl == 2 && _columns == 36 && _rows == 25 || lvl == 2 && _columns == 21 && _rows == 17)
                 {
@@ -2185,7 +2603,7 @@ namespace GameofLifedanielT
                 }
                
             }
-            if (_grid[_columns, _rows, 0] == Keys && panel.BackColor != Color.DarkGoldenrod)
+            else if (_grid[_columns, _rows, 0] == Keys && panel.BackColor != Color.DarkGoldenrod)
             {
                 if (lvl == 2 && _columns == 25 && _rows == 26 )
                 {
@@ -2211,7 +2629,7 @@ namespace GameofLifedanielT
             
                 //_grid[_columns, _rows, 2] = Loot.ToString();
             }
-            if (_grid[_columns, _rows, 0] == Schi && panel.BackColor != Color.Orange)
+            else if (_grid[_columns, _rows, 0] == Schi && panel.BackColor != Color.Orange)
             {
                 if (lvl == 2 && _columns == 38 && _rows == 38|| lvl == 2 && _columns == 37 && _rows == 38)
                 {
@@ -2237,6 +2655,10 @@ namespace GameofLifedanielT
                 {
                     panel.BackgroundImage = Port;
                     panel.BackColor = Color.SlateGray;
+                } else if (lvl == 6 && _rows < 14 )
+                {
+                    panel.BackgroundImage = Street;
+                    panel.BackColor = Color.LightGray;
                 }
 
                 else
@@ -2248,30 +2670,30 @@ namespace GameofLifedanielT
               
                 //_grid[_columns, _rows, 2] = Loot.ToString();
             }
-            if (_grid[_columns, _rows, 0] == Wald)
+            else if (_grid[_columns, _rows, 0] == Wald)
             {
                 panel.BackColor = Color.DarkGreen;
                 panel.BackgroundImage = Tree;
             }
-            if (_grid[_columns, _rows, 0] == Wass)
+            else if (_grid[_columns, _rows, 0] == Wass)
             {
                 panel.Image = Watery;
                 panel.BackColor = Color.SteelBlue;
             }
-            if (_grid[_columns, _rows, 0] == Hinw)
+            else if (_grid[_columns, _rows, 0] == Hinw)
             {
                 panel.BackColor = Color.LightGray;
             }
-            if (_grid[_columns, _rows, 0] == Star)
+            else if (_grid[_columns, _rows, 0] == Star)
             {
                 panel.BackColor = Color.Yellow;
             }
-            if (_grid[_columns, _rows, 0] == Ende)
+            else if (_grid[_columns, _rows, 0] == Ende)
             {
                
                 panel.BackColor = Color.DeepPink;
             }
-            if (_grid[_columns, _rows, 0] == Gift && panel.BackColor != Color.Purple)
+            else if (_grid[_columns, _rows, 0] == Gift && panel.BackColor != Color.Purple)
             {
                 if (wait== true)
                 {
@@ -2296,12 +2718,12 @@ namespace GameofLifedanielT
               
                
             }
-            if (_grid[_columns, _rows, 0] == Rock)
+            else if (_grid[_columns, _rows, 0] == Rock)
             {
                 panel.BackgroundImage = Boulder;
                 panel.BackColor = Color.LightSlateGray;
             }
-            if (_grid[_columns, _rows, 0] == Haus)
+            else if (_grid[_columns, _rows, 0] == Haus)
             {
                 if (lvl== 6)
                 {
@@ -2315,7 +2737,7 @@ namespace GameofLifedanielT
                 }
              
             }
-            if (_grid[_columns, _rows, 0] == Bomb && panel.BackColor != Color.OrangeRed)
+            else if (_grid[_columns, _rows, 0] == Bomb && panel.BackColor != Color.OrangeRed)
             {
                 if (lvl == 2 && _columns == 37 && _rows == 35)
                 {
@@ -2341,20 +2763,18 @@ namespace GameofLifedanielT
                 {
                     panel.BackgroundImage = grassy;
                     panel.BackColor = Color.LightGreen;
-                }
-               
-              
+                }                         
                // _grid[_columns, _rows, 2] = Loot.ToString();
             }
-            if (_grid[_columns, _rows, 0] == OTur)
+            else if (_grid[_columns, _rows, 0] == OTur)
             {
                 panel.BackColor = Color.LightSkyBlue;
             }
-            if (_grid[_columns, _rows, 0] == VTur)
+            else if (_grid[_columns, _rows, 0] == VTur)
             {
                 panel.BackColor = Color.DarkBlue;
             }
-            if (_grid[_columns, _rows, 0] == Pers)
+            else if (_grid[_columns, _rows, 0] == Pers)
             {
                 if (lvl == 6 && _columns == 17 && _rows == 27 || lvl == 2 && _columns == 13 && _rows == 21 )
                 {
@@ -2523,8 +2943,8 @@ namespace GameofLifedanielT
                 // panel.BackColor = Color.LightGreen;
                
             }
-          
-            if (_grid[_columns, _rows, 0] == Swor && panel.BackColor != Color.Orchid)
+
+            else if (_grid[_columns, _rows, 0] == Swor && panel.BackColor != Color.Orchid)
             {
                 if (lvl == 2 && _columns == 35 && _rows == 16 || lvl == 2 && _columns == 36 && _rows == 35|| lvl == 2 && _columns == 35 && _rows == 35)
                 {
@@ -2541,6 +2961,11 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Port;
                     panel.BackColor = Color.SlateGray;
                 }
+                else if (lvl == 6 && _rows < 14)
+                {
+                    panel.BackgroundImage = Street;
+                    panel.BackColor = Color.LightGray;
+                }
                 else
                 {
                     panel.BackgroundImage = grassy;
@@ -2549,42 +2974,42 @@ namespace GameofLifedanielT
               
                
             }
-            if (_grid[_columns, _rows, 0] == Kome)
+            else if (_grid[_columns, _rows, 0] == Kome)
             {
                // panel.BackColor = Color.LightGreen;
                  panel.BackColor = Color.LightGray;
             }
-            if (_grid[_columns, _rows, 0] == Dorn)
+            else if (_grid[_columns, _rows, 0] == Dorn)
             {
                 //panel.BackColor = Color.LightGreen;
                   panel.BackColor = Color.ForestGreen;
                 panel.BackgroundImage = Dornen;
             }
-            if (_grid[_columns, _rows, 0] == Dwal)
+            else if (_grid[_columns, _rows, 0] == Dwal)
             {
                 //panel.BackColor = Color.LightGreen;
                 panel.BackColor = Color.DarkOliveGreen;
                 panel.BackgroundImage = Dwalls;
             }
-            if (_grid[_columns, _rows, 0] == Ship)
+            else if (_grid[_columns, _rows, 0] == Ship)
             {
                 panel.BackgroundImage = Schiffs;
                 panel.BackColor = Color.Brown;
             }
-            if (_grid[_columns, _rows, 0] == Cave)
+            else if (_grid[_columns, _rows, 0] == Cave)
             {
                 panel.BackgroundImage = Cavewall;
                 // panel.BackColor = Color.LightGreen;
 
                 panel.BackColor = Color.DarkSlateGray;
             }
-            if (_grid[_columns, _rows, 0] == Lava)
+            else if (_grid[_columns, _rows, 0] == Lava)
             {
                 panel.BackgroundImage = Lavas;
                 // panel.BackColor = Color.LightGreen;
                 panel.BackColor = Color.IndianRed;
             }
-            if (_grid[_columns, _rows, 0] == Lmax && panel.BackColor != Color.PaleVioletRed)
+            else if (_grid[_columns, _rows, 0] == Lmax && panel.BackColor != Color.PaleVioletRed)
             {
                 if (lvl == 2 && _columns == 35 && _rows == 38 )
                 {
@@ -2604,7 +3029,7 @@ namespace GameofLifedanielT
              
                 // panel.BackColor = Color.PaleVioletRed;
             }
-            if (_grid[_columns, _rows, 0] == Bode && lvl !=4)
+            else if (_grid[_columns, _rows, 0] == Bode && lvl !=4)
             {
                 panel.BackgroundImage = Boden;
                 //  panel.BackColor = Color.LightGreen;
@@ -2617,34 +3042,34 @@ namespace GameofLifedanielT
                 //  panel.BackColor = Color.LightGreen;
                 panel.BackColor = Color.Bisque;
             }
-        
-            if (_grid[_columns, _rows, 0] == Steg)
+
+            else if (_grid[_columns, _rows, 0] == Steg)
             {
                 panel.BackgroundImage = Stegs;
                 panel.BackColor = Color.SandyBrown;
 
             }
-            if (_grid[_columns, _rows, 0] == Gras)
+            else if (_grid[_columns, _rows, 0] == Gras)
             {
                 panel.BackColor = Color.LightGreen;
                 panel.BackgroundImage = grassy;
             }
-            if (_grid[_columns, _rows, 0] == Stra)
+            else if (_grid[_columns, _rows, 0] == Stra)
             {
                 panel.BackColor = Color.LightGray;
                 panel.BackgroundImage = Street;
             }
-            if (_grid[_columns, _rows, 0] == Stha)
+            else if (_grid[_columns, _rows, 0] == Stha)
             {
                 panel.BackColor = Color.SlateGray;
                 panel.BackgroundImage = Port;
             }
-            if (_grid[_columns, _rows, 0] == Gass)
+            else if (_grid[_columns, _rows, 0] == Gass)
             {
                 panel.BackColor = Color.DimGray;
                 panel.BackgroundImage = Gasses;
             }
-            if (_grid[_columns, _rows, 0] == Cwal && lvl == 6 )
+            else if (_grid[_columns, _rows, 0] == Cwal && lvl == 6 )
             {
                 if (_columns==13 && _rows==1|| _columns==7&& _rows==27)
                 {
@@ -2680,131 +3105,131 @@ namespace GameofLifedanielT
              
 
             }
-            if (_grid[_columns, _rows, 0] == Ofen)
+            else if (_grid[_columns, _rows, 0] == Ofen)
             {
                 panel.BackgroundImage = Oven;
                 panel.BackColor = Color.DarkSlateGray;
 
             }
-            if (_grid[_columns, _rows, 0] == Plas)
+            else if (_grid[_columns, _rows, 0] == Plas)
             {
                 panel.BackgroundImage = Plaza;
                 panel.BackColor = Color.FloralWhite;
 
             }
-            if (_grid[_columns, _rows, 0] == Dach)
+            else if (_grid[_columns, _rows, 0] == Dach)
             {
                 panel.BackgroundImage = Street;
                 panel.BackColor = Color.DarkRed;
 
             }
-            if (_grid[_columns, _rows, 0] == ITur)
+            else if (_grid[_columns, _rows, 0] == ITur)
             {
                 panel.BackgroundImage = Iture;
                 panel.BackColor = Color.SaddleBrown;
 
             }
-            if (_grid[_columns, _rows, 0] == Bank)
+            else if (_grid[_columns, _rows, 0] == Bank)
             {
                 panel.BackgroundImage = Bench;
                 panel.BackColor = Color.SaddleBrown;
 
             }
-            if (_grid[_columns, _rows, 0] == Alta)
+            else if (_grid[_columns, _rows, 0] == Alta)
             {
                 panel.BackgroundImage = Altar;
                 panel.BackColor = Color.SlateGray;
 
             }
-            if (_grid[_columns, _rows, 0] == Bush)
+            else if (_grid[_columns, _rows, 0] == Bush)
             {
                 panel.BackgroundImage = Bushs;
                 panel.BackColor = Color.DarkGreen;
 
             }
-            if (_grid[_columns, _rows, 0] == GuaK)
+            else if (_grid[_columns, _rows, 0] == GuaK)
             {
                 panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == TrSA)
+            else if (_grid[_columns, _rows, 0] == TrSA)
             {
                 panel.BackgroundImage = Hmoney;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == TrSB)
-            {
-                panel.BackgroundImage = Hmoney;
-                //panel.BackgroundImage = Guardk;
-                panel.BackColor = Color.DarkGray;
-
-            }
-            if (_grid[_columns, _rows, 0] == TrSS)
+            else if (_grid[_columns, _rows, 0] == TrSB)
             {
                 panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == TrAK)
+            else if (_grid[_columns, _rows, 0] == TrSS)
             {
                 panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == TrSK)
+            else if (_grid[_columns, _rows, 0] == TrAK)
             {
                 panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == BanC)
+            else if (_grid[_columns, _rows, 0] == TrSK)
+            {
+                panel.BackgroundImage = Hmoney;
+                //panel.BackgroundImage = Guardk;
+                panel.BackColor = Color.DarkGray;
+
+            }
+            else if (_grid[_columns, _rows, 0] == BanC)
             {
                 panel.BackgroundImage = BanCa;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == TrKK)
+            else if (_grid[_columns, _rows, 0] == TrKK)
             {
                 panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.DarkGray;
 
             }
-            if (_grid[_columns, _rows, 0] == Coin)
+            else if (_grid[_columns, _rows, 0] == Coin)
             {
                 panel.BackgroundImage = Hmoney;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.Gold;
 
             }
-            if (_grid[_columns, _rows, 0] == Tepp)
+            else if (_grid[_columns, _rows, 0] == Tepp)
             {
                 panel.BackgroundImage = Teppic;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.Beige;
 
             }
-            if (_grid[_columns, _rows, 0] == Trep)
+            else if (_grid[_columns, _rows, 0] == Trep)
             {
                 panel.BackgroundImage = Stairs;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.RosyBrown;
 
             }
-            if (_grid[_columns, _rows, 0] == Mayo)
+            else if (_grid[_columns, _rows, 0] == Mayo)
             {
                 panel.BackgroundImage = Gov;
                 //panel.BackgroundImage = Guardk;
                 panel.BackColor = Color.SlateGray;
 
             }
-            if (_grid[_columns, _rows, 0] == ETur)
+            else if (_grid[_columns, _rows, 0] == ETur)
             {
                 panel.BackgroundImage = Iture;
                 //panel.BackgroundImage = Guardk;
@@ -2813,7 +3238,7 @@ namespace GameofLifedanielT
             }
 
 
-            if (_grid[_columns, _rows, 0] == Mobl&& _rows == 19 && _columns == 25)
+            else if (_grid[_columns, _rows, 0] == Mobl&& _rows == 19 && _columns == 25)
             {
                 panel.BackgroundImage = Stuhl;
                 panel.BackColor = Color.PeachPuff;
@@ -2825,70 +3250,70 @@ namespace GameofLifedanielT
                 panel.BackColor = Color.SaddleBrown;
                 // panel.BackColor = Color.Beige;
             }
-            if (_grid[_columns, _rows, 0] == Bedh)
+            else if (_grid[_columns, _rows, 0] == Bedh)
             {
                 panel.BackgroundImage = Bedhead;
                 panel.BackColor = Color.WhiteSmoke;
                // panel.BackColor = Color.Beige;
             }
-            if (_grid[_columns, _rows, 0] == Bedb)
+            else if (_grid[_columns, _rows, 0] == Bedb)
             {
                 panel.BackgroundImage = Bedbody;
                 panel.BackColor = Color.CornflowerBlue;
                 //panel.BackColor = Color.Beige;
             }
-            if (_grid[_columns, _rows, 0] == Fire)
+            else if (_grid[_columns, _rows, 0] == Fire)
             {
                 panel.BackgroundImage = Burn;
                 panel.BackColor = Color.Firebrick;
               //  panel.BackColor = Color.Beige;
             }
-            if (_grid[_columns, _rows, 0] == Etra)
+            else if (_grid[_columns, _rows, 0] == Etra)
             {
                 panel.BackgroundImage = Electros;
                 panel.BackColor = Color.Khaki;
                 // panel.BackColor = Color.Beige;
             }
-            if (_grid[_columns, _rows, 0] == LTur)
+            else if (_grid[_columns, _rows, 0] == LTur)
             {
                 panel.BackColor = Color.SteelBlue;
                 //  panel.BackColor = Color.Beige;
             }
-                 
-            if (_grid[_columns, _rows, 0] == Sewe)
+
+            else if (_grid[_columns, _rows, 0] == Sewe)
             {
                 panel.BackgroundImage = Sewer;
                 // panel.BackgroundImage = Stegs;
                 panel.BackColor = Color.Lime;
 
             }
-             
-            if (_grid[_columns, _rows, 0] == Gitt)
+
+            else if (_grid[_columns, _rows, 0] == Gitt)
             {
                 panel.BackgroundImage = Gitter;
                 panel.BackColor = Color.Silver;
 
             }
-           
-            if (_grid[_columns, _rows, 0] == Leve &&panel.BackgroundImage != Hebel2)
+
+            else if (_grid[_columns, _rows, 0] == Leve &&panel.BackgroundImage != Hebel2)
             {
                 panel.BackgroundImage = Hebel1;
                 _grid[_columns, _rows, 2] = Loot.ToString();
                 panel.BackColor = Color.PaleTurquoise;
 
             }
-            if (_grid[_columns, _rows, 0] == Mboo)
+            else if (_grid[_columns, _rows, 0] == Mboo)
             {
                 panel.BackColor = Color.Teal;
 
             }
-            if (_grid[_columns, _rows, 0] == Feld)
+            else if (_grid[_columns, _rows, 0] == Feld)
             {
                 panel.BackgroundImage = Felds;
                 panel.BackColor = Color.Wheat;
 
             }
-            if (_grid[_columns, _rows, 0] == Muhl)
+            else if (_grid[_columns, _rows, 0] == Muhl)
             {
                 if (_columns== 14&& _rows==28)
                 {
@@ -2910,20 +3335,20 @@ namespace GameofLifedanielT
                 //panel.BackColor = Color.Brown;
 
             }
-            if (_grid[_columns, _rows, 0] == Fweg)
+            else if (_grid[_columns, _rows, 0] == Fweg)
             {
                   panel.BackgroundImage = Fwegs;
                 panel.BackColor = Color.Tan;
 
-            }             
-            if (_grid[_columns, _rows, 0] == Masd)
+            }
+            else if (_grid[_columns, _rows, 0] == Masd)
             {
                 panel.BackgroundImage = Magic_Schield;
                 panel.BackColor = Color.DarkViolet;
                 // panel.BackColor = Color.LightGreen;
 
             }
-            if (_grid[_columns, _rows, 0] == Pali)
+            else if (_grid[_columns, _rows, 0] == Pali)
             {
                 if (_columns==3)
                 {

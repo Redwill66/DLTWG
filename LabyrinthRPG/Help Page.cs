@@ -16,6 +16,8 @@ namespace GameofLifedanielT
         {
             InitializeComponent();
         }
+        Bitmap BanditChef = Properties.Resources.BanditChef;
+        Bitmap Dieb = Properties.Resources.Dieb;
         Bitmap Gov = Properties.Resources.Governor;
         Bitmap Wap1 = Properties.Resources.Wappen1;
         Bitmap Gift = Properties.Resources.Gift_neu;
@@ -275,6 +277,22 @@ namespace GameofLifedanielT
                 lblwappen.Text = "Geht doch";
                 txtHelp.Text = "An manchen Stellen wird man Geld verlangen, damit du durchgehen kannst und zwar jedes mal. Sei also sicher das du nicht nochmal durchgehen musst, manchmal ist nur eine Abkürzung. Ist es aber Pflicht durchzugehen, so gibt es auch andere Lösungen aus diesen Maps, diese könnten aber ein Wenig Kostspielig sein.";
             }
+            else if (lstHelpLore.Text == "Encounters")
+            {
+                picnpc.BackgroundImage = player ;
+                picwappen.BackgroundImage = Dieb;
+                lblName.Text = "Erstes Kampf System";
+                lblwappen.Text = "Fight!!!!!!";
+                txtHelp.Text = "Bei Encounter handelt es sich um das erste Kampfsystem das ich entwickelt habe, genau genommn ist es kein Kampfsystem, es fragt den Spieler ob er sich wehren möchte, es gibt drei Wege wie diese Kämpfe ausgehen können. 1 Der Spieler Flieht, manchmal entkommt er ohnne Wunde oder er bekommt eine kleine Fleich Wunde(meist 1 Leben ausser bei Bossen),2 der Spieler Kämpft jedoch besitzt dieser nicht ausreichend Ausrüstung, folglich erleidet er höheren schaden, aber er bekommt den Loot, 3 Er hat genug Ausrüstung, dann wird die Ausrüstung geschwächt und er bekommt den Loot. ";
+            }
+            else if (lstHelpLore.Text == "Bosse")
+            {
+                picnpc.BackgroundImage = player;
+                picwappen.BackgroundImage = BanditChef;
+                lblName.Text = "Ah der Held";
+                lblwappen.Text = "Ich erzähle dir jetzt meinen Bössen Plan";
+                txtHelp.Text = " Bosse sind meist Stärker als andere Gegner, logisch oder dafür geben sie dir meist Grosse Belohnungen. Schau aber gut das du Stärke ausrüstung hast, sonst veruhrsachen sie sehr viel Schaden, Tipp die meisten Bosse sind Schwach gegen Bomben.";
+            }
         }
 
         private void btnhelp_Click(object sender, EventArgs e)
@@ -298,8 +316,8 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Lava");//
             lstHelpLore.Items.Add("Handel");//
             lstHelpLore.Items.Add("Tribut");//
-            lstHelpLore.Items.Add("Encounters");
-            lstHelpLore.Items.Add("Bosse");
+            lstHelpLore.Items.Add("Encounters");//
+            lstHelpLore.Items.Add("Bosse");//
             lstHelpLore.Items.Add("Tokens");
             lstHelpLore.Items.Add("Priester Heilung");
             lstHelpLore.Items.Add("Cheats");
