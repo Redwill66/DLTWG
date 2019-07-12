@@ -52,6 +52,12 @@ namespace GameofLifedanielT
         Bitmap Armorkaeufer = Properties.Resources.Armorkaeufer;
         Bitmap Schmied = Properties.Resources.Schmied;
         Bitmap Zollpirat = Properties.Resources.Zollpirat;
+        Bitmap Gua = Properties.Resources.Guard_Captain;
+        Bitmap Pries = Properties.Resources.Priester;
+        Bitmap HSave = Properties.Resources.Head_Saveyn;
+        Bitmap Electro = Properties.Resources.Electro;
+        Bitmap Fire = Properties.Resources.Fire;
+        public static string Mapss;
         private void btnback_Click(object sender, EventArgs e)
         {
             Hide();
@@ -60,15 +66,30 @@ namespace GameofLifedanielT
 
         private void lstHelpLore_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Lore
-            if (lstHelpLore.Text == "Baron Denoixis")
-            {
-                picnpc.BackgroundImage = Gov;
-                picwappen.BackgroundImage = Wap1;
-                lblName.Text = "Baron Denoixis Oxter";
-                lblwappen.Text = "Haus Oxter";
-                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+            #region Lore
 
+
+            //Lore 
+            if (lstHelpLore.Text == "Ressos")
+            {
+                Mapss = "Ressos";
+               
+
+                picnpc.BackgroundImage = null;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Ressos";
+                lblwappen.Text = "einer der vier Kontinente";
+                txtHelp.Text = "Ressos, Heimat von vielen Völkern, von Menschen zu Elfen bis zu Goblins usw. Ressos gilt als Kontinent mit den meisten verschiedenen Kultur, früher regierten mehrere Elfen Fürsten das Land, diese wurden jedoch durch den Menschen mehrheitlich verdrängt. Der Mensch verband Ressos mit Grimos mit der Grossen Brücke die Ewigen Passage. Selten waren sich die Völker von Ressos einig, meist endeten viele Situtionen in Krieg, die Elfen zogen sich grossen Teil nach Peskar oder wie sie es nennen Paranthil zurück. Zwar kann man sie auch ausserhalb sehen, meist jedoch nur in geringer Zahl. Der Kontinent selber wird durch ein Gebirg in Westen und Osten unterteilt, so wurde sie auch gleich zur natürlichen Grenze der Reiche. Heute gibt es 7 Reiche die ein Teil von Ressos besitzen: Das Fealen Empire, sie besitzen zwar nur einen kleinen Teil aber dieser ist doch sehr Bedeutend. Sahawreed, das Gebirge verhindert das viele Wolken nach Sahawreed kommen, daher hat sich eine Wüste gebildet. Der Zeal Order. Magiehasser und Religonstaat. Estor, Reich wo Geld alles ist. Vorlondin, sie besitzen ein Bündniss mit den Elfen und würden sie in falle einer Invasion helfen. Peskar, Heimat der Elfen. Orklas, Söldnerstaat verlor sehr viel Land und seine Hauptstadt an den Orden.";
+                frmHelpMap fnp = new frmHelpMap();
+                fnp.ShowDialog();
+            }
+            if (lstHelpLore.Text == "Estor")
+            {
+                picnpc.BackgroundImage = EstorKing;
+                picwappen.BackgroundImage = WappenEstor;
+                lblName.Text = "König von Estor";
+                lblwappen.Text = "Land der Fürsten und des Geldes";
+                txtHelp.Text = "Estor das Land das vom Geld gelenkt wird. Bei dessen König handelt es sich eher um die reichste Person von Estor, Handel liegt allen Bewohner im Blut, es gab nichts, dass sie mehr Interessierte ausser etwas. Castrosa, ihr auftreten bewegt die sonst nur Geld gierigen Bewohner von Estor und verhinderte den beinahe beitritt, von Estor auf die Seite von dem Empire. Nach dem Krieg galt sie in Estor als Göttliche. Daher interessiert die Bevölkerung heutzutage nicht nur Geld, jedoch ist Geld immer noch ein grosser Fokus. Gesetzlich ist das Land ziemlich frei, man muss bedenken, der Reichere hat immer mehr zu sagen als alle andere. Erstaunlicherweise aber führen sie Selten bis gar keinen Krieg, sie sehen diesen als eine Verschwendung von Geld.";
             }
             else if (lstHelpLore.Text == "Castrosa")
             {
@@ -78,6 +99,16 @@ namespace GameofLifedanielT
                 lblwappen.Text = "Teil einer Bauersfamilie";
                 txtHelp.Text = "Castrosa wuchs im kleinen Dorf Seikos auf (Seikos ist östlichste Dorf von Estor), ihr Vater war alter Soldat im Ruhestand, ihr Dorf war eines der ersten Opfer des Empires, damals wusste niemand das Vorhaben des verrückten Kaisers, zwar griff das Empire das Dorf nicht direkt an, aber es heuerte unzählige Piraten an, um die Wirtschaft der Länder zu schwächen; Ziel war der Kollaps der Armeen aufgrund weniger bis keine Versorgung durch Dörfer. Castrosas Vater verstarb beim Angriff, jedoch fand seine Tochter dessen Speer und wehrte mit der Miliz des Dorfes, die Piraten ab; nach dem Angriff nahm sie den Speer und ihr Vaters Gold und schloss sich der Armee an. Dort erfuhr sie mehr von ihrem Vater, er war ein ziemlich berühmter Soldat gewesen, alle sahen auf zu ihr und sie entschloss sich, den Erwartungen zu entsprechen.";
             }
+            else if (lstHelpLore.Text == "Baron Denoixis")
+            {
+                picnpc.BackgroundImage = Gov;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Baron Denoixis Oxter";
+                lblwappen.Text = "Haus Oxter";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+           
             else if (lstHelpLore.Text == "Festor")
             {
                 picnpc.BackgroundImage = Festor;
@@ -104,24 +135,20 @@ namespace GameofLifedanielT
                 txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
 
             }
+                 
             else if (lstHelpLore.Text == "Saveyn")
             {
                 picnpc.BackgroundImage = Saveyn;
-                picwappen.BackgroundImage = null;
+                picwappen.BackgroundImage = HSave;
                 lblName.Text = "Saveyn Ohmras";
                 lblwappen.Text = "Sohn des Wüstenteufels(Berühmter General von Sahawreed)";
-                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+                txtHelp.Text = "Saveyn stammt von einer sehr speziellen Familie, sein Vater wurde der Wüstenteufel gennant, dieser hielt die Angriffe des Empires für mehre Monate auf, während Saveyn hilfe von den anderen Länder holte, geht man jedoch noch weiter zurück, so ist der Grossvater von Saveyn der bekannteste Bandit von Sahawreed. Saveyn's Grossvater und Vater wurden schlussendlich überzeugt der Armee beizutreten um bei der Verteidigung zu helfen. Man merkt Saveyn an das er aus einer Wilden Familie stammt, so haltet er nichts von Gerechtigkeit wo der Reiche gewinnt. Man könnte ihn mit einen Robin Hood vergleichen. Als er Cresgen in der Wüste von Sahawreed traff da wüsste er sofort das er Handeln muss, man könnte sagen ohne ihn wären die Helden nie zusammen gekommen. Nach dem Krieg wollte Saveyn nur noch ein einfaches Leben haben, ob er Nachkommen oder eine Frau hatte ist Unbekannt, denn fünf Jahre nach dem Krieg war er spurlos verschwunden";
 
             }
-            else if (lstHelpLore.Text == "Estor")
-            {
-                picnpc.BackgroundImage = EstorKing;
-                picwappen.BackgroundImage = WappenEstor;
-                lblName.Text = "König von Estor";
-                lblwappen.Text = "Land der Fürsten und des Geldes";
-                txtHelp.Text = "Estor das Land das vom Geld gelenkt wird. Bei dessen König handelt es sich eher um die reichste Person von Estor, Handel liegt allen Bewohner im Blut, es gab nichts, dass sie mehr Interessierte ausser etwas. Castrosa, ihr auftreten bewegt die sonst nur Geld gierigen Bewohner von Estor und verhinderte den beinahe beitritt, von Estor auf die Seite von dem Empire. Nach dem Krieg galt sie in Estor als Göttliche. Daher interessiert die Bevölkerung heutzutage nicht nur Geld, jedoch ist Geld immer noch ein grosser Fokus. Gesetzlich ist das Land ziemlich frei, man muss bedenken, der Reichere hat immer mehr zu sagen als alle andere. Erstaunlicherweise aber führen sie Selten bis gar keinen Krieg, sie sehen diesen als eine Verschwendung von Geld.";
+            #endregion
+            #region Tipps
 
-            }
+         
             //Hilfe
             else if (lstHelpLore.Text == "Gift")
             {
@@ -293,10 +320,62 @@ namespace GameofLifedanielT
                 lblwappen.Text = "Ich erzähle dir jetzt meinen Bössen Plan";
                 txtHelp.Text = " Bosse sind meist Stärker als andere Gegner, logisch oder dafür geben sie dir meist Grosse Belohnungen. Schau aber gut das du Stärke ausrüstung hast, sonst veruhrsachen sie sehr viel Schaden, Tipp die meisten Bosse sind Schwach gegen Bomben.";
             }
+            else if (lstHelpLore.Text == "Tokens")
+            {
+                picnpc.BackgroundImage = Dieb;
+                picwappen.BackgroundImage = Gua;
+                lblName.Text = "Sie haben";
+                lblwappen.Text = "Was sie wollen";
+                txtHelp.Text = "Bei manchen Karten wird es dem Spieler möglich sein, beim töten von Banditen Tokens zu bekommen, diese können bei Wachhauptmänner verkauft werden, oder an gewissen Orten Benutzt werden um durchzugehen. Verkaufen geht meist nur auf Maps die überhaupt Banditen haben.";
+            }
+            else if (lstHelpLore.Text == "Priester Heilung")
+            {
+                picnpc.BackgroundImage = Pries;
+                picwappen.BackgroundImage = Heart;
+                lblName.Text = "Sie heilen dich";
+                lblwappen.Text = "aber nicht Gratis";
+                txtHelp.Text = "Das Priester Heilungsfeld besitzt die gleiche Wirkung wie das Normale Heilungsfeld, kostet jedoch bei der Benutzung 100 Gold.";
+            }
+            else if (lstHelpLore.Text == "Cheats")
+            {
+                picnpc.BackgroundImage = Money;
+                picwappen.BackgroundImage = Heart;
+                lblName.Text = "Sei nicht gierig";
+                lblwappen.Text = "es kostet was";
+                txtHelp.Text = "Auf gewissen Maps gibt es Cheat Felder, diese dienen dazu falls man nicht weiterkommen kann, weil man aus irgendwelchen Grund kein Gold hat. Warnung bei benutzen dieser Felder verlierst du Max Leben und deine Rüstung und Schleifsteine";
+            }
+            else if (lstHelpLore.Text == "Elektro Falle")
+            {
+                picnpc.BackgroundImage = Schield;
+                picwappen.BackgroundImage = Electro;
+                lblName.Text = "Hast du Rüstung";
+                lblwappen.Text = "Autsch";
+                txtHelp.Text = "Erstmal bla bla Logik, in diesem Spiel bekommst du nur schaden durch Electro Fallen wenn du Rüstung besitzt, hast du keine Rüstung dann bekommst du keinen Schaden. Sie nehmen dir jedes mal 2 Lebenspunkte, dafür kannst du sie sehen.";
+            }
+            else if (lstHelpLore.Text == "Feuer")
+            {
+                picnpc.BackgroundImage = Heart;
+                picwappen.BackgroundImage = Fire;
+                lblName.Text = "Heisss heiss heiss";
+                lblwappen.Text = "das ist Heisss";
+                txtHelp.Text = "Feuer dient mehrheitlich nur zur dekoration, jedoch solltest du reinlaufen, ja dann bekommst du Schaden. Entweder Rüstung oder Leben jeweils 1 Punkt";
+            }
+            else if (lstHelpLore.Text == "Eventbereiche")
+            {
+                picnpc.BackgroundImage = null;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Eventuell später mehr";
+                lblwappen.Text = "wer weis";
+                txtHelp.Text = "Events ist ein feature das noch nicht viel vertreten ist, wahrscheinlich wird es in zukunft mehr geben. Es gibt jedoch ein auf Level 4, dieses bewegt die Wachen.";
+            }
+            #endregion
         }
 
         private void btnhelp_Click(object sender, EventArgs e)
         {
+            #region Tipps
+
+         
             lstHelpLore.Items.Clear();
             lstHelpLore.Items.Add("Bewegen");//
             lstHelpLore.Items.Add("Leben");//
@@ -318,28 +397,29 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Tribut");//
             lstHelpLore.Items.Add("Encounters");//
             lstHelpLore.Items.Add("Bosse");//
-            lstHelpLore.Items.Add("Tokens");
-            lstHelpLore.Items.Add("Priester Heilung");
-            lstHelpLore.Items.Add("Cheats");
-            lstHelpLore.Items.Add("Elektro Falle");
-            lstHelpLore.Items.Add("Feuer");
-            lstHelpLore.Items.Add("Eventbereiche");
+            lstHelpLore.Items.Add("Tokens");//
+            lstHelpLore.Items.Add("Priester Heilung");//
+            lstHelpLore.Items.Add("Cheats");//
+            lstHelpLore.Items.Add("Elektro Falle");//
+            lstHelpLore.Items.Add("Feuer");//
+            lstHelpLore.Items.Add("Eventbereiche");//
             lstHelpLore.Items.Add("Kanalisations Wasser");
             lstHelpLore.Items.Add("Magie");
             lstHelpLore.Items.Add("Hebel");
             lstHelpLore.Items.Add("Respawn");
+            #endregion
         }
 
         private void btnLore_Click(object sender, EventArgs e)
         {
             lstHelpLore.Items.Clear();
-            lstHelpLore.Items.Add("Ressos");
+            lstHelpLore.Items.Add("Ressos");//
             lstHelpLore.Items.Add("Estor");//
-            lstHelpLore.Items.Add("Castrosa");       //
-            lstHelpLore.Items.Add("Langchester");
+            lstHelpLore.Items.Add("Castrosa");       //       
             lstHelpLore.Items.Add("Baron Denoixis");//
-            lstHelpLore.Items.Add("Nangasto");
-            lstHelpLore.Items.Add("Ulsster");          
+            lstHelpLore.Items.Add("Langchester");
+            lstHelpLore.Items.Add("Nangasto");// Festung im Süden Langchester
+            lstHelpLore.Items.Add("Ulsster"); //König von Estor         
             lstHelpLore.Items.Add("Vorlondin");
             lstHelpLore.Items.Add("Wencyra");
             lstHelpLore.Items.Add("Dravon");
@@ -351,7 +431,7 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Magieputsch");
             lstHelpLore.Items.Add("Peskar");    
             lstHelpLore.Items.Add("Sahawreed");
-            lstHelpLore.Items.Add("Saveyn");
+            lstHelpLore.Items.Add("Saveyn");//
             lstHelpLore.Items.Add("Ewige Passage");
             lstHelpLore.Items.Add("Orklas");
             lstHelpLore.Items.Add("Grimos");

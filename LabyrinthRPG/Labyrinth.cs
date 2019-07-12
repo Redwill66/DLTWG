@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static GameofLifedanielT.Labfunk;
 namespace GameofLifedanielT
 {
   
@@ -26,6 +26,7 @@ namespace GameofLifedanielT
         Bitmap Gua = Properties.Resources.Guard_Captain;
         Bitmap Gob = Properties.Resources.Goblin;
         Bitmap Gok = Properties.Resources.Goblin_King;
+        Bitmap Dark = Properties.Resources.Dark_Knight;
         #endregion
         // Dies sind die Daten von Grid 
         private int _row;
@@ -38,7 +39,7 @@ namespace GameofLifedanielT
         private readonly string[,,] _grid = new string[MaxColumns, MaxRows, depth];
         //Dieses Static dient dazu das der Spiel ein wenig backstory bekommt, es speichert Level das ausgewählt ist
         public static int Levelstory;
-            
+       
         //Die Meisten Funktion sind in LabFunk
         Labfunk lab = new Labfunk();
         //Dient dazu welches Bild für den Avatar benutzt wird
@@ -244,6 +245,7 @@ namespace GameofLifedanielT
         bool wait;
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
         {
+         
             Btrade = true;
             if (Alive== true)
             {
@@ -308,6 +310,7 @@ namespace GameofLifedanielT
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat  = lab.Schield(panMain, panel, _row, _column, Armormat);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
+
                         leverover = lab.Endes(panMain, panel, _row, _column);
                         MaxLife = lab.MaxLife(panMain, panel, _row, _column, MaxLife);
                         encounte = lab.Encounter(panMain, panel, _row, _column);
@@ -579,6 +582,42 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 8)
+                            {
+                                picnpc.BackgroundImage = Dark;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs >= 99)
+                                    {
+                                        Bombs = 0;
+
+                                         Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword >= 99 && Armor >= 99)
+                                    {
+                                        sword = 0;
+                                            Armor = 0;
+                                          Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = 0;
+                                       
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = 0;
+                                    encounte = 0;
+                                }
+                            }
 
                         }
                         #endregion
@@ -742,6 +781,7 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
                             {
@@ -764,6 +804,7 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
                             {
@@ -773,8 +814,9 @@ namespace GameofLifedanielT
                                 _column = 38;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
                             {
@@ -786,6 +828,7 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
                             {
@@ -797,10 +840,24 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 7 && leverover == false && _row == 3 && _column == 7)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                              lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
                             }
                             lab.CreateWorld(panel, _row, _column, Lvl);
+                            lab.Starts(panel, _row, _column);
                         }
-
+                        
 
 
                     }
@@ -898,6 +955,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 1;
                             _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 7)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 7;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -1317,6 +1384,46 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 8)
+                            {
+                                picnpc.BackgroundImage = Dark;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs >= 99)
+                                    {
+                                        Bombs = 0;
+
+                                         Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword >= 99 && Armor >= 99)
+                                    {
+                                        sword =0;
+                                        Armor = 0;
+                                       
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = 0;
+                                       
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+
+                                }
+                                else
+                                {
+                                    Life = 0;
+                                    encounte = 0;
+                                }
+                            }
                         }
                         #endregion
                         #region Trade and Damage
@@ -1471,6 +1578,7 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                                 Levelstory = Lvl;
                                 DialogResult dialogResult = MessageBox.Show("Willst du ein Wenig Story hören", "Some Title", MessageBoxButtons.YesNo);
                                 if (dialogResult == DialogResult.Yes)
@@ -1482,6 +1590,7 @@ namespace GameofLifedanielT
                                 {
 
                                 }
+
                             }
                             else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
                             {
@@ -1496,24 +1605,27 @@ namespace GameofLifedanielT
                                 {
 
                                 }
+                                lblrespawn.Text = Respawn.ToString();
                                 Respawn = 3;
                                 _row = 28;
                                 _column = 2;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
                             {
                                 Respawn = 3;
                                 lblrespawn.Text = Respawn.ToString();
-                                _row = 28;
-                                _column = 2;
+                                _row = 19;
+                                _column = 38;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
                             {
@@ -1523,8 +1635,9 @@ namespace GameofLifedanielT
                                 _column = 4;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
                             {
@@ -1536,9 +1649,27 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 7 && leverover == false && _row == 3 && _column == 7)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
                             }
                             lab.CreateWorld(panel, _row, _column, Lvl);
+                            lab.Starts(panel, _row, _column);
                         }
+                      
+                          
+                           
+                           
 
 
 
@@ -1637,6 +1768,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 1;
                             _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 7)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 7;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -1748,8 +1889,6 @@ namespace GameofLifedanielT
                         }
                         #endregion
                         #region Encounters
-
-                      
                         if (encounte > 0)
                         {
                             if (encounte == 1)
@@ -2004,6 +2143,43 @@ namespace GameofLifedanielT
                                 else
                                 {
                                     Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 8)
+                            {
+                                picnpc.BackgroundImage = Dark;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs >= 99)
+                                    {
+                                        Bombs=0;
+                                       
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword >= 99 && Armor >= 99)
+                                    {
+                                        sword = 0;
+                                        Armor = 0;                                   
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = 0;
+                                        
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = 0;
                                     encounte = 0;
                                 }
                             }
@@ -2174,8 +2350,10 @@ namespace GameofLifedanielT
                                 _column = 8;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
+
                             }
                             else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
                             {
@@ -2198,17 +2376,19 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
                             {
                                 Respawn = 3;
                                 lblrespawn.Text = Respawn.ToString();
-                                _row = 28;
-                                _column = 2;
+                                _row = 19;
+                                _column = 38;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
                             {
@@ -2218,8 +2398,9 @@ namespace GameofLifedanielT
                                 _column = 4;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
                             {
@@ -2231,11 +2412,25 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 7 && leverover == false && _row == 3 && _column == 7)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
                             }
 
                             lab.CreateWorld(panel, _row, _column, Lvl);
+                            lab.Starts(panel, _row, _column);
                         }
-
+                      
 
 
                     }
@@ -2333,6 +2528,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 1;
                             _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 7)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 7;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -2443,9 +2648,7 @@ namespace GameofLifedanielT
                             cheat = false;
                         }
                         #endregion
-                        #region Encounters
-
-                     
+                        #region Encounters                    
                         if (encounte > 0)
                         {
                             if (encounte == 1)
@@ -2615,12 +2818,9 @@ namespace GameofLifedanielT
                                     {
                                         Life = Life - 2;
                                         Gold = Gold + 400;
-
                                         Fight = false;
                                         encounte = 0;
                                     }
-
-
                                 }
                                 else
                                 {
@@ -2700,6 +2900,43 @@ namespace GameofLifedanielT
                                 else
                                 {
                                     Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 8)
+                            {
+                                picnpc.BackgroundImage = Dark;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (Bombs >= 99)
+                                    {
+                                        Bombs=0;
+                                       
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    if (sword >= 99 && Armor >= 99)
+                                    {
+                                        sword = 0;
+                                        Armor = 0;
+                                     
+
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = 0;                                      
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = 0;
                                     encounte = 0;
                                 }
                             }
@@ -2861,10 +3098,13 @@ namespace GameofLifedanielT
                                 }
                                 Respawn = 3;
                                 lblrespawn.Text = Respawn.ToString();
+                                _row = 6;
+                                _column = 8;
                                 Rowsd = _row;
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
 
                             }
                             else if (Lvl == 3 && leverover == false && _row == 28 && _column == 2)
@@ -2886,19 +3126,21 @@ namespace GameofLifedanielT
                                 _column = 2;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 4 && leverover == false && _row == 19 && _column == 38)
                             {
                                 Respawn = 3;
                                 lblrespawn.Text = Respawn.ToString();
-                                _row = 28;
-                                _column = 2;
+                                _row = 19;
+                                _column = 38;
                                 Rowsd = _row;
                                 Columnsd = _column;
-                                lab.Starts(panel, _row, _column);
+                               lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 5 && leverover == false && _row == 3 && _column == 4)
                             {
@@ -2910,6 +3152,7 @@ namespace GameofLifedanielT
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             else if (Lvl == 6 && leverover == false && _row == 1 && _column == 4)
                             {
@@ -2919,11 +3162,27 @@ namespace GameofLifedanielT
                                 _column = 4;
                                 Rowsd = _row;
                                 Columnsd = _column;
+                               lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 7 && leverover == false && _row == 3 && _column == 7)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
                                 leverover = true;
+                                ende = true;
                             }
                             lab.CreateWorld(panel, _row, _column, Lvl);
+                            lab.Starts(panel, _row, _column);
+
                         }
+                       
                     }
                     #endregion
                     #region Dead and Respawn
@@ -3019,6 +3278,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 1;
                             _column = 4;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 7)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 7;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -3725,7 +3994,7 @@ namespace GameofLifedanielT
 
         private void btnlvl0_Click(object sender, EventArgs e)
         {
-            #region Test Level 6
+            #region Test Level 0
 
           
             btnlvl0.Enabled = false;
@@ -3832,6 +4101,116 @@ namespace GameofLifedanielT
             }
   #endregion
         }
-      
+
+        private void btnlvl7_Click(object sender, EventArgs e)
+        {
+            #region Level 7
+
+
+            btnlvl7.Enabled = false;
+            btnlvl7.Enabled = true;
+            Lvl = 7;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Respawn = 3;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                lblArmor.Text = Armor.ToString();
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
+                Spellpower = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblArmor.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Respawn = 3;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                Rowsd = 0;
+                Columnsd = 0;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                Spellpower = 0;
+                lblArmor.Text = Armor.ToString();
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+            #endregion
+
+        }
     }
 }
