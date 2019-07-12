@@ -55,7 +55,15 @@ namespace GameofLifedanielT
 
         private void btnback_Click(object sender, EventArgs e)
         {
+            for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+            {
+                for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                {
 
+                    panMain.Dispose();//Geht rüber zu GenerateGrid um die Zelle zu Generieren
+                }
+
+            }
             frmstart fnp = new frmstart();
             Hide();
             fnp.ShowDialog();
