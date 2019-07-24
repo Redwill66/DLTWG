@@ -57,6 +57,11 @@ namespace GameofLifedanielT
         Bitmap HSave = Properties.Resources.Head_Saveyn;
         Bitmap Electro = Properties.Resources.Electro;
         Bitmap Fire = Properties.Resources.Fire;
+        Bitmap Longchester = Properties.Resources.Longchester;
+        Bitmap Nangasto = Properties.Resources.Nangasto;
+        Bitmap WappenGrenor = Properties.Resources.WappenGrenor;
+        Bitmap Gostasso = Properties.Resources.Gostasso;
+        Bitmap König_Ories = Properties.Resources.König_Ories;
         public static string Mapss;
         private void btnback_Click(object sender, EventArgs e)
         {
@@ -68,7 +73,9 @@ namespace GameofLifedanielT
         {
             #region Lore
 
+            #region Ressos
 
+          
             //Lore 
             if (lstHelpLore.Text == "Ressos")
             {
@@ -83,13 +90,16 @@ namespace GameofLifedanielT
                 frmHelpMap fnp = new frmHelpMap();
                 fnp.ShowDialog();
             }
+            #region Estor
+
+          
             if (lstHelpLore.Text == "Estor")
             {
                 picnpc.BackgroundImage = EstorKing;
                 picwappen.BackgroundImage = WappenEstor;
                 lblName.Text = "König von Estor";
                 lblwappen.Text = "Land der Fürsten und des Geldes";
-                txtHelp.Text = "Estor das Land das vom Geld gelenkt wird. Bei dessen König handelt es sich eher um die reichste Person von Estor, Handel liegt allen Bewohner im Blut, es gab nichts, dass sie mehr Interessierte ausser etwas. Castrosa, ihr auftreten bewegt die sonst nur Geld gierigen Bewohner von Estor und verhinderte den beinahe beitritt, von Estor auf die Seite von dem Empire. Nach dem Krieg galt sie in Estor als Göttliche. Daher interessiert die Bevölkerung heutzutage nicht nur Geld, jedoch ist Geld immer noch ein grosser Fokus. Gesetzlich ist das Land ziemlich frei, man muss bedenken, der Reichere hat immer mehr zu sagen als alle andere. Erstaunlicherweise aber führen sie Selten bis gar keinen Krieg, sie sehen diesen als eine Verschwendung von Geld.";
+                txtHelp.Text = "Estor das Land das vom Geld gelenkt wird. Bei dessen König handelt es sich normalerweise um die reichste Person von Estor(dazu mehr bei Gostasso und Ulsster Kapiteln), Handel liegt allen Bewohner im Blut, es gab nichts, dass sie mehr Interessierte ausser etwas. Castrosa, ihr auftreten bewegt die sonst nur Geld gierigen Bewohner von Estor und verhinderte den beinahe beitritt, von Estor auf die Seite von dem Empire. Nach dem Krieg galt sie in Estor als Göttliche. Daher interessiert die Bevölkerung heutzutage nicht nur Geld, jedoch ist Geld immer noch ein grosser Fokus. Gesetzlich ist das Land ziemlich frei, man muss bedenken, der Reichere hat immer mehr zu sagen als alle andere. Erstaunlicherweise aber führen sie Selten bis gar keinen Krieg, sie sehen diesen als eine Verschwendung von Geld.";
             }
             else if (lstHelpLore.Text == "Castrosa")
             {
@@ -108,17 +118,128 @@ namespace GameofLifedanielT
                 txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
 
             }
-           
-            else if (lstHelpLore.Text == "Festor")
+            else if (lstHelpLore.Text == "Longchester")
             {
-                picnpc.BackgroundImage = Festor;
-                picwappen.BackgroundImage = Head_Festor;
-                lblName.Text = "Festor der Dritte";
-                lblwappen.Text = "Dreissigster Ordens Anführer";
-                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Nangasto")
+            {
+                picnpc.BackgroundImage = Nangasto;
+                picwappen.BackgroundImage = WappenGrenor;
+                lblName.Text = "Festung der Bucht";
+                lblwappen.Text = "In besitzt von Haus Grenor";
+                txtHelp.Text = "Haus Grenor ist besitzt Nangasto erst seit den ende des Krieges vor Tausend Jahren, sie besassen als einzige Familie eine gewissen Tropfen von Ehre, sie waren es die Castrosa direkt unterstützten, jedoch ist von dieser Ehre heute nichts mehr vorhanden. Haus Grenor schuldet Haus Oxter sehr viel Geld, daher sind sie wie Marionetten zu Haus Oxter. Es gibt auch gerüchte, dass der Erbe des Hauses verschwunden ist, wohin jedoch weiss niemand.";
+
+            }
+            else if (lstHelpLore.Text == "Gostasso")
+            {
+                picnpc.BackgroundImage = EstorKing;
+                picwappen.BackgroundImage = Gostasso;
+                lblName.Text = "Haupstadt von Estor";
+                lblwappen.Text = "Sitz von Ulsster Regno";
+                txtHelp.Text = " Sitz des König, jedoch ist seine Macht sehr beschränkt, so herrscht er eigentlich nur in Zeiten des Krieges. Man könnte meinen der König wäre die reichtse Person von Estor, jedoch ist er das schon lange nicht mehr. Gostasso ist die Südlichste Stadt von Estor und auch dessen grösste. Sie ist Sitz des Goldrates, und etwa Vier Militärakademien. Dadurch das die Stadt nicht an der Grenze ist und auch keine Mehr verbindung hat, schadet dem Handel der Stadt sehr. Daher sind die meisten der Bewohner teil des Mittelstande, doch aufgrund des Standort, da er weit von der Grenzen fort ist und nicht von der See eine Invasion erleiden kann. Ist er der Perfekte platz für die Regierung.  ";
+
+            }
+            else if (lstHelpLore.Text == "Ulsster")
+            {
+                picnpc.BackgroundImage = EstorKing;
+                picwappen.BackgroundImage = WappenEstor;
+                lblName.Text = "König Ulsster Regno";
+                lblwappen.Text = "Wappen von Estor";
+                txtHelp.Text = " Ulsster, der wahrscheinlich schwächste König von Estor. Er hat so gut wie jede macht verloren die er hatte and Goldrat verloren, er bestimmt nicht mal mehr gesetze. Grund des Macht verlustes ist die Taten der früheren König. Die Ironie ist, die früheren König setzten Geld ein um das Land zu stärken, jedoch gilt in Estor die Reichen bestimmen die Regeln. Symbolisch ist er immer noch der Anführer, aber in wahrheit besitzt der Goldrat alle Macht. Mancher vermutet, dass eines Tagen der König gestürtzt wird, ob dies mit Ulsster passieren wird wer weiss.";
+
+            }
+            #endregion
+            #region Vorlondin
+
+        
+            else if (lstHelpLore.Text == "Vorlondin")
+            {// Bearbeiten
+                //Land
+                picnpc.BackgroundImage = König_Ories;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "König von Vorlondin";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Wezan")
+            {// Bearbeiten
+                //Stadt
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Vosgon")
+            {// Bearbeiten
+                //Hauptstadt
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Ories")
+            {// Bearbeiten
+                //König
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            #endregion
+            #region Dravos
+
+
+            else if (lstHelpLore.Text == "Darvos")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Feuergorn")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Stadt der Zauberer")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
+            }
+            else if (lstHelpLore.Text == "Magierränge")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Longchester;
+                picwappen.BackgroundImage = Wap1;
+                lblName.Text = "Hafen des Handels";
+                lblwappen.Text = "In besitzt von Haus Oxter";
+                txtHelp.Text = "Beherrscht von Haus Oxter, Longchester wird auch als einer der Grössten von Estor angesehen, wer in Estor handeln will und mit dem Schiff kommt der wird in Longchester halt machen. Jedoch sollte man auch viel Verlust erleiden können, denn Tribut oder Zölle machen es den Händler schwer gewinn zu machen, sollte man es jedoch trotzdem schaffen so wird der Ruf eines Händlers in den Himmel schiessen. Die Reichen von Estor sind Geizig, sie zu überzeugen etwas zu kaufen gleicht einer Heldentat. ";
+
             }
             else if (lstHelpLore.Text == "Wencyra")
-            {
+            {// Bearbeiten
                 picnpc.BackgroundImage = Wencyra;
                 picwappen.BackgroundImage = null;
                 lblName.Text = "Erzmagierin Wencyra";
@@ -126,8 +247,54 @@ namespace GameofLifedanielT
                 txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
 
             }
-            else if (lstHelpLore.Text == "Cresgen")
-            {
+            #endregion
+            #region The Zeal Order
+
+    
+            else if (lstHelpLore.Text == "The Zeal Order")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Festor;
+                picwappen.BackgroundImage = Head_Festor;
+                lblName.Text = "Festor der Dritte";
+                lblwappen.Text = "Dreissigster Ordens Anführer";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+            }
+            else if (lstHelpLore.Text == "Festor")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Festor;
+                picwappen.BackgroundImage = Head_Festor;
+                lblName.Text = "Festor der Dritte";
+                lblwappen.Text = "Dreissigster Ordens Anführer";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+            }
+            else if (lstHelpLore.Text == "Holy King")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Festor;
+                picwappen.BackgroundImage = Head_Festor;
+                lblName.Text = "Festor der Dritte";
+                lblwappen.Text = "Dreissigster Ordens Anführer";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+            }
+            else if (lstHelpLore.Text == "Orklas vs Zeal Order")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Festor;
+                picwappen.BackgroundImage = Head_Festor;
+                lblName.Text = "Festor der Dritte";
+                lblwappen.Text = "Dreissigster Ordens Anführer";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+            }
+            else if (lstHelpLore.Text == "Magieputsch")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Festor;
+                picwappen.BackgroundImage = Head_Festor;
+                lblName.Text = "Festor der Dritte";
+                lblwappen.Text = "Dreissigster Ordens Anführer";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+            }
+            #endregion
+            #region Orklas
+            else if (lstHelpLore.Text == "Orklas")
+            {// Bearbeiten
                 picnpc.BackgroundImage = Cresgen;
                 picwappen.BackgroundImage = null;
                 lblName.Text = "Prinz Cresgen";
@@ -135,7 +302,47 @@ namespace GameofLifedanielT
                 txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
 
             }
-                 
+            #endregion
+            #region Peskar
+            else if (lstHelpLore.Text == "Peskar")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Die Elfen Reiche")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Zusammenleben")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            #endregion
+            #region Sahawreed
+            else if (lstHelpLore.Text == "Sahawreed")
+            {
+                picnpc.BackgroundImage = Saveyn;
+                picwappen.BackgroundImage = HSave;
+                lblName.Text = "Saveyn Ohmras";
+                lblwappen.Text = "Sohn des Wüstenteufels(Berühmter General von Sahawreed)";
+                txtHelp.Text = "Saveyn stammt von einer sehr speziellen Familie, sein Vater wurde der Wüstenteufel gennant, dieser hielt die Angriffe des Empires für mehre Monate auf, während Saveyn hilfe von den anderen Länder holte, geht man jedoch noch weiter zurück, so ist der Grossvater von Saveyn der bekannteste Bandit von Sahawreed. Saveyn's Grossvater und Vater wurden schlussendlich überzeugt der Armee beizutreten um bei der Verteidigung zu helfen. Man merkt Saveyn an das er aus einer Wilden Familie stammt, so haltet er nichts von Gerechtigkeit wo der Reiche gewinnt. Man könnte ihn mit einen Robin Hood vergleichen. Als er Cresgen in der Wüste von Sahawreed traff da wüsste er sofort das er Handeln muss, man könnte sagen ohne ihn wären die Helden nie zusammen gekommen. Nach dem Krieg wollte Saveyn nur noch ein einfaches Leben haben, ob er Nachkommen oder eine Frau hatte ist Unbekannt, denn fünf Jahre nach dem Krieg war er spurlos verschwunden";
+
+            }
+
             else if (lstHelpLore.Text == "Saveyn")
             {
                 picnpc.BackgroundImage = Saveyn;
@@ -145,10 +352,131 @@ namespace GameofLifedanielT
                 txtHelp.Text = "Saveyn stammt von einer sehr speziellen Familie, sein Vater wurde der Wüstenteufel gennant, dieser hielt die Angriffe des Empires für mehre Monate auf, während Saveyn hilfe von den anderen Länder holte, geht man jedoch noch weiter zurück, so ist der Grossvater von Saveyn der bekannteste Bandit von Sahawreed. Saveyn's Grossvater und Vater wurden schlussendlich überzeugt der Armee beizutreten um bei der Verteidigung zu helfen. Man merkt Saveyn an das er aus einer Wilden Familie stammt, so haltet er nichts von Gerechtigkeit wo der Reiche gewinnt. Man könnte ihn mit einen Robin Hood vergleichen. Als er Cresgen in der Wüste von Sahawreed traff da wüsste er sofort das er Handeln muss, man könnte sagen ohne ihn wären die Helden nie zusammen gekommen. Nach dem Krieg wollte Saveyn nur noch ein einfaches Leben haben, ob er Nachkommen oder eine Frau hatte ist Unbekannt, denn fünf Jahre nach dem Krieg war er spurlos verschwunden";
 
             }
+            else if (lstHelpLore.Text == "Wüstenteufels")
+            {
+                picnpc.BackgroundImage = Saveyn;
+                picwappen.BackgroundImage = HSave;
+                lblName.Text = "Saveyn Ohmras";
+                lblwappen.Text = "Sohn des Wüstenteufels(Berühmter General von Sahawreed)";
+                txtHelp.Text = "Saveyn stammt von einer sehr speziellen Familie, sein Vater wurde der Wüstenteufel gennant, dieser hielt die Angriffe des Empires für mehre Monate auf, während Saveyn hilfe von den anderen Länder holte, geht man jedoch noch weiter zurück, so ist der Grossvater von Saveyn der bekannteste Bandit von Sahawreed. Saveyn's Grossvater und Vater wurden schlussendlich überzeugt der Armee beizutreten um bei der Verteidigung zu helfen. Man merkt Saveyn an das er aus einer Wilden Familie stammt, so haltet er nichts von Gerechtigkeit wo der Reiche gewinnt. Man könnte ihn mit einen Robin Hood vergleichen. Als er Cresgen in der Wüste von Sahawreed traff da wüsste er sofort das er Handeln muss, man könnte sagen ohne ihn wären die Helden nie zusammen gekommen. Nach dem Krieg wollte Saveyn nur noch ein einfaches Leben haben, ob er Nachkommen oder eine Frau hatte ist Unbekannt, denn fünf Jahre nach dem Krieg war er spurlos verschwunden";
+
+            }
+            #endregion
+            #endregion
+            #region Grimos
+            if (lstHelpLore.Text == "Grimos")
+            {
+                Mapss = "Grimos";
+
+
+                picnpc.BackgroundImage = null;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Grimos";
+                lblwappen.Text = "einer der vier Kontinente";
+                txtHelp.Text = "Nicht viel ist von Grimos bekannt. Jedenfalls nicht für die Öffentlichkeit, Grimos kann man in drei Territoriumen unterteilen. Die Grajin Wüste, den Finsterjungle und das Urakk Gebirge. Zwei von drei dieser Territoriumen kontrolliert das Empire, dass Dritte wird von den Zwergen von Trestan bewohnt. Wäre das Gebirge nicht da so hätte das Empire wohl alle Gebiete von Grimos. Früher gabe es noch weitere Reiche auf Grimos, diese wurden jedoch alle Untertanten von dem Empire. Die Wüste war und ist die Heimat von Wüstenzentauren, diese gehen jedoch selten ins Militär von Grimos. Die Zentauren können unabhängig vom Empire Leben, da das Empire nicht extrem viel mit der Wüste anfangen kann. Dies ist jedoch nur einer der Rassen die neben den Menschen von Grimos leben.  ";
+                frmHelpMap fnp = new frmHelpMap();
+                fnp.ShowDialog();
+            }
+
+            #region Trestan
+            else if (lstHelpLore.Text == "Trestan")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Ewige Passage")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            #endregion
+            #region Fealen Empire
+
+           
+            else if (lstHelpLore.Text == "Grimos")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Fealen Empire")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Zrosgen")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+            else if (lstHelpLore.Text == "Cresgen")
+            {// Bearbeiten
+                picnpc.BackgroundImage = Cresgen;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Prinz Cresgen";
+                lblwappen.Text = "Sohn des Verückten Kaisers Zrosgen";
+                txtHelp.Text = "Baron von Longchester, Denoixis herrst mit Harter Hand über seine Bevölkerung, wer im nicht gefällt der Verwindet auf Mysteriöse Weise. Einer der Fünf Barone von Estor. Besitzt den erfolgreichsten Hafen von Estor.";
+
+            }
+
+            #endregion
+            #endregion
+            #region Vekran
+            if (lstHelpLore.Text == "Vekran")
+            {
+                Mapss = "Ressos";
+
+
+                picnpc.BackgroundImage = null;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Ressos";
+                lblwappen.Text = "einer der vier Kontinente";
+                txtHelp.Text = "Ressos, Heimat von vielen Völkern, von Menschen zu Elfen bis zu Goblins usw. Ressos gilt als Kontinent mit den meisten verschiedenen Kultur, früher regierten mehrere Elfen Fürsten das Land, diese wurden jedoch durch den Menschen mehrheitlich verdrängt. Der Mensch verband Ressos mit Grimos mit der Grossen Brücke die Ewigen Passage. Selten waren sich die Völker von Ressos einig, meist endeten viele Situtionen in Krieg, die Elfen zogen sich grossen Teil nach Peskar oder wie sie es nennen Paranthil zurück. Zwar kann man sie auch ausserhalb sehen, meist jedoch nur in geringer Zahl. Der Kontinent selber wird durch ein Gebirg in Westen und Osten unterteilt, so wurde sie auch gleich zur natürlichen Grenze der Reiche. Heute gibt es 7 Reiche die ein Teil von Ressos besitzen: Das Fealen Empire, sie besitzen zwar nur einen kleinen Teil aber dieser ist doch sehr Bedeutend. Sahawreed, das Gebirge verhindert das viele Wolken nach Sahawreed kommen, daher hat sich eine Wüste gebildet. Der Zeal Order. Magiehasser und Religonstaat. Estor, Reich wo Geld alles ist. Vorlondin, sie besitzen ein Bündniss mit den Elfen und würden sie in falle einer Invasion helfen. Peskar, Heimat der Elfen. Orklas, Söldnerstaat verlor sehr viel Land und seine Hauptstadt an den Orden.";
+                frmHelpMap fnp = new frmHelpMap();
+                fnp.ShowDialog();
+            }
+            #endregion
+            #region Kruzo Archipel
+            if (lstHelpLore.Text == "Kruzo Archipel")
+            {
+                Mapss = "Ressos";
+
+
+                picnpc.BackgroundImage = null;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Ressos";
+                lblwappen.Text = "einer der vier Kontinente";
+                txtHelp.Text = "Ressos, Heimat von vielen Völkern, von Menschen zu Elfen bis zu Goblins usw. Ressos gilt als Kontinent mit den meisten verschiedenen Kultur, früher regierten mehrere Elfen Fürsten das Land, diese wurden jedoch durch den Menschen mehrheitlich verdrängt. Der Mensch verband Ressos mit Grimos mit der Grossen Brücke die Ewigen Passage. Selten waren sich die Völker von Ressos einig, meist endeten viele Situtionen in Krieg, die Elfen zogen sich grossen Teil nach Peskar oder wie sie es nennen Paranthil zurück. Zwar kann man sie auch ausserhalb sehen, meist jedoch nur in geringer Zahl. Der Kontinent selber wird durch ein Gebirg in Westen und Osten unterteilt, so wurde sie auch gleich zur natürlichen Grenze der Reiche. Heute gibt es 7 Reiche die ein Teil von Ressos besitzen: Das Fealen Empire, sie besitzen zwar nur einen kleinen Teil aber dieser ist doch sehr Bedeutend. Sahawreed, das Gebirge verhindert das viele Wolken nach Sahawreed kommen, daher hat sich eine Wüste gebildet. Der Zeal Order. Magiehasser und Religonstaat. Estor, Reich wo Geld alles ist. Vorlondin, sie besitzen ein Bündniss mit den Elfen und würden sie in falle einer Invasion helfen. Peskar, Heimat der Elfen. Orklas, Söldnerstaat verlor sehr viel Land und seine Hauptstadt an den Orden.";
+                frmHelpMap fnp = new frmHelpMap();
+                fnp.ShowDialog();
+            }
+            #endregion
+            #region Anderes
+
+            #endregion
             #endregion
             #region Tipps
 
-         
+
             //Hilfe
             else if (lstHelpLore.Text == "Gift")
             {
@@ -417,27 +745,38 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Estor");//
             lstHelpLore.Items.Add("Castrosa");       //       
             lstHelpLore.Items.Add("Baron Denoixis");//
-            lstHelpLore.Items.Add("Langchester");
-            lstHelpLore.Items.Add("Nangasto");// Festung im Süden Langchester
-            lstHelpLore.Items.Add("Ulsster"); //König von Estor         
+            lstHelpLore.Items.Add("Longchester");//
+            lstHelpLore.Items.Add("Nangasto");  // Festung im Süden Langchester Fertig
+            lstHelpLore.Items.Add("Gostasso");//Hauptstadt von Estor Fertig
+            lstHelpLore.Items.Add("Ulsster"); //König von Estor Fertig         
             lstHelpLore.Items.Add("Vorlondin");
+            lstHelpLore.Items.Add("Wezan");
+            lstHelpLore.Items.Add("Vosgon");
+            lstHelpLore.Items.Add("Ories");
             lstHelpLore.Items.Add("Wencyra");
             lstHelpLore.Items.Add("Dravon");
+            lstHelpLore.Items.Add("Feuergorn");// Name der Insel von Dravon
             lstHelpLore.Items.Add("Stadt der Zauberer");
+            lstHelpLore.Items.Add("Magierränge");
             lstHelpLore.Items.Add("The Zeal Order");
             lstHelpLore.Items.Add("Festor");
             lstHelpLore.Items.Add("Holy King");
             lstHelpLore.Items.Add("Orklas vs Zeal Order");
             lstHelpLore.Items.Add("Magieputsch");
-            lstHelpLore.Items.Add("Peskar");    
+            lstHelpLore.Items.Add("Orklas");
+            lstHelpLore.Items.Add("Peskar");
+            lstHelpLore.Items.Add("Die Elfen Reiche");
+            lstHelpLore.Items.Add("Zusammenleben");
             lstHelpLore.Items.Add("Sahawreed");
             lstHelpLore.Items.Add("Saveyn");//
-            lstHelpLore.Items.Add("Ewige Passage");
-            lstHelpLore.Items.Add("Orklas");
-            lstHelpLore.Items.Add("Grimos");
+            lstHelpLore.Items.Add("Trestan");
+            lstHelpLore.Items.Add("Ewige Passage");           
+            lstHelpLore.Items.Add("Grimos");//
             lstHelpLore.Items.Add("Fealen Empire");
             lstHelpLore.Items.Add("Zrosgen");
             lstHelpLore.Items.Add("Cresgen");
+            lstHelpLore.Items.Add("Vekran");
+            lstHelpLore.Items.Add("Kruzo Archipel");
 
         }
 

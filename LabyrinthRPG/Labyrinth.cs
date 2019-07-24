@@ -27,6 +27,10 @@ namespace GameofLifedanielT
         Bitmap Gob = Properties.Resources.Goblin;
         Bitmap Gok = Properties.Resources.Goblin_King;
         Bitmap Dark = Properties.Resources.Dark_Knight;
+        Bitmap Wolf = Properties.Resources.Wolf;
+        Bitmap Assa = Properties.Resources.Assassin;
+        Bitmap Baer = Properties.Resources.Baer;
+        Bitmap BanditLord = Properties.Resources.BanditLord;
         #endregion
         // Dies sind die Daten von Grid 
         private int _row;
@@ -79,11 +83,15 @@ namespace GameofLifedanielT
         int Armormat = 0;
         int Bombs = 0;
         int sword = 0;
+        int Arrow = 0;
         int Keys = 0;
         int Gold = 0;
         int Tokens = 0;
         int Potions = 0;
         int Mana = 0;
+        int WolfFell = 0;
+        int Bärenfell = 0;
+        int Schmuck = 0;
         int Spellpower = 0;
         bool Gene = false;
         int Lvl = 1;
@@ -120,8 +128,12 @@ namespace GameofLifedanielT
                 Life = 3;
                 Armor = 0;
                 Armormat = 0;
+                 WolfFell = 0;
+                Bärenfell = 0;
                 Bombs = 0;
                 Keys = 0;
+                Arrow = 0;
+                Schmuck = 0;
                 Potions = 1;
                 Respawn = 3;
                 Tokens = 0;
@@ -178,12 +190,16 @@ namespace GameofLifedanielT
                 Armor = 0;
                 Bombs = 0;
                 Keys = 0;
+                Schmuck = 0;
                 Armormat = 0;
                 Potions = 1;
                 Tokens = 0;
                 MaxLife = 3;
                 Respawn = 3;
                 Mana = 0;
+                Arrow = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
                 Spellpower = 0;
                 txtdialog.Text = "Du machst langsam auf, du hörst dass zwitschern von Vögel, du steht langsam auf, du fragst dich.'Wo bin ich?' Natürlich antwortet dir niemand. Danach fragst du dich 'Wer bin ich?', da natürlich auch keiner auf diese frage Antwortet entscheidest du dich nach einer Zivilisation zu suchen";
 
@@ -249,6 +265,7 @@ namespace GameofLifedanielT
         int encounte = 0;
         bool Fight = false;
         bool Payheal = false;
+        bool WirtHeal = false;
         bool cheat = false;
         bool wait;
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
@@ -310,10 +327,54 @@ namespace GameofLifedanielT
                                 trade = false;
                             }
                         }
+                        if (Arrow > 0)
+                        {
+                            item = 5;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 2000;
+                                Arrow = 0;
+                                trade = false;
+                            }
+                        }
+                        if (WolfFell > 0)
+                        {
+                            item = 6;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + WolfFell * 150;
+                                WolfFell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Bärenfell > 0)
+                        {
+                            item = 7;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + Bärenfell * 200;
+                                Bärenfell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Schmuck > 0)
+                        {
+                            item = 8;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 1500;
+                                Schmuck = 0;
+                                trade = false;
+                            }
+                        }
                         #endregion
                         #region Funktions
 
-                        
+
                         lab.Down(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat  = lab.Schield(panMain, panel, _row, _column, Armormat);
@@ -331,6 +392,7 @@ namespace GameofLifedanielT
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
+                        lab.Quest(panMain, panel, _row, _column, Lvl);
                         lab.Event(panMain, panel, _row, _column, Lvl);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc, Lvl);
@@ -626,6 +688,148 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 9)
+                            {
+                                picnpc.BackgroundImage = Wolf;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                   
+
+                                    if (sword >= 1 )
+                                    {
+                                        sword = sword-1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 1)
+                                    {
+                                        Armor = Armor - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else                                
+                                    {
+                                        Life = Life-1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 2;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 10)
+                            {
+                                picnpc.BackgroundImage = Baer;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 2&& Armor >= 1)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 500;
+                                        Bärenfell= Bärenfell+2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 2)
+                                    {
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 11)
+                            {
+                                picnpc.BackgroundImage = Assa;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 3 && Armor >= 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor--;
+                                        Life = Life - 1;
+                                        Gold = Gold + 1200;                                    
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                  
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 4;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 12)
+                            {
+                                picnpc.BackgroundImage = BanditLord;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 4 && Armor >= 2)
+                                    {
+                                        sword = sword - 4;
+                                        Armor = Armor - 2;
+                                        Tokens = Tokens + 3;
+                                        Schmuck++;
+                                        Gold = Gold + 2000;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
 
                         }
                         #endregion
@@ -636,14 +840,14 @@ namespace GameofLifedanielT
                         {
 
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
-                            if (Bitem == 1)
+                            if (Gold >= 200 && Bitem == 1)
                             {
                                 sword++;
                                 Gold = Gold - 200;
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 2)
+                            else if (Gold >= 250 && Bitem == 2)
                             {
                                 Armormat++;
                                 Gold = Gold - 250;
@@ -651,7 +855,7 @@ namespace GameofLifedanielT
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 3)
+                            else if (Gold >= 1000 && Bitem == 3)
                             {
                                 Keys++;
                                 Gold = Gold - 1000;
@@ -659,12 +863,37 @@ namespace GameofLifedanielT
                                 Btrade = false;
                                 Bitem = 0;
                             }
+                            else if (Gold >= 1000 && Bitem == 4)
+                            {
+                                if (Bombs<=3)
+                                {
+                                    Bombs++;
+                                    Gold = Gold - 1000;
+
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Du hast zuviele Bomben");
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+                              
+                            }
                             Payheal = lab.Paheal(panMain, panel, _row, _column, Payheal);
                             if (Payheal == true)
                             {
                                 Life = MaxLife;
                                 Gold = Gold - 100;
                                 Payheal = false;
+                            }
+                            WirtHeal = lab.Wirtheal(panMain, panel, _row, _column, WirtHeal);
+                            if (WirtHeal == true&& Gold>= 300)
+                            {
+                                Life = MaxLife;
+                                Gold = Gold - 300;
+                                WirtHeal = false;
                             }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
                         }
@@ -745,6 +974,22 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                    if (Arrow>=1)
+                    {
+                        lstinve.Items.Add( Arrow.ToString()+ " Köcher mit Pfeilen ");
+                    }
+                    if (WolfFell >= 1)
+                    {
+                        lstinve.Items.Add(WolfFell.ToString() + " Wolffelle ");
+                    }
+                    if (Bärenfell >= 1)
+                    {
+                        lstinve.Items.Add(Bärenfell.ToString() + " Bärenfelle ");
+                    }
+                    if (Schmuck >= 1)
+                    {
+                        lstinve.Items.Add(Schmuck.ToString() + " Schmuck Kasette ");
+                    }
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -862,6 +1107,18 @@ namespace GameofLifedanielT
                                 leverover = true;
                                 ende = true;
                             }
+                            else if (Lvl == 8 && leverover == false && _row == 36 && _column == 2)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 36;
+                                _column = 2;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                             lab.Starts(panel, _row, _column);
                         }
@@ -973,6 +1230,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 3;
                             _column = 7;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 8)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 36;
+                            _column = 2;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -1094,10 +1361,54 @@ namespace GameofLifedanielT
                                 trade = false;
                             }
                         }
+                        if (Arrow > 0)
+                        {
+                            item = 5;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 2000;
+                                Arrow = 0;
+                                trade = false;
+                            }
+                        }
+                        if (WolfFell > 0)
+                        {
+                            item = 6;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + WolfFell * 150;
+                                WolfFell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Bärenfell > 0)
+                        {
+                            item = 7;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + Bärenfell * 200;
+                                Bärenfell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Schmuck > 0)
+                        {
+                            item = 8;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 1500;
+                                Schmuck = 0;
+                                trade = false;
+                            }
+                        }
                         #endregion
                         #region Funktiones
 
-                      
+
                         lab.Up(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat = lab.Schield(panMain, panel, _row, _column, Armormat);
@@ -1112,6 +1423,7 @@ namespace GameofLifedanielT
                         lab.Event(panMain, panel, _row, _column, Lvl);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
+                        lab.Quest(panMain, panel, _row, _column, Lvl);
                         Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
@@ -1432,35 +1744,197 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 9)
+                            {
+                                picnpc.BackgroundImage = Wolf;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 1)
+                                    {
+                                        sword = sword - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 1)
+                                    {
+                                        Armor = Armor - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 2;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 10)
+                            {
+                                picnpc.BackgroundImage = Baer;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 2 && Armor >= 1)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 2)
+                                    {
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 11)
+                            {
+                                picnpc.BackgroundImage = Assa;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 3 && Armor >= 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor--;
+                                        Life = Life - 1;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 4;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 12)
+                            {
+                                picnpc.BackgroundImage = BanditLord;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 4 && Armor >= 2)
+                                    {
+                                        sword = sword - 4;
+                                        Armor = Armor - 2;
+                                        Tokens = Tokens + 3;
+                                        Gold = Gold + 2000;
+                                        Schmuck++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
                         }
                         #endregion
                         #region Trade and Damage
 
-                       
+
                         if (Gold >= 100 && Btrade == true)
                         {
+
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
-                            if (Bitem == 1)
+                            if (Gold >= 200 && Bitem == 1)
                             {
                                 sword++;
                                 Gold = Gold - 200;
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 2)
+                            else if (Gold >= 250 && Bitem == 2)
                             {
                                 Armormat++;
                                 Gold = Gold - 250;
+
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 3)
+                            else if (Gold >= 1000 && Bitem == 3)
                             {
                                 Keys++;
                                 Gold = Gold - 1000;
 
                                 Btrade = false;
                                 Bitem = 0;
+                            }
+                            else if (Gold >= 1000 && Bitem == 4)
+                            {
+                                if (Bombs <= 3)
+                                {
+                                    Bombs++;
+                                    Gold = Gold - 1000;
+
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Du hast zuviele Bomben");
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+
                             }
                             Payheal = lab.Paheal(panMain, panel, _row, _column, Payheal);
                             if (Payheal == true)
@@ -1469,9 +1943,14 @@ namespace GameofLifedanielT
                                 Gold = Gold - 100;
                                 Payheal = false;
                             }
+                            WirtHeal = lab.Wirtheal(panMain, panel, _row, _column, WirtHeal);
+                            if (WirtHeal == true && Gold >= 300)
+                            {
+                                Life = MaxLife;
+                                Gold = Gold - 300;
+                                WirtHeal = false;
+                            }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
-
-
                         }
                         if (sword > 0)
                         {
@@ -1555,6 +2034,22 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                    if (Arrow >= 1)
+                    {
+                        lstinve.Items.Add(Arrow.ToString() + " Köcher mit Pfeilen ");
+                    }
+                    if (WolfFell >= 1)
+                    {
+                        lstinve.Items.Add(WolfFell.ToString() + " Wolffelle ");
+                    }
+                    if (Bärenfell >= 1)
+                    {
+                        lstinve.Items.Add(Bärenfell.ToString() + " Bärenfelle ");
+                    }
+                    if (Schmuck >= 1)
+                    {
+                        lstinve.Items.Add(Schmuck.ToString() + " Schmuck Kasette ");
+                    }
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -1665,6 +2160,18 @@ namespace GameofLifedanielT
                                 lblrespawn.Text = Respawn.ToString();
                                 _row = 3;
                                 _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 8 && leverover == false && _row == 36 && _column == 2)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 36;
+                                _column = 2;
                                 Rowsd = _row;
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
@@ -1790,6 +2297,16 @@ namespace GameofLifedanielT
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
                         }
+                        else if (Lvl == 8)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 36;
+                            _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
 
 
                     }
@@ -1858,10 +2375,54 @@ namespace GameofLifedanielT
 
 
                         }
+                        if (Arrow > 0)
+                        {
+                            item = 5;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 2000;
+                                Arrow = 0;
+                                trade = false;
+                            }
+                        }
+                        if (WolfFell > 0)
+                        {
+                            item = 6;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + WolfFell * 150;
+                                WolfFell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Bärenfell > 0)
+                        {
+                            item = 7;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + Bärenfell * 200;
+                                Bärenfell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Schmuck > 0)
+                        {
+                            item = 8;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 1500;
+                                Schmuck = 0;
+                                trade = false;
+                            }
+                        }
                         #endregion
                         #region Funktions
 
-                      
+
                         lab.Left(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         Armormat = lab.Schield(panMain, panel, _row, _column, Armormat);
@@ -1876,6 +2437,7 @@ namespace GameofLifedanielT
                         Spellpower = lab.Magic(panMain, panel, _row, _column, Spellpower);
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         lab.Event(panMain, panel, _row, _column, Lvl);
+                        lab.Quest(panMain, panel, _row, _column, Lvl);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
@@ -2191,36 +2753,198 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 9)
+                            {
+                                picnpc.BackgroundImage = Wolf;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 1)
+                                    {
+                                        sword = sword - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 1)
+                                    {
+                                        Armor = Armor - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 2;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 10)
+                            {
+                                picnpc.BackgroundImage = Baer;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 2 && Armor >= 1)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 2)
+                                    {
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 11)
+                            {
+                                picnpc.BackgroundImage = Assa;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 3 && Armor >= 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor--;
+                                        Life = Life - 1;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 4;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 12)
+                            {
+                                picnpc.BackgroundImage = BanditLord;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 4 && Armor >= 2)
+                                    {
+                                        sword = sword - 4;
+                                        Armor = Armor - 2;
+                                        Tokens = Tokens + 3;
+                                        Gold = Gold + 2000;
+                                        Schmuck++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
 
                         }
                         #endregion
                         #region Trade and Damage
 
-                      
+
                         if (Gold >= 100 && Btrade == true)
                         {
+
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
-                            if (Bitem == 1)
+                            if (Gold >= 200 && Bitem == 1)
                             {
                                 sword++;
                                 Gold = Gold - 200;
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 2)
+                            else if (Gold >= 250 && Bitem == 2)
                             {
                                 Armormat++;
                                 Gold = Gold - 250;
+
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 3)
+                            else if (Gold >= 1000 && Bitem == 3)
                             {
                                 Keys++;
                                 Gold = Gold - 1000;
 
                                 Btrade = false;
                                 Bitem = 0;
+                            }
+                            else if (Gold >= 1000 && Bitem == 4)
+                            {
+                                if (Bombs <= 3)
+                                {
+                                    Bombs++;
+                                    Gold = Gold - 1000;
+
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Du hast zuviele Bomben");
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+
                             }
                             Payheal = lab.Paheal(panMain, panel, _row, _column, Payheal);
                             if (Payheal == true)
@@ -2229,9 +2953,14 @@ namespace GameofLifedanielT
                                 Gold = Gold - 100;
                                 Payheal = false;
                             }
+                            WirtHeal = lab.Wirtheal(panMain, panel, _row, _column, WirtHeal);
+                            if (WirtHeal == true && Gold >= 300)
+                            {
+                                Life = MaxLife;
+                                Gold = Gold - 300;
+                                WirtHeal = false;
+                            }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
-
-
                         }
                         if (sword > 0)
                         {
@@ -2319,6 +3048,22 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                    if (Arrow >= 1)
+                    {
+                        lstinve.Items.Add(Arrow.ToString() + " Köcher mit Pfeilen ");
+                    }
+                    if (WolfFell >= 1)
+                    {
+                        lstinve.Items.Add(WolfFell.ToString() + " Wolffelle ");
+                    }
+                    if (Bärenfell >= 1)
+                    {
+                        lstinve.Items.Add(Bärenfell.ToString() + " Bärenfelle ");
+                    }
+                    if (Schmuck >= 1)
+                    {
+                        lstinve.Items.Add(Schmuck.ToString() + " Schmuck Kasette ");
+                    }
                     lblBombCount.Text = Bombs.ToString();
                     lblArmorCount.Text = Armor.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -2428,6 +3173,18 @@ namespace GameofLifedanielT
                                 lblrespawn.Text = Respawn.ToString();
                                 _row = 3;
                                 _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 8 && leverover == false && _row == 36 && _column == 2)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 36;
+                                _column = 2;
                                 Rowsd = _row;
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
@@ -2550,6 +3307,16 @@ namespace GameofLifedanielT
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
                         }
+                        else if (Lvl == 8)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 36;
+                            _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
 
 
                     }
@@ -2618,10 +3385,54 @@ namespace GameofLifedanielT
 
 
                         }
+                        if (Arrow > 0)
+                        {
+                            item = 5;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 2000;
+                                Arrow = 0;
+                                trade = false;
+                            }
+                        }
+                        if (WolfFell > 0)
+                        {
+                            item = 6;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + WolfFell * 150;
+                                WolfFell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Bärenfell > 0)
+                        {
+                            item = 7;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + Bärenfell * 200;
+                                Bärenfell = 0;
+                                trade = false;
+                            }
+                        }
+                        if (Schmuck > 0)
+                        {
+                            item = 8;
+                            trade = lab.Trading(panMain, panel, _row, _column, trade, item);
+                            if (trade == true)
+                            {
+                                Gold = Gold + 1500;
+                                Schmuck = 0;
+                                trade = false;
+                            }
+                        }
                         #endregion
                         #region Funktions
 
-                      
+
                         lab.Right(panMain, panel, _row, _column, Rowsd, Columnsd, Bombs, Keys, sword, Lvl, Gold, Tokens,Mana);
                         Life = lab.Heals(panMain, panel, _row, _column, Life, MaxLife);
                         txttip.Text = lab.hinww(panMain, panel, _row, _column, Lvl);
@@ -2638,6 +3449,7 @@ namespace GameofLifedanielT
                         cheat = lab.Cheats(panMain, panel, _row, _column, cheat);
                         Potions = lab.Potions(panMain, panel, _row, _column, Potions);
                         Bombs = lab.Bomm(panMain, panel, _row, _column, Bombs);
+                        lab.Quest(panMain, panel, _row, _column, Lvl);
                         Keys = lab.Keyss(panMain, panel, _row, _column, Keys);
                         Gold = lab.Money2(panMain, panel, _row, _column, Gold);
                         picnpc.BackgroundImage = lab.Npc(panMain, panel, _row, _column, picnpc, Lvl);
@@ -2919,9 +3731,7 @@ namespace GameofLifedanielT
                                 {
                                     if (Bombs >= 99)
                                     {
-                                        Bombs=0;
-                                       
-
+                                        Bombs=0;                                      
                                         Fight = false;
                                         encounte = 0;
                                     }
@@ -2948,36 +3758,193 @@ namespace GameofLifedanielT
                                     encounte = 0;
                                 }
                             }
+                            else if (encounte == 9)
+                            {
+                                picnpc.BackgroundImage = Wolf;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (sword >= 1)
+                                    {
+                                        sword = sword - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 1)
+                                    {
+                                        Armor = Armor - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 1;
+                                        Gold = Gold + 100;
+                                        WolfFell++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 2;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 10)
+                            {
+                                picnpc.BackgroundImage = Baer;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 2 && Armor >= 1)
+                                    {
+                                        sword = sword - 2;
+                                        Armor--;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else if (Armor >= 2)
+                                    {
+                                        Armor = Armor - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 2;
+                                        Gold = Gold + 500;
+                                        Bärenfell = Bärenfell + 2;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 1;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 11)
+                            {
+                                picnpc.BackgroundImage = Assa;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+                                    if (sword >= 3 && Armor >= 1)
+                                    {
+                                        sword = sword - 3;
+                                        Armor--;
+                                        Life = Life - 1;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        Gold = Gold + 1200;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 4;
+                                    encounte = 0;
+                                }
+                            }
+                            else if (encounte == 12)
+                            {
+                                picnpc.BackgroundImage = BanditLord;
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs);
+                                if (Fight == true)
+                                {
+
+
+                                    if (sword >= 4 && Armor >= 2)
+                                    {
+                                        sword = sword - 4;
+                                        Armor = Armor - 2;
+                                        Tokens = Tokens + 3;
+                                        Gold = Gold + 2000;
+                                        Schmuck++;
+                                        Fight = false;
+                                        encounte = 0;
+                                    }
+
+                                    else
+                                    {
+                                        Life = Life - 3;
+                                        encounte = 0;
+                                    }
+                                }
+                                else
+                                {
+                                    Life = Life - 3;
+                                    encounte = 0;
+                                }
+                            }
 
                         }
                         #endregion
                         #region Trade and Damage
 
-                       
+
                         if (Gold >= 100 && Btrade == true)
                         {
+
                             Bitem = lab.Buying(panMain, panel, _row, _column, trade);
-                            if (Bitem == 1)
+                            if (Gold >= 200 && Bitem == 1)
                             {
                                 sword++;
                                 Gold = Gold - 200;
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 2)
+                            else if (Gold >= 250 && Bitem == 2)
                             {
                                 Armormat++;
                                 Gold = Gold - 250;
+
                                 Btrade = false;
                                 Bitem = 0;
                             }
-                            else if (Bitem == 3)
+                            else if (Gold >= 1000 && Bitem == 3)
                             {
                                 Keys++;
                                 Gold = Gold - 1000;
 
                                 Btrade = false;
                                 Bitem = 0;
+                            }
+                            else if (Gold >= 1000 && Bitem == 4)
+                            {
+                                if (Bombs <= 3)
+                                {
+                                    Bombs++;
+                                    Gold = Gold - 1000;
+
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Du hast zuviele Bomben");
+                                    Btrade = false;
+                                    Bitem = 0;
+                                }
+
                             }
                             Payheal = lab.Paheal(panMain, panel, _row, _column, Payheal);
                             if (Payheal == true)
@@ -2986,10 +3953,15 @@ namespace GameofLifedanielT
                                 Gold = Gold - 100;
                                 Payheal = false;
                             }
-
+                            WirtHeal = lab.Wirtheal(panMain, panel, _row, _column, WirtHeal);
+                            if (WirtHeal == true && Gold >= 300)
+                            {
+                                Mana = Spellpower;
+                                Life = MaxLife;
+                                Gold = Gold - 300;
+                                WirtHeal = false;
+                            }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
-
-
                         }
                         if (sword > 0)
                         {
@@ -3071,6 +4043,22 @@ namespace GameofLifedanielT
                     lstinve.Items.Add("Schleifsteine " + sword.ToString());
                     lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
                     lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                    if (Arrow >= 1)
+                    {
+                        lstinve.Items.Add(Arrow.ToString() + " Köcher mit Pfeilen ");
+                    }
+                    if (WolfFell >= 1)
+                    {
+                        lstinve.Items.Add(WolfFell.ToString() + " Wolffelle ");
+                    }
+                    if (Bärenfell >= 1)
+                    {
+                        lstinve.Items.Add(Bärenfell.ToString() + " Bärenfelle ");
+                    }
+                    if (Schmuck >= 1)
+                    {
+                        lstinve.Items.Add(Schmuck.ToString() + " Schmuck Kasette ");
+                    }
                     lblArmorCount.Text = Armor.ToString();
                     lblBombCount.Text = Bombs.ToString();
                     lbllifeCount.Text = Life.ToString();
@@ -3180,6 +4168,18 @@ namespace GameofLifedanielT
                                 lblrespawn.Text = Respawn.ToString();
                                 _row = 3;
                                 _column = 7;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
+                            else if (Lvl == 8 && leverover == false && _row == 36 && _column == 2)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 36;
+                                _column = 2;
                                 Rowsd = _row;
                                 Columnsd = _column;
                                 lab.Starts(panel, _row, _column);
@@ -3300,6 +4300,16 @@ namespace GameofLifedanielT
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
                         }
+                        else if (Lvl == 8)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 36;
+                            _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
 
 
                     }
@@ -3350,10 +4360,14 @@ namespace GameofLifedanielT
                 }
                 Life = 4;
                 Armor =1;
+                Schmuck = 0;
                 Armormat = 0;
                 MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
+                Arrow = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
                 Respawn = 3;
                 Potions = 1;
                 sword = 0;
@@ -3410,7 +4424,11 @@ namespace GameofLifedanielT
                 Tokens = 0;
                 Bombs = 0;
                 Respawn = 3;
+                WolfFell = 0;
+                Bärenfell = 0;
                 sword = 0;
+                Arrow = 0;
+                Schmuck = 0;
                 Armormat = 0;
                 Potions = 1;
                 Gold = 500;
@@ -3478,7 +4496,11 @@ namespace GameofLifedanielT
                 Armor = 2;
                 MaxLife = 4;
                 Bombs = 1;
+                Arrow = 0;
+                Schmuck = 0;
                 Keys = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
                 Respawn = 3;
                 Armormat = 0;
                 Potions = 1;
@@ -3533,6 +4555,8 @@ namespace GameofLifedanielT
                 Armor = 2;
                 MaxLife = 4;
                 Bombs = 1;
+                Arrow = 0;
+                Schmuck = 0;
                 Gold = 2500;
                 sword = 1;
                 Respawn = 3;
@@ -3627,8 +4651,12 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
+                Arrow = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
                 Armormat = 0;
                 Respawn = 3;
+                Schmuck = 0;
                 Potions = 2;
                 sword = 3;
                 Gold = 4000;
@@ -3682,7 +4710,11 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 0;
                 Gold = 4000;
+                WolfFell = 0;
+                Schmuck = 0;
+                Bärenfell = 0;
                 sword = 3;
+                Arrow = 0;
                 Respawn = 3;
                 Keys = 0;
                 Potions = 2;
@@ -3738,6 +4770,10 @@ namespace GameofLifedanielT
                 MaxLife = 4;
                 Bombs = 0;
                 Keys = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Arrow = 0;
+                Schmuck = 0;
                 Respawn = 3;
                 Armormat = 0;
                 Potions = 1;
@@ -3795,7 +4831,11 @@ namespace GameofLifedanielT
                 Bombs = 0;
                 Armormat = 0;
                 Gold = 4500;
+                WolfFell = 0;
+                Bärenfell = 0;
                 sword = 2;
+                Schmuck = 0;
+                Arrow = 0;
                 Respawn = 3;
                 Keys = 0;
                 Potions = 1;
@@ -3893,8 +4933,12 @@ namespace GameofLifedanielT
                 Armor = 4;
                 MaxLife = 5;
                 Bombs = 1;
+                Schmuck = 0;
                 Keys = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
                 Respawn = 3;
+                Arrow = 0;
                 Armormat = 1;
                 Potions = 2;
                 sword = 4;
@@ -3950,8 +4994,12 @@ namespace GameofLifedanielT
                 MaxLife = 5;
                 Bombs = 1;
                 Keys = 0;
+                Schmuck = 0;
                 Respawn = 3;
                 Armormat = 1;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Arrow = 0;
                 Potions = 2;
                 sword = 4;
                 Gold = 5500;
@@ -4127,9 +5175,132 @@ namespace GameofLifedanielT
                 }
                 Life = 5;
                 Armor = 4;
+                Schmuck = 0;
                 MaxLife = 5;
                 Bombs = 1;
                 Keys = 0;
+                Respawn = 3;
+                Armormat = 1;
+                Potions = 2;
+                Arrow = 0;
+                sword = 4;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Gold = 5500;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                lblArmor.Text = Armor.ToString();
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
+                Spellpower = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblArmor.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Schmuck = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Respawn = 3;
+                Arrow = 0;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                Rowsd = 0;
+                Columnsd = 0;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                Spellpower = 0;
+                lblArmor.Text = Armor.ToString();
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+            #endregion
+
+        }
+
+        private void btnlvl8_Click(object sender, EventArgs e)
+        {
+            #region Level 8
+
+
+            btnlvl8.Enabled = false;
+            btnlvl8.Enabled = true;
+            Lvl = 8;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Schmuck = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Arrow = 0;
                 Respawn = 3;
                 Armormat = 1;
                 Potions = 2;
@@ -4186,7 +5357,11 @@ namespace GameofLifedanielT
                 MaxLife = 5;
                 Bombs = 1;
                 Keys = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Schmuck = 0;
                 Respawn = 3;
+                Arrow = 0;
                 Armormat = 1;
                 Potions = 2;
                 sword = 4;

@@ -17,11 +17,17 @@ namespace GameofLifedanielT
             InitializeComponent();
         }
         Bitmap Worldmap = Properties.Resources.Worldmap;
+        Bitmap Grimos = Properties.Resources.Grimos;
+
         private void frmHelpMap_Load(object sender, EventArgs e)
         {
             if (Mapss == "Ressos")
             {
                 picMap.BackgroundImage = Worldmap;
+            }
+            if (Mapss == "Grimos")
+            {
+                picMap.BackgroundImage = Grimos;
             }
         }
 
