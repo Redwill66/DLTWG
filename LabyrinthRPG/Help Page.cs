@@ -62,6 +62,9 @@ namespace GameofLifedanielT
         Bitmap WappenGrenor = Properties.Resources.WappenGrenor;
         Bitmap Gostasso = Properties.Resources.Gostasso;
         Bitmap König_Ories = Properties.Resources.König_Ories;
+        Bitmap Sewer = Properties.Resources.Sewer;
+        Bitmap Hebel1 = Properties.Resources.Hebel1;
+        Bitmap Hebel2 = Properties.Resources.Hebel2;
         public static string Mapss;
         private void btnback_Click(object sender, EventArgs e)
         {
@@ -696,6 +699,38 @@ namespace GameofLifedanielT
                 lblwappen.Text = "wer weis";
                 txtHelp.Text = "Events ist ein feature das noch nicht viel vertreten ist, wahrscheinlich wird es in zukunft mehr geben. Es gibt jedoch ein auf Level 4, dieses bewegt die Wachen.";
             }
+            else if (lstHelpLore.Text == "Kanalisations Wasser")
+            {
+                picnpc.BackgroundImage = Heart;
+                picwappen.BackgroundImage = Sewer;
+                lblName.Text = "Was!!!";
+                lblwappen.Text = "Du willst darin schwimmen";
+                txtHelp.Text = "Kurz und klar du nimmst schaden wenn du drin schwimmst. Also schwimm nicht drin.";
+            }
+            else if (lstHelpLore.Text == "Magie")
+            {
+                picnpc.BackgroundImage = null;
+                picwappen.BackgroundImage = null;
+                lblName.Text = "Simsalabim";
+                lblwappen.Text = "Hokuspokus";
+                txtHelp.Text = "Mana ladet sich nur bei beendigung der Map auf. Normalerweise:)";
+            }
+            else if (lstHelpLore.Text == "Hebel")
+            {
+                picnpc.BackgroundImage = Hebel1;
+                picwappen.BackgroundImage = Hebel2;
+                lblName.Text = "Auf";
+                lblwappen.Text = "Zu";
+                txtHelp.Text = "Hebel dienen zur öffnung bestimmter Türen.";
+            }
+            else if (lstHelpLore.Text == "Respawn")
+            {
+                picnpc.BackgroundImage = Heart;
+                picwappen.BackgroundImage = player;
+                lblName.Text = "Weil ich Nett bin";
+                lblwappen.Text = "Lebst du wieder";
+                txtHelp.Text = "Gleich wie Mana regeneriert sich Respawn bei Level abschluss. Du kannst immer nur 3 Mal Respawnen.";
+            }
             #endregion
         }
 
@@ -731,15 +766,18 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Elektro Falle");//
             lstHelpLore.Items.Add("Feuer");//
             lstHelpLore.Items.Add("Eventbereiche");//
-            lstHelpLore.Items.Add("Kanalisations Wasser");
-            lstHelpLore.Items.Add("Magie");
-            lstHelpLore.Items.Add("Hebel");
-            lstHelpLore.Items.Add("Respawn");
+            lstHelpLore.Items.Add("Kanalisations Wasser");//
+            lstHelpLore.Items.Add("Magie");//
+            lstHelpLore.Items.Add("Hebel");//
+            lstHelpLore.Items.Add("Respawn");//
             #endregion
         }
 
         private void btnLore_Click(object sender, EventArgs e)
         {
+            #region Lore
+
+         
             lstHelpLore.Items.Clear();
             lstHelpLore.Items.Add("Ressos");//
             lstHelpLore.Items.Add("Estor");//
@@ -773,11 +811,11 @@ namespace GameofLifedanielT
             lstHelpLore.Items.Add("Ewige Passage");           
             lstHelpLore.Items.Add("Grimos");//
             lstHelpLore.Items.Add("Fealen Empire");
-            lstHelpLore.Items.Add("Zrosgen");
+            lstHelpLore.Items.Add("Zrosgen"); 
             lstHelpLore.Items.Add("Cresgen");
             lstHelpLore.Items.Add("Vekran");
             lstHelpLore.Items.Add("Kruzo Archipel");
-
+            #endregion
         }
 
         private void btnnext_Click(object sender, EventArgs e)
