@@ -142,6 +142,14 @@ namespace GameofLifedanielT
         Bitmap Caveopendoor = Properties.Resources.Caveopendoor;
         Bitmap Lagertür = Properties.Resources.Lagertür;
         Bitmap Elfwache = Properties.Resources.Elfwache;
+        Bitmap ZwergW2 = Properties.Resources.ZwergW2;
+        Bitmap Direwolf = Properties.Resources.Direwolf;
+        Bitmap Miner = Properties.Resources.Miner;
+        Bitmap Orklaswache = Properties.Resources.Orklaswache;
+        Bitmap ElfElite = Properties.Resources.ElfElite;
+        Bitmap Elfhealer = Properties.Resources.Elfhealer;
+        Bitmap RunenPriester = Properties.Resources.RunenPriester;
+        Bitmap Dravoswache = Properties.Resources.Dravoswache;
         #endregion          
         // Grid 0
         #region Grid 0        
@@ -237,6 +245,11 @@ namespace GameofLifedanielT
         private const string Fahn = "Fahn";
         private const string TrPK = "TrPK";
         private const string Farr = "Farr";
+        private const string Gold = "Gold";
+        private const string MaHe = "MaHe";
+        private const string Fake = "Fake";
+        private const string Che2 = "Che2";
+        // private const string Farr = "Farr";
         #endregion
         // Grid 1
         private const string Player = "Player";
@@ -263,6 +276,11 @@ namespace GameofLifedanielT
         private const string BandL = "BandL";
         private const string Behe = "Behe";
         private const string DWolf = "DWolf";
+        private const string Bos1 = "Bos1";
+        private const string Bos2 = "Bos2";
+        private const string Bos3 = "Bos3";
+        private const string Bos4 = "Bos4";
+        private const string Bos5 = "Bos5";
         #endregion
         public PictureBox GenerateGrid(int _row, int _column)
         {
@@ -3250,7 +3268,526 @@ namespace GameofLifedanielT
                 p = 0;
                 c = 0;
             }
-#endregion
+            #endregion
+            #region Level Ten
+            if (Level == 10)
+            {
+                Lvlfunk map = new Lvlfunk();
+                string[,] Mapone = map.Maps10();
+                _grid[_columns, _rows, 0] = Mapone[_rows, _columns];
+                _grid[_columns, _rows, 1] = null;
+                _grid[_columns, _rows, 2] = null;
+                _grid[_columns, _rows, 3] = null;
+                _grid[_columns, _rows, 4] = null;
+
+                #region Encounter
+
+                if (_rows == 35 && _columns == 38 || _rows == 30 && _columns == 33 || _rows == 35 && _columns == 33 || _rows == 35 && _columns == 29 || _rows == 38 && _columns == 12 || _rows == 15 && _columns == 38 || _rows == 20 && _columns == 28 || _rows == 2 && _columns == 31 || _rows == 1 && _columns == 27 || _rows == 5 && _columns == 16 || _rows == 8 && _columns == 3)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 3] = Money;
+                }
+                if (_rows == 20 && _columns == 38 || _rows == 12 && _columns == 23 || _rows == 12 && _columns == 19 || _rows == 19 && _columns == 1)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 3] = BigMoney;
+                }               
+                
+                if (_rows == 18 && _columns == 37 || _rows == 14 && _columns == 32 || _rows == 19 && _columns == 15 || _rows == 10 && _columns == 13 || _rows == 17 && _columns == 7 )      {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Gobl;
+                }     
+                if (_rows == 2 && _columns == 10 || _rows == 4 && _columns == 32 )
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Assa;
+                }            
+                if (_rows == 14 && _columns == 3)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Bos5;
+                }
+                if (_rows == 6 && _columns == 13)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Bos4;
+                }
+                if (_rows == 10 && _columns == 13)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Bos3;
+                }
+                if (_rows == 14 && _columns == 13)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Bos2;
+                }
+                if (_rows == 17 && _columns == 16)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    _grid[_columns, _rows, 4] = Bos1;
+                }
+                #endregion
+                panel.BackgroundImage = null;
+                panel.Image = null;
+                if (_grid[_columns, _rows, 0] == Wall)
+                {
+                    panel.BackColor = Color.Brown;
+                }
+                if (_grid[_columns, _rows, 0] == Brun)
+                {
+                    panel.BackColor = Color.SteelBlue;
+                    //panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == TrAK || _grid[_columns, _rows, 0] == TrSK || _grid[_columns, _rows, 0] == TrBK || _grid[_columns, _rows, 0] == TrPK)
+                {
+                    panel.BackColor = Color.LightGray;
+                    // panel.BackColor = Color.LightGreen;
+                }
+
+                if (_grid[_columns, _rows, 0] == Stha)
+                {
+                    //  panel.BackgroundImage = Port;
+                    panel.BackColor = Color.SlateGray;
+
+                }
+                if (_grid[_columns, _rows, 0] == Schi)
+                {
+                    // panel.BackColor = Color.Beige;
+                    panel.BackColor = Color.Orange;
+                    // panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+                if (_grid[_columns, _rows, 0] == Bush)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        panel.BackColor = Color.DarkGreen;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.DarkGreen;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                }
+                if (_grid[_columns, _rows, 0] == PHea || _grid[_columns, _rows, 0] == WHea)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    //panel.BackgroundImage = Dachs;
+                    panel.BackColor = Color.DarkRed;
+                    // panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.Red;                 
+                }
+
+                if (_grid[_columns, _rows, 0] == Wass)
+                {
+                    if (_columns <= 2)
+                    {
+                        panel.BackColor = Color.SteelBlue;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.SteelBlue;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                    // panel.BackgroundImage = Burg;
+
+                }
+                if (_grid[_columns, _rows, 0] == Hinw)
+                {
+                    if (_columns <= 3)
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        panel.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        panel.BackColor = Color.LightGray;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                }
+                else if (_grid[_columns, _rows, 0] == Kome)
+                {
+                    if (_columns <= 3)
+                    {
+
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        //panel.BackColor = Color.Beige;
+                        //  panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.LightGray;
+
+
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+
+                        //panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.LightGray;
+                    }
+                }
+
+                if (_grid[_columns, _rows, 0] == Star)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Yellow;
+                }
+                if (_grid[_columns, _rows, 0] == Ende)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DeepPink;
+                    // panel.BackColor = Color.DimGray;
+                }
+                if (_grid[_columns, _rows, 0] == Bomb)
+                {
+                    // panel.BackColor = Color.Beige;
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.OrangeRed;
+                    // panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                }
+                if (_grid[_columns, _rows, 0] == OTur)
+                {
+                    //panel.BackColor = Color.Beige;
+                    panel.BackColor = Color.LightSkyBlue;
+                    //panel.BackColor = Color.LightGreen;
+                }
+
+                if (_grid[_columns, _rows, 0] == Pers)
+                {
+                    if (_columns <= 3)
+                    {
+                        // panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.LightGray;
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        //  panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.LightGray;
+                    }
+                    // panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == Swor)
+                {
+                    //  panel.BackColor = Color.Beige;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.Orchid;
+                    // panel.BackColor = Color.LightGreen;
+                }
+
+                if (_grid[_columns, _rows, 0] == Lmax)
+                {
+                    // panel.BackColor = Color.SaddleBrown;
+                    //panel.BackColor = Color.LightGreen;
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    panel.BackColor = Color.PaleVioletRed;
+                }
+
+                if (_grid[_columns, _rows, 0] == Cwal)
+                {
+                    if (_rows < 7 && _columns < 8)
+                    {
+                        //panel.BackColor = Color.LightGreen;
+                        //panel.BackgroundImage = Burg;
+                        panel.BackColor = Color.DarkSlateGray;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.DarkSlateGray;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                }
+
+                if (_grid[_columns, _rows, 0] == LTur)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.SteelBlue;
+                    //  panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == Fahn)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Crimson;
+                    //  panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == Farr)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Sienna;
+                    //  panel.BackColor = Color.Beige;
+                }
+                if (_grid[_columns, _rows, 0] == Gift)
+                {
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Purple;
+                }
+                if (_grid[_columns, _rows, 0] == Rock)
+                {
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkSlateGray;
+                    //   panel.BackColor = Color.LightGreen;
+                }
+
+
+
+
+                if (_grid[_columns, _rows, 0] == PHea)
+                {
+                    if (_rows < 6 && _columns < 8)
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        //panel.BackgroundImage = Dachs;
+                        panel.BackColor = Color.DarkRed;
+                        //  panel.BackColor = Color.LightGreen;
+                        // panel.BackColor = Color.Red;
+                    }
+                    else
+                    {
+                        _grid[_columns, _rows, 2] = Loot.ToString();
+                        //panel.BackgroundImage = Dachs;
+                        panel.BackColor = Color.DarkRed;
+                        // panel.BackColor = Color.LightGreen;
+                        // panel.BackColor = Color.Red;
+
+                    }
+                }
+
+                if (_grid[_columns, _rows, 0] == Mboo)
+                {
+                    if (_rows < 6 && _columns < 8)
+                    {
+                        panel.BackColor = Color.Teal;
+                        //  panel.BackColor = Color.LightGray;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.Teal;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                }
+                if (_grid[_columns, _rows, 0] == Feld)
+                {
+                    panel.BackColor = Color.Wheat;
+                    // panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Fweg)
+                {
+                    if (_columns <= 3)
+                    {
+                        panel.BackColor = Color.Tan;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.Tan;
+                        //  panel.BackColor = Color.LightGreen;
+                    }
+
+                }
+                if (_grid[_columns, _rows, 0] == Masd)
+                {
+                    panel.BackColor = Color.DarkViolet;
+                    // panel.BackColor = Color.LightGreen;
+
+                }
+                if (_grid[_columns, _rows, 0] == Pali)
+                {
+                    if (_rows < 9 && _columns < 8)
+                    {
+                        //  panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.Peru;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.Peru;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                }
+                if (_grid[_columns, _rows, 0] == Gras)
+                {
+                    panel.BackColor = Color.LightGreen;
+
+                }
+
+                if (_grid[_columns, _rows, 0] == Stra)
+                {
+                    if (_rows < 6 && _columns < 8)
+                    {
+                        // panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.LightGray;
+                    }
+                    else
+                    {
+                        // panel.BackColor = Color.LightGray;
+                        // panel.BackColor = Color.LightGreen;
+                        panel.BackColor = Color.LightGray;
+                    }
+                    //   panel.BackgroundImage = Street;
+
+
+                }
+                if (_grid[_columns, _rows, 0] == Gass)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        panel.BackColor = Color.DimGray;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.DimGray;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+
+
+                }
+                if (_grid[_columns, _rows, 0] == Haus)
+                {
+                    if (_rows < 12 && _columns < 16)
+                    {
+                        panel.BackColor = Color.SaddleBrown;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.SaddleBrown;
+                        //panel.BackColor = Color.Brown;
+                        //panel.BackColor = Color.LightGreen;
+                    }
+
+                }
+                if (_grid[_columns, _rows, 0] == Dorn)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.ForestGreen;
+                }
+
+                if (_grid[_columns, _rows, 0] == Wald)
+                {
+                    if (_rows >= 29 && _columns <= 3)
+                    {
+                        panel.BackColor = Color.DarkGreen;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.DarkGreen;
+                        // panel.BackColor = Color.LightGreen;
+
+                    }
+                }
+                if (_grid[_columns, _rows, 0] == Moun)
+                {
+                    if (_rows >= 29 && _columns <= 3)
+                    {
+                        panel.BackColor = Color.DimGray;
+                        //  panel.BackColor = Color.DarkGreen;
+                    }
+                    else
+                    {
+                        panel.BackColor = Color.DimGray;
+                        // panel.BackColor = Color.LightGreen;
+                    }
+                    //
+
+                }
+                if (_grid[_columns, _rows, 0] == Bode)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.DarkGray;
+                }
+                if (_grid[_columns, _rows, 0] == Plas)
+                {
+                    panel.BackColor = Color.FloralWhite;
+                    // panel.BackColor = Color.LightGreen;
+                }
+                if (_grid[_columns, _rows, 0] == Etra)
+                {
+                    panel.BackColor = Color.Khaki;
+                    // panel.BackColor = Color.Beige;
+                    // panel.BackColor = Color.LightGreen;
+                }
+                if (_grid[_columns, _rows, 0] == Towe)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.MediumSpringGreen;
+                }
+                if (_grid[_columns, _rows, 0] == Brid)
+                {
+                    //  panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Chocolate;
+                }
+
+                if (_grid[_columns, _rows, 0] == Fenc)
+                {
+                    panel.BackColor = Color.LightGreen;
+                    // panel.BackColor = Color.LightSteelBlue;
+                }
+                if (_grid[_columns, _rows, 0] == QHau)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Silver;
+                }
+                if (_grid[_columns, _rows, 0] == QueT || _grid[_columns, _rows, 0] == QueW || _grid[_columns, _rows, 0] == QueA || _grid[_columns, _rows, 0] == QueB)
+                {
+                    _grid[_columns, _rows, 2] = Loot.ToString();
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Ivory;
+                }
+                if (_grid[_columns, _rows, 0] == QuTu)
+                {
+                    // panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.RoyalBlue;
+                }
+                if (_grid[_columns, _rows, 0] == Gold)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Gold;
+                }
+                if (_grid[_columns, _rows, 0] == Fake)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Indigo;
+                }
+                if (_grid[_columns, _rows, 0] == Che2)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.SeaShell;
+                }
+                if (_grid[_columns, _rows, 0] == MaHe)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.MediumTurquoise;
+                }
+                if (_grid[_columns, _rows, 0] == Coin)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.Gold;
+                }
+                if (_grid[_columns, _rows, 0] == Vill)
+                {
+                    //   panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.MediumSeaGreen;
+                }
+                if (_grid[_columns, _rows, 0] == Lava)
+                {
+                    //panel.BackColor = Color.LightGreen;
+                    panel.BackColor = Color.IndianRed;
+                }
+                if (_grid[_columns, _rows, 0] == Fire)
+                {
+                    panel.BackColor = Color.DarkOrange;
+                  //  panel.BackColor = Color.Beige;
+                }
+                p = 0;
+                c = 0;
+            }
+            #endregion
             #region Testlvl
 
 
@@ -4126,27 +4663,27 @@ namespace GameofLifedanielT
 
             else if (_grid[_columns, _rows, 0] == Pers)
             {
-                if (lvl == 7 && _columns == 7 && _rows == 37 || lvl == 6 && _columns == 17 && _rows == 27 || lvl == 2 && _columns == 13 && _rows == 21)
+                if (lvl == 10 && _columns == 3 && _rows == 5 || lvl == 7 && _columns == 7 && _rows == 37 || lvl == 6 && _columns == 17 && _rows == 27 || lvl == 2 && _columns == 13 && _rows == 21)
                 {
                     panel.BackgroundImage = Fischer;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 1 && _rows == 30 || lvl == 8 && _columns == 7 && _rows == 31 || lvl == 6 && _columns == 14 && _rows == 30)
+                else if ( lvl == 9 && _columns == 1 && _rows == 30 || lvl == 8 && _columns == 7 && _rows == 31 || lvl == 6 && _columns == 14 && _rows == 30)
                 {//
                     panel.BackgroundImage = Müller;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 7 && _rows == 4 || lvl == 8 && _columns == 12 && _rows == 34 || lvl == 7 && _columns == 2 && _rows == 11)
+                else if (lvl == 10 && _columns == 7 && _rows == 6 || lvl == 9 && _columns == 7 && _rows == 4 || lvl == 8 && _columns == 12 && _rows == 34 || lvl == 7 && _columns == 2 && _rows == 11)
                 {//
                     panel.BackgroundImage = Farmerin;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 2 && _rows == 27 || lvl == 7 && _columns == 15 && _rows == 13)
+                else if (lvl == 10 && _columns == 25 && _rows == 20 || lvl == 9 && _columns == 2 && _rows == 27 || lvl == 7 && _columns == 15 && _rows == 13)
                 {
                     panel.BackgroundImage = Druide;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 31 && _rows == 36 || lvl == 8 && _columns == 23 && _rows == 3)
+                else if (lvl == 10 && _columns == 38 && _rows == 3 || lvl == 9 && _columns == 31 && _rows == 36 || lvl == 8 && _columns == 23 && _rows == 3)
                 {// neu 
                     
                     panel.BackgroundImage = Vorlondin_Priest;
@@ -4157,7 +4694,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Bogenschütze;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 8 && _columns == 35 && _rows == 11)
+                else if (lvl == 10 && _columns == 11 && _rows == 35 || lvl == 10 && _columns == 11 && _rows == 33 || lvl == 8 && _columns == 35 && _rows == 11)
                 {
                     panel.BackgroundImage = Elfwar;
                     panel.BackColor = Color.DarkGray;
@@ -4165,6 +4702,21 @@ namespace GameofLifedanielT
                 else if (lvl == 8 && _columns == 25 && _rows == 7)
                 {
                     panel.BackgroundImage = Isekai;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 10 && _columns == 4 && _rows == 33)
+                {
+                    panel.BackgroundImage = RunenPriester;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 10 && _columns == 4 && _rows == 37)
+                {
+                    panel.BackgroundImage = Dravoswache;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 10 && _columns == 7 && _rows == 33)
+                {
+                    panel.BackgroundImage = Elfhealer;
                     panel.BackColor = Color.DarkGray;
                 }
                 else if (lvl == 8 && _columns == 22 && _rows == 12)
@@ -4177,7 +4729,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Vorlondin_Captain;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 29 && _rows == 30 || lvl == 8 && _columns == 29 && _rows == 15)
+                else if (lvl == 10 && _columns == 35 && _rows == 1 || lvl == 9 && _columns == 29 && _rows == 30 || lvl == 8 && _columns == 29 && _rows == 15)
                 {
                     panel.BackgroundImage = Adel;
                     panel.BackColor = Color.DarkGray;
@@ -4187,7 +4739,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Ross;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 11 && _rows == 34)
+                else if (lvl == 10 && _columns == 21 && _rows == 26 || lvl == 10 && _columns == 13 && _rows == 36 || lvl == 10 && _columns == 29 && _rows == 32 || lvl == 9 && _columns == 11 && _rows == 34)
                 {
                     panel.BackgroundImage = Elfwache;
                     panel.BackColor = Color.DarkGray;
@@ -4197,7 +4749,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = VEliteGuard;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if ( lvl == 9 && _columns == 5 && _rows == 2 || lvl == 9 && _columns == 23 && _rows == 29 || lvl == 9 && _columns == 29 && _rows == 23 || lvl == 9 && _columns == 27 && _rows == 23 || lvl == 8 && _columns == 10 && _rows == 25 || lvl == 8 && _columns == 25 && _rows == 12 || lvl == 8 && _columns == 33 && _rows == 19 || lvl == 8 && _columns == 31 && _rows == 19 || lvl == 8 && _columns == 33 && _rows == 31 || lvl == 8 && _columns == 27 && _rows == 25 || lvl == 8 && _columns == 27 && _rows == 27 || lvl == 8 && _columns == 17 && _rows == 35 || lvl == 8 && _columns == 17 && _rows == 37)
+                else if (lvl == 10 && _columns == 29 && _rows == 6 || lvl == 10 && _columns == 29 && _rows == 4 || lvl == 9 && _columns == 5 && _rows == 2 || lvl == 9 && _columns == 23 && _rows == 29 || lvl == 9 && _columns == 29 && _rows == 23 || lvl == 9 && _columns == 27 && _rows == 23 || lvl == 8 && _columns == 10 && _rows == 25 || lvl == 8 && _columns == 25 && _rows == 12 || lvl == 8 && _columns == 33 && _rows == 19 || lvl == 8 && _columns == 31 && _rows == 19 || lvl == 8 && _columns == 33 && _rows == 31 || lvl == 8 && _columns == 27 && _rows == 25 || lvl == 8 && _columns == 27 && _rows == 27 || lvl == 8 && _columns == 17 && _rows == 35 || lvl == 8 && _columns == 17 && _rows == 37)
                 {//Neu
                     panel.BackgroundImage = Wache;
                     panel.BackColor = Color.DarkGray;
@@ -4253,7 +4805,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Söldner2;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 37 && _rows == 34 || lvl == 9 && _columns == 33 && _rows == 31 || lvl == 8 && _columns == 34 && _rows == 34 || lvl == 8 && _columns == 30 && _rows == 25)
+                else if (lvl == 10 && _columns == 6 && _rows == 35 || lvl == 10 && _columns == 38 && _rows == 10 || lvl == 10 && _columns == 3 && _rows == 23 || lvl == 9 && _columns == 37 && _rows == 34 || lvl == 9 && _columns == 33 && _rows == 31 || lvl == 8 && _columns == 34 && _rows == 34 || lvl == 8 && _columns == 30 && _rows == 25)
 
                 {
                     panel.BackgroundImage = Elf;
@@ -4265,19 +4817,25 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Lehrling;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 3 && _rows == 16 || lvl == 8 && _columns == 30 && _rows == 1 || lvl == 6 && _columns == 33 && _rows == 4)
+                else if (lvl == 10 && _columns == 2 && _rows == 36 || lvl == 10 && _columns == 2 && _rows == 34)
+                //
+                {
+                    panel.BackgroundImage = ElfElite;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 10 && _columns == 12 && _rows == 24 || lvl == 9 && _columns == 3 && _rows == 16 || lvl == 8 && _columns == 30 && _rows == 1 || lvl == 6 && _columns == 33 && _rows == 4)
 
                 {
                     panel.BackgroundImage = Wanderer;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 23 && _rows == 3 || lvl == 8 && _columns == 29 && _rows == 37||lvl == 8 && _columns == 22 && _rows == 25 || lvl == 6 && _columns == 10 && _rows == 5 || lvl == 5 && _columns == 20 && _rows == 18 || lvl == 3 && _columns == 28 && _rows == 4 || lvl == 3 && _columns == 21 && _rows == 9 || lvl == 3 && _columns == 36 && _rows == 16 || lvl == 3 && _columns == 28 && _rows == 11)
+                else if (lvl == 10 && _columns == 32 && _rows == 2 || lvl == 9 && _columns == 23 && _rows == 3 || lvl == 8 && _columns == 29 && _rows == 37||lvl == 8 && _columns == 22 && _rows == 25 || lvl == 6 && _columns == 10 && _rows == 5 || lvl == 5 && _columns == 20 && _rows == 18 || lvl == 3 && _columns == 28 && _rows == 4 || lvl == 3 && _columns == 21 && _rows == 9 || lvl == 3 && _columns == 36 && _rows == 16 || lvl == 3 && _columns == 28 && _rows == 11)
 
                 {//
                     panel.BackgroundImage = Mann;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 35 && _rows == 38 || lvl == 8 && _columns == 34 && _rows == 26 || lvl == 6 && _columns == 20 && _rows == 19 || lvl == 3 && _columns == 26 && _rows == 21 || lvl == 3 && _columns == 36 && _rows == 17)
+                else if (lvl == 10 && _columns == 12 && _rows == 8 || lvl == 9 && _columns == 35 && _rows == 38 || lvl == 8 && _columns == 34 && _rows == 26 || lvl == 6 && _columns == 20 && _rows == 19 || lvl == 3 && _columns == 26 && _rows == 21 || lvl == 3 && _columns == 36 && _rows == 17)
 
                 {
                     panel.BackgroundImage = Frau;
@@ -4328,7 +4886,7 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Holzer;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 8 && _columns == 35 && _rows == 30 || lvl == 8 && _columns == 30 && _rows == 30)
+                else if (lvl == 10 && _columns == 36 && _rows == 19 || lvl == 10 && _columns == 37 && _rows == 14 || lvl == 10 && _columns == 37 && _rows == 12 || lvl == 10 && _columns == 35 && _rows == 15 || lvl == 8 && _columns == 35 && _rows == 30 || lvl == 8 && _columns == 30 && _rows == 30)
 
                 {
                     panel.BackgroundImage = Zwerg;
@@ -4352,25 +4910,43 @@ namespace GameofLifedanielT
                     panel.BackgroundImage = Bomka;
                     panel.BackColor = Color.DarkGray;
                 }
+                else if (lvl == 10 && _columns == 32 && _rows == 7)
+
+                {
+                    panel.BackgroundImage = Orklaswache;
+                    panel.BackColor = Color.DarkGray;
+                }
                 else if (lvl == 7 && _columns == 22 && _rows == 36)
 
                 {
                     panel.BackgroundImage = Mage;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 26 && _rows == 36 || lvl == 8 && _columns == 37 && _rows == 15)
+                else if (lvl == 10 && _columns == 35 && _rows == 9)
+
+                {
+                    panel.BackgroundImage = Miner;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 10 && _columns == 37 && _rows == 34 || lvl == 10 && _columns == 22 && _rows == 38)
+
+                {
+                    panel.BackgroundImage = Direwolf;
+                    panel.BackColor = Color.DarkGray;
+                }
+                else if (lvl == 10 && _columns == 24 && _rows == 29 || lvl == 10 && _columns == 9 && _rows == 37 || lvl == 10 && _columns == 38 && _rows == 23 || lvl == 9 && _columns == 26 && _rows == 36 || lvl == 8 && _columns == 37 && _rows == 15)
 
                 {
                     panel.BackgroundImage = Elfin;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 6 && _rows == 25 || lvl == 8 && _columns == 5 && _rows == 34 || lvl == 7 && _columns == 18 && _rows == 31 || lvl == 6 && _columns == 10 && _rows == 22 || lvl == 6 && _columns == 8 && _rows == 37 || lvl == 2 && _columns == 8 && _rows == 8 || lvl == 3 && _columns == 27 && _rows == 27)
+                else if (lvl == 10 && _columns == 27 && _rows == 7 || lvl == 9 && _columns == 6 && _rows == 25 || lvl == 8 && _columns == 5 && _rows == 34 || lvl == 7 && _columns == 18 && _rows == 31 || lvl == 6 && _columns == 10 && _rows == 22 || lvl == 6 && _columns == 8 && _rows == 37 || lvl == 2 && _columns == 8 && _rows == 8 || lvl == 3 && _columns == 27 && _rows == 27)
                     
                 {
                     panel.BackgroundImage = Farmer;
                     panel.BackColor = Color.DarkGray;
                 }
-                else if (lvl == 9 && _columns == 27 && _rows == 7 || lvl == 8 && _columns == 11 && _rows == 31 || lvl == 7 && _columns == 16 && _rows == 27 || lvl == 6 && _columns == 20 && _rows == 31)
+                else if (lvl == 10 && _columns == 15 && _rows == 7 || lvl == 9 && _columns == 27 && _rows == 7 || lvl == 8 && _columns == 11 && _rows == 31 || lvl == 7 && _columns == 16 && _rows == 27 || lvl == 6 && _columns == 20 && _rows == 31)
                 {
                     panel.BackgroundImage = Farmer2;
                     panel.BackColor = Color.DarkGray;
@@ -5057,6 +5633,12 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
+                else if (_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Che2 && panel.Image == null||_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Fake && panel.Image == null||_grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == Gold && panel.Image == null || _grid[_column, _row - 1, 1] == Player && _grid[_column, _row, 0] == MaHe && panel.Image == null)
+                {
+                    _grid[_column, _row - 1, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
 
                 #endregion
                 #region End
@@ -5097,6 +5679,9 @@ namespace GameofLifedanielT
                 panel.Image = null;
             }
             else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == TrPK || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Farr) {
+                panel.Image = null;
+            }
+            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Che2 || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Fake || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == Gold || _row > 0 && _row == Rowsd - p && _grid[_column, _row - 1, 1] == null && panel.Image == Secret && _grid[_column, _row + 1, 0] == MaHe) {
                 panel.Image = null;
             }
             #endregion
@@ -5281,6 +5866,11 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
+                else if (_grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Che2 && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Fake && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == Gold && panel.Image == null || _grid[_column, _row + 1, 1] == Player && _grid[_column, _row, 0] == MaHe && panel.Image == null) {
+                    _grid[_column, _row + 1, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
                 #endregion
                 #region End
             }
@@ -5319,7 +5909,11 @@ namespace GameofLifedanielT
             else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == TrPK || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Farr)     {
                 panel.Image = null;
             }
-          
+            else if (_row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Che2 || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Fake || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == Gold || _row > 0 && _row == Rowsd - p && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column, _row - 1, 0] == MaHe)
+            {
+                panel.Image = null;
+            }
+
 
 
 
@@ -5498,6 +6092,12 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
+                else if (_grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Che2 && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Fake && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == Gold && panel.Image == null || _grid[_column + 1, _row, 1] == Player && _grid[_column, _row, 0] == MaHe && panel.Image == null)
+                {
+                    _grid[_column + 1, _row, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
 
                 #endregion
                 #region End
@@ -5539,6 +6139,9 @@ namespace GameofLifedanielT
             }
             else if (_column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == TrPK || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Farr)
             {
+                panel.Image = null;
+            }
+            else if (_column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Che2 || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Fake || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == Gold || _column > 0 && _column == Columnsd - c && _grid[_column, _row, 1] == null && panel.Image == Secret && _grid[_column - 1, _row, 0] == MaHe)      {
                 panel.Image = null;
             }
 
@@ -5711,6 +6314,11 @@ namespace GameofLifedanielT
                     _grid[_column, _row, 1] = Player;
                     panel.Image = Secret;
                 }
+                else if (_grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Che2 && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Fake && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == Gold && panel.Image == null || _grid[_column - 1, _row, 1] == Player && _grid[_column, _row, 0] == MaHe && panel.Image == null) {
+                    _grid[_column - 1, _row, 1] = null;
+                    _grid[_column, _row, 1] = Player;
+                    panel.Image = Secret;
+                }
                 #endregion
                 #region End              
             }
@@ -5748,6 +6356,10 @@ namespace GameofLifedanielT
                 panel.Image = null;
             }
             else if (_column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == TrPK || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Farr)   {
+                panel.Image = null;
+            }
+            else if (_column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Che2 || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Fake || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Gold || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == MaHe || _column > 0 && _column == Columnsd - c && _grid[_column - 1, _row, 1] == null && panel.Image == Secret && _grid[_column + 1, _row, 0] == Farr)
+            {
                 panel.Image = null;
             }
 
@@ -5935,7 +6547,7 @@ namespace GameofLifedanielT
         }
 
         #endregion
-        #region Health
+        #region Health and Mana
 
        
         int healss = 0;
@@ -6024,10 +6636,35 @@ namespace GameofLifedanielT
 
             }
 
-
-
-
             return Heal;
+        }
+        public bool Manaheal(Panel panMain, PictureBox panel, int _row, int _column, bool Mana)
+        {
+
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == WHea && panel.Image == Secret && count == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Willst du den Mana Brunnen für 3000 Gold Benützen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    MessageBox.Show("Dein Geist fühlt sich erfrischt(-3000 zu Gold aber Mana auf Max))");
+                    panel.BackColor = Color.MediumTurquoise;
+                    panel.BackgroundImage = null;
+                    Mana = true;
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.MediumTurquoise;
+                    panel.BackgroundImage = null;
+                    Mana = false;
+                }
+
+
+            }
+
+            return Mana;
         }
         public int Potions(Panel panMain, PictureBox panel, int _row, int _column, int Potionn)
         {
@@ -6083,7 +6720,7 @@ namespace GameofLifedanielT
         #endregion
         #region Cheats
 
-        
+        public static int Cheatnumber;
         public bool Cheats(Panel panMain, PictureBox panel, int _row, int _column, bool cheats)
         {
 
@@ -6098,6 +6735,7 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.Red;
                     panel.BackgroundImage = null;
                     cheats = true;
+                    Cheatnumber = 1;
 
                 }
                 else if (dialogResult == DialogResult.No)
@@ -6105,6 +6743,30 @@ namespace GameofLifedanielT
                     panel.BackColor = Color.Red;
                     panel.BackgroundImage = null;
                     cheats = false;
+                    Cheatnumber = 0;
+                }
+
+
+            }
+       else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Che2 && panel.Image == Secret && count == 1)
+            {
+                DialogResult dialogResult = MessageBox.Show("Wow du hast das DevFeld gefunden glückwünsch", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+
+                    MessageBox.Show("Schau mal auf deine Stats");
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    cheats = true;
+                    Cheatnumber = 2;
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    cheats = false;
+                    Cheatnumber = 0;
                 }
 
 
@@ -6580,6 +7242,23 @@ namespace GameofLifedanielT
                 {
                     MessageBox.Show("Warnung Behemoth Fight, falls du nicht Genug Mana oder Leben hast, dann stirbst du sehr wahrscheinlich.");
                     tip = "Warnung Behemoth Fight, falls du nicht Genug Mana oder Leben hast, dann stirbst du sehr wahrscheinlich.";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+            }
+            #endregion
+            #region Level 10
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Hinw && Level == 10)
+            {
+                if (_row == 10 && _column == 34 && count == 1)
+                {
+                    MessageBox.Show("Befor du die Höhlen betrittst noch einen Kleinen Hinweis. Ich habe Challanges aufgestellt. Fünf Bosse Warten auf dich. Ich sage es dir direcht jetzt. Kauf dir was du kannst bei den Vier Zwergenhändler ein wenig weiter im Berg, falls du Mana brauchst, es gibt einen Manaheal Spot in der Elfenstadt im Süden. Mach die Challenges nur wenn du dich sicher fühlst. Du hast nur 4 Versuche(Jetztiges Leben + 3 Mal Respaqn), es handelt sich nicht um Normale Kämpfe. Bei einigen sind Item Relevant bei anderen nicht, besonders wichtig sind Bomben und Mana. Verstanden Gut.");
+                    tip = "Befor du die Höhlen betrittst noch einen Kleinen Hinweis. Ich habe Challanges aufgestellt. Fünf Bosse Warten auf dich. Ich sage es dir direcht jetzt. Kauf dir was du kannst bei den Vier Zwergenhändler ein wenig weiter im Berg, falls du Mana brauchst, es gibt einen Manaheal Spot in der Elfenstadt im Süden. Mach die Challenges nur wenn du dich sicher fühlst. Du hast nur 4 Versuche(Jetztiges Leben + 3 Mal Respaqn), es handelt sich nicht um Normale Kämpfe. Bei einigen sind Item Relevant bei anderen nicht, besonders wichtig sind Bomben und Mana. Verstanden Gut.";
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+               else if (_row == 18 && _column == 24 && count == 1)
+                {
+                    MessageBox.Show("Letzte Warnung. Es gibt ausserdem Gift auf dem Weg.");
+                    tip = "Letzte Warnung. Es gibt ausserdem Gift auf dem Weg.";
                     _grid[_column, _row, 2] = empty.ToString();
                 }
             }
@@ -7612,6 +8291,9 @@ namespace GameofLifedanielT
                 Kommen = Dialog;
             }
             #endregion
+            #region Level 10
+
+            #endregion
             return Dialog;
         }
         string Kommen;
@@ -7902,6 +8584,9 @@ namespace GameofLifedanielT
 
                 Dialog = Kommen;
             }
+            #endregion
+            #region Level 10
+
             #endregion
             return Kommen;
         }
@@ -8760,7 +9445,9 @@ namespace GameofLifedanielT
         #endregion
         #region Enemy
 
-    
+        #region Encountersnumbers
+
+       
         int encount =0;
         public int Encounter(Panel panMain, PictureBox panel, int _row, int _column)
         {
@@ -8779,71 +9466,68 @@ namespace GameofLifedanielT
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == GuaK && panel.Image == Secret && count == 1)
             {
-
                 encount = 4;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == GuaE && panel.Image == Secret && count == 1)
             {
-
                 encount = 5;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Gobl && panel.Image == Secret && count == 1)
             {
-
                 encount = 6;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Gobk && panel.Image == Secret && count == 1)
             {
-
                 encount = 7;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Dark && panel.Image == Secret && count == 1)
             {
-
                 encount = 8;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Wolf && panel.Image == Secret && count == 1)
             {
-
                 encount = 9;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bear && panel.Image == Secret && count == 1)
             {
-
                 encount = 10;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Assa && panel.Image == Secret && count == 1)
             {
-
                 encount = 11;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BandL && panel.Image == Secret && count == 1)
             {
-
                 encount = 12;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == DWolf && panel.Image == Secret && count == 1)
             {
-
                 encount = 13;
-
             }
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Behe && panel.Image == Secret && count == 1)
             {
-
                 encount = 14;
-
             }
-
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos1 && panel.Image == Secret && count == 1)
+            {
+                encount = 15;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos2 && panel.Image == Secret && count == 1)
+            {
+                encount = 16;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos3 && panel.Image == Secret && count == 1)
+            {
+                encount = 17;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos4 && panel.Image == Secret && count == 1)
+            {
+                encount = 18;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos5 && panel.Image == Secret && count == 1)
+            {
+                encount = 19;
+            }
             else
             {
                 encount = 0;
@@ -8852,10 +9536,24 @@ namespace GameofLifedanielT
 
             return encount;
         }
+        #endregion
+        public int Points;
+        public  int chance;
+        public int Magie=0;
+        public int Explo=0;
         public static int BehemothResult;
-        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif,int encoun, int Bombe, int Mana,int Lvl)
-        {
+        public static int ZResult;
+        public static int MonsterResult;
+        public static int DragonResult;
+        #region Fights
 
+        
+        public bool Fight(Panel panMain, PictureBox panel, int _row, int _column,bool fight,int Armor ,int Schleif,int encoun, int Bombe, int Mana,int Lvl,int tresure)
+        {
+            chance = 3;
+            #region Bandit
+
+          
             var count = Convert.ToInt32(_grid[_column, _row, 2]);
             if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Band && panel.Image == Secret&& count==1&& encoun==1)
             {
@@ -8882,8 +9580,13 @@ namespace GameofLifedanielT
                     MessageBox.Show("du erleidest auf der Flucht eine kleine Wunde(-1 zu Leben))");
                     fight = false;
                 }
-                }
-          else  if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BanC && panel.Image == Secret && count == 1 && encoun == 2)
+
+            }
+            #endregion
+            #region Banditcaptain
+
+
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BanC && panel.Image == Secret && count == 1 && encoun == 2)
             {
                 DialogResult dialogResult = MessageBox.Show("BanditChef Angriff willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -8911,6 +9614,8 @@ namespace GameofLifedanielT
                     fight = false;
                 }
             }
+            #endregion
+            #region Guard           
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Guar && panel.Image == Secret && count == 1 && encoun == 3)
             {
                 DialogResult dialogResult = MessageBox.Show("Eine Wache greift dich an willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
@@ -8937,6 +9642,10 @@ namespace GameofLifedanielT
                     fight = false;
                 }
             }
+            #endregion
+            #region Guardkaptain
+
+
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == GuaK && panel.Image == Secret && count == 1 && encoun == 4)
             {
                 DialogResult dialogResult = MessageBox.Show("Eine Wachehauptmann greift dich an willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
@@ -8967,6 +9676,8 @@ namespace GameofLifedanielT
 
 
             }
+            #endregion
+            #region Eliteguard        
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == GuaE && panel.Image == Secret && count == 1 && encoun == 5)
             {
                 DialogResult dialogResult = MessageBox.Show("Eine Elite Soldat greift dich an willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
@@ -8997,6 +9708,8 @@ namespace GameofLifedanielT
 
 
             }
+            #endregion
+            #region Goblin       
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Gobl && panel.Image == Secret && count == 1 && encoun == 6)
             {
                 DialogResult dialogResult = MessageBox.Show("Eine Goblin greift dich an willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
@@ -9025,6 +9738,10 @@ namespace GameofLifedanielT
                     fight = false;
                 }
             }
+            #endregion
+            #region Goblinking
+
+
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Gobk && panel.Image == Secret && count == 1 && encoun == 7)
             {
                 DialogResult dialogResult = MessageBox.Show("Eine Goblinkönig greift dich an willst du Kämpfen", "Some Title", MessageBoxButtons.YesNo);
@@ -9051,6 +9768,10 @@ namespace GameofLifedanielT
                     fight = false;
                 }
             }
+            #endregion
+            #region Black Knight
+
+
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Dark && panel.Image == Secret && count == 1 && encoun == 8)
             {
                 DialogResult dialogResult = MessageBox.Show("Der Schwarze Ritter greift dich an, bist du bereit zu sterben", "Some Title", MessageBoxButtons.YesNo);
@@ -9079,6 +9800,10 @@ namespace GameofLifedanielT
 
 
             }
+            #endregion
+            #region Wolf
+
+
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Wolf && panel.Image == Secret && count == 1 && encoun == 9)
             {
                 DialogResult dialogResult = MessageBox.Show("Ein Wolf greift dich an ", "Some Title", MessageBoxButtons.YesNo);
@@ -9114,6 +9839,8 @@ namespace GameofLifedanielT
 
 
             }
+            #endregion
+            #region Bear     
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bear && panel.Image == Secret && count == 1 && encoun == 10)
             {
                 DialogResult dialogResult = MessageBox.Show("Ein Bär greift dich an ", "Some Title", MessageBoxButtons.YesNo);
@@ -9146,9 +9873,9 @@ namespace GameofLifedanielT
                     MessageBox.Show("Beim Wegrennen hat er dich ein Wenig verletzt");
                     fight = false;
                 }
-
-
             }
+            #endregion
+            #region Assassin       
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Assa && panel.Image == Secret && count == 1 && encoun == 11)
             {
                 DialogResult dialogResult = MessageBox.Show("Eine Dunkle Figur greift dich aus dem Schatten an ", "Some Title", MessageBoxButtons.YesNo);
@@ -9174,9 +9901,9 @@ namespace GameofLifedanielT
                     MessageBox.Show("Du bist Kritische Verletzt(-4Leben)");
                     fight = false;
                 }
-
-
             }
+            #endregion
+            #region Banditenlord       
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == BandL && panel.Image == Secret && count == 1 && encoun == 12)
             {
                 DialogResult dialogResult = MessageBox.Show("Ein Banditenlord greift dich an.", "Some Title", MessageBoxButtons.YesNo);
@@ -9205,6 +9932,8 @@ namespace GameofLifedanielT
 
 
             }
+            #endregion
+            #region DireWolf           
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == DWolf && panel.Image == Secret && count == 1 && encoun == 13)
             {//Bearbeiten
                 DialogResult dialogResult = MessageBox.Show("Ein DireWolf greift dich an.", "Some Title", MessageBoxButtons.YesNo);
@@ -9233,6 +9962,10 @@ namespace GameofLifedanielT
 
 
             }
+            #endregion
+            #region Behemoth
+
+
             else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Behe && panel.Image == Secret && count == 1 && encoun == 14)
             {//Bearbeiten
                 DialogResult dialogResult = MessageBox.Show("Ein Behemoth greift dich an, Kämpfen?", "Some Title", MessageBoxButtons.YesNo);
@@ -9435,8 +10168,1181 @@ namespace GameofLifedanielT
 
             }
 
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos1 && panel.Image == Secret && count == 1 && encoun == 15)
+            {//Bearbeiten
+                DialogResult dialogResult = MessageBox.Show("Ein Behemoth greift dich an, Kämpfen?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DialogResult dialogResult2 = MessageBox.Show("Mit Magie oder Waffen Kämpfen Yes= Magie Nein = Waffen", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+                        if (Mana > 0)
+                        {
+                            DialogResult dialogResult3 = MessageBox.Show("Mit vielen Schwachen Zauber angreiffen oder mit einem Starken", "Some Title", MessageBoxButtons.YesNo);
+                            if (dialogResult3 == DialogResult.Yes)
+                            {
+                                MessageBox.Show("Du wirfst mehre Feuerbälle, sie zeigen jedoch kaum effekt");
+                                DialogResult dialogResult4 = MessageBox.Show("Weiter drauf schiessen", "Some Title", MessageBoxButtons.YesNo);
+                                if (dialogResult4 == DialogResult.Yes)
+                                {
+                                    MessageBox.Show(" sie zeigen jedoch Langsam effekt");
+                                    MessageBox.Show(" Nur schlägt der Behemoth die gegen die Wand auf. Und Spiesst dich danach auf seine Stacheln auf.");
+                                    MessageBox.Show(" Du bist Tod");
+                                    BehemothResult = 1;//Tod
+                                    fight = true;
+                                }
+                                else if (dialogResult4 == DialogResult.No)
+                                {
+                                    DialogResult dialogResult5 = MessageBox.Show("Alle deine Magie in einen Finalen Zauber stecken oder zu Waffen Wechseln(Ja Zauber nein Waffen)", "Some Title", MessageBoxButtons.YesNo);
+                                    if (dialogResult5 == DialogResult.Yes)
+                                    {
+                                        MessageBox.Show(" Du wirftst ein Electro Lanze(Magie nicht Lanze)");
+                                        MessageBox.Show(" Du triffst und Verletzt den Behemoth stark. Er schlägt nach dir");
+                                        MessageBox.Show(" Er trifft dich Stark fällt aber danach Tod zu Boden");
+                                        BehemothResult = 2;//Gewonnen aber Stark verletzt
+                                        fight = true;
+                                        _grid[_column, _row, 2] = empty.ToString();
+                                    }
+                                    else if (dialogResult5 == DialogResult.No)
+                                    {
+                                        DialogResult dialogResult6 = MessageBox.Show("Stürmst du mit deiner Waffe oder Wirfst du Bomben (Ja Waffe Nein Bombe))", "Some Title", MessageBoxButtons.YesNo);
+                                        if (dialogResult6 == DialogResult.Yes)
+                                        {
+
+                                            MessageBox.Show(" Du Stürmst zum Behemoth......");
+                                            MessageBox.Show(" Jedoch Packt er dich. Und spiesst dich auf seinen Stacheln auf");
+                                            BehemothResult = 1;//Tod
+                                            fight = true;
+                                        }
+                                        else if (dialogResult6 == DialogResult.No)
+                                        {
+                                            if (Bombe > 0)
+                                            {
+                                                MessageBox.Show(" Du wirfst deine Bombe");
+                                                MessageBox.Show(" Jedoch Block der Behemoth mit seiner Hand die Bombe");
+                                                MessageBox.Show(" Die Bombe rollt zum Rand der Kammer und Explodiert");
+                                                if (Lvl == 9)
+                                                {
+                                                    MessageBox.Show(" Die Höhle fäng an Einzustürzen");
+                                                    MessageBox.Show(" Du schaffst es raus aber der Weg zum Schatz ist Blockiert ");
+                                                    BehemothResult = 3;//Schatz ist Weg
+                                                    fight = true;
+                                                    _grid[5, 37, 0] = Moun;
+                                                    _grid[_column, _row, 2] = empty.ToString();
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show(" Er Packt dich. Und spiesst dich auf seinen Stacheln auf");
+                                                    BehemothResult = 1;//Tod
+                                                    fight = true;
+                                                }
+
+
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show(" Hast keine Bombe");
+                                                MessageBox.Show(" Der Behemoth Packt dich. Und spiesst dich auf seinen Stacheln auf");
+                                                BehemothResult = 1;//Tod
+                                                fight = true;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            else if (dialogResult3 == DialogResult.No)
+                            {
+                                if (Mana >= 4)
+                                {
+                                    MessageBox.Show(" Der Behemoth wird direkt im Herz Getroffen, er Kippt um. Du bist aber nun komplett erschöpft");
+                                    BehemothResult = 4;//Gewonnen aber erschöpft
+                                    fight = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show(" Du wirftst ein Electro Lanze(Magie nicht Lanze)");
+                                    MessageBox.Show(" Du triffst und Verletzt den Behemoth stark. Er schlägt nach dir");
+                                    MessageBox.Show(" Er trifft dich Stark fällt aber danach Tod zu Boden");
+                                    BehemothResult = 2;//Gewonnen aber Stark verletzt
+                                    fight = true;
+                                }
+
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Du hast kein Mana oder kein Magische Kraft");
+                            DialogResult dialogResult7 = MessageBox.Show("Stürmst du mit deiner Waffe oder Wirfst du Bomben (Ja Waffe Nein Bombe))", "Some Title", MessageBoxButtons.YesNo);
+                            if (dialogResult7 == DialogResult.Yes)
+                            {
+
+                                MessageBox.Show(" Du Stürmst zum Behemoth......");
+                                MessageBox.Show(" Jedoch Packt er dich. Und spiesst dich auf seinen Stacheln auf");
+                                BehemothResult = 1;//Tod
+                                fight = true;
+                            }
+                            else if (dialogResult7 == DialogResult.No)
+                            {
+                                if (Bombe > 0)
+                                {
+                                    MessageBox.Show(" Du wirfst deine Bombe");
+                                    MessageBox.Show(" Jedoch Block der Behemoth mit seiner Hand die Bombe");
+                                    MessageBox.Show(" Die Bombe rollt zum Rand der Kammer und Explodiert");
+                                    if (Lvl == 9)
+                                    {
+                                        MessageBox.Show(" Die Höhle fäng an Einzustürzen");
+                                        MessageBox.Show(" Du schaffst es raus aber der Weg zum Schatz ist Blockiert ");
+                                        BehemothResult = 3;//Schatz ist Weg
+                                        fight = true;
+                                        _grid[5, 37, 0] = Moun;
+                                        _grid[_column, _row, 2] = empty.ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show(" Er Packt dich. Und spiesst dich auf seinen Stacheln auf");
+                                        BehemothResult = 1;//Tod
+                                        fight = true;
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show(" Hast keine Bombe");
+                                    MessageBox.Show(" Der Behemoth Packt dich. Und spiesst dich auf seinen Stacheln auf");
+                                    BehemothResult = 1;//Tod
+                                    fight = true;
+                                }
+                            }
+                        }
+                    }
+                    else if (dialogResult2 == DialogResult.No)
+                    {
+                        DialogResult dialogResult8 = MessageBox.Show("Stürmst du mit deiner Waffe oder Wirfst du Bomben (Ja Waffe Nein Bombe))", "Some Title", MessageBoxButtons.YesNo);
+                        if (dialogResult8 == DialogResult.Yes)
+                        {
+
+                            MessageBox.Show(" Du Stürmst zum Behemoth......");
+                            MessageBox.Show(" Jedoch Packt er dich. Und spiesst dich auf seinen Stacheln auf");
+                            BehemothResult = 1;//Tod
+                            fight = true;
+                        }
+                        else if (dialogResult8 == DialogResult.No)
+                        {
+                            if (Bombe > 0)
+                            {
+                                MessageBox.Show(" Du wirfst deine Bombe");
+                                MessageBox.Show(" Jedoch Block der Behemoth mit seiner Hand die Bombe");
+                                MessageBox.Show(" Die Bombe rollt zum Rand der Kammer und Explodiert");
+                                if (Lvl == 9)
+                                {
+                                    MessageBox.Show(" Die Höhle fäng an Einzustürzen");
+                                    MessageBox.Show(" Du schaffst es raus aber der Weg zum Schatz ist Blockiert ");
+                                    BehemothResult = 3;//Schatz ist Weg
+                                    fight = true;
+                                    _grid[5, 37, 0] = Moun;
+                                    _grid[_column, _row, 2] = empty.ToString();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(" Er Packt dich. Und spiesst dich auf seinen Stacheln auf");
+                                    BehemothResult = 1;//Tod
+                                    fight = true;
+                                }
+
+
+                            }
+                            else
+                            {
+                                MessageBox.Show(" Hast keine Bombe");
+                                MessageBox.Show(" Der Behemoth Packt dich. Und spiesst dich auf seinen Stacheln auf");
+                                BehemothResult = 1;//Tod
+                                fight = true;
+                            }
+                        }
+                    }
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show(" Du willst wegrennen, aber der Behemoth ist zu schnell, er packt dich. Und spiesst dich auf seinen Stacheln auf, du bist Tod");
+                    BehemothResult = 1;//Tod
+                    fight = true;
+                }
+
+
+            }
+            #endregion
+            #region Die Gestalt
+
+          
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos2 && panel.Image == Secret && count == 1 && encoun == 16)
+            {
+                MessageBox.Show(" Ja ist immer das Erste nein immer das Zweite");
+                DialogResult dialogResult = MessageBox.Show("Ein Gestalt in der Grösse eines Mensches kommt auf dich zu, sie kommt immer schneller und schneller auf dich zu, du kannst ihr nicht entkommen, Kämpfen?", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+               
+                    DialogResult dialogResult2 = MessageBox.Show("Denn angriff Contern oder ausweichen. Ja = Contern Nein= Ausweichen", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {                    
+                        DialogResult dialogResult3 = MessageBox.Show("Er kommt rasend schnell und trifft dich mit voller wucht. Doch hast du denn Angriff ohne grosse Probleme überstanden, was jetzt gehtst du ihn den Angriff oder in die Defensive?", "Some Title", MessageBoxButtons.YesNo);
+                        if (dialogResult3 == DialogResult.Yes)
+                        {
+                            DialogResult dialogResult4 = MessageBox.Show("Du nimmst deine Waffe und Schlägst nach der Gestalt. Deine Waffe geht sinkt in seinen Leib. Du merkst das seine Wunde anfängt zu schliessen. Angriff fortsetzen oder zurückweichen", "Some Title", MessageBoxButtons.YesNo);
+
+                            if (dialogResult4 == DialogResult.Yes)
+                            {
+                                #region Fight
+
+                              
+                                chance = chance - 1;
+                                DialogResult dialogResult5 = MessageBox.Show("Du nimmst deinen Dolch und stichst es ihm ins Gesicht. Plötzlich fälltst du um, er hat dich am Bein mit seiner Sense verletzt. Während du umfällst,siehst du ein Rotes Leuchten in einer Kurzen Entfernung. Versucht du dich dem Licht zu nähern oder schiesst du was dagegen. ", "Some Title", MessageBoxButtons.YesNo);
+                                if (dialogResult5 == DialogResult.Yes)
+                                {
+                                   MessageBox.Show("Du schreist auf wegen deiner Fussveletzung. Plötzlich wird alles Dunkel um dir. Die Gestalt hat seinen Speer in deine Brust gerammt. Du bist Tod");
+                                    ZResult = 1;
+                                    fight = true;
+                                }
+                                else if (dialogResult5 == DialogResult.No)
+                                {
+                                    #region Bomb
+
+                             
+                                    DialogResult dialogResult6 = MessageBox.Show("Schiesst du einer Bombe oder einen Feuerball.", "Some Title", MessageBoxButtons.YesNo);
+                                    if (dialogResult6 == DialogResult.Yes && Bombe >= 0)
+                                    {
+                                        chance = chance - 1;
+
+                                        DialogResult dialogResult7 = MessageBox.Show("Gerade als du die Bombe schmeisst sticht die Gestalt dir in den Körper, bricht jedoch ab als er sieht wohin die Bombe fliegt, er lässt von dir ab und rennt zur Bombe. Schmeisst du einen Feuerball hinterher", "Some Title", MessageBoxButtons.YesNo);
+                                        if (dialogResult7 == DialogResult.Yes && Mana>=1)
+                                        {
+                                            MessageBox.Show("Du schiesst auf das Rote Licht, die Bombe und die Gestalt. Du triffst die Bombe, diese Explodiert und nimmt das Rote Licht mit sich. In dem moment wo das Rote Licht verschwindet, verschwindet auch die Gestalt. ");
+                                            MessageBox.Show("Glückwunsch du hast denn Zweiten Boss geschlagen. Du solltest dich aber untersuchen Lassen(Leben auf 2)");
+                                            ZResult = 2;
+                                            fight = true;
+                                            _grid[_column, _row, 2] = empty.ToString();
+                                        }
+                                    
+                                        else if (dialogResult7 == DialogResult.No )
+                                            {
+                                            if (Mana == 0)
+                                            {
+                                                MessageBox.Show(" Du hast gar keine Mana");
+
+                                            }
+                                            MessageBox.Show(" Die Gestalt kann die Bombe rechtzeitig Löschen und kommt danach zu dir zurück. Er nimmt einen Hieb mit der Sense und Köpft dich. Du bist Tod!!!");
+                                            ZResult = 1;
+                                            fight = true;
+                                        }
+
+                                    }
+                                    #endregion
+                                    #region Spell
+                                    else if (dialogResult6 == DialogResult.No || Bombe == 0)
+                                    {
+                                        if (Bombe == 0)
+                                        {
+                                            MessageBox.Show(" Du hast gar keine Bombe");
+
+                                        }
+                                        if (Mana>=4)
+                                        {
+                                          
+
+
+                                            DialogResult dialogResult7 = MessageBox.Show("All dein Mana in einem Offensiven spruch brauchen. Oder ein wenig in einen Magieschield verwenden", "Some Title", MessageBoxButtons.YesNo);
+                                            if (dialogResult7 == DialogResult.Yes)
+                                            {
+                                                if (Armor >= 15)
+                                                {
+                                                    MessageBox.Show("Deine Dicke Rüstung hat gerade dein Leben gerettet. Der Feuerball trifft das Licht, es verschwindet so auch die Gestalt ");
+                                                    MessageBox.Show("Glückwunsch du hast denn Zweiten Boss geschlagen. Du solltest dich aber untersuchen Lassen(Leben auf 1)");
+                                                    ZResult = 3;
+                                                    fight = true;
+                                                    _grid[_column, _row, 2] = empty.ToString();
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show(" Die Gestalt rammt seinen Speer direkt durch dein Herz. du bist Tod(versuche nächstesmal mehr Mana zu haben)");
+                                                    ZResult = 1;
+                                                    fight = true;
+                                                }
+                                            }
+                                            else if (dialogResult7 == DialogResult.No)
+                                            {
+                                                MessageBox.Show("Der Magische Schield hält gegen den Angriff stand. Der Feuerball trifft das Licht, es verschwindet so auch die Gestalt ");
+                                                MessageBox.Show("Glückwunsch du hast denn Zweiten Boss geschlagen. Du solltest dich aber untersuchen Lassen(Leben auf 1)");
+                                                ZResult = 4;
+                                                fight = true;
+                                                _grid[_column, _row, 2] = empty.ToString();
+
+                                            }
+                                           
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show(" Die Gestalt rammt seinen Speer direkt durch dein Herz. du bist Tod(versuche nächstesmal mehr Mana zu haben)");
+                                            ZResult = 1;
+                                            fight = true;
+                                        }
+
+
+                                    }
+                                    #endregion
+                                }
+                                #endregion
+                            }
+                            else if (dialogResult4 == DialogResult.No)
+                            {
+                                DialogResult dialogResult5 = MessageBox.Show("Du siehst mit deinen Augen wie sich die Gestalt die Waffe aus dem Körper zieht. Währendessen verheilt die Wunde die ihm zugefügt hast. Greifts du ihn mit einer Bombe oder Magie an während er sich heilt.", "Some Title", MessageBoxButtons.YesNo);
+                                if (dialogResult5 == DialogResult.Yes&& Bombe>=0)
+                                {
+                                    #region Bombe
+
+                                
+                                    DialogResult dialogResult6 = MessageBox.Show("Die Gestalt wird in viele Teile gesprengt. jedoch sieht du das sich alle zueinander bewegen. In der Ferne siehst du ein Rotes Leuchten, gehts du zu dem Licht", "Some Title", MessageBoxButtons.YesNo);
+                                    if (dialogResult6 == DialogResult.Yes)
+                                    {
+                                        #region Greed
+
+
+                                        DialogResult dialogResult7 = MessageBox.Show("Das Licht war ein Roter Edelstein. Willst du ihn zerschmettern oder mitnehmen", "Some Title", MessageBoxButtons.YesNo);
+                                        if (dialogResult7 == DialogResult.Yes)
+                                        {
+                                            MessageBox.Show("Nachdem du den Edelstein zerschmettert hast gehst du zurück zu der Gestalt, jedoch ist diese nirgends zu sehen. Es ist als wäre sie in Luft aufgelöst worden.", "Some Title", MessageBoxButtons.YesNo);
+                                            MessageBox.Show("Glückwunsch du hast es Geschafft. Du hast die Begegnung unbeschadet überlebt.");
+                                            ZResult = 4;
+                                            fight = true;
+                                            _grid[_column, _row, 2] = empty.ToString();
+                                        }
+                                        else if (dialogResult7 == DialogResult.No)
+                                        {
+                                            MessageBox.Show("Du nimmst den Edelstein und gehtst weiter in die Höhle. Plötlich verspürst du Schmerzen von deiner Bauchregion. Du sieht das durch dir ein Massiver Speer ragt. Du fällst um, hörst ein hemisches Lachen und stirbst.", "Some Title", MessageBoxButtons.YesNo);
+                                            ZResult = 1;
+                                            fight = true;
+                                        }
+                                        #endregion
+
+                                    }
+                                    else if (dialogResult6 == DialogResult.No)
+                                    {
+                                        #region Feuerball
+
+                              
+                                        DialogResult dialogResult7 = MessageBox.Show("Willst du einen Feuerball werfen.", "Some Title", MessageBoxButtons.YesNo);
+                                        if (dialogResult7 == DialogResult.Yes)
+                                        {
+                                            if (Mana>0)
+                                            {
+                                                MessageBox.Show("Du schiesst den Feuerball, er fliegt in die Ferne. Du hörst ein klirren und siehst das sich die Gestalt auflöst.");
+                                                MessageBox.Show("Glückwunsch du hast es Geschafft den Boss zu vernichten. Du hast die Begegnung unbeschadet überlebt.");
+                                                ZResult = 5;
+                                                fight = true;
+                                                _grid[_column, _row, 2] = empty.ToString();
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show(" Die Gestalt steht auf und rammt seinen Speer direkt durch dein Herz. du bist Tod(versuche nächstesmal mehr Mana zu haben)");
+                                                ZResult = 1;
+                                                fight = true;
+                                            }
+                                           
+                                        }
+                                        else if (dialogResult7 == DialogResult.No)
+                                        {
+
+                                        }
+                                        #endregion
+                                    }
+                                    #endregion
+                                }
+                                else if (dialogResult5 == DialogResult.No|| Bombe==0)
+                                {
+                                    #region fail
+
+                                  
+                                    if (Bombe == 0)
+                                    {
+                                        MessageBox.Show("Du hast keine Bombe");
+                                    }
+                                    MessageBox.Show("Du beginnst einen Zauber gegen die Gestalt zu wirken. Schade für dich ist nur, dass das zulange dauert. Er rammt seinen Speer in dein Herz, du bist Tod.");
+                                    ZResult = 1;
+                                    fight = true;
+                                    #endregion
+                                }
+                            }
+
+                        }
+                        else if (dialogResult3 == DialogResult.No)
+                        {
+                        
+                            DialogResult dialogResult4 = MessageBox.Show("Du gehst in eine defensive Stellung und versucht zu erahnen wann du dich verteidigen sollst. Er kommt mit voller Geschwindigkeit auf dich zu. Jetzt verteidigen und Kontern.", "Some Title", MessageBoxButtons.YesNo);
+                            if (dialogResult4 == DialogResult.Yes)
+                            {
+                                #region Light
+
+                         
+                                chance--;
+                                DialogResult dialogResult5 = MessageBox.Show("Er kommt mit so einer Starken Wucht, dass es dich umwirft. Es füllt sich an als  hätte dich jemand mit einem Hammer getroffen. Jedoch merkst du das du auch ihn getroffen hast. Für einen Kurzen Moment siehst du ein Rotes Leuchten am Hals. Schlägst du mit deiner Waffe Dagegen oder Versuchst du dich aufzurappeln und zurückzuweichen ", "Some Title", MessageBoxButtons.YesNo);
+                                if (dialogResult5 == DialogResult.Yes)
+                                {
+                                    MessageBox.Show("Du stichst mit deiner Waffe direkt auf das Rote Licht, in dem moment wo du es triffst, wirst du durch eine Druckwelle zurück geworfen und prallst gegen eine Felsen. Du schreist for schmerzen auf, siehst jedoch das sich die Gesalt auflöst. ");
+                                    MessageBox.Show("Glückwunsch du hast denn Zweiten Boss geschlagen. Du solltest dich aber untersuchen Lassen(Leben auf 2)");
+                                    ZResult = 2;
+                                    fight = true;
+                                    _grid[_column, _row, 2] = empty.ToString();
+
+                                }
+                                else if (dialogResult5 == DialogResult.No)
+                                {
+                                    DialogResult dialogResult6 = MessageBox.Show("Während du zurückweichst, bemerkst du ein Zweites Rotes Licht. Willst du dich auf das Licht in der Ferne Konzentrieren oder das in der Gestalt  ", "Some Title", MessageBoxButtons.YesNo);
+                                    if (dialogResult6 == DialogResult.Yes)
+                                    {
+                                        #region Feuerball und Bombe
+
+                                     
+                                        DialogResult dialogResult7 = MessageBox.Show("Wirst du einen Feuerball oder eine Bombe gegen das Licht ", "Some Title", MessageBoxButtons.YesNo);
+                                        if (dialogResult7 == DialogResult.Yes|| Bombe==0 )
+                                        {
+                                            if (Mana==0)
+                                            {
+                                                MessageBox.Show("Du versuchst einen Feuerball zu werfen, jedoch kommt nichts. Du merkst du hast gar kein Mana. Pech für dich, die Gestalt kommt zu dir und spiesst dich auf. Du bist Tod ");
+                                            
+                                                ZResult = 1;
+                                                fight = true;
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Du schiesst den Feuerball, er fliegt in die Ferne. Du hörst ein klirren und siehst das sich die Gestalt auflöst.");
+                                                MessageBox.Show("Glückwunsch du hast es Geschafft den Boss zu vernichten. Lass dich aber Trotzdem Untersuchen(Leben auf 3).");
+                                                ZResult = 6;
+                                                fight = true;
+                                                _grid[_column, _row, 2] = empty.ToString();
+                                            }
+
+                                        }
+                                        else if (dialogResult7 == DialogResult.No&& Bombe>=1)
+                                        {
+                                            MessageBox.Show("Du schmeisst die Bombe und siehst wie sie fliegt, leider wirst du die Explosion nicht sehen. Die Gestalt hat sich nähmlich erholt und Köpfte dich mit seiner Sense. Daher siehst du sie Wortwörtlich nicht, da du in den Boden schaust. Du bist Tod. ");
+                                            ZResult = 1;
+                                            fight = true;
+                                        }
+                                        #endregion
+                                    }
+                                    else if (dialogResult6 == DialogResult.No)
+                                    {
+                                        MessageBox.Show("Seit du ihn das Erstemal getroffen hast, schaut er genau drauf das du ihn nicht am Hals triffst, du jedoch erleidest immer mehr und mehr Wunden gegen ihn. Du bricht während den Kampf zusammen. Er nimmt seinen Speer und ersticht dich. Du bist Tod, aber hey er wird sich wenigsten an dich erinnern, weil du lange und fair gekämpft hast, zwar habe ich keine Ahnung was dir das bring aber Glückwünsch du bist tod ");
+
+                                        ZResult = 1;
+                                        fight = true;
+                                    }
+
+                                }
+                                #endregion
+                            }
+                            else if (dialogResult4 == DialogResult.No)
+                            {
+                                DialogResult dialogResult5 = MessageBox.Show("Du weichst seinem Angriff aus und versucht danach gleich ihn anzugreiffen. Willst du mit Magie oder deinen Waffen ihn angreiffen", "Some Title", MessageBoxButtons.YesNo);
+                                #region Magie
+
+                             
+                                if (dialogResult5 == DialogResult.Yes)
+                                {
+                                    DialogResult dialogResult6 = MessageBox.Show("Befor du einen Feuerball gegen ihn wirfst, siehst du ein Leuchten ihn der Ferne. Willst du statt auf die Gestalt, denn Feuerball auf das Leuchten schiessen", "Some Title", MessageBoxButtons.YesNo);
+
+                                    if (dialogResult6 == DialogResult.Yes)
+                                    {
+                                        if (Mana == 0)
+                                        {
+                                            MessageBox.Show("Du versuchst einen Feuerball zu werfen, jedoch kommt nichts. Du merkst du hast gar kein Mana. Pech für dich, die Gestalt kommt zu dir und spiesst dich auf. Du bist Tod ");
+
+                                            ZResult = 1;
+                                            fight = true;
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Du schiesst den Feuerball, er fliegt in die Ferne. Du hörst ein klirren und siehst das sich die Gestalt auflöst.");
+                                            MessageBox.Show("Glückwunsch du hast es Geschafft den Boss zu vernichten. Und du hast keinen Schaden erlitten");
+                                            ZResult = 5;
+                                            fight = true;
+                                            _grid[_column, _row, 2] = empty.ToString();
+                                        }
+                                  }
+                                    else if (dialogResult6 == DialogResult.No)
+                                    {
+                                        MessageBox.Show("Der Feuerball scheint nicht viel bewirkt zu haben als, du auf die Grosse Wunde in deinem Bauch schaust, das ging woll daneben. Du bist Tod");
+                                        ZResult = 1;
+                                        fight = true;
+                                    }
+                                }
+                                #endregion
+                                #region Waffe
+
+                             
+                                else if (dialogResult5 == DialogResult.No)
+                                {
+                                    if (Schleif>=4)
+                                    {
+
+                                   
+                                    MessageBox.Show("Die Gestalt stürmt wieder auf die zu, du nimmst den Speer und rammst in durch den oberen Teil des Halses. Plötzlich gibt es eine Druckwelle und die Gestalt ist verschwunden");
+                                    MessageBox.Show("Glückwunsch du hast es Geschafft den Boss zu vernichten. Und du hast keinen Schaden erlitten");
+                                     ZResult = 5;
+                                    fight = true;
+                                    _grid[_column, _row, 2] = empty.ToString();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Keiner deiner Waffen kann viel schaden veruhrsachen. nach einem langen Kampf tötet dich die gestalt mit seinem Speer(versuchs nächstesmal mit mehr schleifsteinen in deinem Inventar.)");
+                                        ZResult = 1;
+                                        fight = true;
+
+                                    }
+                                }
+                                #endregion
+
+                            }
+                        }
+                    }
+                    else if (dialogResult2 == DialogResult.No)
+                    {
+
+                       
+                        DialogResult dialogResult3 = MessageBox.Show("Du weichst seinem Angriff aus und versucht danach gleich ihn anzugreiffen. Willst du mit Magie oder deinen Waffen ihn angreiffen", "Some Title", MessageBoxButtons.YesNo);
+                        #region Magie
+
+
+                        if (dialogResult3 == DialogResult.Yes)
+                        {
+                            DialogResult dialogResult4 = MessageBox.Show("Befor du einen Feuerball gegen ihn wirfst, siehst du ein Leuchten ihn der Ferne. Willst du statt auf die Gestalt, denn Feuerball auf das Leuchten schiessen", "Some Title", MessageBoxButtons.YesNo);
+
+                            if (dialogResult4 == DialogResult.Yes)
+                            {
+                                if (Mana == 0)
+                                {
+                                    MessageBox.Show("Du versuchst einen Feuerball zu werfen, jedoch kommt nichts. Du merkst du hast gar kein Mana. Pech für dich, die Gestalt kommt zu dir und spiesst dich auf. Du bist Tod ");
+
+                                    ZResult = 1;
+                                    fight = true;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Du schiesst den Feuerball, er fliegt in die Ferne. Du hörst ein klirren und siehst das sich die Gestalt auflöst.");
+                                    MessageBox.Show("Glückwunsch du hast es Geschafft den Boss zu vernichten. Und du hast keinen Schaden erlitten");
+                                    ZResult = 5;
+                                    fight = true;
+                                    _grid[_column, _row, 2] = empty.ToString();
+                                }
+                            }
+                            else if (dialogResult4 == DialogResult.No)
+                            {
+                                MessageBox.Show("Der Feuerball scheint nicht viel bewirkt zu haben als, du auf die Grosse Wunde in deinem Bauch schaust, das ging woll daneben. Du bist Tod");
+                                ZResult = 1;
+                                fight = true;
+                            }
+                        }
+                        #endregion
+                        #region Waffe
+
+
+                        else if (dialogResult3 == DialogResult.No)
+                        {
+                            if (Schleif >= 4)
+                            {
+
+
+                                MessageBox.Show("Die Gestalt stürmt wieder auf die zu, du nimmst den Speer und rammst in durch den oberen Teil des Halses. Plötzlich gibt es eine Druckwelle und die Gestalt ist verschwunden");
+                                MessageBox.Show("Glückwunsch du hast es Geschafft den Boss zu vernichten. Und du hast keinen Schaden erlitten");
+                                ZResult = 5;
+                                fight = true;
+                                _grid[_column, _row, 2] = empty.ToString();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Keiner deiner Waffen kann viel schaden veruhrsachen. nach einem langen Kampf tötet dich die gestalt mit seinem Speer(versuchs nächstesmal mit mehr schleifsteinen in deinem Inventar.)");
+                                ZResult = 1;
+                                fight = true;
+
+                            }
+                        }
+                        #endregion
+                    }
+
+
+
+                }
+                    else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Ich hab doch gesagt du kannst der Gestalt nicht entkommen, oder wolltest du etwa sterben(du Bist Tod)");
+                    ZResult = 1;
+                    fight = true;
+                }
+
+
+            }
+            #endregion
+            ////////////////////////Bearbeiten
+            #region Monster
+
+      
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos3 && panel.Image == Secret && count == 1 && encoun == 17)
+            {//Monster
+                Points = 0;
+                MessageBox.Show("Als du fich dem Ausgang der Kammer näherst, bebt auf einmal der Boden. Du kannst gerade noch ausweichen als eine Riesen Axt an dir vorbei in den Boden saust.");
+                MessageBox.Show("Hier ist der dritte Boss, sein Kampf System ist ein wenig anders. je nach achtion bekommtst du Punkte. Du fängst bei 0 an, fällst du auf -10 dann bist du sofort tod. Bei 10 hast du sofort gewonnen.(Auch hier Fliehen geht nicht)");
+                DialogResult dialogResult = MessageBox.Show("Blut an der Axt, von seinen Händen und von seinem Mund. Du glaubst du weisst was der Troll frisst. Wie willst du Kämpfen defensiv oder Offensiv ", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    DialogResult dialogResult2 = MessageBox.Show("Willst du seine Angriffe Blocken oder ausweichen während dem Defensiven Kampf.", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {//
+                        #region -10 Dead
+
+                     
+                        Points = Points - 10;
+                        MessageBox.Show("-10 Punkt. Gut nachgedacht.");
+                        //MessageBox.Show("Viel spass damit, er nimmt einen Hieb mit seiner Axt und Teilt dich in Zwei Stücke, du bist Tod.");
+                        // MonsterResult = 1;
+                        // fight = true;
+                        #endregion
+                    }
+                    else if (dialogResult2 == DialogResult.No)
+                    {
+                        Points++;
+                        //1
+                        MessageBox.Show("+ 1 Punkt wegen guten Denken");
+                        DialogResult dialogResult3 = MessageBox.Show("Bekämpfst du ihn mit Magie oder deinen Waffen", "Some Title", MessageBoxButtons.YesNo);
+                        if (dialogResult3 == DialogResult.Yes)
+                        {
+                            //0
+                            Points--;
+                            MessageBox.Show("- 1 Punkt Trolle kümmern sich nicht um Magie. Verlier aber nicht die hoffnung");
+                            DialogResult dialogResult4 = MessageBox.Show("Du hast etwa 10 Sekunden zeit(nicht zeit zum wählem.) zu regieren. Willst du einen Zauber gegen ihn anweden.(Falls du kein Mana hast spoiler du bist Tod)", "Some Title", MessageBoxButtons.YesNo);
+                            if (Mana > 0)
+                            {
+
+                                if (dialogResult4 == DialogResult.Yes)
+                                {
+                                    DialogResult dialogResult5 = MessageBox.Show("Du kennst die Blitzlanze und den Feuerball, was benützt du.", "Some Title", MessageBoxButtons.YesNo);
+                                    if (dialogResult5 == DialogResult.Yes)
+                                    {//
+                                        #region -5 Magie 1
+
+                                       
+                                        Points = Points - 5;
+                                        MessageBox.Show("- 5 Punkte Trolle in meiner Welt haben stark Resitenz gegen Blitze wenn es um Schaden geht.");
+                                        //-5
+                                        MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                        Magie = 1;
+                                        #endregion
+                                    }
+                                    else if (dialogResult5 == DialogResult.No)
+                                    {//
+                                        #region 5 Magie 1
+
+                                       
+                                        Points = Points + 5;
+                                        MessageBox.Show("+ 5 Punkte Gut mitgelesen. Das Feuer frisst sich in seine Haut und lässt eine Wunde offen, was jetzt passiert zeigt die Punkte Wertung");
+                                        //5
+                                        MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                        Magie = 1;
+                                        #endregion
+                                    }
+
+                                }
+                                else if (dialogResult4 == DialogResult.No)
+                                {//
+                                    #region -10
+
+                                    
+                                    Points = Points - 10;
+                                    MessageBox.Show("Ok weder zauber oder Waffen. Du versuchst Diplomatie. Tja das hat nicht so gut funktioniert. Du bist nähmlich Tod");
+                                    #endregion
+                                }
+                            }
+                            else
+                            {//
+                                #region -10
+                                Points = Points - 10;
+                                MessageBox.Show("- 10Punkte Hab dich gewarnt.(Minus 10 erreicht)");
+                                #endregion
+                            }
+                            ////////////////////////////////////////////////
+                        }
+                        else if (dialogResult3 == DialogResult.No)
+                        {
+                            DialogResult dialogResult4 = MessageBox.Show("Bekämpfst du ihn mit Bomben oder deinen Waffen", "Some Title", MessageBoxButtons.YesNo);
+                            if (dialogResult4 == DialogResult.Yes)
+                            {
+
+                                Points = Points + 2;
+                                //3
+                                MessageBox.Show("+ 2 Punkt Trolle mögen kein Feuer");
+                                DialogResult dialogResult5 = MessageBox.Show("Wirfst du sie in Richtung der Beine oder des Kopfes", "Some Title", MessageBoxButtons.YesNo);
+                                if (dialogResult5 == DialogResult.Yes)
+                                {
+                                    if (Bombe > 0)
+                                    {
+
+
+                                        Points = Points + 1;
+                                        //4
+                                        MessageBox.Show("+ 1 Punkt Troll mag kein Feuer oder Explosionen daher plus 1, aber sonst keinen grossen effekt");
+                                        DialogResult dialogResult6 = MessageBox.Show("Eine Weitere Bombe schmeissen", "Some Title", MessageBoxButtons.YesNo);
+                                        Explo = 1;
+                                        if (dialogResult6 == DialogResult.Yes)
+                                        {
+                                            if (Bombe > 1)
+                                            {
+
+
+                                                Points = Points - 6;
+                                                Explo = 2;
+                                                //-2
+                                                MessageBox.Show("- 5 Punkte der Troll ist nicht beindruck von deiner Zweiten Bombe, er schlägt dich mit seinem Arm.");
+                                                DialogResult dialogResult7 = MessageBox.Show("Du hast etwa 10 Sekunden zeit(nicht zeit zum wählem.) zu regieren. Willst du einen Zauber gegen ihn anweden.(Falls du kein Mana hast spoiler du bist Tod)", "Some Title", MessageBoxButtons.YesNo);
+                                                if (Mana>0)
+                                                {
+                                           
+                                                if (dialogResult7 == DialogResult.Yes)
+                                                {
+                                                        DialogResult dialogResult8 = MessageBox.Show("Du kennst die Blitzlanze und den Feuerball, was benützt du.", "Some Title", MessageBoxButtons.YesNo);
+                                                        if (dialogResult8 == DialogResult.Yes)
+                                                        {//
+                                                            #region -7 Bombe 2 Magie 1
+
+                                                         
+                                                            Points = -7;
+                                                            MessageBox.Show("- 5 Punkte Trolle in meiner Welt haben stark Resitenz gegen Blitze wenn es um Schaden geht.");
+                                                            //-7
+                                                            MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                            Magie = 1;
+                                                            #endregion
+                                                        }
+                                                        else if (dialogResult8 == DialogResult.No)
+                                                        {//
+                                                            #region 3 Bombe 2 Magie 1
+
+                                                         
+                                                            Points = Points +5;
+                                                            MessageBox.Show("+ 5 Punkte Gut mitgelesen. Das Feuer frisst sich in seine Haut und lässt eine Wunde offen, was jetzt passiert zeigt die Punkte Wertung");
+                                                            //3
+                                                            MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                            Magie = 1;
+                                                            #endregion
+                                                        }
+
+                                                    }
+                                                else if (dialogResult7 == DialogResult.No)
+                                                    {//
+                                                        #region -4 Bomb 2
+
+                                                    
+                                                        Points =  -4;
+                                                        MessageBox.Show("-2 Punkte Der Troll hat sich schon von der Zweiten Bombe erholt. Was jetzt passiert zeigt die Punkte Wertung");
+                                                        //-4
+                                                        MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                        #endregion
+                                                    }
+                                                }
+                                                else
+                                                {//
+                                                    #region -10
+
+                                                    
+                                                    Points = -10;
+                                                    MessageBox.Show("- 8 Hab dich gewarnt.(Minus 10 erreicht)");
+                                                    #endregion
+                                                }
+                                            }
+                                            else
+                                            {//
+                                                #region -10
+
+                                               
+                                                Points = Points - 13;
+                                                MessageBox.Show("- 14 Du merkst das du gar keine Bombe mehr hast. Luftbomben zählen nicht.(Minus 10 erreicht)");
+                                                #endregion
+                                            }
+
+                                        }
+                                        else if (dialogResult6 == DialogResult.No)
+                                        {
+                                            Points= Points+3;
+                                            //7
+                                            MessageBox.Show("+3 Punkt, der Troll ist immer noch von der Bombe betäubt");
+
+                                            DialogResult dialogResult7 = MessageBox.Show("Greifst du sein Hand an oder seinen Beine.(Andere Teile des Körpers sind schwer zu erreichen)", "Some Title", MessageBoxButtons.YesNo);
+                                            if (dialogResult7 == DialogResult.Yes)
+                                            {//
+                                                #region 10 Bombe 1
+
+                                                
+                                                Points = Points + 3;
+
+                                                MessageBox.Show("Wow du hast ne 10, der Troll ist besiegt.(Er kann sich nicht mehr gross wehren). ");
+                                                #endregion
+                                            }
+                                            else if (dialogResult7 == DialogResult.No)
+                                            {//
+                                                #region 9 Bombe 1
+
+                                              
+                                                Points = Points + 2;
+                                                MessageBox.Show("+2 Punkte, er fällt zu Boden. ");
+                                                MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                #endregion
+                                            }
+                                        }
+                                    
+                                }
+                                else
+                                    {//
+                                        #region -10
+
+                                       
+                                        Points = Points - 13;
+                                        MessageBox.Show("- 13 Punkte Du merkst das du gar keine Bombe mehr hast. Luftbomben zählen nicht.(Minus 10 erreicht)");
+                                        #endregion
+                                    }
+                                }
+                            else if (dialogResult5 == DialogResult.No)
+                            {
+                                    if (Bombe>0)
+                                    {
+                                        Points = Points - 5;
+                                        //-2
+                                        MessageBox.Show("- 5 Punkte Der Troll bemerkt die Fliegende Bombe und schlägt sie mit der Hand weg. Jetzt stürmt er auf dich zu");
+                                        DialogResult dialogResult6 = MessageBox.Show("Du hast etwa 10 Sekunden zeit(nicht zeit zum wählem.) zu regieren. Willst du einen Zauber gegen ihn anweden.(Falls du kein Mana hast spoiler du bist Tod)", "Some Title", MessageBoxButtons.YesNo);
+                                        if (Mana > 0)
+                                        {
+                                            if (dialogResult6 == DialogResult.Yes)
+                                            {
+                                                DialogResult dialogResult7 = MessageBox.Show("Du kennst die Blitzlanze und den Feuerball, was benützt du.", "Some Title", MessageBoxButtons.YesNo);
+                                                if (dialogResult7 == DialogResult.Yes)
+                                                {//
+                                                    #region -7 Bomb 1 Magie 1
+
+                                              
+                                                    Points =  - 7;
+                                                    MessageBox.Show("- 5 Punkte Trolle in meiner Welt haben stark Resitenz gegen Blitze wenn es um Schaden geht.");
+                                                    //-7
+                                                    MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                    Magie = 1;
+                                                    #endregion
+                                                }
+                                                else if (dialogResult7 == DialogResult.No)
+                                                {//
+                                                    #region 3 Bombe 1 Magie 1
+
+                                                  
+                                                    Points = Points + 5;
+                                                    MessageBox.Show("+ 5 Punkte Gut mitgelesen. Das Feuer frisst sich in seine Haut und lässt eine Wunde offen, was jetzt passiert zeigt die Punkte Wertung");
+                                                    //3
+                                                    MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                    Magie = 1;
+                                                    #endregion
+                                                }
+
+                                            }
+                                            else if (dialogResult6 == DialogResult.No)
+                                            {//
+                                                #region -4 Bombe 1
+
+                                             
+                                                Points =  - 4;
+                                                MessageBox.Show("-2 Punkte Der Troll hat sich schon von der  Bombe erholt. Was jetzt passiert zeigt die Punkte Wertung");
+                                                //-4
+                                                MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                                #endregion
+                                            }
+                                        }
+                                        else
+                                        {//
+                                            #region -10
+
+                                          
+                                            Points = -10;
+                                            MessageBox.Show("- 8 Punkte Hab dich gewarnt.(Minus 10 erreicht)");
+                                            #endregion
+                                        }
+                                    }
+                                    else
+                                    {//
+                                        #region -10
+
+                                      
+                                        Points = Points - 13;
+                                        MessageBox.Show("- 13 Punkte Du merkst das du gar keine Bombe mehr hast. Luftbomben zählen nicht.(Minus 10 erreicht)");
+                                        #endregion
+                                    }
+
+                                }
+                            }
+                            else if (dialogResult4 == DialogResult.No)
+                            {
+                                Points = Points + 1;
+                                MessageBox.Show("+1 Punkt für deinen Mut");
+                                DialogResult dialogResult5 = MessageBox.Show("Greift du mit deinem Schwert an oder mit einer anderen Waffe", "Some Title", MessageBoxButtons.YesNo);
+                                if (dialogResult5 == DialogResult.Yes)
+                                {//
+                                    #region -4
+
+                                
+                                    Points = Points - 6;
+                                    MessageBox.Show("-6 Punkt Trolle haben ein sehr dicke Haut, viel spass diese zu verletzen");
+                                    MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                    #endregion
+                                }
+                                else if (dialogResult5 == DialogResult.No)
+                                {
+                                    DialogResult dialogResult6 = MessageBox.Show("Greift du mit deinem Axt an oder mit einer anderen Waffe", "Some Title", MessageBoxButtons.YesNo);
+                                    if (dialogResult5 == DialogResult.Yes)
+                                    {//
+                                        #region 4
+
+                                       
+                                        Points = Points +2 ;
+                                        MessageBox.Show("+2 Punkt Zwar auch hier sehr dicke Haut aber Axt eignet sich besser wegen mehr Kraft auf einen Punkt");
+                                        MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                        #endregion
+                                    }
+                                    else if (dialogResult6 == DialogResult.No)
+                                    {                                                                        
+                                        DialogResult dialogResult7 = MessageBox.Show("Greift du mit deinem Speer an oder mit dem Dolch", "Some Title", MessageBoxButtons.YesNo);
+                                        if (dialogResult7 == DialogResult.Yes)
+                                        {//
+                                            #region 7
+                                            Points = Points + 5;
+                                            MessageBox.Show("+5 Punkt Man kann sich darum streiten. Aber beim Speer ist die ganze Wucht an einem Punkt");
+                                            MessageBox.Show("Kampf bis zur Punkt bewertung abgeschlossen. Resultat ob du ihn getötet hast oder was auch immer passiert liesst du gleich. ");
+                                            #endregion
+                                        }
+                                        else if (dialogResult7 == DialogResult.No)
+                                        {//
+                                            #region -10
+
+                                        
+                                            Points = Points -11;
+                                            MessageBox.Show("- 11 Punkte Ja sicher, mit dem Dolch gegen einen Troll. kannst genau so gut mit Steinen werfen, oder mit der Pfanne drauf schlagen. Du bist Tod");
+                                            #endregion
+                                        }
+                                    }
+                                }
+
+                            }
+
+                        }
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    #region -10
+
+                  
+                    Points = Points - 10;
+                    MessageBox.Show("Sorry fliehen geht nicht. 10Punkt du bist Tod");
+                    #endregion
+                }
+
+                if (Points== -10|| Points == -9)
+                {
+                    if (Points == -9)
+                    {
+                        MessageBox.Show("Nach langem kämpfen hast du den Troll besiegt, aber du bist daraufhin auch gestorben");
+                        fight = true;
+                        MonsterResult = 1;
+                    }
+                    MessageBox.Show("Du bist Tod");
+                }
+                else if (Points >= -8 && Points<=-3)
+                {
+                    if (Explo==1 && Magie ==0)
+                    {//no Bombe or Magic
+                        MonsterResult = 5;
+                    }
+                    else if (Explo == 1 && Magie == 1)
+                    {
+                        MonsterResult = 7;
+                    }
+                    else if (Explo == 2 && Magie == 0)
+                    {
+                        MonsterResult = 9;
+                    }
+                    else if (Explo == 2 && Magie == 1)
+                    {
+                        MonsterResult = 11;
+                    }
+                    else if (Explo == 0 && Magie == 1)
+                    {
+                        MonsterResult = 13;
+                    }
+                    else
+                    {//no Bombe or Magic
+                        MonsterResult = 2;
+                    }
+                }
+                else if (Points >= -2 && Points <= 4)
+                {
+                    if (Explo == 1 && Magie == 0)
+                    {
+
+                    }
+                    else if (Explo == 1 && Magie == 1)
+                    {
+                        MonsterResult = 6;
+                    }
+                    else if (Explo == 2 && Magie == 0)
+                    {
+
+                    }
+                    else if (Explo == 2 && Magie == 1)
+                    {
+                        MonsterResult = 10;
+                    }
+                    else if (Explo == 0 && Magie == 1)
+                    {
+
+                    }
+                    else
+                    {//no Bombe or Magic
+                        MonsterResult = 4;
+
+                    }
+                }
+                else if (Points >= 5 && Points <= 8)
+                {
+                    if (Explo == 1 && Magie == 0)
+                    {
+
+                    }
+                    else if (Explo == 1 && Magie == 1)
+                    {
+
+                    }
+                    else if (Explo == 2 && Magie == 0)
+                    {
+
+                    }
+                    else if (Explo == 2 && Magie == 1)
+                    {
+
+                    }
+                    else if (Explo == 0 && Magie == 1)
+                    {
+                        MonsterResult = 12;
+                    }
+                    else
+                    {//no Bombe or Magic
+                        MonsterResult = 3;
+                    }
+                }
+                else if (Points == 9 || Points == 10)
+                {
+                    if (Explo == 1 && Magie == 0)
+                    {
+                        MonsterResult = 8;
+                    }
+                    else if (Explo == 1 && Magie == 1)
+                    {
+
+                    }
+                    else if (Explo == 2 && Magie == 0)
+                    {
+
+                    }
+                    else if (Explo == 2 && Magie == 1)
+                    {
+
+                    }
+                    else if (Explo == 0 && Magie == 1)
+                    {
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+
+
+
+            }
+            #endregion
+            /*   DialogResult dialogResult = MessageBox.Show("Drachen Angriff willst du dich verteidigen", "Some Title", MessageBoxButtons.YesNo);
+               if (dialogResult == DialogResult.Yes)
+               {
+
+               }
+               else if (dialogResult == DialogResult.No)
+               {
+
+               }  */
+            #region Drache
+
+            
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos4 && panel.Image == Secret && count == 1 && encoun == 18)
+            {//Drache
+                MessageBox.Show("Vor dir steht ein Roter Drache, auf einmal fängt er an zu Reden << Ah ein Mensch, es ist schon eine Recht Lange Zeit seit einer von euch sich in meine Höhle verwirrt hat. Du willst sich weiter in die Höhle hinein. Solltest du Schmuck oder etwas in dieser Art besitzen, dann gib sie mir und ich lasse dich unbeschadet weiter gehen. Sonst wirst du halt mein Abendessen");
+
+
+
+                DialogResult dialogResult = MessageBox.Show("Dem Drachen den Schmuck geben", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes&& tresure>=1)
+                {                 
+                        fight = true;
+                        _grid[_column, _row, 2] = empty.ToString();
+                    DragonResult=1;
+                }
+                else if (dialogResult == DialogResult.No|| tresure == 0)
+                {
+                    MessageBox.Show("Schade für dich, dann bekomme ich halt ein Abendessen");
+////////////////////////////////////////////////////
+                    DialogResult dialogResult2 = MessageBox.Show("Drachen Angriff willst du dich verteidigen", "Some Title", MessageBoxButtons.YesNo);
+                    if (dialogResult2 == DialogResult.Yes)
+                    {
+
+                    }
+                    else if (dialogResult2 == DialogResult.No)
+                    {
+
+                    }
+                }
+
+
+
+            }
+            #endregion
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 4] == Bos5 && panel.Image == Secret && count == 1 && encoun == 19)
+            {//Entwickler
+                DialogResult dialogResult = MessageBox.Show("Entwickler Angriff willst du dich verteidigen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    if (Armor >= 1 && Schleif >= 1)
+                    {
+                        MessageBox.Show("Du hast gewonnen, deine Ausrüstung hat aber ein wenig gelitten(-1 zu Schleifstein und -1 zu Armor))");
+                        fight = true;
+
+
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Du hast gewonnen, aber bist Verletzt(-2 zu Leben))");
+                        fight = true;
+                        _grid[_column, _row, 2] = empty.ToString();
+                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("du erleidest auf der Flucht eine kleine Wunde(-1 zu Leben))");
+                    fight = false;
+                }
+            }
+
             return fight;
         }
+        #endregion
         #endregion
         #region Respawn      
         public PictureBox Death(Panel panMain, PictureBox panel, int _row, int _column, int lvl)

@@ -14,6 +14,7 @@ namespace GameofLifedanielT
     public partial class frmMonster : Form
     {
         Bitmap Behemoth = Properties.Resources.Behemoth;
+        Bitmap Monster = Properties.Resources.Monster;
         public frmMonster()
         {
             InitializeComponent();

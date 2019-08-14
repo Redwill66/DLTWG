@@ -33,6 +33,8 @@ namespace GameofLifedanielT
         Bitmap BanditLord = Properties.Resources.BanditLord;
         Bitmap Direwolf = Properties.Resources.Direwolf;
         Bitmap Behemoth = Properties.Resources.Behemoth;
+        Bitmap Zrosgen = Properties.Resources.Zrosgen;
+        Bitmap Monster = Properties.Resources.Monster;
         #endregion
         // Dies sind die Daten von Grid 
         private int _row;
@@ -268,6 +270,7 @@ namespace GameofLifedanielT
         bool Fight = false;
         bool Payheal = false;
         bool WirtHeal = false;
+        bool Manaheal = false;
         bool cheat = false;
         bool wait;
         private void Labyrinth_KeyPress(object sender, KeyPressEventArgs e)
@@ -402,28 +405,47 @@ namespace GameofLifedanielT
                         #endregion
                         #region Cheats
 
-                       
+
                         if (cheat == true)
                         {
-                            MaxLife = 3;
-                            Life = 3;
-                            Armor = 0;
-                            sword = 0;
-                            Armormat = 0;
-                            Bombs = 0;
-                            Gold = Gold + 500;
-                            cheat = false;
+                            if (Cheatnumber == 1)
+                            {
+                                MaxLife = 3;
+                                Life = 3;
+                                Armor = 0;
+                                sword = 0;
+                                Bombs = 0;
+                                Gold = Gold + 500;
+                                cheat = false;
+                            }
+                            else if (Cheatnumber == 2)
+                            {
+                                MaxLife = 10;
+                                Life = 10;
+                                Armor = 30;
+                                sword = 30;
+                                Bombs = 4;
+                                Gold = 50000;
+                                Spellpower = 20;
+                                Mana = 20;
+                                Schmuck = 1;
+                            }
+                            else
+                            {
+
+                            }
+
                         }
                         #endregion
                         #region Encounters
 
-                       
+
                         if (encounte > 0)
                         {
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs,Mana,Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs,Mana,Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -453,7 +475,7 @@ namespace GameofLifedanielT
                             else if (encounte == 2)
                             {
                                 picnpc.BackgroundImage = BanditC;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -491,7 +513,7 @@ namespace GameofLifedanielT
                             else if (encounte == 3)
                             {
                                 picnpc.BackgroundImage = Soldat;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -521,7 +543,7 @@ namespace GameofLifedanielT
                             else if (encounte == 4)
                             {
                                 picnpc.BackgroundImage = Gua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -559,7 +581,7 @@ namespace GameofLifedanielT
                             else if (encounte == 5)
                             {
                                 picnpc.BackgroundImage = EGua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 1)
@@ -589,7 +611,7 @@ namespace GameofLifedanielT
                             else if (encounte == 6)
                             {
                                 picnpc.BackgroundImage = Gob;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword > 0)
@@ -619,7 +641,7 @@ namespace GameofLifedanielT
                             else if (encounte == 7)
                             {
                                 picnpc.BackgroundImage = Gok;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -658,7 +680,7 @@ namespace GameofLifedanielT
                             else if (encounte == 8)
                             {
                                 picnpc.BackgroundImage = Dark;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs >= 99)
@@ -694,7 +716,7 @@ namespace GameofLifedanielT
                             else if (encounte == 9)
                             {
                                 picnpc.BackgroundImage = Wolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                    
@@ -733,7 +755,7 @@ namespace GameofLifedanielT
                             else if (encounte == 10)
                             {
                                 picnpc.BackgroundImage = Baer;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -773,7 +795,7 @@ namespace GameofLifedanielT
                             else if (encounte == 11)
                             {
                                 picnpc.BackgroundImage = Assa;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -805,7 +827,7 @@ namespace GameofLifedanielT
                             else if (encounte == 12)
                             {
                                 picnpc.BackgroundImage = BanditLord;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -836,7 +858,7 @@ namespace GameofLifedanielT
                             else if (encounte == 13)
                             {
                                 picnpc.BackgroundImage = Direwolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -868,7 +890,7 @@ namespace GameofLifedanielT
                                 BigMonster = "Behemoth";
                                 frmMonster fnp = new frmMonster();
                                 fnp.ShowDialog();
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -977,6 +999,13 @@ namespace GameofLifedanielT
                                 Life = MaxLife;
                                 Gold = Gold - 300;
                                 WirtHeal = false;
+                            }
+                            Manaheal = lab.Manaheal(panMain, panel, _row, _column, Manaheal);
+                            if (Manaheal == true && Gold >= 3000)
+                            {
+                                Mana = Spellpower;
+                                Gold = Gold - 3000;
+                                Manaheal = false;
                             }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
                         }
@@ -1214,6 +1243,18 @@ namespace GameofLifedanielT
                                 leverover = true;
                                 ende = true;
                             }
+                            else if (Lvl == 10 && leverover == false && _row == 3 && _column == 1)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 1;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                             lab.Starts(panel, _row, _column);
                         }
@@ -1345,6 +1386,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 4;
                             _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 10)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 1;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -1538,27 +1589,46 @@ namespace GameofLifedanielT
                         #endregion
                         #region Cheats
 
-                       
                         if (cheat == true)
                         {
-                            MaxLife = 3;
-                            Life = 3;
-                            Armor = 0;
-                            sword = 0;
-                            Bombs = 0;
-                            Gold = Gold + 500;
-                            cheat = false;
+                            if (Cheatnumber == 1)
+                            {
+                                MaxLife = 3;
+                                Life = 3;
+                                Armor = 0;
+                                sword = 0;
+                                Bombs = 0;
+                                Gold = Gold + 500;
+                                cheat = false;
+                            }
+                            else if (Cheatnumber == 2)
+                            {
+                                MaxLife = 10;
+                                Life = 10;
+                                Armor = 30;
+                                sword = 30;
+                                Bombs = 4;
+                                Gold = 50000;
+                                Spellpower = 20;
+                                Mana = 20;
+                                Schmuck = 1;
+                            }
+                            else
+                            {
+
+                            }
+
                         }
                         #endregion
                         #region Encounters
 
-                   
+
                         if (encounte > 0)
                         {
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -1590,7 +1660,7 @@ namespace GameofLifedanielT
                             else if (encounte == 2)
                             {
                                 picnpc.BackgroundImage = BanditC;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -1630,7 +1700,7 @@ namespace GameofLifedanielT
                             else if (encounte == 3)
                             {
                                 picnpc.BackgroundImage = Soldat;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1663,7 +1733,7 @@ namespace GameofLifedanielT
                             else if (encounte == 4)
                             {
                                 picnpc.BackgroundImage = Gua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -1704,7 +1774,7 @@ namespace GameofLifedanielT
                             else if (encounte == 5)
                             {
                                 picnpc.BackgroundImage = EGua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1738,7 +1808,7 @@ namespace GameofLifedanielT
                             else if (encounte == 6)
                             {
                                 picnpc.BackgroundImage = Gob;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1772,7 +1842,7 @@ namespace GameofLifedanielT
                             else if (encounte == 7)
                             {
                                 picnpc.BackgroundImage = Gok;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -1813,7 +1883,7 @@ namespace GameofLifedanielT
                             else if (encounte == 8)
                             {
                                 picnpc.BackgroundImage = Dark;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs >= 99)
@@ -1853,7 +1923,7 @@ namespace GameofLifedanielT
                             else if (encounte == 9)
                             {
                                 picnpc.BackgroundImage = Wolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1892,7 +1962,7 @@ namespace GameofLifedanielT
                             else if (encounte == 10)
                             {
                                 picnpc.BackgroundImage = Baer;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1932,7 +2002,7 @@ namespace GameofLifedanielT
                             else if (encounte == 11)
                             {
                                 picnpc.BackgroundImage = Assa;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1964,7 +2034,7 @@ namespace GameofLifedanielT
                             else if (encounte == 12)
                             {
                                 picnpc.BackgroundImage = BanditLord;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -1995,7 +2065,7 @@ namespace GameofLifedanielT
                             else if (encounte == 13)
                             {
                                 picnpc.BackgroundImage = Direwolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -2028,7 +2098,7 @@ namespace GameofLifedanielT
                                 frmMonster fnp = new frmMonster();
 
                                 fnp.ShowDialog();
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -2136,6 +2206,13 @@ namespace GameofLifedanielT
                                 Life = MaxLife;
                                 Gold = Gold - 300;
                                 WirtHeal = false;
+                            }
+                            Manaheal = lab.Manaheal(panMain, panel, _row, _column, Manaheal);
+                            if (Manaheal == true && Gold >= 3000)
+                            {
+                                Mana = Spellpower;
+                                Gold = Gold - 3000;
+                                Manaheal = false;
                             }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
                         }
@@ -2377,6 +2454,18 @@ namespace GameofLifedanielT
                                 leverover = true;
                                 ende = true;
                             }
+                            else if (Lvl == 10 && leverover == false && _row == 3 && _column == 1)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 1;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                             lab.Starts(panel, _row, _column);
                         }
@@ -2512,6 +2601,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 4;
                             _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 10)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 1;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -2656,16 +2755,36 @@ namespace GameofLifedanielT
                         #endregion
                         #region Cheats
 
-                   
+
                         if (cheat == true)
                         {
-                            MaxLife = 3;
-                            Life = 3;
-                            Armor = 0;
-                            sword = 0;
-                            Bombs = 0;
-                            Gold = Gold + 500;
-                            cheat = false;
+                            if (Cheatnumber == 1)
+                            {
+                                MaxLife = 3;
+                                Life = 3;
+                                Armor = 0;
+                                sword = 0;
+                                Bombs = 0;
+                                Gold = Gold + 500;
+                                cheat = false;
+                            }
+                            else if (Cheatnumber == 2)
+                            {
+                                MaxLife = 10;
+                                Life = 10;
+                                Armor = 30;
+                                sword = 30;
+                                Bombs = 4;
+                                Gold = 50000;
+                                Spellpower = 20;
+                                Mana = 20;
+                                Schmuck = 1;
+                            }
+                            else
+                            {
+
+                            }
+
                         }
                         #endregion
                         #region Encounters
@@ -2674,7 +2793,7 @@ namespace GameofLifedanielT
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -2706,7 +2825,7 @@ namespace GameofLifedanielT
                             else if (encounte == 2)
                             {
                                 picnpc.BackgroundImage = BanditC;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -2746,7 +2865,7 @@ namespace GameofLifedanielT
                             else if (encounte == 3)
                             {
                                 picnpc.BackgroundImage = Soldat;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -2779,7 +2898,7 @@ namespace GameofLifedanielT
                             else if (encounte == 4)
                             {
                                 picnpc.BackgroundImage = Gua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -2820,7 +2939,7 @@ namespace GameofLifedanielT
                             else if (encounte == 5)
                             {
                                 picnpc.BackgroundImage = EGua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -2854,7 +2973,7 @@ namespace GameofLifedanielT
                             else if (encounte == 6)
                             {
                                 picnpc.BackgroundImage = Gob;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -2888,7 +3007,7 @@ namespace GameofLifedanielT
                             else if (encounte == 7)
                             {
                                 picnpc.BackgroundImage = Gok;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -2929,7 +3048,7 @@ namespace GameofLifedanielT
                             else if (encounte == 8)
                             {
                                 picnpc.BackgroundImage = Dark;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs >= 99)
@@ -2966,7 +3085,7 @@ namespace GameofLifedanielT
                             else if (encounte == 9)
                             {
                                 picnpc.BackgroundImage = Wolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana,Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana,Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3005,7 +3124,7 @@ namespace GameofLifedanielT
                             else if (encounte == 10)
                             {
                                 picnpc.BackgroundImage = Baer;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3045,7 +3164,7 @@ namespace GameofLifedanielT
                             else if (encounte == 11)
                             {
                                 picnpc.BackgroundImage = Assa;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3077,7 +3196,7 @@ namespace GameofLifedanielT
                             else if (encounte == 12)
                             {
                                 picnpc.BackgroundImage = BanditLord;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3108,7 +3227,7 @@ namespace GameofLifedanielT
                             else if (encounte == 13)
                             {
                                 picnpc.BackgroundImage = Direwolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3141,7 +3260,7 @@ namespace GameofLifedanielT
                                 frmMonster fnp = new frmMonster();
 
                                 fnp.ShowDialog();
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3250,6 +3369,13 @@ namespace GameofLifedanielT
                                 Life = MaxLife;
                                 Gold = Gold - 300;
                                 WirtHeal = false;
+                            }
+                            Manaheal = lab.Manaheal(panMain, panel, _row, _column, Manaheal);
+                            if (Manaheal == true && Gold >= 3000)
+                            {
+                                Mana = Spellpower;
+                                Gold = Gold - 3000;
+                                Manaheal = false;
                             }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
                         }
@@ -3494,6 +3620,18 @@ namespace GameofLifedanielT
                                 leverover = true;
                                 ende = true;
                             }
+                            else if (Lvl == 10 && leverover == false && _row == 3 && _column == 1)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 1;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
 
                             lab.CreateWorld(panel, _row, _column, Lvl);
                             lab.Starts(panel, _row, _column);
@@ -3626,6 +3764,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 4;
                             _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 10)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 1;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -3773,13 +3921,33 @@ namespace GameofLifedanielT
                         
                         if (cheat == true)
                         {
-                            MaxLife = 3;
-                            Life = 3;
-                            Armor = 0;
-                            sword = 0;
-                            Bombs = 0;
-                            Gold = Gold + 500;
-                            cheat = false;
+                            if (Cheatnumber==1)
+                            {
+                                MaxLife = 3;
+                                Life = 3;
+                                Armor = 0;
+                                sword = 0;
+                                Bombs = 0;
+                                Gold = Gold + 500;
+                                cheat = false;
+                            }
+                            else if (Cheatnumber == 2)
+                            {
+                                MaxLife = 10;
+                                Life = 10;
+                                Armor = 30;
+                                sword = 30;
+                                Bombs = 4;
+                                Gold = 50000;
+                                Spellpower = 20;
+                                Mana = 20;
+                                Schmuck = 1;
+                            }
+                            else
+                            {
+
+                            }
+                       
                         }
                         #endregion
                         #region Encounters                    
@@ -3788,7 +3956,7 @@ namespace GameofLifedanielT
                             if (encounte == 1)
                             {
                                 picnpc.BackgroundImage = Bandit;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword > 0 && Armor > 0)
@@ -3820,7 +3988,7 @@ namespace GameofLifedanielT
                             else if (encounte == 2)
                             {
                                 picnpc.BackgroundImage = BanditC;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -3860,7 +4028,7 @@ namespace GameofLifedanielT
                             else if (encounte == 3)
                             {
                                 picnpc.BackgroundImage = Soldat;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3893,7 +4061,7 @@ namespace GameofLifedanielT
                             else if (encounte == 4)
                             {
                                 picnpc.BackgroundImage = Gua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -3934,7 +4102,7 @@ namespace GameofLifedanielT
                             else if (encounte == 5)
                             {
                                 picnpc.BackgroundImage = EGua;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3965,7 +4133,7 @@ namespace GameofLifedanielT
                             else if (encounte == 6)
                             {
                                 picnpc.BackgroundImage = Gob;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -3999,7 +4167,7 @@ namespace GameofLifedanielT
                             else if (encounte == 7)
                             {
                                 picnpc.BackgroundImage = Gok;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs > 1)
@@ -4040,7 +4208,7 @@ namespace GameofLifedanielT
                             else if (encounte == 8)
                             {
                                 picnpc.BackgroundImage = Dark;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (Bombs >= 99)
@@ -4075,7 +4243,7 @@ namespace GameofLifedanielT
                             else if (encounte == 9)
                             {
                                 picnpc.BackgroundImage = Wolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword >= 1)
@@ -4112,7 +4280,7 @@ namespace GameofLifedanielT
                             else if (encounte == 10)
                             {
                                 picnpc.BackgroundImage = Baer;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -4152,7 +4320,7 @@ namespace GameofLifedanielT
                             else if (encounte == 11)
                             {
                                 picnpc.BackgroundImage = Assa;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
                                     if (sword >= 3 && Armor >= 1)
@@ -4181,7 +4349,7 @@ namespace GameofLifedanielT
                             else if (encounte == 12)
                             {
                                 picnpc.BackgroundImage = BanditLord;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -4212,7 +4380,7 @@ namespace GameofLifedanielT
                             else if (encounte == 13)
                             {
                                 picnpc.BackgroundImage = Direwolf;
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -4245,7 +4413,7 @@ namespace GameofLifedanielT
                                 frmMonster fnp = new frmMonster();
 
                                 fnp.ShowDialog();
-                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl);
+                                Fight = lab.Fight(panMain, panel, _row, _column, Fight, sword, Armor, encounte, Bombs, Mana, Lvl, Schmuck);
                                 if (Fight == true)
                                 {
 
@@ -4355,6 +4523,13 @@ namespace GameofLifedanielT
                                 Life = MaxLife;
                                 Gold = Gold - 300;
                                 WirtHeal = false;
+                            }
+                            Manaheal = lab.Manaheal(panMain, panel, _row, _column, Manaheal);
+                            if (Manaheal == true && Gold >= 3000)
+                            {
+                                Mana = Spellpower;
+                                Gold = Gold - 3000;
+                                Manaheal = false;
                             }
                             Gold = lab.goldTri1(panMain, panel, _row, _column, Gold);
                         }
@@ -4593,6 +4768,18 @@ namespace GameofLifedanielT
                                 leverover = true;
                                 ende = true;
                             }
+                            else if (Lvl == 10 && leverover == false && _row == 3 && _column == 1)
+                            {
+                                Respawn = 3;
+                                lblrespawn.Text = Respawn.ToString();
+                                _row = 3;
+                                _column = 1;
+                                Rowsd = _row;
+                                Columnsd = _column;
+                                lab.Starts(panel, _row, _column);
+                                leverover = true;
+                                ende = true;
+                            }
                             lab.CreateWorld(panel, _row, _column, Lvl);
                             lab.Starts(panel, _row, _column);
 
@@ -4723,6 +4910,16 @@ namespace GameofLifedanielT
                             lblrespawn.Text = Respawn.ToString();
                             _row = 4;
                             _column = 2;
+                            Rowsd = _row;
+                            Columnsd = _column;
+                            lab.Starts(panel, _row, _column);
+                        }
+                        else if (Lvl == 10)
+                        {
+                            Respawn--;
+                            lblrespawn.Text = Respawn.ToString();
+                            _row = 3;
+                            _column = 1;
                             Rowsd = _row;
                             Columnsd = _column;
                             lab.Starts(panel, _row, _column);
@@ -5930,6 +6127,124 @@ namespace GameofLifedanielT
             }
             #endregion
 
+        }
+
+        private void btnlvl10_Click(object sender, EventArgs e)
+        {
+            #region Level 10
+
+
+            btnlvl10.Enabled = false;
+            btnlvl10.Enabled = true;
+            Lvl = 10;
+            if (Gene == false)
+            {
+                Gene = true;
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                Schmuck = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Arrow = 0;
+                Respawn = 3;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                lblArmor.Text = Armor.ToString();
+                txtmana.Text = Mana.ToString() + "  /   " + Spellpower.ToString();
+                Spellpower = 0;
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                lbllifeCount.Text = Life.ToString();
+                lblArmorCount.Text = Armor.ToString();
+                lblArmor.Text = Armor.ToString();
+                lblBombCount.Text = Bombs.ToString();
+                lblkeycount.Text = Keys.ToString();
+                lblMenge.Text = Gold.ToString();
+                lblsword.Text = sword.ToString();
+                panMain.Size = new Size(CellSize * 40, CellSize * 40);
+                for (_column = 0; _column < 40; _column++)// Generiert die Zellen der Spalten
+                {
+                    for (_row = 0; _row < 40; _row++)// Generiert die Zellen der Reihen
+                    {
+                        panel = lab.GenerateGrid(_row, _column);
+
+                        panel.Click += panel_Click;
+                        panMain.Controls.Add(panel);
+                    }
+                }
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+            }
+            else
+            {
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    panel.BackColor = Color.LightGreen;
+                }
+                Life = 5;
+                Armor = 4;
+                MaxLife = 5;
+                Bombs = 1;
+                Keys = 0;
+                WolfFell = 0;
+                Bärenfell = 0;
+                Schmuck = 0;
+                Respawn = 3;
+                Arrow = 0;
+                Armormat = 1;
+                Potions = 2;
+                sword = 4;
+                Gold = 5500;
+                Rowsd = 0;
+                Columnsd = 0;
+                lblrespawn.Text = Respawn.ToString();
+                Mana = 0;
+                Spellpower = 0;
+                lblArmor.Text = Armor.ToString();
+                picchar.BackgroundImage = labAv.Avatar(picchar, Armor, sword);
+                Tokens = 0;
+                lstinve.Items.Clear();
+                lstinve.Items.Add("Rüstungsverstärkmaterial " + Armormat.ToString());
+                lstinve.Items.Add("Bomben " + Bombs.ToString());
+                lstinve.Items.Add("Schlüssel " + Keys.ToString());
+                lstinve.Items.Add("Schleifsteine " + sword.ToString());
+                lstinve.Items.Add("Bandit Tokens " + Tokens.ToString());
+                lstinve.Items.Add("Heiltränke " + Potions.ToString());
+                txtboxLife.Width = (30 * Life);
+                txtboxLife.Text = Life.ToString() + " / " + MaxLife.ToString();
+                foreach (PictureBox panel in panMain.Controls)
+                {
+                    _row = panel.Location.Y / CellSize;
+                    _column = panel.Location.X / CellSize;
+                    lab.CreateWorld(panel, _row, _column, Lvl);
+                }
+                Alive = true;
+                first = true;
+            }
+            #endregion
         }
     }
 }
