@@ -1,7 +1,7 @@
 # DLTWG
 Game Libary
 
-Vorhandene Spiele im Moment. Game of Life, Normale Version und Version für 4 Spieler, 4 Gewinnt, Minesweeper, Memory, Schach(wird noch optimiert), Labyrinth/RPG
+Vorhandene Spiele im Moment. Game of Life, Normale Version und Version für 4 Spieler, 4 Gewinnt(braucht seperate Datenbank), Minesweeper, Memory, Schach(wird noch optimiert), Labyrinth/RPG
 
 Hauptprojekt ist Fertig daher arbeite ich wieder am Labyrinth/RPG
 
