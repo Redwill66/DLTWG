@@ -1,0 +1,249 @@
+﻿ public int Schield2(Panel panMain, PictureBox panel, int _row, int _column, int Armor)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Schi && count == 1 && _grid[_column, _row+1, 0] != Gras && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine Kiste mit Handwerksmaterialen gefunden, willst du deine Rüstung damit verstärken", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du verstärkst deine Rüstung(+1 zu Armor))");
+
+                    panel.BackColor = Color.Orange;
+                    panel.BackgroundImage = null;
+
+                    Armor = Armor + count;
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.Orange;
+                    panel.BackgroundImage = null;
+                }
+
+
+            }
+            return Armor;
+        }
+
+		 public int Schield3(Panel panMain, PictureBox panel, int _row, int _column, int Armor)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Schi && count == 1 && _grid[_column+1, _row, 0] != Gras && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine Kiste mit Handwerksmaterialen gefunden, willst du deine Rüstung damit verstärken", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du verstärkst deine Rüstung(+1 zu Armor))");
+
+                    panel.BackColor = Color.Orange;
+                    panel.BackgroundImage = null;
+
+                    Armor = Armor + count;
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.Orange;
+                    panel.BackgroundImage = null;
+                }
+
+
+            }
+            return Armor;
+        }
+		     public int Poison2(Panel panMain, PictureBox panel, int _row, int _column, int Life)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift&& poi%2==1 && panel.Image == Secret)
+            {
+                poi++;
+                poi2++;
+                panel.BackColor = Color.Purple;
+                panel.BackgroundImage = null;
+                Life--;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift && poi % 2 == 0)
+            {
+                poi++;
+               
+            }
+            return Life;
+        }
+		 public int Poison3(Panel panMain, PictureBox panel, int _row, int _column, int Life)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift && poi2 % 2 == 1 && panel.Image == Secret)
+            {
+                poi2++;
+                poi++;
+                panel.BackColor = Color.Purple;
+                panel.BackgroundImage = null;
+                Life--;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift && poi2 % 2 == 0)
+            {
+                poi2++;
+            }
+            return Life;
+        }
+		 /*  public int PoisonSchie2(Panel panMain, PictureBox panel, int _row, int _column, int Armor)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift&& poi3 % 2 == 1 && panel.Image == Secret)
+            {
+            //    poi++;
+              ///  poi2++;
+               // poi3++;
+                panel.BackColor = Color.Purple;
+                panel.BackgroundImage = null;
+                Armor--;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift && poi3 % 2 == 0 && panel.Image == Secret)
+            {
+               // poi3++;
+            }
+            return Armor;
+        }
+        public int PoisonSchie3(Panel panMain, PictureBox panel, int _row, int _column, int Armor)
+        {
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift && poi4 % 2 == 1 && panel.Image == Secret)
+            {
+            //    poi++;
+              //  poi2++;
+             //   poi4++;
+                panel.BackColor = Color.Purple;
+                panel.BackgroundImage = null;
+                Armor--;
+            }
+            else if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Gift && poi4 % 2 == 0)
+            {
+            //    poi4++;
+            }
+            return Armor;
+        }*/
+		 public int Heals2(Panel panMain, PictureBox panel, int _row, int _column, int Life, int MaxLife)
+        {
+
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Heal && panel.Image == Secret)
+            {
+               
+                DialogResult dialogResult = MessageBox.Show("Du hast eine Ruhige Lichtung gefunden, willst du Rasten", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du füllst dich voller Leben(Leben auf Max)");
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                    Life = MaxLife;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.Red;
+                    panel.BackgroundImage = null;
+                }
+
+            }
+          
+
+            return Life;
+        }
+		 public int Bomm2(Panel panMain, PictureBox panel, int _row, int _column, int Bombs)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Bomb && count == 1 && _grid[_column, _row+1, 0] != Gras && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine nicht gezündete Bombe gefunden, willst du sie mitnehmen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du erhälst eine Bombe(+1 zu Bomb))");
+
+                    panel.BackColor = Color.OrangeRed;
+                    panel.BackgroundImage = null;
+                    Bombs = Bombs + count;
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.OrangeRed;
+                    panel.BackgroundImage = null;
+                }
+
+
+            }
+
+            return Bombs;
+        }
+        public int Bomm3(Panel panMain, PictureBox panel, int _row, int _column, int Bombs)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Bomb && count == 1 && _grid[_column + 1, _row, 0] != Gras && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine nicht gezündete Bombe gefunden, willst du sie mitnehmen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du erhälst eine Bombe(+1 zu Bomb))");
+
+                    panel.BackColor = Color.OrangeRed;
+                    panel.BackgroundImage = null;
+                    Bombs = Bombs + count;
+                    _grid[_column, _row, 2] = empty.ToString();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.OrangeRed;
+                    panel.BackgroundImage = null;
+                }
+
+
+            }
+
+            return Bombs;
+        }
+		  public int Keyss2(Panel panMain, PictureBox panel, int _row, int _column, int Key)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Keys && count == 1 && _grid[_column, _row + 1, 0] != Gras && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine Tasche mit einem Schlüssel gefunden, willst du ihn mitnehmen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du erhälst einen Schlüssek(+1 zu Keys))");
+
+                    Key = Key + count;
+                    panel.BackColor = Color.DarkGoldenrod;
+                    _grid[_column, _row, 2] = empty.ToString();
+                    panel.BackgroundImage = null;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.DarkGoldenrod;
+                    panel.BackgroundImage = null;
+                }
+
+
+            }
+
+            return Key;
+        }
+        public int Keyss3(Panel panMain, PictureBox panel, int _row, int _column, int Key)
+        {
+            var count = Convert.ToInt32(_grid[_column, _row, 2]);
+            if (_grid[_column, _row, 1] == Player && _grid[_column, _row, 0] == Keys && count == 1 && _grid[_column+1, _row, 0] != Gras && panel.Image == Secret)
+            {
+                DialogResult dialogResult = MessageBox.Show("Du hast eine Tasche mit einem Schlüssel gefunden, willst du ihn mitnehmen", "Some Title", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Du erhälst einen Schlüssek(+1 zu Keys))");
+
+                    Key = Key + count;
+                    panel.BackColor = Color.DarkGoldenrod;
+                    _grid[_column, _row, 2] = empty.ToString();
+                    panel.BackgroundImage = null;
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    panel.BackColor = Color.DarkGoldenrod;
+                    panel.BackgroundImage = null;
+                }
+
+
+            }
+
+            return Key;
+        }
